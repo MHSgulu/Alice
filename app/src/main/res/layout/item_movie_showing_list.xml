@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="2dp"
+    tools:context=".ui.navigationB.MovieShowingUpAdapter">
+
+
+    <!--豆瓣电影海报封面长宽比例1.5：1-->
+    <androidx.cardview.widget.CardView
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        app:cardCornerRadius="2dp"
+        app:cardElevation="1dp">
+
+        <ImageView
+            android:id="@+id/iv_movie_poster"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"/>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <!--超出字数限制尾部显示省略号-->
+        <TextView
+            android:id="@+id/tv_movie_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            tools:text="电影名"
+            android:singleLine="true"
+            android:maxEms="8"
+            android:ellipsize="end"
+            android:textColor="@color/black"
+            android:textSize="13sp"/>
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="12dp"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="5dp"
+            android:layout_toStartOf="@+id/tv_movie_score"
+            android:background="@mipmap/icon_douban"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/tv_movie_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="5dp"
+            tools:text="8.5"
+            android:textColor="@color/black"
+            android:textSize="11sp"
+            android:visibility="gone"
+            tools:ignore="SmallSp" />
+
+
+    </RelativeLayout>
+
+
+
+
+</LinearLayout>

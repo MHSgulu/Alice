@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.uw.alice">
+    <!-- APP请求数据必须网络权限 -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- Glide 您打算从url或通过网络连接加载图像，则应在INTERNET和中添加和ACCESS_NETWORK_STATE权限AndroidManifest.xml： -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- Glide 要从本地文件夹（如DCIM或图片）加载图像，您需要添加READ_EXTERNAL_STORAGE权限： -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- Glide 要用于ExternalPreferredCacheDiskCacheFactory将Glide的缓存存储在公共sdcard上，您需要使用 WRITE_EXTERNAL_STORAGE权限： -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme.NoActionBar"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.navigationA.ItemNewsDetailActivity" />
+        <activity android:name=".ui.navigationA.SearchNewsActivity" />
+        <activity android:name=".ui.navigationA.RealTimeHotSpotRankingActivity" />
+        <activity android:name=".ui.navigationC.ItemTextJokeContentActivity" />
+        <activity android:name=".ui.navigationD.QueryPhoneNumberActivity" />
+        <activity android:name=".ui.navigationD.TaoModelsActivity" />
+        <activity android:name=".ui.navigationD.InspirationalQuotationsActivity" />
+        <activity android:name=".ui.navigationD.CorpusOfIdiomsActivity" />
+        <activity android:name=".ui.navigationD.BingDailyWallpaperActivity" />
+        <!--智能机器人聊天界面-->
+        <activity android:name=".ui.navigationD.IntelligentChatRobotActivity" />
+        <!--近日壁纸-->
+        <activity android:name=".ui.navigationD.BingLatelyWallpaperActivity" />
+        <!--电影详情-->
+        <activity android:name=".ui.navigationB.MovieDetailsActivity" />
+    </application>
+
+</manifest>

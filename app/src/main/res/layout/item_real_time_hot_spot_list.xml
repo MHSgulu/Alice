@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="com.uw.alice.data.model.HotSpot.ResultBean.ShowapiResBodyBean.ListBean"/>
+        <variable
+            name="list"
+            type="ListBean" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="vertical"
+        tools:context=".ui.navigationA.RealTimeHotSpotRankingAdapter">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/underline_hotSpot"/>
+
+        <TextView
+            android:id="@+id/tv_hotSpot_rank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_centerVertical="true"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:text="@{list.num}"
+            tools:text="1"/>
+
+        <TextView
+            android:id="@+id/tv_hotSpot_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/tv_hotSpot_rank"
+            android:layout_marginStart="20dp"
+            android:layout_centerVertical="true"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:text="@{list.name}"
+            tools:text="热点名称"/>
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/tv_hotSpot_num"
+            android:layout_marginEnd="5dp"
+            android:background="@mipmap/hot"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tv_hotSpot_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@+id/iv_tv_hotSpot_trend"
+            android:layout_marginEnd="40dp"
+            android:layout_centerVertical="true"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:text="@{list.level}"
+            tools:text="233"
+            tools:ignore="RelativeOverlap" />
+
+        <ImageView
+            android:id="@+id/iv_tv_hotSpot_trend"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="20dp"
+            tools:background="@mipmap/up"
+            tools:ignore="ContentDescription" />
+
+    </RelativeLayout>
+
+
+</layout>
+
+
+
+
+
+

@@ -1,0 +1,119 @@
+<resources>
+    <!--APP的应用名称-->
+    <string name="app_name">Alice</string>
+    <!--导航区名称-->
+    <string name="title_1">新闻</string>
+    <string name="title_2">电影</string>
+    <string name="title_3">有趣</string>
+    <string name="title_4">更多</string>
+
+    <!--Tab标题-->
+    <!--新闻模块-->
+    <string name="tab_title_1">头条</string>
+    <string name="tab_title_2">新闻</string>
+    <string name="tab_title_3">国内</string>
+    <string name="tab_title_4">国际</string>
+    <string name="tab_title_5">政治</string>
+    <string name="tab_title_6">财经</string>
+    <string name="tab_title_7">体育</string>
+    <string name="tab_title_8">娱乐</string>
+    <string name="tab_title_9">军事</string>
+    <string name="tab_title_10">教育</string>
+    <string name="tab_title_11">科技</string>
+    <string name="tab_title_12">NBA</string>
+    <string name="tab_title_13">股票</string>
+    <string name="tab_title_14">星座</string>
+    <string name="tab_title_15">女性</string>
+    <string name="tab_title_16">健康</string>
+    <string name="tab_title_17">育儿</string>
+    <!--淘女郎模块-->
+    <string name="style_tab_title_1">欧美</string>
+    <string name="style_tab_title_2">韩版</string>
+    <string name="style_tab_title_3">日系</string>
+    <string name="style_tab_title_4">英伦</string>
+    <string name="style_tab_title_5">OL风</string>
+    <string name="style_tab_title_6">学院</string>
+    <string name="style_tab_title_7">淑女</string>
+    <string name="style_tab_title_8">性感</string>
+    <string name="style_tab_title_9">复古</string>
+    <string name="style_tab_title_10">街头</string>
+    <string name="style_tab_title_11">休闲</string>
+    <string name="style_tab_title_12">民族</string>
+    <string name="style_tab_title_13">甜美</string>
+    <string name="style_tab_title_14">运动</string>
+    <string name="style_tab_title_15">可爱</string>
+    <string name="style_tab_title_16">大码</string>
+    <string name="style_tab_title_17">中老年</string>
+    <string name="style_tab_title_18">其他</string>
+
+    <string name="navigation_b_tab_title_1">豆瓣电影</string>
+    <string name="navigation_b_tab_title_2">图书</string>
+    <string name="navigation_b_tab_title_3">音乐</string>
+
+
+    <string name="navigation_c_tab_title_1">动态图</string>
+    <string name="navigation_c_tab_title_2">图片</string>
+    <string name="navigation_c_tab_title_3">文本</string>
+
+    <string name="navigation_d_idiom_tab_title_1">成语查注释</string>
+    <string name="navigation_d_idiom_tab_title_2">关键字查成语</string>
+
+    <!--xml控件内容描述  比如图像视图-->
+    <string name="contentDescription_1">这是一个图片，点击进入热点排行</string>
+
+    <!--对话框-->
+    <string name="AlertDialog_Tips_Title">开发者提示</string>
+    <string name="AlertDialog_Tips_Content">当前已浏览至第10页共200条数据，若要继续浏览更多内容，请前往分页筛选。</string>
+    <string name="AlertDialog_Tips_Content_1">当前已浏览至第20页共400条数据，若要继续浏览更多内容，请前往分页筛选。</string>
+    <string name="AlertDialog_Tips_Content_2">当前已浏览至第30页共600条数据，若要继续浏览更多内容，请前往分页筛选。</string>
+    <string name="AlertDialog_Tips_Content_3">当前已浏览至第40页共800条数据，若要继续浏览更多内容，请前往分页筛选。</string>
+    <string name="AlertDialog_Tips_Content_4">当前已浏览至第50页共1000条数据，若要继续浏览更多内容，请前往分页筛选。</string>
+    <string name="AlertDialog_Tips_ErrorPrompt">开发者在测试数据源头时，发现部分风格类型最后一页的倒数几条数据会出现缺失图片作品集信息的现象，
+        综合考虑到用户体验与每一位淘女郎都值得展示魅力，不对这些缺失信息的数据做任何处理。
+        如果用户遇到这些数据在点击淘女郎大图查看作品集时APP出现闪退情况，实属正常，无须担心。(2020-1-14)</string>
+    <string name="AlertDialog_Tips_Positive">确定</string>
+    <string name="AlertDialog_Tips_Understood">已知晓</string>
+
+    <!--页面-->
+    <string name="newsTitle">新闻详情</string>
+    <string name="textJoke">文本笑话</string>
+    <string name="search_news">点击此处搜索你想了解的新闻</string>
+    <string name="search_movies">点击此处搜索你想了解的电影</string>
+    <string name="search_news_key_word">在此处输入关键词</string>
+    <string name="tips_input_MobilePhoneNumber">在此处输入手机号码</string>
+    <string name="tips_input_idiom">在此处输入成语</string>
+    <string name="tips_input_chat">在此处输入聊天信息</string>
+    <string name="tips_input_idiom_keyword">在此处输入关键字</string>
+    <string name="real_time_hotspot">实时热点</string>
+    <string name="real_time_box_office">实时票房</string>
+    <string name="lately_wallpaper">近日壁纸</string>
+    <string name="more">筛选</string>
+    <string name="search">搜索</string>
+    <string name="send">发送</string>
+    <string name="query">查询</string>
+    <string name="real_time_hot_spot">实时热点</string>
+    <string name="nc_title">开心一点</string>
+    <string name="nd_title">精彩实用</string>
+    <string name="query_mobilePhoneNumber_home">手机号码归属地查询</string>
+    <string name="inspirationalQuotations_in_English">英文励志语录</string>
+    <string name="corpus_of_idioms">成语大全</string>
+    <string name="bing_daily_wallpaper">必应每日壁纸</string>
+    <string name="bing_lately_wallpaper">必应近日壁纸</string>
+    <string name="search_for_Tao_girls">淘女郎模特查询</string>
+    <string name="intelligent_chat_robot">智能聊天机器人菲菲</string>
+    <string name="icr_fei">菲菲</string>
+    <string name="mobilePhoneNumber">手机号:</string>
+    <string name="place_of_ownership">归属地:</string>
+    <string name="operator">运营商:</string>
+    <string name="cardType">卡类型:</string>
+    <string name="areaCode">区域号:</string>
+    <string name="idiom_title">成语名称:</string>
+    <string name="idiom_spell">拼写读音:</string>
+    <string name="idiom_content">解释:</string>
+    <string name="idiom_derivation">出自典故:</string>
+    <string name="idiom_samples">例子:</string>
+
+    <string name="refreshStoreHouseHeaderTitle">English Quotations</string>
+
+
+</resources>

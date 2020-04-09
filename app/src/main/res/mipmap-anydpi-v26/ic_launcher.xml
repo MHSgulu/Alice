@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--应用徽标背景-->
+    <!--<background android:drawable="@drawable/ic_launcher_background" />-->
+    <!--<foreground android:drawable="@drawable/ic_launcher_foreground" />-->
+    <!--应用徽标前景-->
+    <foreground android:drawable="@drawable/app_logo_design_version_4" />
+</adaptive-icon>

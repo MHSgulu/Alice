@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="com.uw.alice.data.model.TaoGirls.ShowapiResBodyBean.PagebeanBean.ContentlistBean"/>
+        <variable
+            name="list"
+            type="ContentlistBean" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context=".ui.navigationD.TaoModelListAdapter">
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="10dp"
+                        app:cardCornerRadius="5dp"
+                        app:cardElevation="2dp">
+
+                        <ImageView
+                            android:id="@+id/iv_avatar"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            tools:ignore="ContentDescription" />
+
+                    </androidx.cardview.widget.CardView>
+
+
+                    <TextView
+                        android:id="@+id/tv_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:textSize="15sp"
+                        android:textColor="@color/black"
+                        android:text="@{list.realName}"
+                        tools:text="这是昵称"/>
+
+                </RelativeLayout>
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="100dp"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_gravity="center"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="2dp">
+
+                    <ImageView
+                        android:id="@+id/iv_picture_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        tools:ignore="ContentDescription" />
+
+                </androidx.cardview.widget.CardView>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:id="@+id/tv_height"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:textSize="13sp"
+                        tools:text="身高:160"
+                        android:visibility="gone"/>
+
+                    <TextView
+                        android:id="@+id/tv_weight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_toEndOf="@+id/tv_height"
+                        android:textSize="13sp"
+                        tools:text="体重:50"
+                        android:visibility="gone"/>
+
+                    <TextView
+                        android:id="@+id/tv_fansNum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_toEndOf="@+id/tv_weight"
+                        android:textSize="12sp"
+                        tools:text="粉丝数:10" />
+
+                    <TextView
+                        android:id="@+id/tv_city"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:textSize="12sp"
+                        android:text="@{list.city}"
+                        tools:text="城市"
+                        tools:ignore="RelativeOverlap" />
+
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+    </LinearLayout>
+</layout>
+
+
+
+
+
+
