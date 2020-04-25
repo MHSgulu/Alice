@@ -29,7 +29,7 @@ import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
 public class MovieFragment extends Fragment {
-
+    //tag标记
     private static final String TAG = "MovieFragment";
     private Context mContext;
 
