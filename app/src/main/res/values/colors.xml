@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!--colorAccent属性控制顶部应用程序栏的颜色，而其他colorPrimaryDark属性则控制状态栏的颜色。-->
+
     <!--底部导航组件所使用的颜色-->
     <color name="colorPrimary">#008577</color>
     <!--手机顶级顶部信号栏的颜色-->
