@@ -12,6 +12,10 @@ import com.uw.alice.R;
 import com.uw.alice.data.util.Util;
 import com.uw.alice.databinding.ActivityItemNewsDetailBinding;
 
+import org.sufficientlysecure.htmltextview.HtmlHttpImageGetter;
+
+import java.util.Objects;
+
 
 public class ItemNewsDetailActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -33,8 +37,7 @@ public class ItemNewsDetailActivity extends AppCompatActivity implements View.On
         mBinding.tvTitle.setText(getIntent().getStringExtra(Util.NewsTitle));
         mBinding.tvFrom.setText(getIntent().getStringExtra(Util.NewsSrc));
         mBinding.tvTime.setText(getIntent().getStringExtra(Util.NewsTime));
-        mBinding.tvContent.setText(Html.fromHtml(getIntent().getStringExtra(Util.NewsContent)));
-       // Html.fromHtml(getIntent().getStringExtra(Util.NewsContent));
+        mBinding.tvContent.setHtml(Objects.requireNonNull(getIntent().getStringExtra(Util.NewsContent)),new HtmlHttpImageGetter(mBinding.tvContent));
     }
 
 
