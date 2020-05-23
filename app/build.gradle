@@ -30,6 +30,9 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
+    //Android MDC 材料设计组件
+    implementation 'com.google.android.material:material:1.2.0-alpha06'
+
 
     //导航组件
     implementation 'androidx.navigation:navigation-fragment:2.1.0'
