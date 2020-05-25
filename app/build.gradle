@@ -73,4 +73,7 @@ dependencies {
     //HtmlTextView
     implementation 'org.sufficientlysecure:html-textview:3.9'
 
+    //轮播控件
+    implementation 'com.youth.banner:banner:2.0.10'
+
 }
