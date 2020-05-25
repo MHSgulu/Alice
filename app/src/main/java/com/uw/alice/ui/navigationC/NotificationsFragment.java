@@ -5,7 +5,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +21,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.uw.alice.R;
+import com.uw.alice.data.util.Util;
 
 import java.util.ArrayList;
 
@@ -31,14 +35,24 @@ public class NotificationsFragment extends Fragment {
     private ArrayList<String> tab_title_list = new ArrayList<>();//存放标签页标题
     private ArrayList<Fragment> fragment_list = new ArrayList<>();//存放ViewPager下的Fragment
 
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mContext = getContext();
+        //设置系统状态栏颜色
+        Util.setSystemStatusBarColor(requireActivity(),R.color.colorNavigationC);
+    }
+
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         notificationsViewModel = ViewModelProviders.of(this).get(NotificationsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_notifications, container, false);
-        mContext = getContext();
+
         tabLayout = root.findViewById(R.id.tabs);
         tabLayout.setElevation(10);
         viewPager = root.findViewById(R.id.view_pager);
         viewPager.setOffscreenPageLimit(2);
+
 
 
         final LinearLayout llMore = root.findViewById(R.id.ll_more);
@@ -67,15 +81,12 @@ public class NotificationsFragment extends Fragment {
         fragment_list.add(PictureJokeFragment.newInstance());
         fragment_list.add(TextJokeFragment.newInstance());
 
-        NCSectionsPagerAdapter adapter = new NCSectionsPagerAdapter(getChildFragmentManager(),mContext,fragment_list);
+        NCSectionsPagerAdapter adapter = new NCSectionsPagerAdapter(getChildFragmentManager(), mContext, fragment_list);
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
 
 
     }
-
-
-
 
 
 

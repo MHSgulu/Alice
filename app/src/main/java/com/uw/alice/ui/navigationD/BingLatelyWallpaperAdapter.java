@@ -105,6 +105,8 @@ public class BingLatelyWallpaperAdapter extends RecyclerView.Adapter <BingLately
         mlistBeans = listBean;
     }
 
+
+
     public void setOnItemClickListener(OnItemClickListener onItemClickListener)
     {
         this.onItemClickListener = onItemClickListener;

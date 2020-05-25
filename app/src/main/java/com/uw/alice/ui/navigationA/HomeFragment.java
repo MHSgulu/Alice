@@ -7,22 +7,25 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
-import android.widget.TextView;
+
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
+
+
+import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
+
 import com.uw.alice.R;
 import com.uw.alice.data.model.NewsChannel;
 import com.uw.alice.data.util.Util;
-import com.uw.alice.databinding.FragmentHomeBinding;
 import com.uw.alice.network.retrofit.SingletonRetrofit;
 
 import java.util.ArrayList;
@@ -33,9 +36,8 @@ import io.reactivex.disposables.Disposable;
 public class HomeFragment extends Fragment {
 
     private static final String TAG = "HomeFragment";
-    private HomeViewModel homeViewModel;
+    //private HomeViewModel homeViewModel;
     private  Context mContext;
-
     private ArrayList<String> tab_title_list = new ArrayList<>();//存放标签页标题
     private ArrayList<Fragment> fragment_list = new ArrayList<>();//存放ViewPager下的Fragment
 
@@ -46,14 +48,16 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        mContext = getContext();
+        //设置系统状态栏颜色
+        Util.setSystemStatusBarColor(requireActivity(),R.color.colorNavigationA);
     }
 
-
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
+        //homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-        mContext = root.getContext();
+        //mContext = root.getContext();
+
         //在此处以下三种上下文是一致的内容   com.uw.alice.MainActivity@12aefd4
         //Log.d(TAG, "Context1:"+mContext+"Context2:"+getActivity()+"Context3:"+getContext());
         viewPager = root.findViewById(R.id.view_pager);
@@ -135,6 +139,13 @@ public class HomeFragment extends Fragment {
         SingletonRetrofit.getInstance().getNewsChannel(observer,Util.JDAPI_KEY);
 
     }
+
+
+
+
+
+
+
 
 
 }

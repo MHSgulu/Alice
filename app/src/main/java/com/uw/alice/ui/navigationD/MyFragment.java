@@ -6,12 +6,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import com.uw.alice.R;
+import com.uw.alice.data.util.Util;
 import com.uw.alice.databinding.FragmentMyBinding;
 
 public class MyFragment extends Fragment implements View.OnClickListener{
@@ -20,12 +23,22 @@ public class MyFragment extends Fragment implements View.OnClickListener{
     private FragmentMyBinding mBinding;
     private Context mContext;
 
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mContext = getContext();
+        //设置系统状态栏颜色
+        Util.setSystemStatusBarColor(requireActivity(),R.color.colorNavigationD);
+    }
+
+
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //myFragmentViewModel = ViewModelProviders.of(this).get(MyFragmentViewModel.class);
         //View root = inflater.inflate(R.layout.fragment_my, container, false);
         mBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_my,container,false);
         mBinding.setClicklistener(this);
-        mContext = getContext();
+
         //final TextView textView = root.findViewById(R.id.text_home);
        /* myFragmentViewModel.getText().observe(this, new Observer<String>() {
             @Override
@@ -33,8 +46,6 @@ public class MyFragment extends Fragment implements View.OnClickListener{
                 textView.setText(s);
             }
         });*/
-
-
 
         return mBinding.getRoot();
     }
@@ -72,6 +83,9 @@ public class MyFragment extends Fragment implements View.OnClickListener{
 
         }
     }
+
+
+
 
 
 

@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,11 +41,17 @@ public class DashboardFragment extends Fragment {
     private ArrayList<Fragment> fragment_list = new ArrayList<>();//存放ViewPager下的Fragment
 
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mContext = getContext();
+        //设置系统状态栏颜色
+        Util.setSystemStatusBarColor(requireActivity(),R.color.colorNavigationB);
+    }
+
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         dashboardViewModel = ViewModelProviders.of(this).get(DashboardViewModel.class);
         View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
-        mContext = getContext();
-
         tabLayout = root.findViewById(R.id.tabs);
         tabLayout.setElevation(10);
         viewPager = root.findViewById(R.id.view_pager);
@@ -69,10 +77,6 @@ public class DashboardFragment extends Fragment {
 
         //初始化Tablayout
         initTab();
-
-
-
-
 
 
         return root;
@@ -125,6 +129,7 @@ public class DashboardFragment extends Fragment {
 
 
     }
+
 
 
 

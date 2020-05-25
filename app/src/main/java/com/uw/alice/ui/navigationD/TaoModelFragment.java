@@ -3,7 +3,6 @@ package com.uw.alice.ui.navigationD;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,31 +13,23 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
+
 import com.uw.alice.R;
-import com.uw.alice.data.model.News;
 import com.uw.alice.data.model.TaoGirls;
 import com.uw.alice.data.util.Util;
-import com.uw.alice.databinding.FragmentPlaceholderBinding;
+
 import com.uw.alice.databinding.FragmentTaoModelBinding;
 import com.uw.alice.network.retrofit.SingletonRetrofit;
-import com.uw.alice.ui.navigationA.ItemNewsDetailActivity;
-import com.uw.alice.ui.navigationA.NewsListAdapter;
-import com.uw.alice.ui.navigationA.PageViewModel;
+
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
-import cc.shinichi.library.ImagePreview;
-import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 

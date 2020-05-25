@@ -1,5 +1,16 @@
 package com.uw.alice.data.util;
 
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.Window;
+import android.view.WindowManager;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+
+import com.uw.alice.MainActivity;
+import com.uw.alice.R;
+
 public class Util {
 
     //豆瓣Url http 版
@@ -54,6 +65,59 @@ public class Util {
 
     //英文励志语录1页数据量的最大数量
     public static final String Max_Count = "10";
+
+
+
+
+    //设置系统状态栏颜色
+    //setSystemStatusBarColor();
+    public static void setSystemStatusBarColor(FragmentActivity activity,int colorId) {
+
+        /*
+         * APi 19   Android 4.4.2以上  <item name="android:windowTranslucentStatus">true</item>
+         * */
+        /*Window window = MainActivity.this.getWindow();
+        ViewGroup decorViewGroup = (ViewGroup) window.getDecorView();
+        View statusBarView = new View(window.getContext());
+        int statusBarHeight = getStatusBarHeight(window.getContext());
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, statusBarHeight);
+        params.gravity = Gravity.TOP;
+        statusBarView.setLayoutParams(params);
+        statusBarView.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+        decorViewGroup.addView(statusBarView);*/
+
+        /*
+         * API 21  Android 5.0.1以上  window.setStatusBarColor(color);
+         * */
+        Window window = activity.getWindow();
+        //取消设置透明状态栏,使 ContentView 内容不再覆盖状态栏
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        //需要设置这个 flag 才能调用 setStatusBarColor 来设置状态栏颜色
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        //设置状态栏颜色
+        window.setStatusBarColor(activity.getColor(colorId));
+
+
+    }
+
+
+
+
+    //获取状态栏高度
+    public static int getStatusBarHeight(Context context) {
+        int statusBarHeight = 0;
+        Resources res = context.getResources();
+        int resourceId = res.getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            statusBarHeight = res.getDimensionPixelSize(resourceId);
+        }
+        return statusBarHeight;
+    }
+
+
+
+
+
 
 
 }
