@@ -12,7 +12,7 @@
             android:id="@+id/rl_search_box"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@color/colorPrimaryDark"
+            android:background="@color/colorNavigationA"
             app:layout_constraintTop_toTopOf="parent"
             tool:ignore="DisableBaselineAlignment">
 
@@ -79,11 +79,13 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="@color/white"
+            app:layout_constraintTop_toBottomOf="@+id/rl_search_box"
             app:tabMode="scrollable"
             app:tabRippleColor="@color/transparent"
             app:tabIndicatorFullWidth="false"
-            app:tabMaxWidth="55dp"
-            app:layout_constraintTop_toBottomOf="@+id/rl_search_box" />
+            app:tabMaxWidth="58dp"
+            app:tabSelectedTextColor="@color/colorNavigationA"
+            app:tabIndicatorColor="@color/colorNavigationA"/>
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/view_pager"
