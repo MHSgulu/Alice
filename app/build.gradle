@@ -33,6 +33,9 @@ dependencies {
     //Android MDC 材料设计组件
     implementation 'com.google.android.material:material:1.2.0-alpha06'
 
+    //调色板库，用于从图片中提取突出颜色
+    implementation 'androidx.palette:palette:1.0.0'
+
 
     //导航组件
     implementation 'androidx.navigation:navigation-fragment:2.1.0'
