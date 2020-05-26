@@ -42,7 +42,8 @@ public class NotificationsFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mContext = getContext();
         //设置系统状态栏颜色
-        Function.setSystemStatusBarColor(requireActivity(),R.color.colorNavigationC);
+        //Function.setSystemStatusBarColor(requireActivity(),R.color.colorNavigationC);
+        requireActivity().getWindow().setStatusBarColor(requireActivity().getColor(R.color.colorNavigationC));
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

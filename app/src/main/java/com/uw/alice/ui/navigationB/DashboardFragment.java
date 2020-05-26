@@ -63,7 +63,8 @@ public class DashboardFragment extends Fragment implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         mContext = getContext();
         //设置系统状态栏颜色
-        Function.setSystemStatusBarColor(requireActivity(),R.color.colorNavigationB);
+        //Function.setSystemStatusBarColor(requireActivity(),R.color.colorNavigationB);
+        requireActivity().getWindow().setStatusBarColor(requireActivity().getColor(R.color.colorNavigationB));
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

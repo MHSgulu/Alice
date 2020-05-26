@@ -51,7 +51,8 @@ public class HomeFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mContext = getContext();
         //设置系统状态栏颜色
-        Function.setSystemStatusBarColor(requireActivity(),R.color.colorNavigationA);
+        //Function.setSystemStatusBarColor(requireActivity(),R.color.colorNavigationA);
+        requireActivity().getWindow().setStatusBarColor(requireActivity().getColor(R.color.colorNavigationA));
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

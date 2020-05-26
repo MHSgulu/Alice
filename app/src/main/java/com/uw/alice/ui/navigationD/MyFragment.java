@@ -30,7 +30,8 @@ public class MyFragment extends Fragment implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         mContext = getContext();
         //设置系统状态栏颜色
-        Function.setSystemStatusBarColor(requireActivity(),R.color.colorNavigationD);
+        //Function.setSystemStatusBarColor(requireActivity(),R.color.colorNavigationD);
+        requireActivity().getWindow().setStatusBarColor(requireActivity().getColor(R.color.colorNavigationD));
     }
 
 
