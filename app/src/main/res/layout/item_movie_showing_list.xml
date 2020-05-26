@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="2dp"
+    android:layout_marginTop="10dp"
     tools:context=".ui.navigationB.MovieShowingUpAdapter">
 
 
@@ -13,61 +13,96 @@
     <androidx.cardview.widget.CardView
         android:layout_width="100dp"
         android:layout_height="150dp"
-        app:cardCornerRadius="2dp"
-        app:cardElevation="1dp">
+        app:cardCornerRadius="4dp"
+        app:cardElevation="2dp">
 
         <ImageView
             android:id="@+id/iv_movie_poster"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop"/>
+            android:scaleType="centerCrop"
+            tools:background="@color/colorNavigationC"/>
 
 
     </androidx.cardview.widget.CardView>
 
 
-    <RelativeLayout
-        android:layout_width="match_parent"
+
+    <!--超出字数限制尾部显示省略号-->
+    <TextView
+        android:id="@+id/tv_movie_name"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="8dp"
+        android:layout_gravity="center"
+        tools:text="电影名"
+        android:singleLine="true"
+        android:maxEms="8"
+        android:ellipsize="end"
+        android:textColor="@color/black"
+        android:textSize="14sp"/>
 
-        <!--超出字数限制尾部显示省略号-->
-        <TextView
-            android:id="@+id/tv_movie_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            tools:text="电影名"
-            android:singleLine="true"
-            android:maxEms="8"
-            android:ellipsize="end"
-            android:textColor="@color/black"
-            android:textSize="13sp"/>
 
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="12dp"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="5dp"
-            android:layout_toStartOf="@+id/tv_movie_score"
-            android:background="@mipmap/icon_douban"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:gravity="center_vertical">
+
+
+        <include layout="@layout/widget_five_starts"
+            android:id="@+id/layout_five_starts"
+            android:visibility="gone"/>
+
+        <include layout="@layout/widget_four_and_half_starts"
+            android:id="@+id/layout_four_and_half_starts"
+            android:visibility="gone"/>
+
+        <include layout="@layout/widget_four_starts"
+            android:id="@+id/layout_four_starts"
+            android:visibility="gone"/>
+
+        <include layout="@layout/widget_three_and_half_starts"
+            android:id="@+id/layout_three_and_half_starts"
+            android:visibility="gone"/>
+
+        <include layout="@layout/widget_three_starts"
+            android:id="@+id/layout_three_starts"
+            android:visibility="gone"/>
+
+        <include layout="@layout/widget_two_and_half_starts"
+            android:id="@+id/layout_two_and_half_starts"
+            android:visibility="gone"/>
+
+        <include layout="@layout/widget_two_starts"
+            android:id="@+id/layout_two_starts"
+            android:visibility="gone"/>
+
+        <include layout="@layout/widget_one_and_half_starts"
+            android:id="@+id/layout_one_and_half_starts"
+            android:visibility="gone"/>
+
+        <include layout="@layout/widget_one_start"
+            android:id="@+id/layout_one_start"
+            android:visibility="gone"/>
+
+        <include layout="@layout/widget_no_start"
+            android:id="@+id/layout_no_start"
             android:visibility="gone"/>
 
         <TextView
             android:id="@+id/tv_movie_score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="5dp"
-            tools:text="8.5"
-            android:textColor="@color/black"
-            android:textSize="11sp"
-            android:visibility="gone"
+            android:layout_marginStart="5dp"
+            tools:text="9.8"
+            android:textColor="@color/showingUpScoreTextColor"
+            android:textSize="12sp"
             tools:ignore="SmallSp" />
 
+    </LinearLayout>
 
-    </RelativeLayout>
+
+
 
 
 
