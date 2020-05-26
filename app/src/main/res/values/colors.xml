@@ -3,10 +3,10 @@
 
     <!--colorAccent属性控制顶部应用程序栏的颜色，而其他colorPrimaryDark属性则控制状态栏的颜色。-->
 
-    <!--底部导航组件所使用的颜色-->
-    <color name="colorPrimary">#008577</color>
-    <!--手机顶级顶部信号栏的颜色-->
-    <color name="colorPrimaryDark">#008577</color>
+    <!--bottomNavigationBar选中所使用的颜色--><!--ActionBar应用栏的颜色--><!--Tab选中的颜色-->
+    <color name="colorPrimary">#000000</color>
+    <!--系统状态栏的颜色-->
+    <color name="colorPrimaryDark">#FFFFFF</color>
     <!--许多控件在选中状态或获取焦点状态下使用这个颜色-->
     <!--CheckBox：checked 状态
         RadioButton：checked 状态
@@ -16,9 +16,24 @@
     <color name="colorAccent">#D81B60</color>
 
 
+    <color name="colorNavigationA">#438AFE</color>
+    <color name="colorNavigationB">#26A59A</color>
+    <color name="colorNavigationC">#FD9E80</color>
+    <color name="colorNavigationD">#4CCFE1</color>
+
+
+
+
+
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="red">#FF0000</color>
+
+
+    <!--首页即将上映日期颜色-->
+    <color name="comingSoonDateColor">#C43C51</color>
+    <!--首页正在上映电影评分字体颜色-->
+    <color name="showingUpScoreTextColor">#6F6F6F</color>
 
 
     <!--下划线高度0.5dp -->

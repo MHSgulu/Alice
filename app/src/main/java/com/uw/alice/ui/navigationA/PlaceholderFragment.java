@@ -196,6 +196,7 @@ public class PlaceholderFragment extends Fragment {
                         }
                     });
 
+
                 }
                 else if (news.getCode().equals(Util.ERROR_CODE_LIMIT)){
                     Toast.makeText(mContext, "新闻数据的调用次数超过每天限量1000次/天，请明天继续", Toast.LENGTH_SHORT).show();
@@ -219,6 +220,16 @@ public class PlaceholderFragment extends Fragment {
 
 
     }
+
+
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+
 
 
 }

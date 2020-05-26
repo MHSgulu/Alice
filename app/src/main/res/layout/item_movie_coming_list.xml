@@ -19,32 +19,29 @@
             android:id="@+id/iv_movie_poster"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop" />
+            android:scaleType="centerCrop"
+            tools:background="@color/colorNavigationC"/>
 
 
     </androidx.cardview.widget.CardView>
 
 
-    <RelativeLayout
-        android:layout_width="match_parent"
+
+
+    <!--超出字数限制尾部显示省略号-->
+    <TextView
+        android:id="@+id/tv_movie_name"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp">
+        android:layout_marginTop="8dp"
+        android:layout_gravity="center"
+        tools:text="电影名"
+        android:singleLine="true"
+        android:maxEms="8"
+        android:ellipsize="end"
+        android:textColor="@color/black"
+        android:textSize="14sp"/>
 
-        <!--超出字数限制尾部显示省略号-->
-        <TextView
-            android:id="@+id/tv_movie_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            tools:text="电影名"
-            android:singleLine="true"
-            android:maxEms="8"
-            android:ellipsize="end"
-            android:textColor="@color/black"
-            android:textSize="14sp"/>
-
-
-    </RelativeLayout>
 
 
     <LinearLayout

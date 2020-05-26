@@ -1,19 +1,28 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <!-- Base application theme. --><!--MainActivity活动范围内使用-->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- 在此处自定义主题-->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+    </style>
+
+C
+
+    <!--MainActivity活动范围之外的Activity使用-->
+    <style name="CommonTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorNavigationB</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <!--系统状态的那些文字图标就会变成黑色-->  <!--适合状态栏为接近白色系的时候--><!--API 23-->
+        <item name="android:windowLightStatusBar">true</item>
+        <!--设置系统状态栏为半透明-->
+        <!--<item name="android:windowTranslucentStatus">true</item>-->
     </style>
 
 
-
-    <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
