@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    tools:context=".ui.navigationB.MovieShowingUpAdapter">
+
+
+    <!--豆瓣电影海报封面长宽比例1.5：1-->
+    <androidx.cardview.widget.CardView
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        app:cardCornerRadius="4dp">
+
+        <ImageView
+            android:id="@+id/iv_movie_poster"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop" />
+
+
+    </androidx.cardview.widget.CardView>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp">
+
+        <!--超出字数限制尾部显示省略号-->
+        <TextView
+            android:id="@+id/tv_movie_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            tools:text="电影名"
+            android:singleLine="true"
+            android:maxEms="8"
+            android:ellipsize="end"
+            android:textColor="@color/black"
+            android:textSize="14sp"/>
+
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/bg_coming_soon_date">
+
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/comingSoonDateColor"
+            android:textSize="10sp"
+            tools:text="05-26"
+            tools:ignore="SmallSp" />
+
+    </LinearLayout>
+
+
+
+
+
+
+</LinearLayout>
