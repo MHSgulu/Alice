@@ -14,6 +14,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import com.uw.alice.R;
+import com.uw.alice.common.Function;
 import com.uw.alice.data.util.Util;
 import com.uw.alice.databinding.FragmentMyBinding;
 
@@ -29,7 +30,7 @@ public class MyFragment extends Fragment implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         mContext = getContext();
         //设置系统状态栏颜色
-        Util.setSystemStatusBarColor(requireActivity(),R.color.colorNavigationD);
+        Function.setSystemStatusBarColor(requireActivity(),R.color.colorNavigationD);
     }
 
 

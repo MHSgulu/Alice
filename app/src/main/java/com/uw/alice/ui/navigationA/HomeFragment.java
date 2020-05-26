@@ -24,6 +24,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
 
 import com.uw.alice.R;
+import com.uw.alice.common.Function;
 import com.uw.alice.data.model.NewsChannel;
 import com.uw.alice.data.util.Util;
 import com.uw.alice.network.retrofit.SingletonRetrofit;
@@ -50,7 +51,7 @@ public class HomeFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mContext = getContext();
         //设置系统状态栏颜色
-        Util.setSystemStatusBarColor(requireActivity(),R.color.colorNavigationA);
+        Function.setSystemStatusBarColor(requireActivity(),R.color.colorNavigationA);
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

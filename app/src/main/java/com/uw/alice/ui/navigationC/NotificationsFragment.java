@@ -21,6 +21,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.uw.alice.R;
+import com.uw.alice.common.Function;
 import com.uw.alice.data.util.Util;
 
 import java.util.ArrayList;
@@ -41,7 +42,7 @@ public class NotificationsFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mContext = getContext();
         //设置系统状态栏颜色
-        Util.setSystemStatusBarColor(requireActivity(),R.color.colorNavigationC);
+        Function.setSystemStatusBarColor(requireActivity(),R.color.colorNavigationC);
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
