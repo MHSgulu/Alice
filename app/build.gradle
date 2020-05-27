@@ -44,6 +44,10 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
 
 
+    //OkHttp
+    implementation("com.squareup.okhttp3:okhttp:4.7.2")
+
+
     //retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.6.2'
     // https://mvnrepository.com/artifact/com.squareup.retrofit2/retrofit
