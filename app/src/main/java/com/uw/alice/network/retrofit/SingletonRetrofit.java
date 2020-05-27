@@ -9,6 +9,7 @@ import com.uw.alice.data.model.Idiom;
 import com.uw.alice.data.model.IdiomKeyword;
 import com.uw.alice.data.model.MobilePhone;
 import com.uw.alice.data.model.Movie;
+import com.uw.alice.data.model.MovieDetails;
 import com.uw.alice.data.model.News;
 import com.uw.alice.data.model.NewsChannel;
 import com.uw.alice.data.model.NewsSearch;
@@ -163,6 +164,20 @@ public class SingletonRetrofit  {
                 .subscribe(observer);
     }
 
+
+
+    /**
+     * 查询 电影条目信息
+     * @param observer  由调用者传过来的观察者对象
+     * @param apikey  key值
+     */
+    public void requestFetchMovieDetails(Observer<MovieDetails> observer, String movieId,String apikey){
+        apiService1.fetchMovieDetails(movieId,apikey)
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer);
+    }
 
 
 

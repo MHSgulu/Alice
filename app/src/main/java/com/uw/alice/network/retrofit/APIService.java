@@ -10,6 +10,7 @@ import com.uw.alice.data.model.Idiom;
 import com.uw.alice.data.model.IdiomKeyword;
 import com.uw.alice.data.model.MobilePhone;
 import com.uw.alice.data.model.Movie;
+import com.uw.alice.data.model.MovieDetails;
 import com.uw.alice.data.model.News;
 import com.uw.alice.data.model.NewsChannel;
 import com.uw.alice.data.model.NewsSearch;
@@ -23,6 +24,7 @@ import com.uw.alice.data.model.Wallpaper;
 import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface APIService {
@@ -71,6 +73,21 @@ public interface APIService {
      */
     @GET("movie/coming_soon")
     Observable<Movie> getMovieComingSoon(@Query("apikey") String apikey);
+
+
+
+
+    /**
+     * 电影条目信息
+     *
+     * apikey：固定值 0b2bdeda43b5688921839c8ecb20399b
+     *
+     *   注解类型 网络请求方法是GET不是POST！！！！！ 导致http 403
+     */
+
+    @GET("movie/subject/{movieId}")
+    Observable<MovieDetails> fetchMovieDetails(@Path("movieId") String movieId, @Query("apikey") String apiKey);
+
 
 
 
