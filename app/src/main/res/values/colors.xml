@@ -16,13 +16,12 @@
     <color name="colorAccent">#D81B60</color>
 
 
+
+
     <color name="colorNavigationA">#438AFE</color>
     <color name="colorNavigationB">#26A59A</color>
     <color name="colorNavigationC">#FD9E80</color>
     <color name="colorNavigationD">#4CCFE1</color>
-
-
-
 
 
     <color name="white">#FFFFFF</color>
@@ -30,10 +29,27 @@
     <color name="red">#FF0000</color>
 
 
+    <color name="white70">#C2C2C2</color>
+    <color name="white54">#A1A1A1</color>
+    <color name="white38">#818181</color>
+    <color name="white24">#636363</color>
+
+    <color name="black12">#2C2C2C</color>
+    <!--带透明度-->
+    <color name="black12_t80">#332C2C2C</color>
+
+
+
+
+
     <!--首页即将上映日期颜色-->
     <color name="comingSoonDateColor">#C43C51</color>
     <!--首页正在上映电影评分字体颜色-->
     <color name="showingUpScoreTextColor">#6F6F6F</color>
+    <!--点影详情页面主题色背景颜色备选色-->
+    <color name="movieDetailScreenBackgroundColor">#362E2E</color>
+    <!--评分占比进度条颜色-->
+    <color name="ratingColor">#EA9518</color>
 
 
     <!--下划线高度0.5dp -->

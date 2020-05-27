@@ -218,6 +218,11 @@ public class DashboardFragment extends Fragment implements View.OnClickListener{
                     public void onItemClick(View view, int position) {
                         //Toast.makeText(mContext,movie.getSubjects().get(position).getTitle(), Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(mContext,MovieDetailsActivity.class);
+                       // Log.d(TAG, "测试参数 传id:" + movie.getSubjects().get(position).getId());
+                        intent.putExtra("MovieId",movie.getSubjects().get(position).getId());
+                        intent.putExtra("MoviePoster",movie.getSubjects().get(position).getImages().getMedium());
+
+
                         intent.putExtra("MovieTitle",movie.getSubjects().get(position).getTitle());
                         intent.putExtra("MovieOriginalTitle",movie.getSubjects().get(position).getOriginal_title());
                         if (movie.getSubjects().get(position).getDirectors().get(0).getName_en().equals("")){
@@ -308,7 +313,13 @@ public class DashboardFragment extends Fragment implements View.OnClickListener{
                     public void onItemClick(View view, int position) {
                         //Toast.makeText(mContext, movie.getSubjects().get(position).getTitle(), Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(mContext,MovieDetailsActivity.class);
-                        intent.putExtra("MovieTitle",movie.getSubjects().get(position).getTitle());
+
+                        Log.d(TAG, "测试参数 传id:" + movie.getSubjects().get(position).getId());
+                        intent.putExtra("MovieId",movie.getSubjects().get(position).getId());
+                        intent.putExtra("MoviePoster",movie.getSubjects().get(position).getImages().getMedium());
+
+
+                      /*  intent.putExtra("MovieTitle",movie.getSubjects().get(position).getTitle());
                         intent.putExtra("MovieOriginalTitle",movie.getSubjects().get(position).getOriginal_title());
                         if (movie.getSubjects().get(position).getDirectors().get(0).getName_en().equals("")){
                             intent.putExtra("MovieDirector", movie.getSubjects().get(position).getDirectors().get(0).getName());
@@ -318,8 +329,8 @@ public class DashboardFragment extends Fragment implements View.OnClickListener{
                         intent.putStringArrayListExtra("MovieGenren", (ArrayList<String>) movie.getSubjects().get(position).getGenres());
                         intent.putStringArrayListExtra("MovieLength", (ArrayList<String>) movie.getSubjects().get(position).getDurations());
                         intent.putExtra("MovieReleaseDate",movie.getSubjects().get(position).getMainland_pubdate());
-                        intent.putExtra("MovieRating",movie.getSubjects().get(position).getRating().getAverage());
-                        intent.putExtra("MoviePoster",movie.getSubjects().get(position).getImages().getMedium());
+                        intent.putExtra("MovieRating",movie.getSubjects().get(position).getRating().getAverage());*/
+
                         startActivity(intent);
                     }
                 });

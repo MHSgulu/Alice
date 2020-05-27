@@ -2,11 +2,17 @@ package com.uw.alice.common;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 
 import androidx.fragment.app.FragmentActivity;
+import androidx.palette.graphics.Palette;
+
+import com.uw.alice.R;
+
+import java.util.List;
 
 public class Function {
 
@@ -88,6 +94,31 @@ public class Function {
         Log.d(TAG, "space: "+space);
         return space;
     }
+
+
+    /**
+     * 获取图片主色调 同步方式
+     */
+    public static int fetchPaletteColor(Bitmap bitmap) {
+
+        Palette palette = Palette.from(bitmap).generate();
+        Palette.Swatch dominantSwatch = palette.getDominantSwatch();   //独特的一种
+        /*Palette.Swatch s1 = palette.getVibrantSwatch();       //获取到充满活力的这种色调
+        Palette.Swatch s2 = palette.getDarkVibrantSwatch();    //获取充满活力的黑
+        Palette.Swatch s3 = palette.getLightVibrantSwatch();   //获取充满活力的亮
+        Palette.Swatch s4 = palette.getMutedSwatch(); //获取柔和的色调
+        Palette.Swatch s5 = palette.getDarkMutedSwatch(); //获取柔和的黑
+        Palette.Swatch s6 = palette.getLightMutedSwatch();    //获取柔和的亮*/
+        if (dominantSwatch != null) {
+            return dominantSwatch.getRgb();
+        }else {
+            return R.color.black;
+        }
+
+    }
+
+
+
 
 
 

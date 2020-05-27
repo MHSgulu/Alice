@@ -36,7 +36,7 @@
 
         <!--电影详情-->
         <activity android:name=".ui.navigationB.MovieDetailsActivity"
-            android:theme="@style/CommonTheme"/>
+            android:theme="@style/MovieDetailsActivityTheme"/>
 
         <!--文本笑话内容-->
         <activity android:name=".ui.navigationC.ItemTextJokeContentActivity"

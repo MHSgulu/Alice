@@ -15,12 +15,20 @@ C
     <style name="CommonTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/colorNavigationB</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/ratingColor</item>
         <!--系统状态的那些文字图标就会变成黑色-->  <!--适合状态栏为接近白色系的时候--><!--API 23-->
         <item name="android:windowLightStatusBar">true</item>
         <!--设置系统状态栏为半透明-->
         <!--<item name="android:windowTranslucentStatus">true</item>-->
     </style>
+
+    <!--电影详情活动单独使用-->
+    <style name="MovieDetailsActivityTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorNavigationB</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/ratingColor</item>
+    </style>
+
 
 
 
