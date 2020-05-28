@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    tools:background="@color/black12"
+    tools:context=".ui.navigationB.MovieShortCommentAdapter">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="15dp"
+        app:cardCornerRadius="17.5dp"
+        app:cardElevation="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            tools:background="@color/colorNavigationC"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tv_nickname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        tools:text="用户昵称"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/card_view"
+        android:layout_marginStart="10dp"/>
+
+    <!--
+    复用的布局 必须设置
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      xml属性之后 才能视其他属性生效
+       -->
+    <include layout="@layout/widget_five_starts"
+        android:id="@+id/layout_five_starts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/card_view"
+        app:layout_constraintTop_toBottomOf="@+id/tv_nickname"
+        android:layout_marginStart="10dp"
+        android:visibility="visible"/>
+
+    <include layout="@layout/widget_four_and_half_starts"
+        android:id="@+id/layout_four_and_half_starts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/card_view"
+        app:layout_constraintTop_toBottomOf="@+id/tv_nickname"
+        android:layout_marginStart="10dp"
+        android:visibility="gone"/>
+
+    <include layout="@layout/widget_four_starts"
+        android:id="@+id/layout_four_starts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/card_view"
+        app:layout_constraintTop_toBottomOf="@+id/tv_nickname"
+        android:layout_marginTop="3dp"
+        android:layout_marginStart="10dp"
+        android:visibility="gone"/>
+
+    <include layout="@layout/widget_three_and_half_starts"
+        android:id="@+id/layout_three_and_half_starts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/card_view"
+        app:layout_constraintTop_toBottomOf="@+id/tv_nickname"
+        android:layout_marginTop="3dp"
+        android:layout_marginStart="10dp"
+        android:visibility="gone"/>
+
+    <include layout="@layout/widget_three_and_half_starts"
+        android:id="@+id/layout_three_and_half_starts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/card_view"
+        app:layout_constraintTop_toBottomOf="@+id/tv_nickname"
+        android:layout_marginTop="3dp"
+        android:layout_marginStart="10dp"
+        android:visibility="gone"/>
+
+
+    <TextView
+        android:id="@+id/tv_comment_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white54"
+        android:textSize="11sp"
+        tools:text="评论时间"
+        app:layout_constraintTop_toBottomOf="@+id/tv_nickname"
+        app:layout_constraintStart_toEndOf="@+id/card_view"
+        android:layout_marginStart="100dp"
+        tools:ignore="SmallSp" />
+
+    <ImageView
+        android:id="@+id/iv_icon_share"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@mipmap/icon_more_white60"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="15dp"/>
+
+
+    <!--android:layout_width="wrap_content"
+    导致android:layout_marginEnd="10dp" 不生效-->
+    <TextView
+        android:id="@+id/tv_comment_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white70"
+        android:textSize="14sp"
+        tools:text="评论内容"
+        app:layout_constraintTop_toBottomOf="@+id/card_view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"/>
+
+    <ImageView
+        android:id="@+id/iv_icon_thumb"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:background="@mipmap/icon_thumb_up"
+        app:layout_constraintTop_toBottomOf="@+id/tv_comment_content"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"/>
+
+    <TextView
+        android:id="@+id/tv_comment_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white54"
+        android:textSize="12sp"
+        tools:text="233"
+        app:layout_constraintTop_toBottomOf="@+id/tv_comment_content"
+        app:layout_constraintStart_toEndOf="@+id/iv_icon_thumb"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="5dp" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="0.2dp"
+        android:background="@color/white24"
+        app:layout_constraintTop_toBottomOf="@+id/tv_comment_count"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout >
