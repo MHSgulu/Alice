@@ -30,13 +30,16 @@
 
 
     <color name="white70">#C2C2C2</color>
+    <color name="white60">#ADADAD</color>
     <color name="white54">#A1A1A1</color>
     <color name="white38">#818181</color>
     <color name="white24">#636363</color>
+    <color name="white10">#474747</color>
 
     <color name="black12">#2C2C2C</color>
     <!--带透明度-->
     <color name="black12_t80">#332C2C2C</color>
+    <color name="black12_t30">#B32C2C2C</color>
 
 
 

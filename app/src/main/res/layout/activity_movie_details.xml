@@ -48,9 +48,12 @@
     </RelativeLayout>
 
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:scrollbars="none"
+        android:overScrollMode="never"
+        android:layout_marginBottom="20dp"
         app:layout_constraintTop_toBottomOf="@+id/rl_title"
         app:layout_constraintBottom_toBottomOf="parent">
 
@@ -127,9 +130,7 @@
                         android:maxLines="2"
                         android:ellipsize="end"/>
 
-
                 </LinearLayout>
-
 
             </LinearLayout>
 
@@ -171,8 +172,8 @@
                         tools:ignore="SmallSp" />
 
                     <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
                         android:layout_alignParentEnd="true"
                         android:background="@mipmap/icon_next_white70"/>
 
@@ -442,8 +443,6 @@
 
                 </LinearLayout>
 
-
-
             </LinearLayout>
 
 
@@ -468,10 +467,10 @@
                     android:layout_height="match_parent"
                     android:layout_marginStart="5dp" />
 
-
             </LinearLayout>
 
 
+            <!--简介栏-->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -480,7 +479,6 @@
                 android:text="简介"
                 android:textSize="16sp"
                 android:textColor="@color/white"/>
-
             <TextView
                 android:id="@+id/tv_introduction"
                 android:layout_width="wrap_content"
@@ -493,7 +491,6 @@
                 android:textColor="@color/white70"
                 android:maxLines="4"
                 android:ellipsize="end"/>
-
             <LinearLayout
                 android:id="@+id/ll_open"
                 android:layout_width="match_parent"
@@ -518,12 +515,165 @@
             </LinearLayout>
 
 
+            <!--演职员栏-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="20dp"
+                android:text="演职员"
+                android:textSize="16sp"
+                android:textColor="@color/white"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list_cast"
+                android:layout_width="match_parent"
+                android:layout_height="165dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp" />
+
+
+            <!--预告片 剧照栏-->
+            <RelativeLayout
+                android:id="@+id/rl_movie_still"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="预告片 / 剧照"
+                    android:textSize="16sp"
+                    android:textColor="@color/white"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@+id/iv_next_still"
+                    android:layout_marginEnd="5dp"
+                    android:text="全部"
+                    android:textSize="11sp"
+                    android:textColor="@color/white70"
+                    tools:ignore="SmallSp" />
+
+                <ImageView
+                    android:id="@+id/iv_next_still"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="20dp"
+                    android:background="@mipmap/icon_next_white70"/>
+
+
+            </RelativeLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list_still"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp" />
+
+
+            <!--短评栏-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="vertical"
+                android:background="@drawable/bg_movie_score_details">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:text="短评"
+                        android:textSize="16sp"
+                        android:textColor="@color/white"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toStartOf="@+id/tv_short_comment_count"
+                        android:layout_marginEnd="5dp"
+                        android:text="全部"
+                        android:textSize="11sp"
+                        android:textColor="@color/white70"
+                        tools:ignore="SmallSp" />
+
+                    <TextView
+                        android:id="@+id/tv_short_comment_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toStartOf="@+id/iv_next_comment"
+                        android:layout_marginEnd="5dp"
+                        tools:text="233"
+                        android:textSize="12sp"
+                        android:textColor="@color/white70"
+                        tools:ignore="SmallSp" />
+
+                    <ImageView
+                        android:id="@+id/iv_next_comment"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:background="@mipmap/icon_next_white70"/>
+
+                </RelativeLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/list_short_comment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:overScrollMode="never"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:text="查看全部短评"
+                        android:textSize="14sp"
+                        android:textColor="@color/white70"/>
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:background="@mipmap/icon_next_white70"/>
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
 
         </LinearLayout>
 
 
-    </ScrollView>
-
+    </androidx.core.widget.NestedScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

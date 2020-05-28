@@ -1,6 +1,7 @@
 package com.uw.alice.ui.navigationB;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,17 +36,26 @@ public class MovieCastAdapter extends RecyclerView.Adapter <MovieCastAdapter.Vie
     @Override
     public void onBindViewHolder(@NonNull final MovieCastAdapter.ViewHolder holder, int position)
     {
-        if (position <= directorsBeanList.size() - 1){
-            MovieDetails.DirectorsBean directorsBean = directorsBeanList.get(position);
-            Glide.with(mContext).load(directorsBean.getAvatars().getLarge()).into(holder.ivCastAvatar);
-            holder.tvCastName.setText(directorsBean.getName());
-            holder.tvCastPosition.setText("导演");
-        }else{
-            MovieDetails.CastsBean castsBean = castsBeanList.get(position - directorsBeanList.size());
-            Glide.with(mContext).load(castsBean.getAvatars().getLarge()).into(holder.ivCastAvatar);
-            holder.tvCastName.setText(castsBean.getName());
-            holder.tvCastPosition.setText("演员");
+        if (!directorsBeanList.isEmpty() && !castsBeanList.isEmpty()){
+            if (position <= directorsBeanList.size() - 1){
+                MovieDetails.DirectorsBean directorsBean = directorsBeanList.get(position);
+                Glide.with(mContext).load(directorsBean.getAvatars().getLarge()).fallback(R.mipmap.icon_no_img).into(holder.ivCastAvatar);
+                holder.tvCastName.setText(directorsBean.getName());
+                holder.tvCastPosition.setText("导演");
+            }else{
+                MovieDetails.CastsBean castsBean = castsBeanList.get(position - directorsBeanList.size());
+                if (castsBean.getAvatars() == null){
+                    holder.ivCastAvatar.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+                    Glide.with(mContext).load(R.mipmap.icon_no_img).into(holder.ivCastAvatar);
+                }else {
+                    //holder.ivCastAvatar.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                    Glide.with(mContext).load(castsBean.getAvatars().getLarge()).fallback(R.mipmap.icon_no_img).into(holder.ivCastAvatar);
+                }
+                holder.tvCastName.setText(castsBean.getName());
+                holder.tvCastPosition.setText("演员");
+            }
         }
+
 
 
 

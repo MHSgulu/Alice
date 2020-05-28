@@ -16,6 +16,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,6 +50,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import cc.shinichi.library.tool.ui.ToastUtil;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 import okhttp3.Call;
@@ -69,7 +71,7 @@ public class MovieDetailsActivity extends AppCompatActivity implements View.OnCl
     private ConstraintLayout rootView;
     private ImageView ivMoviePoster;
     private TextView tvMovieTitle,tvMovieOriginalTitle,tvMovieInformation,tvMovieScore,
-            tvMovieScoreCount,tvMovieWatchCount,tvMovieWishCount,tvMovieIntroduction;
+            tvMovieScoreCount,tvMovieWatchCount,tvMovieWishCount,tvMovieIntroduction,tvMovieShortCommentCount;
     private LinearLayout layoutFiveStarts;
     private LinearLayout layoutFourStarts;
     private LinearLayout layoutThreeStarts;
@@ -84,10 +86,9 @@ public class MovieDetailsActivity extends AppCompatActivity implements View.OnCl
 
 
     private LinearLayout llOpen;
+    private RelativeLayout rlMovieStill;
 
-    private RecyclerView labelRecyclerView;
-    private MovieLabelAdapter movieLabelAdapter;
-    private List<String>  stringList = new ArrayList<>();
+    private RecyclerView labelRecyclerView,castRecyclerView,stillRecyclerView,commentRecyclerView;
 
     private int ThemeColor;
     private final OkHttpClient client = new OkHttpClient();
@@ -104,10 +105,16 @@ public class MovieDetailsActivity extends AppCompatActivity implements View.OnCl
 
         llOpen = findViewById(R.id.ll_open);
         llOpen.setOnClickListener(this);
+        rlMovieStill = findViewById(R.id.rl_movie_still);
+        rlMovieStill.setOnClickListener(this);
 
         rootView = findViewById(R.id.rootView);
 
         labelRecyclerView = findViewById(R.id.list_label);
+        castRecyclerView = findViewById(R.id.list_cast);
+        stillRecyclerView = findViewById(R.id.list_still);
+        commentRecyclerView = findViewById(R.id.list_short_comment);
+
 
         ivMoviePoster = findViewById(R.id.iv_movie_poster);
         tvMovieTitle = findViewById(R.id.tv_movie_title);
@@ -118,6 +125,8 @@ public class MovieDetailsActivity extends AppCompatActivity implements View.OnCl
         tvMovieWatchCount = findViewById(R.id.tv_watch_count);
         tvMovieWishCount = findViewById(R.id.tv_wish_count);
         tvMovieIntroduction = findViewById(R.id.tv_introduction);
+        tvMovieShortCommentCount = findViewById(R.id.tv_short_comment_count);
+
 
 
         //五星小部件
@@ -144,21 +153,9 @@ public class MovieDetailsActivity extends AppCompatActivity implements View.OnCl
 
 
         if (getIntent()!=null){
-
            /* String id = getIntent().getStringExtra("MovieId");
             Log.d(TAG, "测试参数 收id: "+ id);*/
 
-
-           /* tvMovieOriginalTitle.setText(String.format("原名：%s", getIntent().getStringExtra("MovieOriginalTitle")));
-            tvMovieDirector.setText(String.format("导演：%s", getIntent().getStringExtra("MovieDirector")));
-            //ArrayList转化String
-            tvMovieGenren.setText(String.format("类型：%s", String.join("/", Objects.requireNonNull(getIntent().getStringArrayListExtra("MovieGenren")))));
-            tvMovieLength.setText(String.format("片长：%s", String.join("", Objects.requireNonNull(getIntent().getStringArrayListExtra("MovieLength")))));
-
-            tvMovieReleaseDate.setText(String.format("上映时间：%s", getIntent().getStringExtra("MovieReleaseDate")));
-            tvMovieRating.setText(String.format("豆瓣评分：%s", getIntent().getDoubleExtra("MovieRating", 0)));*/
-
-            //Glide.with(mContext).load(getIntent().getStringExtra("MoviePoster")).into(ivMoviePoster);
             Glide.with(mContext).load(getIntent().getStringExtra("MoviePoster")).into(new CustomTarget<Drawable>() {
                 @Override
                 public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
@@ -227,7 +224,7 @@ public class MovieDetailsActivity extends AppCompatActivity implements View.OnCl
                 tvMovieScoreCount.setText(String.format("%s人评分", movieDetails.getRatings_count()));
                 tvMovieWatchCount.setText(String.format("%s万人看过",String.valueOf(movieDetails.getCollect_count() / 10000.0).substring(0,3)));
                 tvMovieWishCount.setText(String.format("%s万人想看",String.valueOf(movieDetails.getWish_count() / 10000.0).substring(0,3)));
-
+                tvMovieShortCommentCount.setText(String.valueOf(movieDetails.getComments_count()));
 
                 //五星小部件
                 if (movieDetails.getRating().getAverage() >= 9.5 && movieDetails.getRating().getAverage() <= 10){
@@ -274,25 +271,42 @@ public class MovieDetailsActivity extends AppCompatActivity implements View.OnCl
 
                 tvMovieIntroduction.setText(movieDetails.getSummary());
                 //一般情况下等不到TextView绘制成功，所以有空指针错误,判断方法放在子线程执行
-                if (tvMovieIntroduction.getLayout() == null){
-                    tvMovieIntroduction.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            //若果超出给定的行数限制，返回要省去的字符数。大于0代表超出文本内容限制
-                            int num = tvMovieIntroduction.getLayout().getEllipsisCount(tvMovieIntroduction.getLineCount()-1);
-                            //Log.d(TAG,"num:  "+num);
-                            if (num > 0 ){
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        llOpen.setVisibility(View.VISIBLE);
-                                    }
-                                });
-                            }
+                tvMovieIntroduction.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        //若果超出给定的行数限制，返回要省去的字符数。大于0代表超出文本内容限制
+                        int num = tvMovieIntroduction.getLayout().getEllipsisCount(tvMovieIntroduction.getLineCount()-1);
+                        //Log.d(TAG,"num:  "+num);
+                        if (num > 0 ){
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    llOpen.setVisibility(View.VISIBLE);
+                                }
+                            });
                         }
-                    });
+                    }
+                });
+
+
+
+                //获取演职员数据
+                if (!movieDetails.getCasts().isEmpty() && !movieDetails.getDirectors().isEmpty()){
+                    castRecyclerView.setLayoutManager(new LinearLayoutManager(mContext,RecyclerView.HORIZONTAL,false));
+                    castRecyclerView.setAdapter(new MovieCastAdapter(movieDetails.getDirectors(),movieDetails.getCasts()));
                 }
 
+                //获取预告片剧照栏数据
+                if (!movieDetails.getPhotos().isEmpty()){
+                    stillRecyclerView.setLayoutManager(new LinearLayoutManager(mContext,RecyclerView.HORIZONTAL,false));
+                    stillRecyclerView.setAdapter(new MovieStillAdapter(movieDetails.getTrailers(),movieDetails.getPhotos()));
+                }
+
+                //获取随机4条热门短评
+                if (!movieDetails.getPopular_comments().isEmpty()){
+                    commentRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
+                    commentRecyclerView.setAdapter(new MovieShortCommentAdapter(movieDetails.getPopular_comments()));
+                }
 
 
             }
@@ -328,11 +342,15 @@ public class MovieDetailsActivity extends AppCompatActivity implements View.OnCl
                 finish();
                 break;
 
-            case R.id.ll_open: //返回
+            case R.id.ll_open: //
                 tvMovieIntroduction.setMaxLines(20);
                 llOpen.setVisibility(View.GONE);
                 break;
 
+            case R.id.rl_movie_still: //返回
+                Toast.makeText(mContext, "全部剧照", Toast.LENGTH_SHORT).show();;
+                break;
+                
         }
     }
 
