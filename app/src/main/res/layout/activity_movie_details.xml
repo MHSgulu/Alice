@@ -273,6 +273,7 @@
                                 android:layout_marginStart="5dp"
                                 android:background="@color/white70"
                                 android:max="100"
+                                android:progressDrawable="@drawable/bg_progressbar"
                                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
 
 
@@ -297,8 +298,8 @@
                                 android:layout_alignParentEnd="true"
                                 android:layout_marginEnd="20dp"
                                 android:layout_marginStart="5dp"
-                                android:background="@color/white70"
                                 android:max="100"
+                                android:progressDrawable="@drawable/bg_progressbar"
                                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
 
 
@@ -325,7 +326,7 @@
                                 android:layout_marginStart="5dp"
                                 android:background="@color/white70"
                                 android:max="100"
-
+                                android:progressDrawable="@drawable/bg_progressbar"
                                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
 
 
@@ -352,6 +353,7 @@
                                 android:layout_marginStart="5dp"
                                 android:background="@color/white70"
                                 android:max="100"
+                                android:progressDrawable="@drawable/bg_progressbar"
                                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
 
 
@@ -378,6 +380,7 @@
                                 android:layout_marginStart="5dp"
                                 android:background="@color/white70"
                                 android:max="100"
+                                android:progressDrawable="@drawable/bg_progressbar"
                                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
 
 

@@ -4,6 +4,7 @@ import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import com.uw.alice.data.model.BingWallpaper;
 import com.uw.alice.data.model.Chat;
 import com.uw.alice.data.model.DynamicGif;
+import com.uw.alice.data.model.FilmMaker;
 import com.uw.alice.data.model.HotSpot;
 import com.uw.alice.data.model.Idiom;
 import com.uw.alice.data.model.IdiomKeyword;
@@ -179,6 +180,19 @@ public class SingletonRetrofit  {
                 .subscribe(observer);
     }
 
+
+    /**
+     * 查询 影人条目信息
+     * @param observer  由调用者传过来的观察者对象
+     * @param apikey  key值
+     */
+    public void requestFetchActorDetails(Observer<FilmMaker> observer, String actorId, String apikey){
+        apiService1.fetchActorDetails(actorId,apikey)
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer);
+    }
 
 
 

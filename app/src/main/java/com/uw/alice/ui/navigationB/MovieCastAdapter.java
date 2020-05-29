@@ -1,12 +1,14 @@
 package com.uw.alice.ui.navigationB;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -38,12 +40,25 @@ public class MovieCastAdapter extends RecyclerView.Adapter <MovieCastAdapter.Vie
     {
         if (!directorsBeanList.isEmpty() && !castsBeanList.isEmpty()){
             if (position <= directorsBeanList.size() - 1){
-                MovieDetails.DirectorsBean directorsBean = directorsBeanList.get(position);
+                final MovieDetails.DirectorsBean directorsBean = directorsBeanList.get(position);
                 Glide.with(mContext).load(directorsBean.getAvatars().getLarge()).fallback(R.mipmap.icon_no_img).into(holder.ivCastAvatar);
                 holder.tvCastName.setText(directorsBean.getName());
                 holder.tvCastPosition.setText("导演");
+
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //Toast.makeText(mContext, "点击的都是导演", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(mContext,FilmmakerDetailsActivity.class);
+                        intent.putExtra("actorId",directorsBean.getId());
+                        intent.putExtra("actorCover",directorsBean.getAvatars().getLarge());
+                        mContext.startActivity(intent);
+                    }
+                });
+
+
             }else{
-                MovieDetails.CastsBean castsBean = castsBeanList.get(position - directorsBeanList.size());
+                final MovieDetails.CastsBean castsBean = castsBeanList.get(position - directorsBeanList.size());
                 if (castsBean.getAvatars() == null){
                     holder.ivCastAvatar.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
                     Glide.with(mContext).load(R.mipmap.icon_no_img).into(holder.ivCastAvatar);
@@ -53,12 +68,25 @@ public class MovieCastAdapter extends RecyclerView.Adapter <MovieCastAdapter.Vie
                 }
                 holder.tvCastName.setText(castsBean.getName());
                 holder.tvCastPosition.setText("演员");
+
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (castsBean.getId() == null){
+                            Toast.makeText(mContext, "未收录到该影人的条目信息", Toast.LENGTH_SHORT).show();
+                        }else {
+                            //Toast.makeText(mContext, "点击的都是演员", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(mContext,FilmmakerDetailsActivity.class);
+                            intent.putExtra("actorId",castsBean.getId());
+                            intent.putExtra("actorCover",castsBean.getAvatars().getLarge());
+                            mContext.startActivity(intent);
+                        }
+                    }
+                });
+
+
             }
         }
-
-
-
-
 
 
 

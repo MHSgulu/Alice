@@ -40,6 +40,9 @@
     <!--带透明度-->
     <color name="black12_t80">#332C2C2C</color>
     <color name="black12_t30">#B32C2C2C</color>
+    <color name="black12_t10">#E62C2C2C</color>
+    <color name="black12_t5">#F22C2C2C</color>
+    <color name="black12_t1">#FC2C2C2C</color>
 
 
 

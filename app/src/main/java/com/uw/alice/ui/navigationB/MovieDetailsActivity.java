@@ -2,6 +2,7 @@ package com.uw.alice.ui.navigationB;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -89,6 +90,7 @@ public class MovieDetailsActivity extends AppCompatActivity implements View.OnCl
     private RelativeLayout rlMovieStill;
 
     private RecyclerView labelRecyclerView,castRecyclerView,stillRecyclerView,commentRecyclerView;
+    private MovieCastAdapter movieCastAdapter;
 
     private int ThemeColor;
     private final OkHttpClient client = new OkHttpClient();
@@ -199,7 +201,7 @@ public class MovieDetailsActivity extends AppCompatActivity implements View.OnCl
             }
 
             @Override
-            public void onNext(MovieDetails movieDetails) {
+            public void onNext(final MovieDetails movieDetails) {
                 //Toast.makeText(mContext, "S!", Toast.LENGTH_SHORT).show();
                 tvMovieTitle.setText(movieDetails.getTitle());
 
@@ -292,8 +294,9 @@ public class MovieDetailsActivity extends AppCompatActivity implements View.OnCl
 
                 //获取演职员数据
                 if (!movieDetails.getCasts().isEmpty() && !movieDetails.getDirectors().isEmpty()){
+                    movieCastAdapter = new MovieCastAdapter(movieDetails.getDirectors(),movieDetails.getCasts());
                     castRecyclerView.setLayoutManager(new LinearLayoutManager(mContext,RecyclerView.HORIZONTAL,false));
-                    castRecyclerView.setAdapter(new MovieCastAdapter(movieDetails.getDirectors(),movieDetails.getCasts()));
+                    castRecyclerView.setAdapter(movieCastAdapter);
                 }
 
                 //获取预告片剧照栏数据

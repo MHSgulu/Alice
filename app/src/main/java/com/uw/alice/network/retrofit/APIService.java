@@ -5,6 +5,7 @@ package com.uw.alice.network.retrofit;
 import com.uw.alice.data.model.BingWallpaper;
 import com.uw.alice.data.model.Chat;
 import com.uw.alice.data.model.DynamicGif;
+import com.uw.alice.data.model.FilmMaker;
 import com.uw.alice.data.model.HotSpot;
 import com.uw.alice.data.model.Idiom;
 import com.uw.alice.data.model.IdiomKeyword;
@@ -88,6 +89,17 @@ public interface APIService {
     @GET("movie/subject/{movieId}")
     Observable<MovieDetails> fetchMovieDetails(@Path("movieId") String movieId, @Query("apikey") String apiKey);
 
+
+
+    /**
+     * 电影条目信息
+     *
+     * apikey：固定值 0b2bdeda43b5688921839c8ecb20399b
+     *
+     */
+
+    @GET("movie/celebrity/{actorId}")
+    Observable<FilmMaker> fetchActorDetails(@Path("actorId") String actorId, @Query("apikey") String apiKey);
 
 
 
