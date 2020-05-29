@@ -16,7 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.splash.SplashActivity"
+            android:theme="@style/splashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,48 +25,58 @@
             </intent-filter>
         </activity>
 
-        <!--新闻详情-->
-        <activity android:name=".ui.navigationA.ItemNewsDetailActivity"
-            android:theme="@style/CommonTheme"/>
-        <!--搜索新闻-->
-        <activity android:name=".ui.navigationA.SearchNewsActivity"
-            android:theme="@style/CommonTheme"/>
-        <!--实时热点-->
-        <activity android:name=".ui.navigationA.RealTimeHotSpotRankingActivity"
-            android:theme="@style/CommonTheme"/>
-
-        <!--电影详情-->
-        <activity android:name=".ui.navigationB.MovieDetailsActivity"
-            android:theme="@style/MovieDetailsActivityTheme"/>
-
-        <!--文本笑话内容-->
-        <activity android:name=".ui.navigationC.ItemTextJokeContentActivity"
-            android:theme="@style/CommonTheme"/>
-
-        <!--查询手机号码归属地-->
-        <activity android:name=".ui.navigationD.QueryPhoneNumberActivity"
-            android:theme="@style/CommonTheme"/>
-        <!--必应每日壁纸-->
-        <activity android:name=".ui.navigationD.BingDailyWallpaperActivity"
-            android:theme="@style/CommonTheme"/>
-        <!--必应近日壁纸-->
-        <activity android:name=".ui.navigationD.BingLatelyWallpaperActivity"
-            android:theme="@style/CommonTheme"/>
-        <!--智能机器人聊天界面-->
-        <activity android:name=".ui.navigationD.IntelligentChatRobotActivity"
-            android:theme="@style/CommonTheme"/>
-        <!--英文励志语录-->
-        <activity android:name=".ui.navigationD.InspirationalQuotationsActivity"
-            android:theme="@style/CommonTheme"/>
-        <!--成语大全-->
-        <activity android:name=".ui.navigationD.CorpusOfIdiomsActivity"
-            android:theme="@style/CommonTheme"/>
-        <!--淘宝模特首页-->
-        <activity android:name=".ui.navigationD.TaoModelsActivity"
-            android:theme="@style/CommonTheme"/>
+        <!--主界面-->
+        <activity android:name=".MainActivity" />
 
 
-
+        <!-- 新闻详情 -->
+        <activity
+            android:name=".ui.navigationA.ItemNewsDetailActivity"
+            android:theme="@style/CommonTheme" />
+        <!-- 搜索新闻 -->
+        <activity
+            android:name=".ui.navigationA.SearchNewsActivity"
+            android:theme="@style/CommonTheme" />
+        <!-- 实时热点 -->
+        <activity
+            android:name=".ui.navigationA.RealTimeHotSpotRankingActivity"
+            android:theme="@style/CommonTheme" />
+        <!-- 电影详情 -->
+        <activity
+            android:name=".ui.navigationB.MovieDetailsActivity"
+            android:theme="@style/MovieDetailsActivityTheme" />
+        <!-- 文本笑话内容 -->
+        <activity
+            android:name=".ui.navigationC.ItemTextJokeContentActivity"
+            android:theme="@style/CommonTheme" />
+        <!-- 查询手机号码归属地 -->
+        <activity
+            android:name=".ui.navigationD.QueryPhoneNumberActivity"
+            android:theme="@style/CommonTheme" />
+        <!-- 必应每日壁纸 -->
+        <activity
+            android:name=".ui.navigationD.BingDailyWallpaperActivity"
+            android:theme="@style/CommonTheme" />
+        <!-- 必应近日壁纸 -->
+        <activity
+            android:name=".ui.navigationD.BingLatelyWallpaperActivity"
+            android:theme="@style/CommonTheme" />
+        <!-- 智能机器人聊天界面 -->
+        <activity
+            android:name=".ui.navigationD.IntelligentChatRobotActivity"
+            android:theme="@style/CommonTheme" />
+        <!-- 英文励志语录 -->
+        <activity
+            android:name=".ui.navigationD.InspirationalQuotationsActivity"
+            android:theme="@style/CommonTheme" />
+        <!-- 成语大全 -->
+        <activity
+            android:name=".ui.navigationD.CorpusOfIdiomsActivity"
+            android:theme="@style/CommonTheme" />
+        <!-- 淘宝模特首页 -->
+        <activity
+            android:name=".ui.navigationD.TaoModelsActivity"
+            android:theme="@style/CommonTheme" />
     </application>
 
 </manifest>
