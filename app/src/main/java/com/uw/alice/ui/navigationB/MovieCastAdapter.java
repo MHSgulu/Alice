@@ -41,7 +41,13 @@ public class MovieCastAdapter extends RecyclerView.Adapter <MovieCastAdapter.Vie
         if (!directorsBeanList.isEmpty() && !castsBeanList.isEmpty()){
             if (position <= directorsBeanList.size() - 1){
                 final MovieDetails.DirectorsBean directorsBean = directorsBeanList.get(position);
-                Glide.with(mContext).load(directorsBean.getAvatars().getLarge()).fallback(R.mipmap.icon_no_img).into(holder.ivCastAvatar);
+                if (directorsBean.getAvatars() == null){
+                    holder.ivCastAvatar.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+                    Glide.with(mContext).load(R.mipmap.icon_no_img).into(holder.ivCastAvatar);
+                }else {
+                    //holder.ivCastAvatar.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                    Glide.with(mContext).load(directorsBean.getAvatars().getLarge()).fallback(R.mipmap.icon_no_img).into(holder.ivCastAvatar);
+                }
                 holder.tvCastName.setText(directorsBean.getName());
                 holder.tvCastPosition.setText("导演");
 

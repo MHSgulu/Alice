@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         //以下代码Navigation进行配置关联
         BottomNavigationView navView = findViewById(R.id.nav_view);
         navView.setElevation(10);

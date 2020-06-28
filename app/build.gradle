@@ -16,6 +16,7 @@ android {
     }
     buildTypes {
         release {
+ // 以AS为例，在应用module下的build.gradle文件内，如果配置了proguardFiles，并且启用了minifyEnabled，则表明已使用指定的配置文件（一般为proguard-rules.pro）进行了代码混淆
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }

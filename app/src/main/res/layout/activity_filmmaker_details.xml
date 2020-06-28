@@ -34,7 +34,7 @@
                 android:id="@+id/iv_cover"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/img_bg1"
+                tools:src="@drawable/img_bg1"
                 android:scaleType="centerCrop"
                 android:fitsSystemWindows="true" />
 
@@ -94,6 +94,7 @@
                     android:text="出生日期:" />
 
                 <TextView
+                    android:id="@+id/tv_birthday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
@@ -116,6 +117,7 @@
                     android:text="星座:" />
 
                 <TextView
+                    android:id="@+id/tv_constellation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
@@ -138,10 +140,11 @@
                     android:text="出生地:" />
 
                 <TextView
+                    android:id="@+id/tv_birthplace"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14sp"
+                    android:layout_height="match_parent"
                     android:textColor="@color/black"
+                    android:textSize="14sp"
                     tools:text="宇宙" />
 
             </LinearLayout>
@@ -160,6 +163,7 @@
                     android:text="中文名:" />
 
                 <TextView
+                    android:id="@+id/tv_chinese_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
@@ -182,6 +186,7 @@
                     android:text="外文名:" />
 
                 <TextView
+                    android:id="@+id/tv_foreign_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
@@ -201,13 +206,54 @@
                 android:layout_marginStart="20dp"/>
 
             <TextView
+                android:id="@+id/tv_brief_introduction"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
                 android:textColor="@color/black"
-                android:text="这是简介内容"
+                tools:text="这是简介内容"
                 android:layout_marginTop="10dp"
-                android:layout_marginStart="20dp"/>
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:text="影视"
+                    android:layout_marginStart="20dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:layout_toStartOf="@+id/iv_next_1"
+                    android:layout_marginEnd="10dp"
+                    android:text="全部影视"
+                    android:layout_marginStart="20dp"/>
+
+                <ImageView
+                    android:id="@+id/iv_next_1"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="15dp"
+                    tools:background="@mipmap/icon_next"/>
+
+            </RelativeLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list_film_works"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
 

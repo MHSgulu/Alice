@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -27,13 +28,24 @@ public class FilmmakerDetailsActivity extends AppCompatActivity {
     private MaterialToolbar toolbar;
     private ImageView ivCover;
 
+    private TextView tvBirthday,tvConstellation,tvBirthplace,tvChineseName,tvForeignName,tvBriefIntroduction;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filmmaker_details);
         mContext = FilmmakerDetailsActivity.this;
-
         toolbar = findViewById(R.id.mdToolbar);
+        ivCover = findViewById(R.id.iv_cover);
+        tvBirthday = findViewById(R.id.tv_birthday);
+        tvConstellation = findViewById(R.id.tv_constellation);
+        tvBirthplace = findViewById(R.id.tv_birthplace);
+        tvChineseName = findViewById(R.id.tv_chinese_name);
+        tvForeignName = findViewById(R.id.tv_foreign_name);
+        tvBriefIntroduction = findViewById(R.id.tv_brief_introduction);
+
+
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -41,10 +53,6 @@ public class FilmmakerDetailsActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-        ivCover = findViewById(R.id.iv_cover);
-
-
 
 
         if (getIntent() != null){
@@ -57,13 +65,8 @@ public class FilmmakerDetailsActivity extends AppCompatActivity {
         }
 
 
-
-
-
         //设置系统状态半透明
         //getWindow().setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-
-
 
     }
 
@@ -79,6 +82,12 @@ public class FilmmakerDetailsActivity extends AppCompatActivity {
             public void onNext(FilmMaker filmMaker) {
                 //Toast.makeText(mContext, "S!", Toast.LENGTH_SHORT).show();
                 toolbar.setTitle(filmMaker.getName());
+                tvBirthday.setText(filmMaker.getBirthday());
+                tvConstellation.setText(filmMaker.getConstellation());
+                tvBirthplace.setText(filmMaker.getBorn_place());
+                tvChineseName.setText(filmMaker.getAka().toString());
+                tvForeignName.setText(filmMaker.getAka_en().toString());
+                tvBriefIntroduction.setText(filmMaker.getSummary());
 
             }
 

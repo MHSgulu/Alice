@@ -49,6 +49,11 @@
     </style>
 
 
+
+
+
+    <!--      控件区域      -->
+
     <style name="ToolbarTheme">
         <item name="android:elevation" tools:ignore="PrivateResource">@dimen/design_appbar_elevation</item>
         <item name="android:background">?attr/colorPrimary</item>
@@ -80,6 +85,22 @@
         <item name="android:letterSpacing">0.0125</item>
         <item name="android:textColor">@color/white</item>
     </style>
+
+
+
+    <style name="Theme.App" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="bottomNavigationStyle">@style/Widget.App.BottomNavigationView</item>
+    </style>
+
+    <style name="Widget.App.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.BottomNavigationView</item>
+    </style>
+
+    <style name="ThemeOverlay.App.BottomNavigationView" parent="">
+        <item name="colorPrimary">@color/colorNavigationC</item>
+        <item name="colorOnPrimary">@color/colorPrimary</item>
+    </style>
+
 
 
 

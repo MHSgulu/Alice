@@ -4,7 +4,7 @@
     <!--colorAccent属性控制顶部应用程序栏的颜色，而其他colorPrimaryDark属性则控制状态栏的颜色。-->
 
     <!--bottomNavigationBar选中所使用的颜色--><!--ActionBar应用栏的颜色--><!--Tab选中的颜色-->
-    <color name="colorPrimary">#000000</color>
+    <color name="colorPrimary">#FD9E80</color>
     <!--系统状态栏的颜色-->
     <color name="colorPrimaryDark">#FFFFFF</color>
     <!--许多控件在选中状态或获取焦点状态下使用这个颜色-->
