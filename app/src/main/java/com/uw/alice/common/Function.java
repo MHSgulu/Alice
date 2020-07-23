@@ -1,18 +1,22 @@
 package com.uw.alice.common;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import androidx.fragment.app.FragmentActivity;
 import androidx.palette.graphics.Palette;
 
 import com.uw.alice.R;
 
-import java.util.List;
 
 public class Function {
 
@@ -52,8 +56,6 @@ public class Function {
     }
 
 
-
-
     /**
      * 获取状态栏高度
      */
@@ -68,10 +70,6 @@ public class Function {
     }
 
 
-
-
-
-
     /**
      * 根据手机的分辨率从 px(像素) 的单位 转成为 dp
      */
@@ -79,8 +77,6 @@ public class Function {
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (pxValue / scale + 0.5f);
     }
-
-
 
 
     /**
@@ -118,6 +114,32 @@ public class Function {
     }
 
 
+    /**
+     * 打开手机自带浏览器启动url网址
+     */
+    public static void launchWebUrl(Context context,String weUrl) {
+        //如需打开网页，请使用 ACTION_VIEW 操作，并在 Intent 数据中指定网址。
+        Uri webUri = Uri.parse(weUrl);
+        Intent intent = new Intent(Intent.ACTION_VIEW, webUri);
+        if (intent.resolveActivity(context.getPackageManager()) != null) {
+            context.startActivity(intent);
+        }
+    }
+
+
+    /**
+     * 存放文本至剪贴板 长按输入框点击粘贴或者输入法智能提示粘贴到输入框中
+     */
+    public static void setTextToClipboard(Context context,String text) {
+        //获取剪贴板服务的句柄。
+        ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+        //创建新的文本剪辑以放在剪贴板上
+        ClipData clip = ClipData.newPlainText("label:"+text, text);
+        if (clipboard != null) {
+            //设置剪贴板的主剪辑
+            clipboard.setPrimaryClip(clip);
+        }
+    }
 
 
 

@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.uw.alice.R;
+import com.uw.alice.common.Widget;
 import com.uw.alice.data.model.Quotations;
 import com.uw.alice.data.util.Util;
 import com.uw.alice.databinding.ActivityInspirationalQuotationsBinding;
@@ -38,16 +39,15 @@ public class InspirationalQuotationsActivity extends AppCompatActivity {
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_inspirational_quotations);
         mContext = InspirationalQuotationsActivity.this;
 
+
+        Widget.showMaterialAlertDialog(mContext,"提示","点击英语短句卡片即可控制显隐中文翻译，长按即可选择复制英文短句或中文翻译至谷歌翻译查询。");
+
+
         //Come On!发起网络请求
         queryQuotations();
 
 
-        mBinding.llBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        mBinding.llBack.setOnClickListener(v -> finish());
 
         //简单测试  头部刷新标题不支持中文
         /*

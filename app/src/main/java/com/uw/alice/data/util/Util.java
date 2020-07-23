@@ -21,6 +21,8 @@ public class Util {
     //官方必应每日壁纸API
     public static final String BING_API_URL = "https://cn.bing.com/";
 
+    //谷歌翻译网址
+    public static final String GOOGLE_T_URL = "https://translate.google.cn/";
 
 
     //京东万象apikey
