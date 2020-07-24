@@ -33,6 +33,10 @@ public class Util {
     //万维易源 密钥secret
     public static final String ShowApi_Secret = "4b0c074ea24f4360a5f21905acab9b81";
 
+    public static final String ShowApi_TestAppId = "163034";  // 小号的万维易源 AppId
+    public static final String ShowApi_TestSecret = "95586dba4ecf48a49f712ebd73e0fcb0";  //小号的万维易源 密钥secret
+
+
     //成功码
     public static final String QUERY_SUCCESS_CODE = "10000";
     //调用数据达到上限

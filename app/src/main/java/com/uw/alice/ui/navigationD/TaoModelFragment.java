@@ -222,7 +222,7 @@ public class TaoModelFragment extends Fragment implements View.OnClickListener{
 
             }
         };
-        SingletonRetrofit.getInstance().queryTaoModelDataList(taoGirlsObserver,Util.ShowApi_AppId,Util.ShowApi_Secret,style,String.valueOf(page));
+        SingletonRetrofit.getInstance().queryTaoModelDataList(taoGirlsObserver,Util.ShowApi_TestAppId,Util.ShowApi_TestSecret,style,String.valueOf(page));
 
     }
 

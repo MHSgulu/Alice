@@ -87,7 +87,7 @@ public class TaoModelsActivity extends AppCompatActivity {
 
             }
         };
-        SingletonRetrofit.getInstance().queryTaoModelStyle(taoModelStyleObserver, Util.ShowApi_AppId,Util.ShowApi_Secret);
+        SingletonRetrofit.getInstance().queryTaoModelStyle(taoModelStyleObserver, Util.ShowApi_TestAppId,Util.ShowApi_TestSecret);
 
     }
 
