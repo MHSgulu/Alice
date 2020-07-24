@@ -79,13 +79,10 @@ public class RealTimeHotSpotRankingActivity extends AppCompatActivity {
                     Toast.makeText(mContext, "code："+hotSpot.getCode()+"请前往数据提供平台参照公共参数错误码", Toast.LENGTH_SHORT).show();
                 }
 
-                mAdapter.setOnItemClickListener(new RealTimeHotSpotRankingAdapter.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(View view, int position) {
-                        Intent intent = new Intent(mContext,SearchNewsActivity.class);
-                        intent.putExtra(Util.HotWordName,mDataList.get(position).getName());
-                        startActivity(intent);
-                    }
+                mAdapter.setOnItemClickListener((view, position) -> {
+                    Intent intent = new Intent(mContext,SearchNewsActivity.class);
+                    intent.putExtra(Util.HotWordName,mDataList.get(position).getName());
+                    startActivity(intent);
                 });
 
 

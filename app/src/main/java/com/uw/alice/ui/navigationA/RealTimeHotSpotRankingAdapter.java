@@ -4,17 +4,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.uw.alice.R;
-import com.uw.alice.data.model.HotSpot;
-import com.uw.alice.data.model.NewsSearch;
-import com.uw.alice.databinding.ItemNewsSearchListBinding;
+import com.uw.alice.data.model.HotSpot;;
 import com.uw.alice.databinding.ItemRealTimeHotSpotListBinding;
 
 import java.util.List;
@@ -31,7 +27,7 @@ public class RealTimeHotSpotRankingAdapter extends RecyclerView.Adapter <RealTim
     public RealTimeHotSpotRankingAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
         mContext = parent.getContext();
-        return new RealTimeHotSpotRankingAdapter.ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_real_time_hot_spot_list,parent,false));
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_real_time_hot_spot_list, parent, false));
     }
 
     @Override
@@ -47,16 +43,10 @@ public class RealTimeHotSpotRankingAdapter extends RecyclerView.Adapter <RealTim
         }
 
 
-        // 如果设置了回调，则设置点击事件
-        if (onItemClickListener != null)
-        {
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    int pos = holder.getLayoutPosition();
-                    onItemClickListener.onItemClick(holder.itemView, pos);
-                }
+        if (onItemClickListener != null) {
+            holder.itemView.setOnClickListener(v -> {
+                int pos = holder.getLayoutPosition();
+                onItemClickListener.onItemClick(holder.itemView, pos);
             });
         }
 
@@ -69,17 +59,12 @@ public class RealTimeHotSpotRankingAdapter extends RecyclerView.Adapter <RealTim
         return mlistBeans.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder
-    {
+    static class ViewHolder extends RecyclerView.ViewHolder {
         ItemRealTimeHotSpotListBinding mBinding;
-        //TextView tv_userNickName;
 
-        ViewHolder(View view)
-        {
+        ViewHolder(View view) {
             super(view);
             mBinding = DataBindingUtil.bind(view);
-            //iv_cover = view.findViewById(R.id.iv_cover);
-
         }
     }
 
