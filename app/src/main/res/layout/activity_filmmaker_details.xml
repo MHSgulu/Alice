@@ -8,16 +8,44 @@
     android:fitsSystemWindows="true"
     tools:context=".ui.navigationB.FilmmakerDetailsActivity">
 
+    <!--fitsSystemWindows
+    布尔内部属性，用于根据系统窗口（如状态）调整视图布局酒吧。
+    如果如果为true，则调整此视图的填充以为系统留出空间窗户。
+    威尔仅当此视图位于非嵌入活动中时才生效。
+    -->
 
-    <!---->
+    <!--liftOnScroll
+    {@link AppBarLayout}是否应在滚动时提升。
+    如果设置为true，{@link AppBarLayout}将在内容滚动到其下方时动画化为提升或提升状态。
+    要求`应用程序：布局行为=“@string/appbar_scrolling_view_behavior`
+    要在滚动的同级项上设置（例如，`NestedScrollView`、`RecyclerView`等）。”。
+    默认值为false
+    -->
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="250dp"
         app:liftOnScroll="true"
         android:fitsSystemWindows="true">
 
+        <!--app:statusBarScrim="?attr/colorPrimary"
+        这个属性控制CollapsingToolbarLayout收缩后系统状态栏的颜色-->
 
-        <!--app:statusBarScrim="?attr/colorPrimary" 这个属性控制CollapsingToolbarLayout收缩后系统状态栏的颜色-->
+        <!--layout_scrollFlags
+        scroll：
+        视图将与滚动事件直接相关。需要设置此标志才能使任何其他标志生效。
+        如果在此之前的任何兄弟视图不具有此标志，则此值没有影响。
+        exitUntilCollapsed：
+        退出（在屏幕外滚动）时，视图将滚动，直到“折叠”。折叠高度由视图的最小高度定义。
+        snap：
+        在滚动结束时，如果视图仅部分可见，则将捕捉并滚动到最近的边。
+        -->
+        <!--contentScrim  最终操作栏背景色
+        当内容被滚动到离屏幕足够远时，可将其用作折叠工具栏版面内容顶部的便笺。
+        -->
+        <!--statusBarScrim 最终系统状态栏背景色
+        当CollappingToolbarLayout被滚动到离屏幕足够远时，用作状态栏内容的scrim的drawable。
+        只有与棒棒糖一起使用时才起作用android:fitSystemWindows=“真的”
+        -->
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -39,7 +67,9 @@
                 android:fitsSystemWindows="true" />
 
             <!--app:contentInsetStart="0dp" 偏移量-->
-            <!-- 应用栏在向上滚动时消失，而在向下滚动时出现应用栏在向上滚动时消失，而在向下滚动时出现 app:layout_scrollFlags="scroll|enterAlways|snap"   -->
+            <!-- app:layout_scrollFlags="scroll|enterAlways|snap"
+            应用栏在向上滚动时消失，而在向下滚动时出现应用栏在向上滚动时消失，而在向下滚动时出现
+            -->
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/mdToolbar"
                 android:layout_width="match_parent"
@@ -51,7 +81,6 @@
                 app:layout_collapseMode="pin"
                 style="@style/ToolbarTheme">
 
-
             </com.google.android.material.appbar.MaterialToolbar>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -60,6 +89,7 @@
 
 
 
+    <!--layout_behavior 定义该类的特殊行为的运行时行为。 使滚动视图处于于appbar的正下方-->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -78,13 +108,13 @@
                 android:textStyle="bold"
                 android:text="个人"
                 android:layout_marginTop="30dp"
-                android:layout_marginStart="20dp"/>
+                android:layout_marginStart="15dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_marginStart="20dp">
+                android:layout_marginStart="15dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -107,7 +137,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:layout_marginStart="20dp">
+                android:layout_marginStart="15dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -130,7 +160,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:layout_marginStart="20dp">
+                android:layout_marginStart="15dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -153,7 +183,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:layout_marginStart="20dp">
+                android:layout_marginStart="15dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -176,7 +206,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:layout_marginStart="20dp">
+                android:layout_marginStart="15dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -203,7 +233,7 @@
                 android:textStyle="bold"
                 android:text="简介"
                 android:layout_marginTop="30dp"
-                android:layout_marginStart="20dp"/>
+                android:layout_marginStart="15dp"/>
 
             <TextView
                 android:id="@+id/tv_brief_introduction"
@@ -212,9 +242,32 @@
                 android:textSize="14sp"
                 android:textColor="@color/black"
                 tools:text="这是简介内容"
+                android:maxLines="6"
+                android:ellipsize="end"
                 android:layout_marginTop="10dp"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="15dp"
                 android:layout_marginEnd="20dp"/>
+
+            <LinearLayout
+                android:id="@+id/ll_open"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:visibility="invisible">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="展开"
+                    android:textColor="@color/black"/>
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:background="@mipmap/icon_open"/>
+
+            </LinearLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -228,12 +281,12 @@
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:text="影视"
-                    android:layout_marginStart="20dp"/>
+                    android:layout_marginStart="15dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     android:textColor="@color/black"
                     android:layout_toStartOf="@+id/iv_next_1"
                     android:layout_marginEnd="10dp"
@@ -242,18 +295,60 @@
 
                 <ImageView
                     android:id="@+id/iv_next_1"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="15dp"
-                    tools:background="@mipmap/icon_next"/>
+                    android:background="@mipmap/icon_next"/>
 
             </RelativeLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/list_film_works"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:text="相册"
+                    android:layout_marginStart="15dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="@color/black"
+                    android:layout_toStartOf="@+id/iv_next_2"
+                    android:layout_marginEnd="10dp"
+                    android:text="全部照片"
+                    android:layout_marginStart="20dp"/>
+
+                <ImageView
+                    android:id="@+id/iv_next_2"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="15dp"
+                    android:background="@mipmap/icon_next"/>
+
+            </RelativeLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list_actor_album"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="20dp"/>
 
         </LinearLayout>
 

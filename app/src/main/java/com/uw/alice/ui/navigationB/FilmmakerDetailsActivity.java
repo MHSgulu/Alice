@@ -1,12 +1,15 @@
 package com.uw.alice.ui.navigationB;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,19 +19,28 @@ import com.uw.alice.R;
 import com.uw.alice.data.model.FilmMaker;
 import com.uw.alice.data.util.Util;
 import com.uw.alice.network.retrofit.SingletonRetrofit;
+import com.uw.alice.data.adapter.filmmaker.FilmMakerAlbumShowAdapter;
+import com.uw.alice.data.adapter.filmmaker.FilmMakerWorkShowAdapter;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import cc.shinichi.library.ImagePreview;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
 public class FilmmakerDetailsActivity extends AppCompatActivity {
 
-    private Context mContext;
     private static final String TAG = "FilmmakerDetailsActivity";
-
+    private Context mContext;
     private MaterialToolbar toolbar;
+    private RecyclerView mRecyclerViewFilmWork;
+    private RecyclerView mRecyclerViewActorAlbum;
     private ImageView ivCover;
-
     private TextView tvBirthday,tvConstellation,tvBirthplace,tvChineseName,tvForeignName,tvBriefIntroduction;
+    private LinearLayout llOpen;
+
+    private FilmMakerAlbumShowAdapter mAdapter;
 
 
     @Override
@@ -44,15 +56,15 @@ public class FilmmakerDetailsActivity extends AppCompatActivity {
         tvChineseName = findViewById(R.id.tv_chinese_name);
         tvForeignName = findViewById(R.id.tv_foreign_name);
         tvBriefIntroduction = findViewById(R.id.tv_brief_introduction);
-
-
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Toast.makeText(mContext, "返回", Toast.LENGTH_SHORT).show();
-                finish();
-            }
+        llOpen = findViewById(R.id.ll_open);
+        llOpen.setOnClickListener(v -> {
+            tvBriefIntroduction.setMaxLines(999);
+            llOpen.setVisibility(View.GONE);
         });
+        mRecyclerViewFilmWork = findViewById(R.id.list_film_works);
+        mRecyclerViewActorAlbum = findViewById(R.id.list_actor_album);
+
+        toolbar.setNavigationOnClickListener(v -> finish());
 
 
         if (getIntent() != null){
@@ -88,6 +100,40 @@ public class FilmmakerDetailsActivity extends AppCompatActivity {
                 tvChineseName.setText(filmMaker.getAka().toString());
                 tvForeignName.setText(filmMaker.getAka_en().toString());
                 tvBriefIntroduction.setText(filmMaker.getSummary());
+                tvBriefIntroduction.post(() -> {
+                    if (tvBriefIntroduction.getLayout().getEllipsisCount(tvBriefIntroduction.getLineCount()-1) > 0){
+                        runOnUiThread(() -> llOpen.setVisibility(View.VISIBLE));
+                    }
+                });
+
+
+
+                if (!filmMaker.getWorks().isEmpty()){
+                    mRecyclerViewFilmWork.setLayoutManager(new LinearLayoutManager(mContext,LinearLayoutManager.HORIZONTAL,false));
+                    mRecyclerViewFilmWork.setAdapter(new FilmMakerWorkShowAdapter(filmMaker.getWorks()));
+                }
+
+                if (!filmMaker.getPhotos().isEmpty()){
+                    mRecyclerViewActorAlbum.setLayoutManager(new LinearLayoutManager(mContext,LinearLayoutManager.HORIZONTAL,false));
+                    mAdapter = new FilmMakerAlbumShowAdapter(filmMaker.getPhotos());
+                    mRecyclerViewActorAlbum.setAdapter(mAdapter);
+
+                    List<String> imgUrlList = filmMaker.getPhotos().stream().map(FilmMaker.PhotosBean::getImage).collect(Collectors.toList());
+
+                    mAdapter.setOnItemClickListener((view, position) -> ImagePreview.getInstance()
+                            .setContext(mContext)
+                            //.setIndex(0) //单张
+                            //.setImage(filmMaker.getPhotos().get(position).getImage())  //单张
+                            .setIndex(position)
+                            .setImageList(imgUrlList)
+                            .setShowCloseButton(true) //显示关闭按钮
+                            .setEnableDragClose(true) //启用下拉关闭
+                            .setEnableUpDragClose(true) //启用上拉关闭
+                            .start());
+
+
+                }
+
 
             }
 
