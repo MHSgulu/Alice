@@ -1,25 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginStart="10dp"
+    android:layout_marginStart="15dp"
+    android:layout_marginEnd="5dp"
+    android:orientation="vertical"
     tools:context=".data.adapter.filmmaker.FilmMakerWorkShowAdapter">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/card_view"
         android:layout_width="85dp"
         android:layout_height="130dp"
         app:cardCornerRadius="4dp"
-        app:cardElevation="2dp">
+        app:cardElevation="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/iv_movie_poster"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            tools:background="@color/colorNavigationC"/>
+            tools:background="@color/colorNavigationC" />
 
     </androidx.cardview.widget.CardView>
 
@@ -27,13 +32,44 @@
         android:id="@+id/tv_filmmaker_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
         android:layout_marginTop="5dp"
-        android:layout_gravity="center"
+        android:ellipsize="end"
+        android:maxLength="6"
+        android:maxLines="1"
         android:textColor="@color/black"
         android:textSize="13sp"
-        android:maxLines="1"
-        android:maxLength="6"
-        android:ellipsize="end"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_view"
         tools:text="电影名称" />
 
-</LinearLayout>
+    <com.willy.ratingbar.BaseRatingBar
+        android:id="@+id/simpleRatingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_filmmaker_name"
+        app:srb_drawableEmpty="@mipmap/icon_start_empty"
+        app:srb_drawableFilled="@mipmap/icon_star_filled"
+        app:srb_minimumStars="1"
+        app:srb_numStars="5"
+        app:srb_starWidth="12dp"
+        app:srb_starHeight="12dp"
+        app:srb_starPadding="0dp"
+        app:srb_stepSize="0.5" />
+
+    <TextView
+        android:id="@+id/tv_movie_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="3dp"
+        android:textSize="11sp"
+        tools:text="8.9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_filmmaker_name"
+        tools:ignore="SmallSp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
