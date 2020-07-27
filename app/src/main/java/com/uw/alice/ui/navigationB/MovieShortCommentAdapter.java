@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.uw.alice.R;
 import com.uw.alice.data.model.MovieDetails;
+import com.willy.ratingbar.BaseRatingBar;
 
 import java.util.List;
 
@@ -41,6 +41,8 @@ public class MovieShortCommentAdapter extends RecyclerView.Adapter <MovieShortCo
         holder.tvCommentContent.setText(popularCommentsBean.getContent());
         holder.tvCommentCount.setText(String.valueOf(popularCommentsBean.getUseful_count()));
 
+        holder.baseRatingBar.setRating((float)popularCommentsBean.getRating().getValue());
+
         /*if (position == popularCommentsBeanList.size()-1){
             holder.divider.setVisibility(View.GONE);
         }*/
@@ -67,17 +69,16 @@ public class MovieShortCommentAdapter extends RecyclerView.Adapter <MovieShortCo
         return popularCommentsBeanList.size();
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder
-    {
+    static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView ivAvatar;
         TextView tvNickname;
         TextView tvCommentTime;
         TextView tvCommentContent;
         TextView tvCommentCount;
         View divider;
+        BaseRatingBar baseRatingBar;
 
-        ViewHolder(View view)
-        {
+        ViewHolder(View view) {
             super(view);
             ivAvatar = view.findViewById(R.id.iv_avatar);
             tvNickname = view.findViewById(R.id.tv_nickname);
@@ -85,7 +86,8 @@ public class MovieShortCommentAdapter extends RecyclerView.Adapter <MovieShortCo
             tvCommentContent = view.findViewById(R.id.tv_comment_content);
             tvCommentCount = view.findViewById(R.id.tv_comment_count);
             divider = view.findViewById(R.id.divider);
-
+            baseRatingBar = view.findViewById(R.id.commentRatingBar);
+            baseRatingBar.setIsIndicator(true);
         }
     }
 

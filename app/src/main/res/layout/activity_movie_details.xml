@@ -203,46 +203,18 @@
                             android:textColor="@color/white"
                             tools:text="8.5"/>
 
-                        <include layout="@layout/widget_five_starts"
-                            android:id="@+id/layout_five_starts"
-                            android:visibility="gone"/>
-
-                        <include layout="@layout/widget_four_and_half_starts"
-                            android:id="@+id/layout_four_and_half_starts"
-                            android:visibility="gone"/>
-
-                        <include layout="@layout/widget_four_starts"
-                            android:id="@+id/layout_four_starts"
-                            android:visibility="gone"/>
-
-                        <include layout="@layout/widget_three_and_half_starts"
-                            android:id="@+id/layout_three_and_half_starts"
-                            android:visibility="gone"/>
-
-                        <include layout="@layout/widget_three_starts"
-                            android:id="@+id/layout_three_starts"
-                            android:visibility="gone"/>
-
-                        <include layout="@layout/widget_two_and_half_starts"
-                            android:id="@+id/layout_two_and_half_starts"
-                            android:visibility="gone"/>
-
-                        <include layout="@layout/widget_two_starts"
-                            android:id="@+id/layout_two_starts"
-                            android:visibility="gone"/>
-
-                        <include layout="@layout/widget_one_and_half_starts"
-                            android:id="@+id/layout_one_and_half_starts"
-                            android:visibility="gone"/>
-
-                        <include layout="@layout/widget_one_start"
-                            android:id="@+id/layout_one_start"
-                            android:visibility="gone"/>
-
-                        <include layout="@layout/widget_no_start"
-                            android:id="@+id/layout_no_start"
-                            android:visibility="gone"/>
-
+                        <com.willy.ratingbar.BaseRatingBar
+                            android:id="@+id/baseRatingBar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:srb_drawableEmpty="@mipmap/icon_start_empty"
+                            app:srb_drawableFilled="@mipmap/icon_star_filled"
+                            app:srb_minimumStars="0"
+                            app:srb_numStars="5"
+                            app:srb_starWidth="15dp"
+                            app:srb_starHeight="15dp"
+                            app:srb_starPadding="0dp"
+                            app:srb_stepSize="0.5" />
 
 
                     </LinearLayout>

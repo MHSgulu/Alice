@@ -2,18 +2,12 @@ package com.uw.alice.ui.navigationB;
 
 
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.nfc.Tag;
 import android.os.Bundle;
-import android.text.Html;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -21,46 +15,34 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.LongDef;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.FragmentActivity;
-import androidx.palette.graphics.Palette;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.CustomTarget;
-import com.bumptech.glide.request.target.CustomViewTarget;
-import com.bumptech.glide.request.target.Target;
 import com.bumptech.glide.request.transition.Transition;
 import com.uw.alice.R;
 import com.uw.alice.common.Function;
 import com.uw.alice.data.model.MovieDetails;
 import com.uw.alice.data.util.Util;
-import com.uw.alice.databinding.ActivityItemNewsDetailBinding;
 import com.uw.alice.network.retrofit.SingletonRetrofit;
+import com.willy.ratingbar.BaseRatingBar;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
-import cc.shinichi.library.tool.ui.ToastUtil;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Headers;
-import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 
@@ -73,18 +55,8 @@ public class MovieDetailsActivity extends AppCompatActivity implements View.OnCl
     private ImageView ivMoviePoster;
     private TextView tvMovieTitle,tvMovieOriginalTitle,tvMovieInformation,tvMovieScore,
             tvMovieScoreCount,tvMovieWatchCount,tvMovieWishCount,tvMovieIntroduction,tvMovieShortCommentCount;
-    private LinearLayout layoutFiveStarts;
-    private LinearLayout layoutFourStarts;
-    private LinearLayout layoutThreeStarts;
-    private LinearLayout layoutTwoStarts;
-    private LinearLayout layoutOneStart;
-    private LinearLayout layoutNoStart;
-    private LinearLayout layoutFourAndHalfStarts;
-    private LinearLayout layoutThreeAndHalfStarts;
-    private LinearLayout layoutTwoAndHalfStarts;
-    private LinearLayout layoutOneAndHalfStart;
     private ProgressBar progressBar1,progressBar2,progressBar3,progressBar4,progressBar5;
-
+    private BaseRatingBar baseRatingBar;
 
     private LinearLayout llOpen;
     private RelativeLayout rlMovieStill;
@@ -95,6 +67,7 @@ public class MovieDetailsActivity extends AppCompatActivity implements View.OnCl
     private int ThemeColor;
     private final OkHttpClient client = new OkHttpClient();
     private String countries,genres,mainlandPubDate,durations;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,7 +90,6 @@ public class MovieDetailsActivity extends AppCompatActivity implements View.OnCl
         stillRecyclerView = findViewById(R.id.list_still);
         commentRecyclerView = findViewById(R.id.list_short_comment);
 
-
         ivMoviePoster = findViewById(R.id.iv_movie_poster);
         tvMovieTitle = findViewById(R.id.tv_movie_title);
         tvMovieOriginalTitle = findViewById(R.id.tv_movie_original_title);
@@ -129,20 +101,8 @@ public class MovieDetailsActivity extends AppCompatActivity implements View.OnCl
         tvMovieIntroduction = findViewById(R.id.tv_introduction);
         tvMovieShortCommentCount = findViewById(R.id.tv_short_comment_count);
 
-
-
-        //五星小部件
-        layoutFiveStarts = findViewById(R.id.layout_five_starts);
-        layoutFourStarts = findViewById(R.id.layout_four_starts);
-        layoutThreeStarts = findViewById(R.id.layout_three_starts);
-        layoutTwoStarts = findViewById(R.id.layout_two_starts);
-        layoutOneStart = findViewById(R.id.layout_one_start);
-        layoutNoStart = findViewById(R.id.layout_no_start);
-
-        layoutFourAndHalfStarts = findViewById(R.id.layout_four_and_half_starts);
-        layoutThreeAndHalfStarts = findViewById(R.id.layout_three_and_half_starts);
-        layoutTwoAndHalfStarts = findViewById(R.id.layout_two_and_half_starts);
-        layoutOneAndHalfStart = findViewById(R.id.layout_one_and_half_starts);
+        baseRatingBar = findViewById(R.id.baseRatingBar);
+        baseRatingBar.setIsIndicator(true);
 
 
         //占比进度条
@@ -228,30 +188,7 @@ public class MovieDetailsActivity extends AppCompatActivity implements View.OnCl
                 tvMovieWishCount.setText(String.format("%s万人想看",String.valueOf(movieDetails.getWish_count() / 10000.0).substring(0,3)));
                 tvMovieShortCommentCount.setText(String.valueOf(movieDetails.getComments_count()));
 
-                //五星小部件
-                if (movieDetails.getRating().getAverage() >= 9.5 && movieDetails.getRating().getAverage() <= 10){
-                     layoutFiveStarts.setVisibility(View.VISIBLE);
-                }else if (movieDetails.getRating().getAverage() >= 8.5 && movieDetails.getRating().getAverage() <= 9.4){
-                     layoutFourAndHalfStarts.setVisibility(View.VISIBLE);
-                }else if (movieDetails.getRating().getAverage() >= 7.5 && movieDetails.getRating().getAverage() <= 8.4){
-                     layoutFourStarts.setVisibility(View.VISIBLE);
-                }else if (movieDetails.getRating().getAverage() >= 6.5 && movieDetails.getRating().getAverage() <= 7.4){
-                     layoutThreeAndHalfStarts.setVisibility(View.VISIBLE);
-                }else if (movieDetails.getRating().getAverage() >= 5.5 && movieDetails.getRating().getAverage() <= 6.4){
-                     layoutThreeStarts.setVisibility(View.VISIBLE);
-                }else if (movieDetails.getRating().getAverage() >= 4.5 && movieDetails.getRating().getAverage() <= 5.4){
-                     layoutTwoAndHalfStarts.setVisibility(View.VISIBLE);
-                }else if (movieDetails.getRating().getAverage() >= 3.5 && movieDetails.getRating().getAverage() <= 4.4){
-                     layoutTwoStarts.setVisibility(View.VISIBLE);
-                }else if (movieDetails.getRating().getAverage() >= 2.5 && movieDetails.getRating().getAverage() <= 3.4){
-                     layoutOneAndHalfStart.setVisibility(View.VISIBLE);
-                }else if (movieDetails.getRating().getAverage() >= 1.5 && movieDetails.getRating().getAverage() <= 2.4){
-                     layoutOneStart.setVisibility(View.VISIBLE);
-                }else if (movieDetails.getRating().getAverage() >= 0.5 && movieDetails.getRating().getAverage() <= 1.4){
-                     layoutOneStart.setVisibility(View.VISIBLE);
-                }else {
-                     layoutNoStart.setVisibility(View.VISIBLE);
-                }
+                baseRatingBar.setRating((float)movieDetails.getRating().getAverage() / 2);
 
 
                 double totalCount = movieDetails.getRating().getDetails().get_$1() + movieDetails.getRating().getDetails().get_$2() +
@@ -277,9 +214,9 @@ public class MovieDetailsActivity extends AppCompatActivity implements View.OnCl
                     @Override
                     public void run() {
                         //若果超出给定的行数限制，返回要省去的字符数。大于0代表超出文本内容限制
-                        int num = tvMovieIntroduction.getLayout().getEllipsisCount(tvMovieIntroduction.getLineCount()-1);
+                        int num = tvMovieIntroduction.getLayout().getEllipsisCount(tvMovieIntroduction.getLineCount() - 1);
                         //Log.d(TAG,"num:  "+num);
-                        if (num > 0 ){
+                        if (num > 0) {
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {

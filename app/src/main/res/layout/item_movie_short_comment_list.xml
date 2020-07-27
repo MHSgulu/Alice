@@ -42,59 +42,22 @@
         app:layout_constraintStart_toEndOf="@+id/card_view"
         android:layout_marginStart="10dp"/>
 
-    <!--
-    复用的布局 必须设置
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      xml属性之后 才能视其他属性生效
-       -->
-    <include layout="@layout/widget_five_starts"
-        android:id="@+id/layout_five_starts"
+    <com.willy.ratingbar.BaseRatingBar
+        android:id="@+id/commentRatingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/card_view"
-        app:layout_constraintTop_toBottomOf="@+id/tv_nickname"
         android:layout_marginStart="10dp"
-        android:visibility="visible"/>
-
-    <include layout="@layout/widget_four_and_half_starts"
-        android:id="@+id/layout_four_and_half_starts"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        app:srb_drawableEmpty="@mipmap/icon_start_empty"
+        app:srb_drawableFilled="@mipmap/icon_star_filled"
+        app:srb_minimumStars="0"
+        app:srb_numStars="5"
+        app:srb_starWidth="12dp"
+        app:srb_starHeight="12dp"
+        app:srb_starPadding="0dp"
+        app:srb_stepSize="0.5"
         app:layout_constraintStart_toEndOf="@+id/card_view"
-        app:layout_constraintTop_toBottomOf="@+id/tv_nickname"
-        android:layout_marginStart="10dp"
-        android:visibility="gone"/>
-
-    <include layout="@layout/widget_four_starts"
-        android:id="@+id/layout_four_starts"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/card_view"
-        app:layout_constraintTop_toBottomOf="@+id/tv_nickname"
-        android:layout_marginTop="3dp"
-        android:layout_marginStart="10dp"
-        android:visibility="gone"/>
-
-    <include layout="@layout/widget_three_and_half_starts"
-        android:id="@+id/layout_three_and_half_starts"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/card_view"
-        app:layout_constraintTop_toBottomOf="@+id/tv_nickname"
-        android:layout_marginTop="3dp"
-        android:layout_marginStart="10dp"
-        android:visibility="gone"/>
-
-    <include layout="@layout/widget_three_and_half_starts"
-        android:id="@+id/layout_three_and_half_starts"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/card_view"
-        app:layout_constraintTop_toBottomOf="@+id/tv_nickname"
-        android:layout_marginTop="3dp"
-        android:layout_marginStart="10dp"
-        android:visibility="gone"/>
+        app:layout_constraintTop_toBottomOf="@+id/tv_nickname"/>
 
 
     <TextView
