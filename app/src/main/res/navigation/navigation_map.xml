@@ -8,13 +8,13 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.uw.alice.ui.navigationA.HomeFragment"
+        android:name="com.uw.alice.ui.navigationA.NewsHomeFragment"
         android:label="@string/title_1"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.uw.alice.ui.navigationB.DashboardFragment"
+        android:name="com.uw.alice.ui.navigationB.MovieHomeFragment"
         android:label="@string/title_2"
         tools:layout="@layout/fragment_dashboard" />
 

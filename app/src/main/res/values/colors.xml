@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <!--colorAccent属性控制顶部应用程序栏的颜色，而其他colorPrimaryDark属性则控制状态栏的颜色。-->
-
-    <!--bottomNavigationBar选中所使用的颜色--><!--ActionBar应用栏的颜色--><!--Tab选中的颜色-->
-    <color name="colorPrimary">#FD9E80</color>
-    <!--系统状态栏的颜色-->
+    <!--应用程序的主品牌颜色。默认情况下，这是应用于操作栏背景的颜色。-->
+    <color name="colorPrimary">#FD9E80</color> <!--bottomNavigationBar选中所使用的颜色--><!--ActionBar应用栏的颜色--><!--Tab选中的颜色-->
+    <!--主要品牌颜色的深色变体。默认情况下，这是应用于状态栏（通过statusBarColor）和导航栏（通过navigationBarColor）的颜色。-->
     <color name="colorPrimaryDark">#FFFFFF</color>
+    <!--与主品牌颜色相得益彰。默认情况下，这是应用于框架控件的颜色（通过colorControlActivated）。-->
+    <color name="colorAccent">#D81B60</color>
     <!--许多控件在选中状态或获取焦点状态下使用这个颜色-->
     <!--CheckBox：checked 状态
         RadioButton：checked 状态
         SwitchCompat：checked 状态
         EditText：获取焦点时的 underline 和 cursor 颜色
         TextInputLayout：悬浮 label 字体颜色     -->
-    <color name="colorAccent">#D81B60</color>
-
 
 
 
@@ -43,8 +40,6 @@
     <color name="black12_t10">#E62C2C2C</color>
     <color name="black12_t5">#F22C2C2C</color>
     <color name="black12_t1">#FC2C2C2C</color>
-
-
 
 
 

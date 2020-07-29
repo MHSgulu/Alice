@@ -7,7 +7,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginStart="5dp"
-    tools:context=".ui.navigationB.MovieStillAdapter">
+    tools:context=".ui.navigationB.movie.MovieStillAdapter">
 
 
     <androidx.cardview.widget.CardView

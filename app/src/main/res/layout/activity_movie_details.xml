@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:background="@color/black"
-    tools:context=".ui.navigationB.MovieDetailsActivity">
+    tools:context=".ui.navigationB.movie.MovieDetailsActivity">
 
     <RelativeLayout
         android:id="@+id/rl_title"
@@ -216,7 +216,6 @@
                             app:srb_starPadding="0dp"
                             app:srb_stepSize="0.5" />
 
-
                     </LinearLayout>
 
                     <LinearLayout
@@ -230,10 +229,16 @@
                             android:layout_marginStart="20dp"
                             android:gravity="center_vertical">
 
-                            <include layout="@layout/widget_rate_five_starts"
-                                android:layout_height="wrap_content"
+                            <com.willy.ratingbar.BaseRatingBar
                                 android:layout_width="wrap_content"
-                                android:layout_toStartOf="@+id/progress_bar_1" />
+                                android:layout_height="wrap_content"
+                                app:srb_isIndicator="true"
+                                app:srb_drawableEmpty="@mipmap/icon_start_empty"
+                                app:srb_numStars="5"
+                                app:srb_starWidth="10dp"
+                                app:srb_starHeight="10dp"
+                                app:srb_starPadding="0dp"
+                                android:layout_toStartOf="@+id/progress_bar_1"/>
 
                             <ProgressBar
                                 android:id="@+id/progress_bar_1"
@@ -257,10 +262,16 @@
                             android:layout_marginStart="20dp"
                             android:gravity="center_vertical">
 
-                            <include layout="@layout/widget_rate_four_starts"
-                                android:layout_height="wrap_content"
+                            <com.willy.ratingbar.BaseRatingBar
                                 android:layout_width="wrap_content"
-                                android:layout_toStartOf="@+id/progress_bar_2" />
+                                android:layout_height="wrap_content"
+                                app:srb_isIndicator="true"
+                                app:srb_drawableEmpty="@mipmap/icon_start_empty"
+                                app:srb_numStars="4"
+                                app:srb_starWidth="10dp"
+                                app:srb_starHeight="10dp"
+                                app:srb_starPadding="0dp"
+                                android:layout_toStartOf="@+id/progress_bar_2"/>
 
                             <ProgressBar
                                 android:id="@+id/progress_bar_2"
@@ -283,23 +294,29 @@
                             android:layout_marginStart="20dp"
                             android:gravity="center_vertical">
 
-                            <include layout="@layout/widget_rate_three_starts"
-                                android:layout_height="wrap_content"
+                            <com.willy.ratingbar.BaseRatingBar
                                 android:layout_width="wrap_content"
-                                android:layout_toStartOf="@+id/progress_bar_3" />
+                                android:layout_height="wrap_content"
+                                app:srb_isIndicator="true"
+                                app:srb_drawableEmpty="@mipmap/icon_start_empty"
+                                app:srb_numStars="3"
+                                app:srb_starWidth="10dp"
+                                app:srb_starHeight="10dp"
+                                app:srb_starPadding="0dp"
+                                android:layout_toStartOf="@+id/progress_bar_3"/>
 
                             <ProgressBar
                                 android:id="@+id/progress_bar_3"
+                                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                                 android:layout_width="120dp"
                                 android:layout_height="4dp"
-                                android:layout_centerVertical="true"
                                 android:layout_alignParentEnd="true"
-                                android:layout_marginEnd="20dp"
+                                android:layout_centerVertical="true"
                                 android:layout_marginStart="5dp"
+                                android:layout_marginEnd="20dp"
                                 android:background="@color/white70"
                                 android:max="100"
-                                android:progressDrawable="@drawable/bg_progressbar"
-                                style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
+                                android:progressDrawable="@drawable/bg_progressbar" />
 
 
                         </RelativeLayout>
@@ -310,10 +327,16 @@
                             android:layout_marginStart="20dp"
                             android:gravity="center_vertical">
 
-                            <include layout="@layout/widget_rate_two_starts"
-                                android:layout_height="wrap_content"
+                            <com.willy.ratingbar.BaseRatingBar
                                 android:layout_width="wrap_content"
-                                android:layout_toStartOf="@+id/progress_bar_4" />
+                                android:layout_height="wrap_content"
+                                app:srb_isIndicator="true"
+                                app:srb_drawableEmpty="@mipmap/icon_start_empty"
+                                app:srb_numStars="2"
+                                app:srb_starWidth="10dp"
+                                app:srb_starHeight="10dp"
+                                app:srb_starPadding="0dp"
+                                android:layout_toStartOf="@+id/progress_bar_4"/>
 
                             <ProgressBar
                                 android:id="@+id/progress_bar_4"
@@ -337,10 +360,16 @@
                             android:layout_marginStart="20dp"
                             android:gravity="center_vertical">
 
-                            <include layout="@layout/widget_rate_one_start"
-                                android:layout_height="wrap_content"
+                            <com.willy.ratingbar.BaseRatingBar
                                 android:layout_width="wrap_content"
-                                android:layout_toStartOf="@+id/progress_bar_5" />
+                                android:layout_height="wrap_content"
+                                app:srb_isIndicator="true"
+                                app:srb_drawableEmpty="@mipmap/icon_start_empty"
+                                app:srb_numStars="1"
+                                app:srb_starWidth="10dp"
+                                app:srb_starHeight="10dp"
+                                app:srb_starPadding="0dp"
+                                android:layout_toStartOf="@+id/progress_bar_5"/>
 
                             <ProgressBar
                                 android:id="@+id/progress_bar_5"

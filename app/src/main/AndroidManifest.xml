@@ -9,13 +9,11 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
-        android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning">
+        android:theme="@style/AppTheme">
         <activity
             android:name=".ui.splash.SplashActivity"
             android:theme="@style/splashTheme">
@@ -25,48 +23,66 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!-- 主界面 -->
-        <activity android:name=".MainActivity" />
-        <!--影人详情-->
-        <activity android:name=".ui.navigationB.FilmmakerDetailsActivity"
-            android:theme="@style/FilmmakerDetailsActivityTheme" />
-         <!-- 新闻详情 -->
+        <activity
+            android:name=".MainActivity"
+            android:description="@string/activity_description_main" />
         <activity
             android:name=".ui.navigationA.ItemNewsDetailActivity"
-            android:theme="@style/CommonTheme" /> <!-- 搜索新闻 -->
+            android:description="@string/activity_description_ItemNewsDetail"
+            android:theme="@style/CommonTheme" />
         <activity
             android:name=".ui.navigationA.SearchNewsActivity"
-            android:theme="@style/CommonTheme" /> <!-- 实时热点 -->
+            android:description="@string/activity_description_SearchNews"
+            android:theme="@style/CommonTheme" />
         <activity
             android:name=".ui.navigationA.RealTimeHotSpotRankingActivity"
-            android:theme="@style/CommonTheme" /> <!-- 电影详情 -->
+            android:description="@string/activity_description_RealTimeHotSpotRanking"
+            android:theme="@style/CommonTheme" />
         <activity
-            android:name=".ui.navigationB.MovieDetailsActivity"
-            android:theme="@style/MovieDetailsActivityTheme" /> <!-- 文本笑话内容 -->
+            android:name=".ui.navigationB.movie.MovieDetailsActivity"
+            android:description="@string/activity_description_MovieDetails"
+            android:theme="@style/MovieDetailsActivityTheme" />
+        <activity
+            android:name=".ui.navigationB.filmmaker.FilmmakerDetailsActivity"
+            android:description="@string/activity_description_FilmmakerDetails"
+            android:theme="@style/FilmmakerDetailsActivityTheme" />
+        <activity android:name=".ui.navigationB.filmmaker.FilmmakerPhotosActivity"
+            android:description="@string/activity_description_FilmmakerPhotos"/>
         <activity
             android:name=".ui.navigationC.ItemTextJokeContentActivity"
-            android:theme="@style/CommonTheme" /> <!-- 查询手机号码归属地 -->
+            android:description="@string/activity_description_ItemTextJokeContent"
+            android:theme="@style/CommonTheme" />
         <activity
             android:name=".ui.navigationD.QueryPhoneNumberActivity"
-            android:theme="@style/CommonTheme" /> <!-- 必应每日壁纸 -->
+            android:description="@string/activity_description_QueryPhoneNumber"
+            android:theme="@style/CommonTheme" />
         <activity
             android:name=".ui.navigationD.BingDailyWallpaperActivity"
-            android:theme="@style/CommonTheme" /> <!-- 必应近日壁纸 -->
+            android:description="@string/activity_description_BingDailyWallpaper"
+            android:theme="@style/CommonTheme" />
         <activity
             android:name=".ui.navigationD.BingLatelyWallpaperActivity"
-            android:theme="@style/CommonTheme" /> <!-- 智能机器人聊天界面 -->
+            android:description="@string/activity_description_BingLatelyWallpaper"
+            android:theme="@style/CommonTheme" />
         <activity
             android:name=".ui.navigationD.IntelligentChatRobotActivity"
-            android:theme="@style/CommonTheme" /> <!-- 英文励志语录 -->
+            android:description="@string/activity_description_IntelligentChatRobot"
+            android:theme="@style/CommonTheme" />
         <activity
             android:name=".ui.navigationD.InspirationalQuotationsActivity"
-            android:theme="@style/CommonTheme" /> <!-- 成语大全 -->
+            android:description="@string/activity_description_InspirationalQuotations"
+            android:theme="@style/CommonTheme" />
         <activity
             android:name=".ui.navigationD.CorpusOfIdiomsActivity"
-            android:theme="@style/CommonTheme" /> <!-- 淘宝模特首页 -->
+            android:description="@string/activity_description_CorpusOfIdioms"
+            android:theme="@style/CommonTheme" />
         <activity
             android:name=".ui.navigationD.TaoModelsActivity"
+            android:description="@string/activity_description_TaoModels"
             android:theme="@style/CommonTheme" />
+        <activity
+            android:name=".ui.test.TestWidgetActivity"
+            android:description="@string/activity_description_TestWidget" />
     </application>
 
 </manifest>

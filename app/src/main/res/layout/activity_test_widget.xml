@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".ui.test.TestWidgetActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="默认样式（可交互）"/>
+
+    <RatingBar
+        android:id="@+id/ratingBar_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:rating="2"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="指示器样式样式"/>
+
+    <RatingBar
+        android:id="@+id/ratingBar_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:rating="2"
+        style="@android:style/Widget.Holo.RatingBar.Indicator"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="较小样式（作为指示器）"/>
+
+    <RatingBar
+        android:id="@+id/ratingBar_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:rating="2"
+        style="@android:style/Widget.Holo.RatingBar.Small"/>
+
+</LinearLayout>

@@ -1,6 +1,26 @@
 <resources>
     <!--APP的应用名称-->
     <string name="app_name">Alice</string>
+
+    <!--Activity组件描述-->
+    <string name="activity_description_main">首页</string>
+    <string name="activity_description_FilmmakerDetails">影人详情页</string>
+    <string name="activity_description_FilmmakerPhotos">影人照片页</string>
+    <string name="activity_description_ItemNewsDetail">新闻详情页</string>
+    <string name="activity_description_SearchNews">搜索新闻页</string>
+    <string name="activity_description_RealTimeHotSpotRanking">实时热点页</string>
+    <string name="activity_description_MovieDetails">电影详情页</string>
+    <string name="activity_description_ItemTextJokeContent">文本笑话内容页</string>
+    <string name="activity_description_QueryPhoneNumber">查询手机号码归属地页</string>
+    <string name="activity_description_BingDailyWallpaper">必应每日壁纸页</string>
+    <string name="activity_description_BingLatelyWallpaper">必应近日壁纸页</string>
+    <string name="activity_description_IntelligentChatRobot">智能机器人聊天界面页</string>
+    <string name="activity_description_InspirationalQuotations">英文励志语录页</string>
+    <string name="activity_description_CorpusOfIdioms">成语大全页</string>
+    <string name="activity_description_TaoModels">淘宝模特页</string>
+    <string name="activity_description_TestWidget">测试控件专区页</string>
+
+
     <!--导航区名称-->
     <string name="title_1">新闻</string>
     <string name="title_2">电影</string>

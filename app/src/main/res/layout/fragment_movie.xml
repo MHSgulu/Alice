@@ -17,7 +17,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-
             <!--正在上映-->
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -35,18 +34,6 @@
                     android:textStyle="bold"
                     android:textColor="@color/black"/>
 
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="5dp"
-                    android:layout_toStartOf="@+id/tv_movieShowing_number"
-                    android:text="全部"
-                    android:textColor="@color/black"
-                    android:textSize="12sp" />
-
                 <TextView
                     android:id="@+id/tv_movieShowing_number"
                     android:layout_width="wrap_content"
@@ -56,8 +43,7 @@
                     android:layout_toStartOf="@+id/iv_next"
                     android:textColor="@color/black"
                     android:textSize="12sp"
-                    tools:text="10" />
-
+                    tools:text="全部 10" />
 
 
                 <ImageView
@@ -96,18 +82,6 @@
                     android:textStyle="bold"
                     android:textColor="@color/black"/>
 
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="5dp"
-                    android:layout_toStartOf="@+id/tv_movieShownSoon_number"
-                    android:text="全部"
-                    android:textColor="@color/black"
-                    android:textSize="12sp" />
-
                 <TextView
                     android:id="@+id/tv_movieShownSoon_number"
                     android:layout_width="wrap_content"
@@ -117,7 +91,7 @@
                     android:layout_toStartOf="@+id/iv_next_2"
                     android:textColor="@color/black"
                     android:textSize="12sp"
-                    tools:text="10" />
+                    tools:text="全部 15" />
 
 
                 <ImageView

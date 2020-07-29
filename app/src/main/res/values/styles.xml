@@ -12,9 +12,14 @@
 
     <!--SplashActivity -->
     <style name="splashTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <!--设置系统状态栏为半透明-->
-        <item name="android:windowTranslucentStatus">true</item>
-        <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+        <!--状态栏背景白色-->
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <!--如果设置，将绘制状态栏，使其与浅色状态栏背景兼容-->
+        <!--要使其生效，窗口必须绘制系统栏背景，并且状态栏不能被要求为半透明的，与装饰视图上的设置相对应-->
+        <!-- android.R.attr#windowDrawsSystemBarBackgrounds 绘制系统栏背景-->
+        <!-- android.R.attr\#windowTranslucentStatus 半透明-->
+        <!--android.view.View#SYSTEM_UI_FLAG_LIGHT_STATUS_BAR   decor view.-->
+        <item name="android:windowLightStatusBar">true</item>
         <item name="android:windowBackground">@drawable/launch_background</item>
     </style>
 
@@ -53,7 +58,6 @@
 
 
     <!--      控件区域      -->
-
     <style name="ToolbarTheme">
         <item name="android:elevation" tools:ignore="PrivateResource">@dimen/design_appbar_elevation</item>
         <item name="android:background">?attr/colorPrimary</item>
