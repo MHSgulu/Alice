@@ -6,6 +6,7 @@ import com.uw.alice.data.model.BingWallpaper;
 import com.uw.alice.data.model.Chat;
 import com.uw.alice.data.model.DynamicGif;
 import com.uw.alice.data.model.FilmMaker;
+import com.uw.alice.data.model.FilmmakerPhoto;
 import com.uw.alice.data.model.HotSpot;
 import com.uw.alice.data.model.Idiom;
 import com.uw.alice.data.model.IdiomKeyword;
@@ -44,7 +45,6 @@ public interface APIService {
     /**
      * 正在热映
      *
-     * apikey：固定值 0b2bdeda43b5688921839c8ecb20399b
      * city：所在城市，例如北京、上海等
      * start：分页使用，表示第几页
      * count：分页使用，表示数量
@@ -62,7 +62,6 @@ public interface APIService {
     /**
      * 即将上映
      *
-     * apikey：固定值 0b2bdeda43b5688921839c8ecb20399b
      * city：所在城市，例如北京、上海等
      * start：分页使用，表示第几页
      * count：分页使用，表示数量
@@ -81,9 +80,7 @@ public interface APIService {
     /**
      * 电影条目信息
      *
-     * apikey：固定值 0b2bdeda43b5688921839c8ecb20399b
-     *
-     *   注解类型 网络请求方法是GET不是POST！！！！！ 导致http 403
+     * 注解类型 网络请求方法是GET不是POST！！！！！ 导致http 403
      */
 
     @GET("movie/subject/{movieId}")
@@ -92,14 +89,27 @@ public interface APIService {
 
 
     /**
-     * 电影条目信息
+     * 影人条目信息
      *
-     * apikey：固定值 0b2bdeda43b5688921839c8ecb20399b
-     *
+     * http://api.douban.com/v2/movie/celebrity/1274254?apikey=0b2bdeda43b5688921839c8ecb20399b张子枫
      */
 
     @GET("movie/celebrity/{actorId}")
     Observable<FilmMaker> fetchActorDetails(@Path("actorId") String actorId, @Query("apikey") String apiKey);
+
+
+    /**
+     * 影人 全部图片
+     * 1274254 张子枫
+     * https://api.douban.com/v2/movie/celebrity/1274254/photos?apikey=0b2bdeda43b5688921839c8ecb20399b&start=0
+     * https://api.douban.com/v2/movie/celebrity/1274254/photos?apikey=0b2bdeda43b5688921839c8ecb20399b&start=0&count=20
+     */
+    //                            此处少了一个 / 报错404
+    @GET("movie/celebrity/{celebrityId}/photos")
+    Observable<FilmmakerPhoto> getFetchFilmmakerPhoto(@Path("celebrityId") String celebrityId,
+                                                      @Query("apikey") String apiKey, @Query("start") int start,@Query("count") int count
+    );
+
 
 
 

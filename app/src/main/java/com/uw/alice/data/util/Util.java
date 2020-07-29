@@ -42,8 +42,7 @@ public class Util {
     //调用数据达到上限
     public static final String ERROR_CODE_LIMIT = "10040";
 
-    //豆瓣apikey
-    public static final String DOUBAN_APIKEY = "0b2bdeda43b5688921839c8ecb20399b";
+    public static final String DOUBAN_APIKEY = "0b2bdeda43b5688921839c8ecb20399b"; //豆瓣apiKey
 
     //intent 标识符
     public static final String NewsTitle = "NewsTitle";
@@ -53,6 +52,12 @@ public class Util {
     public static final String HotWordName = "HotWordName";
     public static final String TextJokeTitle = "TextJokeTitle";
     public static final String TextJokeContent = "TextJokeContent";
+
+    public static final String ARG_MovieId = "MovieId";
+    public static final String ARG_MoviePoster = "MoviePoster";
+
+    public static final String ARG_FilmmakerId = "FilmmakerId";
+
 
     //笑话大全1页数据量的最大结果集
     public static final int MaxResult = 20;
@@ -64,10 +69,6 @@ public class Util {
 
     //英文励志语录1页数据量的最大数量
     public static final String Max_Count = "10";
-
-
-
-
 
 
 

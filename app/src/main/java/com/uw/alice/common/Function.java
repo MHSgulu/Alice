@@ -10,7 +10,6 @@ import android.net.Uri;
 import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Toast;
 
 import androidx.fragment.app.FragmentActivity;
 import androidx.palette.graphics.Palette;
@@ -83,13 +82,32 @@ public class Function {
      * 3列网格列表视图，返回最佳间距
      */
     public static int  getGridListSpace(Context context, int width) {
-        Log.d(TAG, "width1: "+width); //返回手机像素宽度  ex:720px
+        Log.d(TAG, "数据点位：调用者Context: " + context);
+        Log.d(TAG, "数据点位：手机像素宽度: " + width); //返回手机像素宽度  ex:720px
         int dp = px2dip(context,width); //px转dp 手机屏幕dp宽度
-        Log.d(TAG, "dp: "+dp);
+        Log.d(TAG, "数据点位：手机屏幕dp宽度: " + dp);
         int space =  (dp - 300) / 4;  //剩余的dp除去4份
-        Log.d(TAG, "space: "+space);
+        Log.d(TAG, "数据点位：空隙space: "+space);
         return space;
     }
+
+
+    /**
+     * 影人全部照片 返回item列表间隙
+     */
+    public static int getGridListItemWidth(Context context, int width) {
+        Log.d(TAG, "数据点位：调用者Context: " + context);
+        Log.d(TAG, "测试点位: 获取RecycleView布局宽度px " + width);
+        int dp = px2dip(context,width);
+        Log.d(TAG, "测试点位: 获取RecycleView布局宽度dp " + dp);
+        int layoutWidth = (dp - 4) / 3;
+        Log.d(TAG, "测试点位: 计算出item中合适的ImageView布局宽度dp(已减去空隙长度) " + layoutWidth);
+        return layoutWidth;
+    }
+
+
+
+
 
 
     /**

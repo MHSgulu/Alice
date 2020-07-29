@@ -5,6 +5,7 @@ import com.uw.alice.data.model.BingWallpaper;
 import com.uw.alice.data.model.Chat;
 import com.uw.alice.data.model.DynamicGif;
 import com.uw.alice.data.model.FilmMaker;
+import com.uw.alice.data.model.FilmmakerPhoto;
 import com.uw.alice.data.model.HotSpot;
 import com.uw.alice.data.model.Idiom;
 import com.uw.alice.data.model.IdiomKeyword;
@@ -125,12 +126,12 @@ public class SingletonRetrofit  {
     /**
      * 查询 豆瓣电影Top250
      * @param observer  由调用者传过来的观察者对象
-     * @param apikey  key值
+     * @param apiKey  key值
      * @param start  起始元素
      * @param count  返回结果的数量
      */
-    public void queryTop250Movie(Observer<Movie> observer, String apikey, int start, int count){
-        apiService1.getTop250Movie(apikey,start,count)
+    public void queryTop250Movie(Observer<Movie> observer, String apiKey, int start, int count){
+        apiService1.getTop250Movie(apiKey,start,count)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -141,10 +142,10 @@ public class SingletonRetrofit  {
     /**
      * 查询 正在上映
      * @param observer  由调用者传过来的观察者对象
-     * @param apikey  key值
+     * @param apiKey  key值
      */
-    public void queryMovieOnShow(Observer<Movie> observer, String apikey){
-        apiService1.getFilmsOnShow(apikey)
+    public void queryMovieOnShow(Observer<Movie> observer, String apiKey){
+        apiService1.getFilmsOnShow(apiKey)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -155,10 +156,10 @@ public class SingletonRetrofit  {
     /**
      * 查询 即将上映
      * @param observer  由调用者传过来的观察者对象
-     * @param apikey  key值
+     * @param apiKey  key值
      */
-    public void queryMovieUpcoming(Observer<Movie> observer, String apikey){
-        apiService1.getMovieComingSoon(apikey)
+    public void queryMovieUpcoming(Observer<Movie> observer, String apiKey){
+        apiService1.getMovieComingSoon(apiKey)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -170,10 +171,10 @@ public class SingletonRetrofit  {
     /**
      * 查询 电影条目信息
      * @param observer  由调用者传过来的观察者对象
-     * @param apikey  key值
+     * @param apiKey  key值
      */
-    public void requestFetchMovieDetails(Observer<MovieDetails> observer, String movieId,String apikey){
-        apiService1.fetchMovieDetails(movieId,apikey)
+    public void requestFetchMovieDetails(Observer<MovieDetails> observer, String movieId,String apiKey){
+        apiService1.fetchMovieDetails(movieId,apiKey)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -184,10 +185,25 @@ public class SingletonRetrofit  {
     /**
      * 查询 影人条目信息
      * @param observer  由调用者传过来的观察者对象
-     * @param apikey  key值
+     * @param apiKey  key值
      */
-    public void requestFetchActorDetails(Observer<FilmMaker> observer, String actorId, String apikey){
-        apiService1.fetchActorDetails(actorId,apikey)
+    public void requestFetchActorDetails(Observer<FilmMaker> observer, String actorId, String apiKey){
+        apiService1.fetchActorDetails(actorId,apiKey)
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer);
+    }
+
+
+
+    /**
+     * 查询 影人相册全部图片
+     * @param observer  由调用者传过来的观察者对象
+     * @param apiKey  key值
+     */
+    public void requestFetchFilmmakerPhoto(Observer<FilmmakerPhoto> observer, String celebrityId, String apiKey,int start){
+        apiService1.getFetchFilmmakerPhoto(celebrityId,apiKey,start,20)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
