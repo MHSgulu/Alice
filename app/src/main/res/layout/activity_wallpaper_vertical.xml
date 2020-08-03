@@ -49,32 +49,6 @@
                     android:text="@string/bing_daily_wallpaper"
                     tools:ignore="RelativeOverlap" />
 
-                <LinearLayout
-                    android:id="@+id/ll_more"
-                    android:layout_width="100dp"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentEnd="true"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    tools:ignore="UseCompoundDrawables,UselessParent"
-                    android:visibility="gone">
-
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:background="@mipmap/icon_snowflake"
-                        tools:ignore="ContentDescription" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:textSize="11sp"
-                        android:text="@string/lately_wallpaper"
-                        tools:ignore="RelativeOverlap,SmallSp" />
-
-                </LinearLayout>
-
             </RelativeLayout>
 
         </androidx.appcompat.widget.Toolbar>
@@ -82,10 +56,11 @@
     </com.google.android.material.appbar.AppBarLayout>
 
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/view_pager"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_pager2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@+id/appbar"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
