@@ -7,11 +7,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.WindowManager;
 
 import com.uw.alice.MainActivity;
-import com.uw.alice.R;
-
+import com.uw.alice.common.Function;
 
 
 /**
@@ -23,8 +23,8 @@ import com.uw.alice.R;
  */
 public class SplashActivity extends AppCompatActivity {
 
-    private Context mContext;
     private static final String TAG = "SplashActivity";
+    private Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +38,9 @@ public class SplashActivity extends AppCompatActivity {
         }
 
         //设置界面全屏。并且自动隐藏状态栏
-        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);  //状态栏变黑
 
+        Function.getDisplayMetrics(mContext);
 
         Handler handler = new Handler(Looper.getMainLooper());
         handler.postDelayed(new Runnable() {
@@ -47,7 +48,7 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 jumpToHomeActivity();
             }
-        }, 1000);
+        }, 2000);
 
 
     }
