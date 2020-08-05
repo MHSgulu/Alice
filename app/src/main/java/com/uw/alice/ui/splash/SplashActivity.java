@@ -8,17 +8,19 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
+import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 
 import com.uw.alice.MainActivity;
+import com.uw.alice.R;
 import com.uw.alice.common.Function;
+
 
 
 /**
  *  Module:   SplashActivity
- *
  *  Function: 闪屏页面，只是显示一张图
- *
  *  Note：
  */
 public class SplashActivity extends AppCompatActivity {
@@ -31,14 +33,14 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_splash);
         mContext = SplashActivity.this;
+        //Log.i(TAG, "数据点位： view: " + view)
+
 
         if (!isTaskRoot() && getIntent().hasCategory(Intent.CATEGORY_LAUNCHER) && getIntent().getAction() != null && getIntent().getAction().equals(Intent.ACTION_MAIN)) {
             finish();
             return;
         }
 
-        //设置界面全屏。并且自动隐藏状态栏
-        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);  //状态栏变黑
 
         Function.getDisplayMetrics(mContext);
 
