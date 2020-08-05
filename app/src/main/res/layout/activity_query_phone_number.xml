@@ -320,6 +320,19 @@
         </androidx.cardview.widget.CardView>
 
 
+        <ImageView
+            android:id="@+id/iv_call"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@mipmap/icon_call"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cv_content"
+            android:layout_marginTop="20dp"
+            android:visibility="gone"
+            android:onClick="@{onClickListener}"/>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

@@ -1,6 +1,8 @@
 package com.uw.alice.ui.navigationD;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -27,6 +29,8 @@ public class QueryPhoneNumberActivity extends AppCompatActivity implements View.
     private static final String TAG = "QueryPhoneNumber";
     private ActivityQueryPhoneNumberBinding mBinding;
     private Context mContext;
+
+    private String phoneNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +89,18 @@ public class QueryPhoneNumberActivity extends AppCompatActivity implements View.
                 mBinding.etInput.setText("");
                 break;
 
+            case R.id.iv_call:
+                if (TextUtils.isEmpty(phoneNumber)){
+                    Toast.makeText(mContext, "当前号码为空，无法拨打", Toast.LENGTH_SHORT).show();
+                }else {
+                    Intent intent = new Intent(Intent.ACTION_DIAL);
+                    intent.setData(Uri.parse("tel:" + phoneNumber));
+                    if (intent.resolveActivity(getPackageManager()) != null) {
+                        startActivity(intent);
+                    }
+                }
+                break;
+
             case R.id.ll_search:
                 if (TextUtils.isEmpty(mBinding.etInput.getText().toString().trim())){
                     Toast.makeText(mContext, "手机号码为空", Toast.LENGTH_SHORT).show();
@@ -109,7 +125,8 @@ public class QueryPhoneNumberActivity extends AppCompatActivity implements View.
             @Override
             public void onNext(MobilePhone mobilePhone) {
                 if (mobilePhone.getCode().equals(Util.QUERY_SUCCESS_CODE)){
-                    //mBinding.cvContent.setVisibility(View.VISIBLE);
+                    mBinding.ivCall.setVisibility(View.VISIBLE);
+                    phoneNumber = mobilePhone.getResult().getResult().getShouji();
                     mBinding.tvPhoneNUmber.setText(mobilePhone.getResult().getResult().getShouji());
                     mBinding.tvPlace.setText(String.format("%s %s", mobilePhone.getResult().getResult().getProvince(),
                             mobilePhone.getResult().getResult().getCity()));
