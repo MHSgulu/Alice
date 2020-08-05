@@ -11,14 +11,12 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.uw.alice.R;
 import com.uw.alice.data.model.MobilePhone;
 import com.uw.alice.data.util.Util;
 import com.uw.alice.databinding.ActivityQueryPhoneNumberBinding;
 import com.uw.alice.network.retrofit.SingletonRetrofit;
-import com.uw.alice.ui.navigationA.NewsSearchListAdapter;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -26,7 +24,7 @@ import io.reactivex.disposables.Disposable;
 
 public class QueryPhoneNumberActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private static final String TAG = "QueryPhoneNumberActivit";
+    private static final String TAG = "QueryPhoneNumber";
     private ActivityQueryPhoneNumberBinding mBinding;
     private Context mContext;
 

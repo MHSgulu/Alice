@@ -15,115 +15,129 @@
         android:layout_height="match_parent"
         tools:context=".ui.navigationD.QueryPhoneNumberActivity">
 
-
-        <LinearLayout
-            android:id="@+id/rl_search_box"
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@color/white"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="DisableBaselineAlignment">
+            app:layout_constraintTop_toTopOf="parent">
 
-            <LinearLayout
-                android:id="@+id/ll_back"
-                android:layout_width="0dp"
+            <com.google.android.material.appbar.MaterialToolbar
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:onClick="@{onClickListener}">
-
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:background="@mipmap/back"
-                    tools:ignore="ContentDescription" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/ll_search_box"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="6"
-                android:layout_marginTop="6dp"
-                android:layout_marginBottom="6dp"
-                android:gravity="center_vertical"
-                android:background="@drawable/search_box_background_gray"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginStart="10dp"
-                    android:background="@mipmap/search"
-                    tools:ignore="ContentDescription" />
-
-                <EditText
-                    android:id="@+id/et_input"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="10dp"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    android:hint="@string/tips_input_MobilePhoneNumber"
-                    android:maxLength="11"
-                    android:inputType="phone"
-                    android:singleLine="true"
-                    android:textSize="14sp"
-                    android:focusable="true"
-                    android:focusableInTouchMode="true"
-                    tools:ignore="Autofill,NestedWeights,TextFields" />
+                app:contentInsetStart="0dp">
 
                 <LinearLayout
-                    android:id="@+id/ll_reset"
-                    android:layout_width="50dp"
+                    android:id="@+id/rl_search_box"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:onClick="@{onClickListener}">
+                    android:background="@color/white"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="DisableBaselineAlignment">
 
-                    <ImageView
-                        android:id="@+id/iv_reset"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:background="@mipmap/reset"
-                        tools:ignore="ContentDescription"
-                        android:onClick="@{onClickListener}"
-                        android:visibility="gone"/>
+                    <LinearLayout
+                        android:id="@+id/ll_back"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:onClick="@{onClickListener}">
+
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:background="@mipmap/back"
+                            tools:ignore="ContentDescription" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_search_box"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="6"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginBottom="6dp"
+                        android:gravity="center_vertical"
+                        android:background="@drawable/search_box_background_gray"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="10dp"
+                            android:background="@mipmap/search"
+                            tools:ignore="ContentDescription" />
+
+                        <EditText
+                            android:id="@+id/et_input"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="10dp"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:hint="@string/tips_input_MobilePhoneNumber"
+                            android:maxLength="11"
+                            android:inputType="phone"
+                            android:singleLine="true"
+                            android:textSize="14sp"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            tools:ignore="Autofill,NestedWeights,TextFields" />
+
+                        <LinearLayout
+                            android:id="@+id/ll_reset"
+                            android:layout_width="50dp"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:onClick="@{onClickListener}">
+
+                            <ImageView
+                                android:id="@+id/iv_reset"
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:background="@mipmap/reset"
+                                tools:ignore="ContentDescription"
+                                android:onClick="@{onClickListener}"
+                                android:visibility="gone"/>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_search"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:onClick="@{onClickListener}">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/query"
+                            android:textSize="15sp"
+                            android:textColor="@color/black"
+                            tools:ignore="SmallSp" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
+            </com.google.android.material.appbar.MaterialToolbar>
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/ll_search"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:onClick="@{onClickListener}">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/query"
-                    android:textSize="15sp"
-                    android:textColor="@color/black"
-                    tools:ignore="SmallSp" />
-
-            </LinearLayout>
-
-        </LinearLayout>
+        </com.google.android.material.appbar.AppBarLayout>
 
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="50dp"
+            android:layout_margin="20dp"
             app:cardCornerRadius="5dp"
             app:cardElevation="5dp"
             app:layout_constraintTop_toTopOf="parent"
@@ -153,7 +167,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
+                        android:layout_marginStart="15dp"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         android:text="@string/mobilePhoneNumber" />
@@ -162,10 +176,12 @@
                         android:id="@+id/tv_phoneNUmber"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
+                        android:layout_marginStart="10dp"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         tools:text="12345678901" />
+
+
 
                 </LinearLayout>
 
@@ -185,7 +201,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
+                        android:layout_marginStart="15dp"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         android:text="@string/place_of_ownership" />
@@ -194,7 +210,7 @@
                         android:id="@+id/tv_place"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
+                        android:layout_marginStart="10dp"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         tools:text="帝国 边疆" />
@@ -217,7 +233,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
+                        android:layout_marginStart="15dp"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         android:text="@string/operator" />
@@ -226,7 +242,7 @@
                         android:id="@+id/tv_operator"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
+                        android:layout_marginStart="10dp"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         tools:text="中国移动" />
@@ -249,7 +265,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
+                        android:layout_marginStart="15dp"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         android:text="@string/cardType" />
@@ -258,7 +274,7 @@
                         android:id="@+id/tv_cardType"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
+                        android:layout_marginStart="10dp"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         tools:text="GSM" />
@@ -281,7 +297,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
+                        android:layout_marginStart="15dp"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         android:text="@string/areaCode" />
@@ -290,7 +306,7 @@
                         android:id="@+id/tv_areaCode"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
+                        android:layout_marginStart="10dp"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         tools:text="0100" />
@@ -302,10 +318,6 @@
 
 
         </androidx.cardview.widget.CardView>
-
-
-
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
