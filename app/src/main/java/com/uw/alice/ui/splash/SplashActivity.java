@@ -35,12 +35,10 @@ public class SplashActivity extends AppCompatActivity {
         mContext = SplashActivity.this;
         //Log.i(TAG, "数据点位： view: " + view)
 
-
         if (!isTaskRoot() && getIntent().hasCategory(Intent.CATEGORY_LAUNCHER) && getIntent().getAction() != null && getIntent().getAction().equals(Intent.ACTION_MAIN)) {
             finish();
             return;
         }
-
 
         Function.getDisplayMetrics(mContext);
 
