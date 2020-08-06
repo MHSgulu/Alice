@@ -1,4 +1,4 @@
-package com.uw.alice.ui.navigationD;
+package com.uw.alice.ui.navigationD.idiom;
 
 
 import android.content.Context;
@@ -21,8 +21,6 @@ import com.uw.alice.data.model.Idiom;
 import com.uw.alice.data.util.Util;
 import com.uw.alice.databinding.FragmentIdiomAnnotationBinding;
 import com.uw.alice.network.retrofit.SingletonRetrofit;
-
-import java.util.ArrayList;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;

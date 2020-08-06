@@ -1,4 +1,4 @@
-package com.uw.alice.ui.navigationD;
+package com.uw.alice.ui.navigationD.model;
 
 import android.content.Context;
 import android.view.LayoutInflater;

@@ -63,11 +63,11 @@ public class QuotationsListAdapter extends RecyclerView.Adapter <QuotationsListA
                 if (which == 0){
                     Toast.makeText(mContext, "已将英语短句复制到剪贴板中", Toast.LENGTH_SHORT).show();
                     Function.setTextToClipboard(mContext,listBean.getEnglish());
-                    Function.launchWebUrl(mContext, Util.GOOGLE_T_URL);
+                    Function.openWebPage(mContext, Util.GOOGLE_T_URL);
                 }else{
                     Toast.makeText(mContext, "已将中文翻译复制到剪贴板中", Toast.LENGTH_SHORT).show();
                     Function.setTextToClipboard(mContext,listBean.getChinese());
-                    Function.launchWebUrl(mContext, Util.GOOGLE_T_URL);
+                    Function.openWebPage(mContext, Util.GOOGLE_T_URL);
                 }
             });
             builder.create().show();

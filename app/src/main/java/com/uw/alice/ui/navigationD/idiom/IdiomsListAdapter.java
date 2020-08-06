@@ -1,4 +1,4 @@
-package com.uw.alice.ui.navigationD;
+package com.uw.alice.ui.navigationD.idiom;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,9 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.uw.alice.R;
 import com.uw.alice.data.model.IdiomKeyword;
-import com.uw.alice.data.model.Quotations;
 import com.uw.alice.databinding.ItemIdiomListBinding;
-import com.uw.alice.databinding.ItemQuotationsListBinding;
+
 
 import java.util.List;
 
@@ -29,7 +28,7 @@ public class IdiomsListAdapter extends RecyclerView.Adapter <IdiomsListAdapter.V
     public IdiomsListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
         mContext = parent.getContext();
-        return new IdiomsListAdapter.ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_idiom_list,parent,false));
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_idiom_list, parent, false));
     }
 
     @Override
@@ -59,7 +58,7 @@ public class IdiomsListAdapter extends RecyclerView.Adapter <IdiomsListAdapter.V
         return mlistBeans.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder
+    static class ViewHolder extends RecyclerView.ViewHolder
     {
         ItemIdiomListBinding mBinding;
 

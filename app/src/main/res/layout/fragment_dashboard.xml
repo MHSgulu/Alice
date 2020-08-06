@@ -106,6 +106,7 @@
 
             <!--正在上映-->
             <RelativeLayout
+                android:id="@+id/rl_hot"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -120,7 +121,6 @@
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="@color/black"/>
-
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -144,8 +144,6 @@
                     android:textSize="12sp"
                     tools:text="10" />
 
-
-
                 <ImageView
                     android:id="@+id/iv_next"
                     android:layout_width="13dp"
@@ -154,7 +152,6 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="15dp"
                     android:background="@mipmap/icon_next"/>
-
 
             </RelativeLayout>
 
@@ -168,6 +165,7 @@
 
             <!--即将上映-->
             <RelativeLayout
+                android:id="@+id/rl_soon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"

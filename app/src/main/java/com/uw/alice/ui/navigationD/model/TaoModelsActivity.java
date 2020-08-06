@@ -1,4 +1,4 @@
-package com.uw.alice.ui.navigationD;
+package com.uw.alice.ui.navigationD.model;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -15,6 +15,7 @@ import com.uw.alice.data.model.TaoModelStyle;
 import com.uw.alice.data.util.Util;
 import com.uw.alice.databinding.ActivityTaoModelsBinding;
 import com.uw.alice.network.retrofit.SingletonRetrofit;
+import com.uw.alice.ui.navigationD.SectionsModelPagerAdapter;
 
 import java.util.ArrayList;
 

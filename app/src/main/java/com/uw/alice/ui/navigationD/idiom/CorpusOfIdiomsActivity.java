@@ -1,4 +1,4 @@
-package com.uw.alice.ui.navigationD;
+package com.uw.alice.ui.navigationD.idiom;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 
 import com.google.android.material.tabs.TabLayout;
 import com.uw.alice.R;
+import com.uw.alice.ui.navigationD.NDIdiomSectionsPagerAdapter;
 
 import java.util.ArrayList;
 
@@ -27,7 +28,7 @@ public class CorpusOfIdiomsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_corpus_of_idioms);
         mContext = CorpusOfIdiomsActivity.this;
         tabLayout = findViewById(R.id.tabs);
-        tabLayout.setElevation(10);
+        tabLayout.setElevation(0);
         viewPager = findViewById(R.id.view_pager);
 
         final LinearLayout ll_back = findViewById(R.id.ll_back);

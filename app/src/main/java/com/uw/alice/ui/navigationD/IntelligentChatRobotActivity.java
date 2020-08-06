@@ -6,14 +6,11 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.LinearLayoutManager;;
 
 import com.uw.alice.R;
 import com.uw.alice.data.model.Chat;
@@ -27,9 +24,7 @@ import java.util.List;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
-/*
-* 智能机器人聊天界面
-*/
+
 public class IntelligentChatRobotActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = "IntelligentChatRobotAct";

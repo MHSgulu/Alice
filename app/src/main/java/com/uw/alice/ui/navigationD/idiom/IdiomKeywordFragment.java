@@ -1,10 +1,6 @@
-package com.uw.alice.ui.navigationD;
+package com.uw.alice.ui.navigationD.idiom;
 
-import android.app.AlertDialog;
-import android.content.ClipData;
-import android.content.ClipboardManager;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -24,6 +20,7 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.uw.alice.R;
+import com.uw.alice.common.Function;
 import com.uw.alice.data.model.IdiomKeyword;
 import com.uw.alice.data.util.Util;
 import com.uw.alice.databinding.FragmentIdiomKeywordBinding;
@@ -31,7 +28,6 @@ import com.uw.alice.network.retrofit.SingletonRetrofit;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -183,16 +179,7 @@ public class IdiomKeywordFragment extends Fragment implements View.OnClickListen
                 mAdapter.setOnItemClickListener(new IdiomsListAdapter.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-                        //获取剪贴板服务的句柄。
-                        ClipboardManager clipboard = (ClipboardManager) Objects.requireNonNull(getActivity()).getSystemService(Context.CLIPBOARD_SERVICE);
-                        //创建新的文本剪辑以放在剪贴板上
-                        ClipData clip = ClipData.newPlainText("Idiom", mDataList.get(position).getTitle());
-                        if (clipboard != null) {
-                            //设置剪贴板的主剪辑
-                            clipboard.setPrimaryClip(clip);
-                            //长按输入框点击粘贴或者输入法智能提示粘贴到输入框中
-                            Toast.makeText(mContext, "已将此成语存放到剪贴板中", Toast.LENGTH_SHORT).show();
-                        }
+                        Function.setTextToClipboard(mContext,mDataList.get(position).getTitle());
                     }
                 });
 

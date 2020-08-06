@@ -5,15 +5,16 @@
     <!--Activity组件描述-->
     <string name="activity_description_main">首页</string>
     <string name="activity_description_FilmmakerDetails">影人详情页</string>
-    <string name="activity_description_FilmmakerPhotos">影人照片页</string>
     <string name="activity_description_ItemNewsDetail">新闻详情页</string>
     <string name="activity_description_SearchNews">搜索新闻页</string>
     <string name="activity_description_RealTimeHotSpotRanking">实时热点页</string>
+    <string name="activity_description_HotMovieList">热门电影列表页</string>
     <string name="activity_description_MovieDetails">电影详情页</string>
     <string name="activity_description_ItemTextJokeContent">文本笑话内容页</string>
     <string name="activity_description_QueryPhoneNumber">查询手机号码归属地页</string>
-    <string name="activity_description_BingDailyWallpaper">必应每日壁纸页</string>
-    <string name="activity_description_BingLatelyWallpaper">必应近日壁纸页</string>
+    <string name="activity_description_WallpaperHorizontalPageActivity">必应壁纸横向滑动页</string>
+    <string name="activity_description_WallpaperVerticalPageActivity">必应壁纸垂直滑动页</string>
+    <string name="activity_description_BingWallpaperListActivity">必应壁纸列表滑动页</string>
     <string name="activity_description_IntelligentChatRobot">智能机器人聊天界面页</string>
     <string name="activity_description_InspirationalQuotations">英文励志语录页</string>
     <string name="activity_description_CorpusOfIdioms">成语大全页</string>
@@ -21,11 +22,15 @@
     <string name="activity_description_TestWidget">测试控件专区页</string>
 
 
-    <!--导航区名称-->
+    <!--菜单名称-->
     <string name="title_1">新闻</string>
     <string name="title_2">电影</string>
     <string name="title_3">开心</string>
     <string name="title_4">更多</string>
+
+    <string name="menu_item_1">缩小页面</string>
+    <string name="menu_item_2">深度页面</string>
+
 
     <!--Tab标题-->
     <!--新闻模块-->
@@ -106,7 +111,7 @@
     <string name="tips_input_idiom_keyword">在此处输入关键字</string>
     <string name="real_time_hotspot">实时热点</string>
     <string name="real_time_box_office">实时票房</string>
-    <string name="lately_wallpaper">近日壁纸</string>
+    <string name="lately_wallpaper">滑动样式</string>
     <string name="more">筛选</string>
     <string name="search">搜索</string>
     <string name="send">发送</string>
@@ -117,8 +122,8 @@
     <string name="query_mobilePhoneNumber_home">手机号码归属地查询</string>
     <string name="inspirationalQuotations_in_English">英文励志语录</string>
     <string name="corpus_of_idioms">成语大全</string>
-    <string name="bing_daily_wallpaper">必应每日壁纸</string>
-    <string name="bing_lately_wallpaper">必应近日壁纸</string>
+    <string name="bing_daily_wallpaper">必应精选壁纸</string>
+    <string name="bing_lately_wallpaper">必应一周精选壁纸</string>
     <string name="search_for_Tao_girls">淘女郎模特查询</string>
     <string name="intelligent_chat_robot">智能聊天机器人菲菲</string>
     <string name="icr_fei">菲菲</string>

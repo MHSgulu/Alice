@@ -6,21 +6,23 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.uw.alice.R;
-import com.uw.alice.common.Function;
-import com.uw.alice.data.util.Util;
 import com.uw.alice.databinding.FragmentMyBinding;
+import com.uw.alice.ui.navigationD.idiom.CorpusOfIdiomsActivity;
+import com.uw.alice.ui.navigationD.model.TaoModelsActivity;
+import com.uw.alice.ui.navigationD.wallpaper.WallpaperHorizontalPageActivity;
+import com.uw.alice.ui.navigationD.wallpaper.BingWallpaperListActivity;
+import com.uw.alice.ui.navigationD.wallpaper.WallpaperVerticalPageActivity;
+import com.uw.alice.ui.test.TestWidgetActivity;
 
 public class MyFragment extends Fragment implements View.OnClickListener{
 
-    private MyFragmentViewModel myFragmentViewModel;
     private FragmentMyBinding mBinding;
     private Context mContext;
 
@@ -39,7 +41,7 @@ public class MyFragment extends Fragment implements View.OnClickListener{
         //myFragmentViewModel = ViewModelProviders.of(this).get(MyFragmentViewModel.class);
         //View root = inflater.inflate(R.layout.fragment_my, container, false);
         mBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_my,container,false);
-        mBinding.setClicklistener(this);
+        mBinding.setClickListener(this);
 
         //final TextView textView = root.findViewById(R.id.text_home);
        /* myFragmentViewModel.getText().observe(this, new Observer<String>() {
@@ -76,11 +78,33 @@ public class MyFragment extends Fragment implements View.OnClickListener{
                 break;
 
             case R.id.cv_dailyWallpaper:
-                startActivity(new Intent(mContext, BingDailyWallpaperActivity.class));
+                CharSequence[] items = {"横向滑动浏览壁纸","垂直滑动浏览壁纸","列表滑动浏览壁纸"};
+                MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(mContext);
+                builder.setTitle("请选择浏览方式");
+                builder.setItems(items, (dialog, which) -> {
+                    switch (which) {
+                        case 0:
+                            startActivity(new Intent(mContext, WallpaperHorizontalPageActivity.class));
+                            break;
+
+                        case 1:
+                            startActivity(new Intent(mContext, WallpaperVerticalPageActivity.class));
+                            break;
+
+                        case 2:
+                            startActivity(new Intent(mContext, BingWallpaperListActivity.class));
+                            break;
+                    }
+                });
+                builder.create().show();
                 break;
 
             case R.id.cv_intelligent_chat_robot:
                 startActivity(new Intent(mContext, IntelligentChatRobotActivity.class));
+                break;
+
+            case R.id.card_view_testWidget:
+                startActivity(new Intent(mContext, TestWidgetActivity.class));
                 break;
 
         }

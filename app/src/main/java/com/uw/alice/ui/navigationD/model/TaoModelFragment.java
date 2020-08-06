@@ -1,4 +1,4 @@
-package com.uw.alice.ui.navigationD;
+package com.uw.alice.ui.navigationD.model;
 
 import android.app.AlertDialog;
 import android.content.Context;

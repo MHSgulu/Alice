@@ -78,7 +78,7 @@ public class WallpaperSlideFragment extends Fragment {
                             .setIndex(0)
                             .setImage(Util.BING_API_URL + bingWallpaper.getImages().get(position).getUrl()).start());
 
-                    tvCopyright.setOnClickListener(v -> Function.launchWebUrl(mContext,bingWallpaper.getImages().get(position).getCopyrightlink()));
+                    tvCopyright.setOnClickListener(v -> Function.openWebPage(mContext,bingWallpaper.getImages().get(position).getCopyrightlink()));
 
                 }
             }

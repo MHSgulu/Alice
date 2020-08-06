@@ -13,12 +13,15 @@
         EditText：获取焦点时的 underline 和 cursor 颜色
         TextInputLayout：悬浮 label 字体颜色     -->
 
-
-
     <color name="colorNavigationA">#438AFE</color>
     <color name="colorNavigationB">#26A59A</color>
     <color name="colorNavigationC">#FD9E80</color>
     <color name="colorNavigationD">#4CCFE1</color>
+
+
+    <color name="hotMovieList_activity_tabIndicatorColor">#212121</color>
+    <color name="hotMovieList_activity_tabSelectedTextColor">#2D2C2C</color>
+    <color name="hotMovieList_activity_tabUnSelectedTextColor">#A6A6A6</color>
 
 
     <color name="white">#FFFFFF</color>
