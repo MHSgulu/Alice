@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.uw.alice.data.model.MoviePoster;
+import com.uw.alice.R;
 import com.youth.banner.adapter.BannerAdapter;
 
 import java.util.List;
@@ -16,13 +16,13 @@ import java.util.List;
 /**
  * 自定义布局，下面是常见的图片样式，更多实现可以看demo，可以自己随意发挥
  */
-public class MoviePosterAdapter extends BannerAdapter<MoviePoster, MoviePosterAdapter.BannerViewHolder> {
+public class MoviePosterAdapter extends BannerAdapter<String, MoviePosterAdapter.BannerViewHolder> {
 
     private Context mContext;
 
-    public MoviePosterAdapter(List<MoviePoster> moviePosterList) {
+    public MoviePosterAdapter(List<String> dataList) {
         //设置数据，也可以调用banner提供的方法,或者自己在adapter中实现
-        super(moviePosterList);
+        super(dataList);
     }
 
     //创建ViewHolder，可以用viewType这个字段来区分不同的ViewHolder
@@ -37,15 +37,15 @@ public class MoviePosterAdapter extends BannerAdapter<MoviePoster, MoviePosterAd
     }
 
     @Override
-    public void onBindView(BannerViewHolder holder, MoviePoster data, int position, int size) {
+    public void onBindView(BannerViewHolder holder, String data, int position, int size) {
         //holder.imageView.setImageResource(data.getImage());
-        Glide.with(mContext).load(data.getImage()).into(holder.imageView);
+        Glide.with(mContext).load(data).into(holder.imageView);
     }
 
-    class BannerViewHolder extends RecyclerView.ViewHolder {
+    static class BannerViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
 
-        public BannerViewHolder(@NonNull ImageView view) {
+        BannerViewHolder(@NonNull ImageView view) {
             super(view);
             this.imageView = view;
         }
