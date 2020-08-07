@@ -38,7 +38,7 @@ public class HotMovieFragment extends Fragment {
     private static final String TAG = "HotMovieFragment";
     private Context mContext;
     private static final String ARG_TYPE = "type";
-    private ProgressBar progressBar;
+
     private RecyclerView mRecyclerView;
     private HotMovieListAdapter mAdapter;
     private List<Movie.SubjectsBean> mDataList = new ArrayList<>();
@@ -75,7 +75,6 @@ public class HotMovieFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_item_list, container, false);
         mContext = getContext();
         mRecyclerView = view.findViewById(R.id.list);
-        progressBar = view.findViewById(R.id.progress_bar);
         initScrollListener();
         requestData(0);
 
@@ -121,7 +120,6 @@ public class HotMovieFragment extends Fragment {
 
             @Override
             public void onNext(final Movie movie) {
-                progressBar.setVisibility(View.GONE);
                 start = movie.getStart();
                 total = movie.getTotal();
                 Log.i(TAG, "数据点位:  start: " + start);
@@ -150,7 +148,6 @@ public class HotMovieFragment extends Fragment {
 
             @Override
             public void onError(Throwable e) {
-                progressBar.setVisibility(View.GONE);
                 Log.e(TAG, "onError:" + e.getMessage());
             }
 
