@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.uw.alice.R;
@@ -37,7 +38,7 @@ public class HotMovieFragment extends Fragment {
     private static final String TAG = "HotMovieFragment";
     private Context mContext;
     private static final String ARG_TYPE = "type";
-
+    private ProgressBar progressBar;
     private RecyclerView mRecyclerView;
     private HotMovieListAdapter mAdapter;
     private List<Movie.SubjectsBean> mDataList = new ArrayList<>();
@@ -74,6 +75,7 @@ public class HotMovieFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_item_list, container, false);
         mContext = getContext();
         mRecyclerView = view.findViewById(R.id.list);
+        progressBar = view.findViewById(R.id.progress_bar);
         initScrollListener();
         requestData(0);
 
@@ -96,11 +98,7 @@ public class HotMovieFragment extends Fragment {
                             if (!isLoading){
                                 isLoading = true;
                                 requestData(start + 20);
-                            }else {
-                                Log.d(TAG, "监听点位: 当前正在加载数据状态");
                             }
-                        }else {
-                            Log.d(TAG, "监听点位: 当前数据尚已加载完毕");
                         }
                     }
                 }
@@ -123,6 +121,7 @@ public class HotMovieFragment extends Fragment {
 
             @Override
             public void onNext(final Movie movie) {
+                progressBar.setVisibility(View.GONE);
                 start = movie.getStart();
                 total = movie.getTotal();
                 Log.i(TAG, "数据点位:  start: " + start);
@@ -151,6 +150,7 @@ public class HotMovieFragment extends Fragment {
 
             @Override
             public void onError(Throwable e) {
+                progressBar.setVisibility(View.GONE);
                 Log.e(TAG, "onError:" + e.getMessage());
             }
 
