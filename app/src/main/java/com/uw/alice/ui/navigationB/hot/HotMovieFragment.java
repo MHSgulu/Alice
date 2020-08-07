@@ -91,13 +91,9 @@ public class HotMovieFragment extends Fragment {
             public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
                 if (newState == RecyclerView.SCROLL_STATE_IDLE){
-                    Log.d(TAG, "监听点位: 当前列表不滚动");
                     if (!mRecyclerView.canScrollVertically(1)){
-                        Log.d(TAG, "监听点位: 当前列表无法向下滚动");
                         if (start < total){
-                            Log.d(TAG, "监听点位: 当前数据尚未加载完毕");
                             if (!isLoading){
-                                Log.d(TAG, "监听点位:  当前并未加载数据中，进入加载数据状态");
                                 isLoading = true;
                                 requestData(start + 20);
                             }else {
@@ -106,11 +102,7 @@ public class HotMovieFragment extends Fragment {
                         }else {
                             Log.d(TAG, "监听点位: 当前数据尚已加载完毕");
                         }
-                    }else {
-                        Log.d(TAG, "监听点位: 当前列表可以向下滚动");
                     }
-                }else {
-                    Log.d(TAG, "监听点位: 当前列表滚动中");
                 }
                 isLoading = false;
             }

@@ -1,5 +1,6 @@
 package com.uw.alice.ui.navigationB.hot;
 
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -69,6 +71,15 @@ public class HotMovieListAdapter extends RecyclerView.Adapter<HotMovieListAdapte
         holder.baseRatingBar.setRating((float)movie.getRating().getAverage() / 2);
         holder.tvMovieScore.setText(String.valueOf(movie.getRating().getAverage()));
 
+        float density = mContext.getResources().getDisplayMetrics().density;
+        int widthPixels = mContext.getResources().getDisplayMetrics().widthPixels;
+        float bannerWidthPx =  widthPixels - (15 + 100 + 10 + 15) * density;
+        float bannerHeightPx =  150 * density;
+        Log.i(TAG, "数据点位: bannerWidthPx: " + bannerWidthPx);
+        Log.i(TAG, "数据点位: bannerHeightPx: " + bannerHeightPx);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams((int)bannerWidthPx, (int)bannerHeightPx);
+        holder.cardView.setLayoutParams(params);
+
         if (!movie.getGenres().isEmpty()){
             holder.labelRecyclerView.setLayoutManager(new LinearLayoutManager(mContext,LinearLayoutManager.HORIZONTAL,false));
             holder.labelRecyclerView.setAdapter(new HotMovieLabelAdapter(movie.getGenres()));
@@ -128,6 +139,7 @@ public class HotMovieListAdapter extends RecyclerView.Adapter<HotMovieListAdapte
         final TextView tvMovieName,tvYear,tvMovieScore,tvMovieIntroduction;
         final BaseRatingBar baseRatingBar;
         final RecyclerView labelRecyclerView;
+        final CardView cardView;
 
         public ViewHolder(View view) {
             super(view);
@@ -139,6 +151,7 @@ public class HotMovieListAdapter extends RecyclerView.Adapter<HotMovieListAdapte
             tvMovieScore = view.findViewById(R.id.tv_movie_score);
             tvMovieIntroduction = view.findViewById(R.id.tv_movie_introduction);
             labelRecyclerView = view.findViewById(R.id.list_label);
+            cardView = view.findViewById(R.id.card_banner);
         }
 
     }
