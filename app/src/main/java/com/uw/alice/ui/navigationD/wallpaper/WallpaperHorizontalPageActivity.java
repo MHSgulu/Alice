@@ -12,6 +12,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.uw.alice.R;
 import com.uw.alice.assist.viewpager.DepthPageTransformer;
 import com.uw.alice.assist.viewpager.ZoomOutPageTransformer;
+import com.uw.alice.common.Function;
 
 import static androidx.fragment.app.FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT;
 
@@ -29,11 +30,6 @@ public class WallpaperHorizontalPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bing_daily_wallpaper);
         mContext = WallpaperHorizontalPageActivity.this;
-
-        final LinearLayout llBack = findViewById(R.id.ll_back);
-        llBack.setOnClickListener(v -> finish());
-
-
         mPager = findViewById(R.id.view_pager);
         pagerAdapter = new WallpaperSlidePagerAdapter(getSupportFragmentManager(),BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         mPager.setAdapter(pagerAdapter);

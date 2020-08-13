@@ -2,7 +2,6 @@ package com.uw.alice.ui.navigationD.wallpaper;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
@@ -28,12 +27,10 @@ public class WallpaperVerticalPageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_wallpaper_vertical);
         mContext = WallpaperVerticalPageActivity.this;
 
-        final LinearLayout llBack = findViewById(R.id.ll_back);
-        llBack.setOnClickListener(v -> finish());
-
         viewPager = findViewById(R.id.view_pager2);
         pagerAdapter = new VerticalSlidePagerAdapter(this);
         viewPager.setAdapter(pagerAdapter);
+
 
         //选择动画效果
         initSelectStyle();
