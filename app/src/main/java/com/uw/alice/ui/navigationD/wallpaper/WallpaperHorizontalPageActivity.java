@@ -33,8 +33,6 @@ public class WallpaperHorizontalPageActivity extends AppCompatActivity {
         final LinearLayout llBack = findViewById(R.id.ll_back);
         llBack.setOnClickListener(v -> finish());
 
-       /* final LinearLayout llMore = findViewById(R.id.ll_more);
-        llMore.setOnClickListener(v -> showMenu(llMore));*/
 
         mPager = findViewById(R.id.view_pager);
         pagerAdapter = new WallpaperSlidePagerAdapter(getSupportFragmentManager(),BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
