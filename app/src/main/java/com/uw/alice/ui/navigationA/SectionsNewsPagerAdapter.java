@@ -5,35 +5,31 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class SectionsNewsPagerAdapter extends FragmentStatePagerAdapter {
 
+    private List<String> tabTitleList;
 
-    private ArrayList<String> tab_title_list;//存放标签页标题
-    private ArrayList<Fragment> fragment_list;//存放ViewPager下的Fragment
-
-
-    public SectionsNewsPagerAdapter(@NonNull FragmentManager fm, ArrayList<String> tab_title_list, ArrayList<Fragment> fragment_list) {
-        super(fm);
-        this.tab_title_list = tab_title_list;
-        this.fragment_list = fragment_list;
+    SectionsNewsPagerAdapter(@NonNull FragmentManager fm, int behavior,List<String> tabList) {
+        super(fm,behavior);
+        this.tabTitleList = tabList;
     }
 
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        return fragment_list.get(position);
+        return PlaceholderFragment.newInstance(position+1);
     }
 
     @Override
     public int getCount() {
-        return fragment_list.size();
+        return tabTitleList.size();
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return tab_title_list.get(position);
+        return tabTitleList.get(position);
     }
 
 
