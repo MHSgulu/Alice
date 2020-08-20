@@ -1,4 +1,4 @@
-package com.uw.alice.ui.navigationC;
+package com.uw.alice.ui.navigationD.joke.fragment;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -16,13 +16,14 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.uw.alice.R;
 import com.uw.alice.data.model.PictureJoke;
 import com.uw.alice.data.util.Util;
 import com.uw.alice.databinding.FragmentPictureJokeBinding;
+import com.uw.alice.interfaces.OnItemClickListener;
 import com.uw.alice.network.retrofit.SingletonRetrofit;
+import com.uw.alice.ui.navigationD.joke.adapter.PictureJokeAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +45,7 @@ public class PictureJokeFragment extends Fragment {
     private int nextPage = 2;
 
 
-    static PictureJokeFragment newInstance() {
+    public static PictureJokeFragment newInstance() {
         return new PictureJokeFragment();
     }
 
@@ -63,14 +64,24 @@ public class PictureJokeFragment extends Fragment {
         //请求第一页的图片列表数据
         getPictureJokeListData(1);
 
+        initOnListener();
+
+        return mBinding.getRoot();
+    }
+
+
+    /**
+     * 初始化监听器
+     */
+    private void initOnListener() {
         mBinding.refreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
                 //请求第一页的图片列表数据
-                getPictureJokeListData(1);
+                PictureJokeFragment.this.getPictureJokeListData(1);
                 refreshLayout.finishRefresh(2500);
                 //下拉刷新，重置上拉加载的数据 使得用户在上拉加载达到上限时，重新浏览此页面的数据
-                if (nextPage > 10){
+                if (nextPage > 10) {
                     //重置 上拉加载变量标志
                     nextPage = 2;
                 }
@@ -78,35 +89,28 @@ public class PictureJokeFragment extends Fragment {
             }
         });
 
-        mBinding.refreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
-            @Override
-            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
-                if (nextPage <= 10){
-                    //请求下一页的动态图列表数据
-                    getPictureJokeListData(nextPage);
-                    refreshLayout.finishLoadMore(1000);
-                }else{
-                    final AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-                    builder.setTitle(R.string.AlertDialog_Tips_Title);
-                    builder.setMessage(R.string.AlertDialog_Tips_Content);
-                    builder.setPositiveButton(R.string.AlertDialog_Tips_Positive, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            builder.create().dismiss();
-                        }
-                    });
-                    builder.create().show();
-                    refreshLayout.finishLoadMoreWithNoMoreData();
-                }
-
+        mBinding.refreshLayout.setOnLoadMoreListener(refreshLayout -> {
+            if (nextPage <= 10){
+                //请求下一页的动态图列表数据
+                getPictureJokeListData(nextPage);
+                refreshLayout.finishLoadMore(1000);
+            }else{
+                final AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                builder.setTitle(R.string.AlertDialog_Tips_Title);
+                builder.setMessage(R.string.AlertDialog_Tips_Content);
+                builder.setPositiveButton(R.string.AlertDialog_Tips_Positive, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        builder.create().dismiss();
+                    }
+                });
+                builder.create().show();
+                refreshLayout.finishLoadMoreWithNoMoreData();
             }
+
         });
 
-
-
-        return mBinding.getRoot();
     }
-
 
 
     private void getPictureJokeListData(final int page) {
@@ -143,7 +147,7 @@ public class PictureJokeFragment extends Fragment {
                 }
 
 
-                mAdapter.setOnItemClickListener(new PictureJokeAdapter.OnItemClickListener() {
+                mAdapter.setOnItemClickListener(new OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
                         ImagePreview.getInstance()

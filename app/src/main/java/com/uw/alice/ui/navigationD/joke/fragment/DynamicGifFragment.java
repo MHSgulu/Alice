@@ -1,4 +1,4 @@
-package com.uw.alice.ui.navigationC;
+package com.uw.alice.ui.navigationD.joke.fragment;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -13,17 +13,14 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
-import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.uw.alice.R;
 import com.uw.alice.data.model.DynamicGif;
 import com.uw.alice.data.util.Util;
 import com.uw.alice.databinding.FragmentDynamicGifBinding;
 import com.uw.alice.network.retrofit.SingletonRetrofit;
+import com.uw.alice.ui.navigationD.joke.adapter.DynamicGifAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,14 +35,12 @@ public class DynamicGifFragment extends Fragment {
     private static final String TAG = "DynamicGifFragment";
     private Context mContext;
     private FragmentDynamicGifBinding mBinding;
-    private List<DynamicGif.ResultBean.ShowapiResBodyBean.ContentlistBean> mDataList = new ArrayList<>();
     private DynamicGifAdapter mAdapter;
-    //下一页 标志 从第二页开始
-    private int nextPage = 2;
 
-    static DynamicGifFragment newInstance() {
-       // Bundle args = new Bundle();
-        // fragment.setArguments(args);
+    private List<DynamicGif.ResultBean.ShowapiResBodyBean.ContentlistBean> mDataList = new ArrayList<>();
+    private int nextPage = 2; //下一页 标志 从第二页开始
+
+    public static DynamicGifFragment newInstance() {
         return new DynamicGifFragment();
     }
 
@@ -64,52 +59,53 @@ public class DynamicGifFragment extends Fragment {
         //请求第一页的动态图列表数据
         getDynamicGifListData(1);
 
-        mBinding.refreshLayout.setOnRefreshListener(new OnRefreshListener() {
-            @Override
-            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
-                //请求第一页的动态图列表数据
-                getDynamicGifListData(1);
-                refreshLayout.finishRefresh(2500);
-                //下拉刷新，重置上拉加载的数据 使得用户在上拉加载达到上限时，重新浏览此页面的数据
-                if (nextPage > 10){
-                    //重置 上拉加载变量标志
-                    nextPage = 2;
-                }
-
-            }
-        });
-
-        mBinding.refreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
-            @Override
-            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
-                if (nextPage <= 10){
-                    //请求下一页的动态图列表数据
-                    getDynamicGifListData(nextPage);
-                    refreshLayout.finishLoadMore(1000);
-                }else{
-                    final AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-                    builder.setTitle(R.string.AlertDialog_Tips_Title);
-                    builder.setMessage(R.string.AlertDialog_Tips_Content);
-                    builder.setPositiveButton(R.string.AlertDialog_Tips_Positive, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            builder.create().dismiss();
-                        }
-                    });
-                    //显示出对话框
-                    builder.create().show();
-                    refreshLayout.finishLoadMoreWithNoMoreData();
-                }
-
-            }
-        });
-
+        initOnListener();
 
         return mBinding.getRoot();
     }
 
 
-    //
+    /**
+     * 初始化监听器
+     */
+    private void initOnListener() {
+        mBinding.refreshLayout.setOnRefreshListener(refreshLayout -> {
+            //请求第一页的动态图列表数据
+            getDynamicGifListData(1);
+            refreshLayout.finishRefresh(2500);
+            //下拉刷新，重置上拉加载的数据 使得用户在上拉加载达到上限时，重新浏览此页面的数据
+            if (nextPage > 10){
+                //重置 上拉加载变量标志
+                nextPage = 2;
+            }
+
+        });
+
+        mBinding.refreshLayout.setOnLoadMoreListener(refreshLayout -> {
+            if (nextPage <= 10){
+                //请求下一页的动态图列表数据
+                getDynamicGifListData(nextPage);
+                refreshLayout.finishLoadMore(1000);
+            }else{
+                final AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                builder.setTitle(R.string.AlertDialog_Tips_Title);
+                builder.setMessage(R.string.AlertDialog_Tips_Content);
+                builder.setPositiveButton(R.string.AlertDialog_Tips_Positive, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        builder.create().dismiss();
+                    }
+                });
+                //显示出对话框
+                builder.create().show();
+                refreshLayout.finishLoadMoreWithNoMoreData();
+            }
+
+        });
+
+    }
+
+
     private void getDynamicGifListData(final int page) {
 
         Observer<DynamicGif> dynamicGifObserver = new Observer<DynamicGif>() {
@@ -131,7 +127,6 @@ public class DynamicGifFragment extends Fragment {
                                 mBinding.recycleList.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
                                 mBinding.recycleList.setAdapter(mAdapter);
                             }else{
-                                //mBinding.recycleList.setHasFixedSize(true);
                                 mDataList.addAll(dynamicGif.getResult().getShowapi_res_body().getContentlist());
                                 mAdapter.notifyDataSetChanged();
                                 nextPage = page+1;
@@ -149,18 +144,10 @@ public class DynamicGifFragment extends Fragment {
                 }
 
 
-                mAdapter.setOnItemClickListener(new DynamicGifAdapter.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(View view, int position) {
-                        ImagePreview.getInstance()
-                                .setContext(Objects.requireNonNull(getActivity()))
-                                .setIndex(0)
-                                .setImage(mDataList.get(position).getImg()).start();
-                    }
-                });
-
-
-
+                mAdapter.setOnItemClickListener((view, position) -> ImagePreview.getInstance()
+                        .setContext(Objects.requireNonNull(getActivity()))
+                        .setIndex(0)
+                        .setImage(mDataList.get(position).getImg()).start());
 
             }
 

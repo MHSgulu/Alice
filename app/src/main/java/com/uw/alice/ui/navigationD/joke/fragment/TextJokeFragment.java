@@ -1,4 +1,4 @@
-package com.uw.alice.ui.navigationC;
+package com.uw.alice.ui.navigationD.joke.fragment;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -15,25 +15,18 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
-import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.uw.alice.R;
-import com.uw.alice.data.model.PictureJoke;
 import com.uw.alice.data.model.TextJoke;
 import com.uw.alice.data.util.Util;
-import com.uw.alice.databinding.FragmentPictureJokeBinding;
 import com.uw.alice.databinding.FragmentTextJokeBinding;
 import com.uw.alice.network.retrofit.SingletonRetrofit;
-import com.uw.alice.ui.navigationA.ItemNewsDetailActivity;
+import com.uw.alice.ui.navigationD.joke.ItemTextJokeContentActivity;
+import com.uw.alice.ui.navigationD.joke.adapter.TextJokeAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
-import cc.shinichi.library.ImagePreview;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -42,13 +35,13 @@ public class TextJokeFragment extends Fragment {
     private static final String TAG = "TextJokeFragment";
     private FragmentTextJokeBinding mBinding;
     private Context mContext;
-    private List<TextJoke.ResultBean.ShowapiResBodyBean.ContentlistBean> mDataList = new ArrayList<>();
     private TextJokeAdapter mAdapter;
-    //下一页 标志 从第二页开始
-    private int nextPage = 2;
+
+    private List<TextJoke.ResultBean.ShowapiResBodyBean.ContentlistBean> mDataList = new ArrayList<>();
+    private int nextPage = 2;  //下一页 标志 从第二页开始
 
 
-    static TextJokeFragment newInstance() {
+    public static TextJokeFragment newInstance() {
         return new TextJokeFragment();
     }
 
@@ -67,50 +60,51 @@ public class TextJokeFragment extends Fragment {
         //请求第一页的文本列表数据
         getPictureJokeListData(1);
 
-        mBinding.refreshLayout.setOnRefreshListener(new OnRefreshListener() {
-            @Override
-            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
-                //请求第一页的文本列表数据
-                getPictureJokeListData(1);
-                refreshLayout.finishRefresh(2500);
-                //下拉刷新，重置上拉加载的数据 使得用户在上拉加载达到上限时，重新浏览此页面的数据
-                if (nextPage > 10){
-                    //重置 上拉加载变量标志
-                    nextPage = 2;
-                }
-
-            }
-        });
-
-        mBinding.refreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
-            @Override
-            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
-                if (nextPage <= 10){
-                    //请求第一页的文本列表数据
-                    getPictureJokeListData(nextPage);
-                    refreshLayout.finishLoadMore(1000);
-                }else{
-                    final AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-                    builder.setTitle(R.string.AlertDialog_Tips_Title);
-                    builder.setMessage(R.string.AlertDialog_Tips_Content);
-                    builder.setPositiveButton(R.string.AlertDialog_Tips_Positive, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            builder.create().dismiss();
-                        }
-                    });
-                    builder.create().show();
-                    refreshLayout.finishLoadMoreWithNoMoreData();
-                }
-
-            }
-        });
-
-
+        initOnListener();
 
         return mBinding.getRoot();
     }
 
+
+    /**
+     * 初始化监听器
+     */
+    private void initOnListener() {
+
+        mBinding.refreshLayout.setOnRefreshListener(refreshLayout -> {
+            //请求第一页的文本列表数据
+            getPictureJokeListData(1);
+            refreshLayout.finishRefresh(2500);
+            //下拉刷新，重置上拉加载的数据 使得用户在上拉加载达到上限时，重新浏览此页面的数据
+            if (nextPage > 10){
+                //重置 上拉加载变量标志
+                nextPage = 2;
+            }
+
+        });
+
+        mBinding.refreshLayout.setOnLoadMoreListener(refreshLayout -> {
+            if (nextPage <= 10){
+                //请求第一页的文本列表数据
+                getPictureJokeListData(nextPage);
+                refreshLayout.finishLoadMore(1000);
+            }else{
+                final AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                builder.setTitle(R.string.AlertDialog_Tips_Title);
+                builder.setMessage(R.string.AlertDialog_Tips_Content);
+                builder.setPositiveButton(R.string.AlertDialog_Tips_Positive, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        builder.create().dismiss();
+                    }
+                });
+                builder.create().show();
+                refreshLayout.finishLoadMoreWithNoMoreData();
+            }
+
+        });
+
+    }
 
 
     private void getPictureJokeListData(final int page) {
@@ -146,18 +140,12 @@ public class TextJokeFragment extends Fragment {
                     Toast.makeText(mContext, "code："+textJoke.getCode()+"请前往数据提供平台参照公共参数错误码", Toast.LENGTH_SHORT).show();
                 }
 
-
-                mAdapter.setOnItemClickListener(new TextJokeAdapter.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(View view, int position) {
-                        Intent intent = new Intent(mContext, ItemTextJokeContentActivity.class);
-                        intent.putExtra(Util.TextJokeTitle,mDataList.get(position).getTitle());
-                        intent.putExtra(Util.TextJokeContent,mDataList.get(position).getText());
-                        startActivity(intent);
-                    }
+                mAdapter.setOnItemClickListener((view, position) -> {
+                    Intent intent = new Intent(mContext, ItemTextJokeContentActivity.class);
+                    intent.putExtra(Util.TextJokeTitle,mDataList.get(position).getTitle());
+                    intent.putExtra(Util.TextJokeContent,mDataList.get(position).getText());
+                    startActivity(intent);
                 });
-
-
 
             }
 
