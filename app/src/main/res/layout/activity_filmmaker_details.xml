@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".ui.navigationB.filmmaker.FilmmakerDetailsActivity">
+    tools:context=".ui.navigationB.douban.filmmaker.FilmmakerDetailsActivity">
 
     <!--fitsSystemWindows
     布尔内部属性，用于根据系统窗口（如状态）调整视图布局酒吧。
@@ -93,6 +93,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:overScrollMode="never"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout

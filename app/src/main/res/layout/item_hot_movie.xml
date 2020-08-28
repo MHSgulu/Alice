@@ -48,7 +48,6 @@
 
         </androidx.cardview.widget.CardView>
 
-
     </LinearLayout>
 
     <TextView
@@ -74,6 +73,33 @@
         app:layout_constraintTop_toBottomOf="@+id/ll_top"
         app:layout_constraintStart_toEndOf="@+id/tv_movie_name"/>
 
+    <LinearLayout
+        android:id="@+id/ll_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="5dp"
+        android:background="@drawable/bg_coming_soon_date"
+        app:layout_constraintTop_toBottomOf="@+id/tv_year"
+        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/comingSoonDateColor"
+            android:textSize="10sp"
+            tools:text="05-26上映"
+            tools:ignore="SmallSp" />
+
+    </LinearLayout>
+
     <com.willy.ratingbar.BaseRatingBar
         android:id="@+id/baseRatingBar"
         android:layout_width="wrap_content"
@@ -89,7 +115,8 @@
         app:srb_starPadding="0dp"
         app:srb_stepSize="0.5"
         app:layout_constraintTop_toBottomOf="@+id/tv_year"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="visible"/>
 
     <TextView
         android:id="@+id/tv_movie_score"
@@ -100,7 +127,8 @@
         tools:text="8.6"
         android:textSize="12sp"
         app:layout_constraintTop_toBottomOf="@+id/tv_year"
-        app:layout_constraintStart_toEndOf="@+id/baseRatingBar"/>
+        app:layout_constraintStart_toEndOf="@+id/baseRatingBar"
+        android:visibility="visible"/>
 
     <TextView
         android:id="@+id/tv_movie_introduction"
@@ -120,10 +148,5 @@
         android:layout_marginTop="10dp"
         tools:listitem="@layout/item_hot_movie_label_list"
         app:layout_constraintTop_toBottomOf="@+id/tv_movie_introduction"/>
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        app:layout_constraintTop_toBottomOf="@+id/list_label"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

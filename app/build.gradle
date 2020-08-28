@@ -8,7 +8,7 @@ android {
     }
     defaultConfig {
         applicationId "com.uw.alice"
-        minSdkVersion 26
+        minSdkVersion 28
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -16,7 +16,7 @@ android {
     }
     buildTypes {
         release {
- // 以AS为例，在应用module下的build.gradle文件内，如果配置了proguardFiles，并且启用了minifyEnabled，则表明已使用指定的配置文件（一般为proguard-rules.pro）进行了代码混淆
+            // 以AS为例，在应用module下的build.gradle文件内，如果配置了proguardFiles，并且启用了minifyEnabled，则表明已使用指定的配置文件（一般为proguard-rules.pro）进行了代码混淆
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -31,16 +31,17 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     //Android MDC 材料设计组件
-    implementation 'com.google.android.material:material:1.2.0-alpha06'
+    implementation 'com.google.android.material:material:1.2.0'
 
     //调色板库，用于从图片中提取突出颜色
     implementation 'androidx.palette:palette:1.0.0'
-
 
     //导航组件
     implementation 'androidx.navigation:navigation-fragment:2.1.0'
@@ -48,10 +49,8 @@ dependencies {
     //生命周期感知组件(ViewModel的扩展ViewModelProviders)
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
 
-
     //OkHttp
     implementation("com.squareup.okhttp3:okhttp:4.7.2")
-
 
     //retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.6.2'
@@ -76,16 +75,20 @@ dependencies {
     // 查看大图  需要上面3个依赖
     implementation 'com.github.SherlockGougou:BigImageViewPager:androidx-5.0.4'
 
-
     //Android智能下拉刷新框架-SmartRefreshLayout
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0'
     implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0'  //没有使用特殊Header，可以不加这行
-
 
     //HtmlTextView
     implementation 'org.sufficientlysecure:html-textview:3.9'
 
     //轮播控件
     implementation 'com.youth.banner:banner:2.0.10'
+
+    //SimpleRatingBar  评分控件
+    implementation 'com.github.ome450901:SimpleRatingBar:1.5.0'
+
+    //PhotoView 旨在帮助生成易于使用的缩放Android ImageView实现
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
 
 }

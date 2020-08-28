@@ -1,0 +1,723 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:background="@color/darkGrey">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/darkGrey"
+        android:visibility="visible">
+
+        <RelativeLayout
+            android:id="@+id/rl_title"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <LinearLayout
+                android:id="@+id/ll_back"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@mipmap/icon_back" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/movie"
+                android:textColor="@color/white"
+                android:textSize="17sp" />
+
+            <LinearLayout
+                android:id="@+id/ll_share"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_alignParentEnd="true">
+
+                <ImageView
+                    android:id="@+id/ibt_share"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@mipmap/icon_share"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:overScrollMode="never"
+        android:layout_marginBottom="20dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!--电影信息栏-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="110dp"
+                    android:layout_height="160dp"
+                    android:layout_marginStart="10dp"
+                    app:cardCornerRadius="4dp"
+                    app:cardElevation="6dp">
+
+                    <ImageView
+                        android:id="@+id/iv_movie_poster"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        tools:background="@color/white"/>
+
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_movie_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        tools:text="电影中文名"
+                        android:textSize="20sp"
+                        android:textColor="@color/white"
+                        android:maxLines="2"
+                        android:textStyle="bold"
+                        android:ellipsize="end"/>
+
+                    <TextView
+                        android:id="@+id/tv_movie_original_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        tools:text="电影原名"
+                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:maxLines="2"
+                        android:textStyle="bold"
+                        android:ellipsize="end"/>
+
+                    <TextView
+                        android:id="@+id/tv_movie_information"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        tools:text="电影类型"
+                        android:textSize="12sp"
+                        android:textColor="@color/white70"
+                        android:maxLines="2"
+                        android:ellipsize="end"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!--评分信息栏-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:orientation="vertical"
+                android:background="@drawable/bg_movie_score_details">
+
+                <!--文字栏 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white70"
+                        android:textSize="12sp"
+                        android:text="电影评分"/>
+
+                    <com.willy.ratingbar.BaseRatingBar
+                        android:id="@+id/baseRatingBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="5dp"
+                        app:srb_drawableEmpty="@mipmap/icon_start_empty"
+                        app:srb_drawableFilled="@mipmap/icon_star_filled"
+                        app:srb_isIndicator="true"
+                        app:srb_minimumStars="0"
+                        app:srb_numStars="5"
+                        app:srb_starWidth="12dp"
+                        app:srb_starHeight="12dp"
+                        app:srb_starPadding="0dp"
+                        app:srb_stepSize="0.5" />
+
+                    <TextView
+                        android:id="@+id/tv_movie_score"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:textSize="15sp"
+                        android:textColor="@color/white"
+                        tools:text="8.5"/>
+
+                </LinearLayout>
+
+                <!--评分细节-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <!--<TextView
+                            android:id="@+id/tv_movie_score"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="30sp"
+                            android:textColor="@color/white"
+                            tools:text="8.5"/>
+
+                        <com.willy.ratingbar.BaseRatingBar
+                            android:id="@+id/baseRatingBar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:srb_drawableEmpty="@mipmap/icon_start_empty"
+                            app:srb_drawableFilled="@mipmap/icon_star_filled"
+                            app:srb_isIndicator="true"
+                            app:srb_minimumStars="0"
+                            app:srb_numStars="5"
+                            app:srb_starWidth="12dp"
+                            app:srb_starHeight="12dp"
+                            app:srb_starPadding="0dp"
+                            app:srb_stepSize="0.5" />-->
+
+                    </LinearLayout>
+
+                    <!--评分占比栏-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:gravity="center_vertical">
+
+                            <com.willy.ratingbar.BaseRatingBar
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:srb_isIndicator="true"
+                                app:srb_drawableEmpty="@mipmap/icon_start_empty"
+                                app:srb_numStars="5"
+                                app:srb_starWidth="10dp"
+                                app:srb_starHeight="10dp"
+                                app:srb_starPadding="0dp"
+                                android:layout_toStartOf="@+id/progress_bar_1"/>
+
+                            <ProgressBar
+                                android:id="@+id/progress_bar_1"
+                                android:layout_width="120dp"
+                                android:layout_height="4dp"
+                                android:layout_centerVertical="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginEnd="20dp"
+                                android:layout_marginStart="5dp"
+                                android:background="@color/white70"
+                                android:max="100"
+                                android:progressDrawable="@drawable/bg_progressbar"
+                                style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
+
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:gravity="center_vertical">
+
+                            <com.willy.ratingbar.BaseRatingBar
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:srb_isIndicator="true"
+                                app:srb_drawableEmpty="@mipmap/icon_start_empty"
+                                app:srb_numStars="4"
+                                app:srb_starWidth="10dp"
+                                app:srb_starHeight="10dp"
+                                app:srb_starPadding="0dp"
+                                android:layout_toStartOf="@+id/progress_bar_2"/>
+
+                            <ProgressBar
+                                android:id="@+id/progress_bar_2"
+                                android:layout_width="120dp"
+                                android:layout_height="4dp"
+                                android:layout_centerVertical="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginEnd="20dp"
+                                android:layout_marginStart="5dp"
+                                android:max="100"
+                                android:progressDrawable="@drawable/bg_progressbar"
+                                style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
+
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:gravity="center_vertical">
+
+                            <com.willy.ratingbar.BaseRatingBar
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:srb_isIndicator="true"
+                                app:srb_drawableEmpty="@mipmap/icon_start_empty"
+                                app:srb_numStars="3"
+                                app:srb_starWidth="10dp"
+                                app:srb_starHeight="10dp"
+                                app:srb_starPadding="0dp"
+                                android:layout_toStartOf="@+id/progress_bar_3"/>
+
+                            <ProgressBar
+                                android:id="@+id/progress_bar_3"
+                                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                                android:layout_width="120dp"
+                                android:layout_height="4dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginEnd="20dp"
+                                android:background="@color/white70"
+                                android:max="100"
+                                android:progressDrawable="@drawable/bg_progressbar" />
+
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:gravity="center_vertical">
+
+                            <com.willy.ratingbar.BaseRatingBar
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:srb_isIndicator="true"
+                                app:srb_drawableEmpty="@mipmap/icon_start_empty"
+                                app:srb_numStars="2"
+                                app:srb_starWidth="10dp"
+                                app:srb_starHeight="10dp"
+                                app:srb_starPadding="0dp"
+                                android:layout_toStartOf="@+id/progress_bar_4"/>
+
+                            <ProgressBar
+                                android:id="@+id/progress_bar_4"
+                                android:layout_width="120dp"
+                                android:layout_height="4dp"
+                                android:layout_centerVertical="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginEnd="20dp"
+                                android:layout_marginStart="5dp"
+                                android:background="@color/white70"
+                                android:max="100"
+                                android:progressDrawable="@drawable/bg_progressbar"
+                                style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
+
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:gravity="center_vertical">
+
+                            <com.willy.ratingbar.BaseRatingBar
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:srb_isIndicator="true"
+                                app:srb_drawableEmpty="@mipmap/icon_start_empty"
+                                app:srb_numStars="1"
+                                app:srb_starWidth="10dp"
+                                app:srb_starHeight="10dp"
+                                app:srb_starPadding="0dp"
+                                android:layout_toStartOf="@+id/progress_bar_5"/>
+
+                            <ProgressBar
+                                android:id="@+id/progress_bar_5"
+                                android:layout_width="120dp"
+                                android:layout_height="4dp"
+                                android:layout_centerVertical="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginEnd="20dp"
+                                android:layout_marginStart="5dp"
+                                android:background="@color/white70"
+                                android:max="100"
+                                android:progressDrawable="@drawable/bg_progressbar"
+                                style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
+
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!--分割线-->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@color/white38" />
+
+                <!--看过与想看-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white70"
+                        android:textSize="12sp"
+                        android:text="影迷标记"/>
+
+                    <TextView
+                        android:id="@+id/tv_score_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:textColor="@color/white54"
+                        android:textSize="11sp"
+                        tools:text="3000人评分"
+                        tools:ignore="SmallSp" />
+
+                    <TextView
+                        android:id="@+id/tv_watch_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:textColor="@color/white54"
+                        android:textSize="11sp"
+                        tools:text="3.5万人看过"
+                        tools:ignore="SmallSp" />
+
+                    <TextView
+                        android:id="@+id/tv_wish_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:textColor="@color/white54"
+                        android:textSize="11sp"
+                        tools:text="2.5万人想看"
+                        tools:ignore="SmallSp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!--相关分类-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="相关分类"
+                    android:textSize="12sp"
+                    android:textColor="@color/white54"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/list_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp" />
+
+            </LinearLayout>
+
+            <!--简介栏-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="20dp"
+                android:text="简介"
+                android:textSize="16sp"
+                android:textColor="@color/white"/>
+            <TextView
+                android:id="@+id/tv_introduction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                tools:text="电影简介"
+                android:textSize="14sp"
+                android:textColor="@color/white70"
+                android:maxLines="4"
+                android:ellipsize="end"/>
+            <LinearLayout
+                android:id="@+id/ll_open"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:visibility="invisible">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="展开"
+                    android:textSize="13sp"
+                    android:textColor="@color/white70"/>
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp"
+                    android:background="@mipmap/icon_arrow_down"/>
+
+            </LinearLayout>
+
+            <!--演职员栏-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="演职员"
+                    android:textSize="16sp"
+                    android:textColor="@color/white"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@+id/iv_next_actor"
+                    android:layout_marginEnd="5dp"
+                    android:text="全部"
+                    android:textSize="11sp"
+                    android:textColor="@color/white70"
+                    tools:ignore="SmallSp" />
+
+                <ImageView
+                    android:id="@+id/iv_next_actor"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="20dp"
+                    android:background="@mipmap/icon_next_white70"/>
+
+            </RelativeLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list_cast"
+                android:layout_width="match_parent"
+                android:layout_height="165dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp" />
+
+            <!--预告片 剧照栏-->
+            <RelativeLayout
+                android:id="@+id/rl_movie_still"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="预告片 / 剧照"
+                    android:textSize="16sp"
+                    android:textColor="@color/white"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@+id/iv_next_still"
+                    android:layout_marginEnd="5dp"
+                    android:text="全部"
+                    android:textSize="11sp"
+                    android:textColor="@color/white70"
+                    tools:ignore="SmallSp" />
+
+                <ImageView
+                    android:id="@+id/iv_next_still"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="20dp"
+                    android:background="@mipmap/icon_next_white70"/>
+
+
+            </RelativeLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list_still"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp" />
+
+            <!--短评栏-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="vertical"
+                android:background="@drawable/bg_movie_score_details">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:text="短评"
+                        android:textSize="16sp"
+                        android:textColor="@color/white"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toStartOf="@+id/tv_short_comment_count"
+                        android:layout_marginEnd="5dp"
+                        android:text="全部"
+                        android:textSize="11sp"
+                        android:textColor="@color/white70"
+                        tools:ignore="SmallSp" />
+
+                    <TextView
+                        android:id="@+id/tv_short_comment_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toStartOf="@+id/iv_next_comment"
+                        android:layout_marginEnd="5dp"
+                        tools:text="233"
+                        android:textSize="12sp"
+                        android:textColor="@color/white70"
+                        tools:ignore="SmallSp" />
+
+                    <ImageView
+                        android:id="@+id/iv_next_comment"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:background="@mipmap/icon_next_white70"/>
+
+                </RelativeLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/list_short_comment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:overScrollMode="never"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:text="查看全部短评"
+                        android:textSize="14sp"
+                        android:textColor="@color/white70"/>
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:background="@mipmap/icon_next_white70"/>
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+

@@ -99,7 +99,6 @@
 
                 </LinearLayout>
 
-
                 <org.sufficientlysecure.htmltextview.HtmlTextView
                     android:id="@+id/tv_content"
                     android:layout_width="match_parent"
@@ -111,7 +110,6 @@
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     tools:text="新闻内容" />
-
 
             </LinearLayout>
 

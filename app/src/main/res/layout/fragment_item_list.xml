@@ -12,7 +12,6 @@
         android:layout_height="match_parent"
         app:layoutManager="LinearLayoutManager"
         tools:listitem="@layout/item_hot_movie"
-        android:overScrollMode="never"
-        android:visibility="visible"/>
+        android:overScrollMode="never" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

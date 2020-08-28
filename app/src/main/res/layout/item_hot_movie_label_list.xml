@@ -9,7 +9,7 @@
     app:cardElevation="0dp"
     android:layout_marginEnd="10dp"
     android:backgroundTint="@color/hotMovieList_activity_movieLabelBackgroundColor"
-    tools:context=".ui.navigationB.hot.HotMovieLabelAdapter">
+    tools:context=".ui.navigationB.douban.hot.HotMovieLabelAdapter">
 
     <TextView
         android:id="@+id/tv_movie_label"

@@ -9,6 +9,10 @@ import com.uw.alice.data.model.FilmmakerPhoto;
 import com.uw.alice.data.model.HotSpot;
 import com.uw.alice.data.model.Idiom;
 import com.uw.alice.data.model.IdiomKeyword;
+import com.uw.alice.data.model.MTimeActorDetail;
+import com.uw.alice.data.model.MTimeComingMovie;
+import com.uw.alice.data.model.MTimeInTheatersMovie;
+import com.uw.alice.data.model.MTimeMovieDetail;
 import com.uw.alice.data.model.MobilePhone;
 import com.uw.alice.data.model.Movie;
 import com.uw.alice.data.model.MovieDetails;
@@ -36,9 +40,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class SingletonRetrofit  {
 
-    private Retrofit retrofit1,retrofit2,retrofit3,retrofit4,retrofit5;
+    private Retrofit retrofit,retrofit1,retrofit2,retrofit3,retrofit4,retrofit5,retrofit6,retrofit7;
     private final OkHttpClient okHttpClient;
-    private APIService apiService1,apiService2,apiService3,apiService4,apiService5;
+    private APIService apiService,apiService1,apiService2,apiService3,apiService4,apiService5,apiService6,apiService7;
 
 
     private SingletonRetrofit() {
@@ -56,6 +60,13 @@ public class SingletonRetrofit  {
         //服务器地址，基础请求路径，最好以"/"结尾
         //配置转化库，采用Gson  开启后，会自动把请求返回的结果（json字符串）自动转化成与其结构相符的实体。
         //配置回调库，采用RxJava2
+
+        //空 基地址 不允许
+        /*retrofit = new Retrofit.Builder()
+                *//*.client(okHttpClient)*//*
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();*/
 
         //豆瓣API
         retrofit1 = new Retrofit.Builder()
@@ -97,6 +108,23 @@ public class SingletonRetrofit  {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
+        //时光网 API  1
+        retrofit6 = new Retrofit.Builder()
+                .baseUrl(Util.M_TIME_API_URL)
+                /*.client(okHttpClient)*/
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        //时光网 API  2
+        retrofit7 = new Retrofit.Builder()
+                .baseUrl(Util.MT_TIME_API_URL)
+                /*.client(okHttpClient)*/
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+
         //豆瓣Service
         apiService1 = retrofit1.create(APIService.class);
         //京东万象Service
@@ -107,6 +135,10 @@ public class SingletonRetrofit  {
         apiService4 = retrofit4.create(APIService.class);
         //必应每日壁纸Service
         apiService5 = retrofit5.create(APIService.class);
+        //时光网Service 1
+        apiService6 = retrofit6.create(APIService.class);
+        //时光网Service 2
+        apiService7 = retrofit7.create(APIService.class);
 
     }
 
@@ -144,8 +176,8 @@ public class SingletonRetrofit  {
      * @param observer  由调用者传过来的观察者对象
      * @param apiKey  key值
      */
-    public void queryMovieOnShow(Observer<Movie> observer, String apiKey){
-        apiService1.getFilmsOnShow(apiKey)
+    public void queryMovieOnShow(Observer<Movie> observer, String apiKey,int start,int count){
+        apiService1.getFilmsOnShow(apiKey,start,count)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -158,8 +190,8 @@ public class SingletonRetrofit  {
      * @param observer  由调用者传过来的观察者对象
      * @param apiKey  key值
      */
-    public void queryMovieUpcoming(Observer<Movie> observer, String apiKey){
-        apiService1.getMovieComingSoon(apiKey)
+    public void queryMovieUpcoming(Observer<Movie> observer, String apiKey,int start,int count){
+        apiService1.getMovieComingSoon(apiKey,start,count)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -237,10 +269,10 @@ public class SingletonRetrofit  {
      * @param channel  频道
      * @param num  数量 默认10，最大40
      * @param start  起始位置，默认0
-     * @param appkey key值
+     * @param appKey key值
      */
-    public void getNews(Observer<News> observer, String channel, String num, String start, String appkey){
-        apiService2.getNews(channel,num,start,appkey)
+    public void getNews(Observer<News> observer, String channel, String num, String start, String appKey){
+        apiService2.getNews(channel,num,start,appKey)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -251,10 +283,10 @@ public class SingletonRetrofit  {
     /**
      * 获取 新闻频道
      * @param observer  由调用者传过来的观察者对象
-     * @param appkey key值
+     * @param appKey key值
      */
-    public void getNewsChannel(Observer<NewsChannel> observer, String appkey){
-        apiService2.getNewsChannel(appkey)
+    public void getNewsChannel(Observer<NewsChannel> observer, String appKey){
+        apiService2.getNewsChannel(appKey)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -266,10 +298,10 @@ public class SingletonRetrofit  {
      * 获取 关键词查询新闻
      * @param observer  由调用者传过来的观察者对象
      * @param keyword 关键词
-     * @param appkey key值
+     * @param appKey key值
      */
-    public void getSearchNews(Observer<NewsSearch> observer, String keyword, String appkey){
-        apiService2.getSearchNews(keyword,appkey)
+    public void getSearchNews(Observer<NewsSearch> observer, String keyword, String appKey){
+        apiService2.getSearchNews(keyword,appKey)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -281,10 +313,10 @@ public class SingletonRetrofit  {
      *查询  热词排行
      * @param observer  由调用者传过来的观察者对象
      * @param typeId 分类id
-     * @param appkey key值
+     * @param appKey key值
      */
-    public void getHotSpotRanking(Observer<HotSpot> observer, String typeId, String appkey){
-        apiService2.getHotSpotRanking(typeId,appkey)
+    public void getHotSpotRanking(Observer<HotSpot> observer, String typeId, String appKey){
+        apiService2.getHotSpotRanking(typeId,appKey)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -298,10 +330,10 @@ public class SingletonRetrofit  {
      * @param observer 由调用者传过来的观察者对象
      * @param page 第几页
      * @param maxResult 最大结果集   20
-     * @param appkey key值
+     * @param appKey key值
      */
-    public void getDynamicGif(Observer<DynamicGif> observer, int page, int maxResult, String appkey){
-        apiService2.getDynamicGif(page,maxResult,appkey)
+    public void getDynamicGif(Observer<DynamicGif> observer, int page, int maxResult, String appKey){
+        apiService2.getDynamicGif(page,maxResult,appKey)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -315,10 +347,10 @@ public class SingletonRetrofit  {
      * @param time 该时间以来最新的笑话. 格式：yyyy-MM-dd
      * @param page 第几页
      * @param maxResult 最大结果集   20
-     * @param appkey key值
+     * @param appKey key值
      */
-    public void getPictureJoke(Observer<PictureJoke> observer, String time, int page, int maxResult, String appkey){
-        apiService2.getPictureJoke(time,page,maxResult,appkey)
+    public void getPictureJoke(Observer<PictureJoke> observer, String time, int page, int maxResult, String appKey){
+        apiService2.getPictureJoke(time,page,maxResult,appKey)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -333,10 +365,10 @@ public class SingletonRetrofit  {
      * @param page 第几页
      * @param maxResult 最大结果集   20
      * @param showapi_sign 固定值
-     * @param appkey key值
+     * @param appKey key值
      */
-    public void getTextJoke(Observer<TextJoke> observer, String time, int page, String maxResult, String showapi_sign,String appkey){
-        apiService2.getTextJoke(time,page,maxResult,showapi_sign,appkey)
+    public void getTextJoke(Observer<TextJoke> observer, String time, int page, String maxResult, String showapi_sign,String appKey){
+        apiService2.getTextJoke(time,page,maxResult,showapi_sign,appKey)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -348,10 +380,10 @@ public class SingletonRetrofit  {
      *查询  手机号码归属地查询
      * @param observer  由调用者传过来的观察者对象
      * @param shouji 手机号
-     * @param appkey key值
+     * @param appKey key值
      */
-    public void queryMobilePhoneNumberHome(Observer<MobilePhone> observer, String shouji, String appkey){
-        apiService2.queryMobilePhoneNumberHome(shouji,appkey)
+    public void queryMobilePhoneNumberHome(Observer<MobilePhone> observer, String shouji, String appKey){
+        apiService2.queryMobilePhoneNumberHome(shouji,appKey)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -485,6 +517,63 @@ public class SingletonRetrofit  {
     }
 
 
+
+    /**
+     * 时光网API 正在热映
+     * @param observer  由调用者传过来的观察者对象
+     * @param locationId 城市ID
+     */
+    public void fetchMTimeMovieInTheaters(Observer<MTimeInTheatersMovie> observer, String locationId){
+        apiService6.getMTimeMovieInTheaters(locationId)
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer);
+    }
+
+
+    /**
+     * 时光网API 即将上映
+     * @param observer  由调用者传过来的观察者对象
+     * @param locationId 城市ID
+     */
+    public void fetchMTimeMovieComingSoon(Observer<MTimeComingMovie> observer, String locationId){
+        apiService6.getMTimeMovieComingSoon(locationId)
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer);
+    }
+
+
+    /**
+     * 时光网API 影片详情
+     * @param observer  由调用者传过来的观察者对象
+     * @param locationId 城市ID
+     * @param movieId    电影ID
+     */
+    public void fetchMTimeMovieDetail(Observer<MTimeMovieDetail> observer, String locationId,int movieId){
+        apiService7.getMTimeMovieDetail(locationId,movieId)
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer);
+    }
+
+
+    /**
+     * 时光网API 影人详情
+     * @param observer  由调用者传过来的观察者对象
+     * @param cityId 城市ID
+     * @param personId 影人ID
+     */
+    public void fetchMTimeActorDetail(Observer<MTimeActorDetail> observer, String personId, String cityId){
+        apiService7.getMTimeActorDetail(personId,cityId)
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer);
+    }
 
 
 

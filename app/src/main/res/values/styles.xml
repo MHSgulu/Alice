@@ -10,10 +10,8 @@
     </style>
 
 
-    <!--item 注视区域-->
+    <!--item 注释区域-->
     <!--<item name="android:windowIsTranslucent">true</item>--> <!--指示这是否是半透明窗口的标志-->
-
-
 
     <!--SplashActivity -->
     <style name="splashTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
@@ -21,7 +19,6 @@
         <item name="android:windowFullscreen">true</item><!--指示此窗口是否应填充整个屏幕的标志-->
         <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item><!--延伸显示区域到刘海屏区域 最低API28-->
     </style>
-
 
     <!--MainActivity活动范围之外的Activity使用-->
     <style name="CommonTheme" parent="Theme.MaterialComponents.Light.NoActionBar">

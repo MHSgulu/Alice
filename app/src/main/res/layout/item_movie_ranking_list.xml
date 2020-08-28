@@ -6,7 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="200dp"
         android:layout_height="200dp"
-        tools:context=".ui.navigationB.MovieRankingListAdapter">
+        tools:context=".ui.navigationB.douban.adapter.MovieRankingListAdapter">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"

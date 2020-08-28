@@ -6,7 +6,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="10dp"
-    tools:context=".ui.navigationB.MovieShowingUpAdapter">
+    tools:context=".ui.navigationB.douban.adapter.MovieShowingUpAdapter">
 
 
     <!--豆瓣电影海报封面长宽比例1.5：1-->

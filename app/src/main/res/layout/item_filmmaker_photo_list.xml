@@ -7,7 +7,7 @@
     android:layout_height="100dp"
     android:scaleType="centerCrop"
     tools:background="@color/colorNavigationC"
-    tools:context=".ui.navigationB.filmmaker.FilmMakerPhotoAdapter"/>
+    tools:context=".ui.navigationB.douban.filmmaker.FilmMakerPhotoAdapter"/>
 
 
 

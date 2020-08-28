@@ -5,17 +5,21 @@
     <!--Activity组件描述-->
     <string name="activity_description_main">首页</string>
     <string name="activity_description_FilmmakerDetails">影人详情页</string>
+    <string name="activity_description_MTimeFilmmakerDetails">时光网影人详情页</string>
     <string name="activity_description_ItemNewsDetail">新闻详情页</string>
     <string name="activity_description_SearchNews">搜索新闻页</string>
     <string name="activity_description_RealTimeHotSpotRanking">实时热点页</string>
     <string name="activity_description_HotMovieList">热门电影列表页</string>
-    <string name="activity_description_MovieDetails">电影详情页</string>
+    <string name="activity_description_HotMTimeMovieList">时光网热门电影列表页</string>
+    <string name="activity_description_MovieDetails">豆瓣电影详情页</string>
+    <string name="activity_description_MTimeMovieDetails">时光网电影详情页</string>
     <string name="activity_description_ItemTextJokeContent">文本笑话内容页</string>
     <string name="activity_description_QueryPhoneNumber">查询手机号码归属地页</string>
     <string name="activity_description_WallpaperHorizontalPageActivity">必应壁纸横向滑动页</string>
     <string name="activity_description_WallpaperVerticalPageActivity">必应壁纸垂直滑动页</string>
     <string name="activity_description_BingWallpaperListActivity">必应壁纸列表滑动页</string>
     <string name="activity_description_IntelligentChatRobot">智能机器人聊天界面页</string>
+    <string name="activity_description_GraphicJokes">生活趣图页</string>
     <string name="activity_description_InspirationalQuotations">英文励志语录页</string>
     <string name="activity_description_CorpusOfIdioms">成语大全页</string>
     <string name="activity_description_TaoModels">淘宝模特页</string>
@@ -75,10 +79,9 @@
     <string name="navigation_b_tab_title_2">图书</string>
     <string name="navigation_b_tab_title_3">音乐</string>
 
-
-    <string name="navigation_c_tab_title_1">动态图</string>
-    <string name="navigation_c_tab_title_2">图片</string>
-    <string name="navigation_c_tab_title_3">文本</string>
+    <string name="activity_graphic_joke_tab_label_1">动态图</string>
+    <string name="activity_graphic_joke_tab_label_2">图片</string>
+    <string name="activity_graphic_joke_tab_label_3">文本</string>
 
     <string name="navigation_d_idiom_tab_title_1">成语查注释</string>
     <string name="navigation_d_idiom_tab_title_2">关键字查成语</string>
@@ -125,6 +128,7 @@
     <string name="bing_daily_wallpaper">必应精选壁纸</string>
     <string name="bing_lately_wallpaper">必应一周精选壁纸</string>
     <string name="search_for_Tao_girls">淘女郎模特查询</string>
+    <string name="fragment_my_joke_text">生活趣图</string>
     <string name="intelligent_chat_robot">智能聊天机器人菲菲</string>
     <string name="icr_fei">菲菲</string>
     <string name="mobilePhoneNumber">手机号:</string>
@@ -142,6 +146,9 @@
 
 
     <string name="movie">电影</string>
+
+
+    <string name="test_movie_introduction">基宇（崔宇植 饰）出生在一个贫穷的家庭之中，和妹妹基婷（朴素丹 饰）以及父母在狭窄的地下室里过着相依为命的日子。一天，基宇的同学上门拜访，他告诉基宇，自己在一个有钱人家里给他们的女儿做家教，太太是一个头脑简单出手又阔绰的女人，因为自己要出国留学，所以将家教的职位暂时转交给基宇。</string>
 
 
 </resources>

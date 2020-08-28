@@ -3,12 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.uw.alice">
     <!-- APP请求数据必须网络权限 -->
-    <uses-permission android:name="android.permission.INTERNET" />
-    <!-- Glide 您打算从url或通过网络连接加载图像，则应在INTERNET和中添加和ACCESS_NETWORK_STATE权限AndroidManifest.xml： -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <!-- Glide 要从本地文件夹（如DCIM或图片）加载图像，您需要添加READ_EXTERNAL_STORAGE权限： -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <!-- Glide 要用于ExternalPreferredCacheDiskCacheFactory将Glide的缓存存储在公共sdcard上，您需要使用 WRITE_EXTERNAL_STORAGE权限： -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- Glide 您打算从url或通过网络连接加载图像，则应在INTERNET和中添加和ACCESS_NETWORK_STATE权限AndroidManifest.xml： -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- Glide 要从本地文件夹（如DCIM或图片）加载图像，您需要添加READ_EXTERNAL_STORAGE权限： -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- Glide 要用于ExternalPreferredCacheDiskCacheFactory将Glide的缓存存储在公共sdcard上，您需要使用 WRITE_EXTERNAL_STORAGE权限： -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
@@ -17,7 +14,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity
             android:name=".ui.splash.SplashActivity"
             android:theme="@style/splashTheme">
@@ -42,18 +38,29 @@
             android:name=".ui.navigationA.RealTimeHotSpotRankingActivity"
             android:description="@string/activity_description_RealTimeHotSpotRanking"
             android:theme="@style/CommonTheme" />
-        <activity android:name=".ui.navigationB.hot.HotMovieListActivity"
-            android:description="@string/activity_description_HotMovieList" />
         <activity
-            android:name=".ui.navigationB.movie.MovieDetailsActivity"
+            android:name=".ui.navigationB.douban.hot.HotMovieListActivity"
+            android:description="@string/activity_description_HotMovieList"
+            android:theme="@style/CommonTheme" />
+        <activity android:name=".ui.navigationB.mtime.hot.HotMTimeMovieListActivity"
+            android:description="@string/activity_description_HotMTimeMovieList"
+            android:theme="@style/CommonTheme"/>
+        <activity
+            android:name=".ui.navigationB.douban.movie.MovieDetailsActivity"
             android:description="@string/activity_description_MovieDetails"
             android:theme="@style/MovieDetailsActivityTheme" />
+        <activity android:name=".ui.navigationB.mtime.MTimeMovieDetailsActivity"
+            android:description="@string/activity_description_MTimeMovieDetails"
+            android:theme="@style/MovieDetailsActivityTheme"/>
         <activity
-            android:name=".ui.navigationB.filmmaker.FilmmakerDetailsActivity"
+            android:name=".ui.navigationB.douban.filmmaker.FilmmakerDetailsActivity"
             android:description="@string/activity_description_FilmmakerDetails"
             android:theme="@style/FilmmakerDetailsActivityTheme" />
+        <activity android:name=".ui.navigationB.mtime.MTimeActorDetailsActivity"
+            android:description="@string/activity_description_MTimeFilmmakerDetails"
+            android:theme="@style/FilmmakerDetailsActivityTheme" />
         <activity
-            android:name=".ui.navigationC.ItemTextJokeContentActivity"
+            android:name=".ui.navigationD.joke.ItemTextJokeContentActivity"
             android:description="@string/activity_description_ItemTextJokeContent"
             android:theme="@style/CommonTheme" />
         <activity
@@ -64,9 +71,10 @@
             android:name=".ui.navigationD.wallpaper.WallpaperHorizontalPageActivity"
             android:description="@string/activity_description_WallpaperHorizontalPageActivity"
             android:theme="@style/CommonTheme" />
-        <activity android:name=".ui.navigationD.wallpaper.WallpaperVerticalPageActivity"
+        <activity
+            android:name=".ui.navigationD.wallpaper.WallpaperVerticalPageActivity"
             android:description="@string/activity_description_WallpaperVerticalPageActivity"
-            android:theme="@style/CommonTheme"/>
+            android:theme="@style/CommonTheme" />
         <activity
             android:name=".ui.navigationD.wallpaper.BingWallpaperListActivity"
             android:description="@string/activity_description_BingWallpaperListActivity"
@@ -75,6 +83,8 @@
             android:name=".ui.navigationD.IntelligentChatRobotActivity"
             android:description="@string/activity_description_IntelligentChatRobot"
             android:theme="@style/CommonTheme" />
+        <activity android:name=".ui.navigationD.joke.GraphicJokesActivity"
+            android:description="@string/activity_description_IntelligentChatRobot"/>
         <activity
             android:name=".ui.navigationD.InspirationalQuotationsActivity"
             android:description="@string/activity_description_InspirationalQuotations"
@@ -90,7 +100,6 @@
         <activity
             android:name=".ui.test.TestWidgetActivity"
             android:description="@string/activity_description_TestWidget" />
-
     </application>
 
 </manifest>

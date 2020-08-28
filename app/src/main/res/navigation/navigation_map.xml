@@ -14,9 +14,9 @@
 
     <fragment
         android:id="@+id/navigation_2"
-        android:name="com.uw.alice.ui.navigationB.MovieHomeFragment"
+        android:name="com.uw.alice.ui.navigationB.mtime.MTimeMovieHomeFragment"
         android:label="@string/title_2"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_home_time_movie" />
 
     <fragment
         android:id="@+id/navigation_3"

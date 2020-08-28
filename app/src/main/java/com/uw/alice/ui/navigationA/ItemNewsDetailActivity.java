@@ -29,15 +29,13 @@ public class ItemNewsDetailActivity extends AppCompatActivity implements View.On
         mBinding = DataBindingUtil.setContentView(this,R.layout.activity_item_news_detail);
         mBinding.setOnClickListener(this);
 
-        /*Log.d(TAG, "onCreate:"+getIntent().getStringExtra(Util.NewsTitle));
-        Log.d(TAG, "onCreate:"+getIntent().getStringExtra(Util.NewsSrc));
-        Log.d(TAG, "onCreate:"+getIntent().getStringExtra(Util.NewsTime));
-        Log.d(TAG, "onCreate:"+getIntent().getStringExtra(Util.NewsContent));*/
+        if (getIntent() != null){
+            mBinding.tvTitle.setText(getIntent().getStringExtra(Util.NewsTitle));
+            mBinding.tvFrom.setText(getIntent().getStringExtra(Util.NewsSrc));
+            mBinding.tvTime.setText(getIntent().getStringExtra(Util.NewsTime));
+            mBinding.tvContent.setHtml(Objects.requireNonNull(getIntent().getStringExtra(Util.NewsContent)),new HtmlHttpImageGetter(mBinding.tvContent));
+        }
 
-        mBinding.tvTitle.setText(getIntent().getStringExtra(Util.NewsTitle));
-        mBinding.tvFrom.setText(getIntent().getStringExtra(Util.NewsSrc));
-        mBinding.tvTime.setText(getIntent().getStringExtra(Util.NewsTime));
-        mBinding.tvContent.setHtml(Objects.requireNonNull(getIntent().getStringExtra(Util.NewsContent)),new HtmlHttpImageGetter(mBinding.tvContent));
     }
 
 
