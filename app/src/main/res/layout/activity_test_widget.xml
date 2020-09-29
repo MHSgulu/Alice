@@ -7,44 +7,94 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context=".ui.test.TestWidgetActivity">
+    tools:context=".ui.navigationD.test.TestWidgetActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:text="默认样式（可交互）"/>
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white">
 
-    <RatingBar
-        android:id="@+id/ratingBar_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:rating="2"/>
+        <RelativeLayout
+            android:id="@+id/rl_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="指示器样式样式"/>
+            <LinearLayout
+                android:id="@+id/ll_back"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:gravity="center">
 
-    <RatingBar
-        android:id="@+id/ratingBar_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:rating="2"
-        style="@android:style/Widget.Holo.RatingBar.Indicator"/>
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@mipmap/icon_back_black"
+                    tools:ignore="ContentDescription" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="较小样式（作为指示器）"/>
+            </LinearLayout>
 
-    <RatingBar
-        android:id="@+id/ratingBar_3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:rating="2"
-        style="@android:style/Widget.Holo.RatingBar.Small"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                android:text="测试控件"
+                tools:ignore="RelativeOverlap" />
+
+        </RelativeLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_1"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="1dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:text="RatingBar" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_2"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="1dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:text="VerticalTabLayout" />
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

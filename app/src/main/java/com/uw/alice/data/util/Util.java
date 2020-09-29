@@ -42,6 +42,8 @@ public class Util {
     public static final String ARG_ActorId = "actorId";
     public static final String ARG_ActorCover = "actorCover";
 
+    public static final String ARG_Flag = "tag";
+
     public static final int MaxResult = 20; //笑话大全1页数据量的最大结果集
     public static final String MaxResult_String = "20";
     public static final String Time = "2019-01-01"; //笑话大全  该时间以来最新的笑话. 格式：yyyy-MM-dd

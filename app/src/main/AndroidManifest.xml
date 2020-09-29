@@ -42,21 +42,24 @@
             android:name=".ui.navigationB.douban.hot.HotMovieListActivity"
             android:description="@string/activity_description_HotMovieList"
             android:theme="@style/CommonTheme" />
-        <activity android:name=".ui.navigationB.mtime.hot.HotMTimeMovieListActivity"
+        <activity
+            android:name=".ui.navigationB.mtime.hot.HotMTimeMovieListActivity"
             android:description="@string/activity_description_HotMTimeMovieList"
-            android:theme="@style/CommonTheme"/>
+            android:theme="@style/CommonTheme" />
         <activity
             android:name=".ui.navigationB.douban.movie.MovieDetailsActivity"
             android:description="@string/activity_description_MovieDetails"
             android:theme="@style/MovieDetailsActivityTheme" />
-        <activity android:name=".ui.navigationB.mtime.MTimeMovieDetailsActivity"
+        <activity
+            android:name=".ui.navigationB.mtime.MTimeMovieDetailsActivity"
             android:description="@string/activity_description_MTimeMovieDetails"
-            android:theme="@style/MovieDetailsActivityTheme"/>
+            android:theme="@style/MovieDetailsActivityTheme" />
         <activity
             android:name=".ui.navigationB.douban.filmmaker.FilmmakerDetailsActivity"
             android:description="@string/activity_description_FilmmakerDetails"
             android:theme="@style/FilmmakerDetailsActivityTheme" />
-        <activity android:name=".ui.navigationB.mtime.MTimeActorDetailsActivity"
+        <activity
+            android:name=".ui.navigationB.mtime.MTimeActorDetailsActivity"
             android:description="@string/activity_description_MTimeFilmmakerDetails"
             android:theme="@style/FilmmakerDetailsActivityTheme" />
         <activity
@@ -83,8 +86,9 @@
             android:name=".ui.navigationD.IntelligentChatRobotActivity"
             android:description="@string/activity_description_IntelligentChatRobot"
             android:theme="@style/CommonTheme" />
-        <activity android:name=".ui.navigationD.joke.GraphicJokesActivity"
-            android:description="@string/activity_description_IntelligentChatRobot"/>
+        <activity
+            android:name=".ui.navigationD.joke.GraphicJokesActivity"
+            android:description="@string/activity_description_IntelligentChatRobot" />
         <activity
             android:name=".ui.navigationD.InspirationalQuotationsActivity"
             android:description="@string/activity_description_InspirationalQuotations"
@@ -98,8 +102,12 @@
             android:description="@string/activity_description_TaoModels"
             android:theme="@style/CommonTheme" />
         <activity
-            android:name=".ui.test.TestWidgetActivity"
-            android:description="@string/activity_description_TestWidget" />
+            android:name=".ui.navigationD.test.TestWidgetActivity"
+            android:description="@string/activity_description_TestWidget"
+            android:theme="@style/CommonTheme" />
+        <activity android:name=".ui.navigationD.test.FragmentContainerActivity"
+            android:description="@string/activity_description_Container"
+            android:theme="@style/CommonTheme" />
     </application>
 
 </manifest>

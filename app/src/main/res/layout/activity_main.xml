@@ -20,12 +20,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/navigation_map"/>
 
-    <View
+    <!--<View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/underline_bottomNavigationView"
         app:layout_constraintBottom_toTopOf="@+id/nav_view"
-        android:visibility="gone"/>
+        android:visibility="gone"/>-->
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"

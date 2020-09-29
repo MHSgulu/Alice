@@ -21,7 +21,7 @@ import com.uw.alice.ui.navigationD.model.TaoModelsActivity;
 import com.uw.alice.ui.navigationD.wallpaper.WallpaperHorizontalPageActivity;
 import com.uw.alice.ui.navigationD.wallpaper.BingWallpaperListActivity;
 import com.uw.alice.ui.navigationD.wallpaper.WallpaperVerticalPageActivity;
-import com.uw.alice.ui.test.TestWidgetActivity;
+import com.uw.alice.ui.navigationD.test.TestWidgetActivity;
 
 public class MyFragment extends Fragment implements View.OnClickListener {
 
