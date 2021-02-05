@@ -17,11 +17,10 @@ import com.uw.alice.R;
 import com.uw.alice.common.Function;
 
 
-
 /**
- *  Module:   SplashActivity
- *  Function: 闪屏页面，只是显示一张图
- *  Note：
+ * Module:   SplashActivity
+ * Function: 闪屏页面，只是显示一张图
+ * Note：
  */
 public class SplashActivity extends AppCompatActivity {
 
@@ -55,7 +54,7 @@ public class SplashActivity extends AppCompatActivity {
 
 
     /**
-     *  跳转到主界面
+     * 跳转到主界面
      */
     private void jumpToHomeActivity() {
         Intent intent = new Intent(this, MainActivity.class);
@@ -63,8 +62,6 @@ public class SplashActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-
-
 
 
 }

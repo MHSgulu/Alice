@@ -97,8 +97,7 @@
                     <com.youth.banner.Banner
                         android:id="@+id/banner"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        app:indicator_selected_color="@color/colorNavigationB" />
+                        android:layout_height="match_parent" />
 
                 </androidx.cardview.widget.CardView>
 

@@ -151,7 +151,7 @@
 
     <string name="test_movie_introduction">基宇（崔宇植 饰）出生在一个贫穷的家庭之中，和妹妹基婷（朴素丹 饰）以及父母在狭窄的地下室里过着相依为命的日子。一天，基宇的同学上门拜访，他告诉基宇，自己在一个有钱人家里给他们的女儿做家教，太太是一个头脑简单出手又阔绰的女人，因为自己要出国留学，所以将家教的职位暂时转交给基宇。</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
+    <!--待办事项：删除或更改此占位符文本 -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 

@@ -8,7 +8,6 @@ import android.os.Bundle;
 import com.uw.alice.R;
 import com.uw.alice.data.util.Util;
 import com.uw.alice.ui.navigationD.test.fragment.TestFragment1;
-import com.uw.alice.ui.navigationD.test.fragment.TestFragment2;
 
 /**
  * 向 FragmentTransaction 添加更改的顺序无关紧要，不过：
@@ -68,8 +67,6 @@ public class FragmentContainerActivity extends AppCompatActivity {
         switch (tag) {
             case 1:
                 return TestFragment1.newInstance();
-            case 2:
-                return TestFragment2.newInstance();
         }
         return TestFragment1.newInstance();
     }

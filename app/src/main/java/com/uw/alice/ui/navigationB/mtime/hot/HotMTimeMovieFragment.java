@@ -1,33 +1,21 @@
 package com.uw.alice.ui.navigationB.mtime.hot;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
+
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.uw.alice.R;
-import com.uw.alice.data.model.MTimeComingMovie;
-import com.uw.alice.data.model.MTimeInTheatersMovie;
 import com.uw.alice.data.model.Movie;
-import com.uw.alice.data.util.Util;
-import com.uw.alice.interfaces.OnItemClickListener;
-import com.uw.alice.network.retrofit.SingletonRetrofit;
-import com.uw.alice.ui.navigationB.douban.movie.MovieDetailsActivity;
-import com.uw.alice.ui.navigationB.mtime.MTimeMovieDetailsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
 
 
 public class HotMTimeMovieFragment extends Fragment {
@@ -73,7 +61,6 @@ public class HotMTimeMovieFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_item_list, container, false);
         mRecyclerView = view.findViewById(R.id.list);
         initScrollListener();
-        requestData();
 
         return view;
     }
@@ -103,97 +90,6 @@ public class HotMTimeMovieFragment extends Fragment {
         });*/
 
     }
-
-
-    /**
-     * 发起网络请求
-     */
-    private void requestData() {
-        switch (type) {
-            case 1:
-                Observer<MTimeInTheatersMovie> mTimeInTheatersMovieObserver = new Observer<MTimeInTheatersMovie>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(MTimeInTheatersMovie t) {
-                        if (!t.getMs().isEmpty()){
-                            mAdapter = new HotMTimeMovieListAdapter(t.getMs(),1);
-                            mRecyclerView.setAdapter(mAdapter);
-
-                            mAdapter.setOnItemClickListener((view, position) -> {
-                                Log.i(TAG, "数据点位: 电影名称： " + t.getMs().get(position).getTCn());
-                                Log.i(TAG, "数据点位: movieId： " + t.getMs().get(position).getMovieId());
-                                Toast.makeText(mContext, "movieId: " + t.getMs().get(position).getMovieId(), Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(mContext, MTimeMovieDetailsActivity.class);
-                                intent.putExtra(Util.ARG_MovieId, t.getMs().get(position).getMovieId());
-                                intent.putExtra(Util.ARG_MoviePoster, t.getMs().get(position).getImg());
-                                startActivity(intent);
-                            });
-
-                        }
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Toast.makeText(mContext, "onError:" + e.getMessage(), Toast.LENGTH_SHORT).show();
-                        Log.e(TAG, "onError:" + e.getMessage());
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                };
-                SingletonRetrofit.getInstance().fetchMTimeMovieInTheaters(mTimeInTheatersMovieObserver, Util.LocationId);
-                break;
-            case 2:
-                Observer<MTimeComingMovie> mTimeComingMovieObserver = new Observer<MTimeComingMovie>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(MTimeComingMovie t) {
-                        if (!t.getMoviecomings().isEmpty()){
-                            mAdapter = new HotMTimeMovieListAdapter(t.getMoviecomings(),2.0);
-                            mRecyclerView.setAdapter(mAdapter);
-
-                            /*mAdapter.setOnItemClickListener((view, position) -> {
-                                Log.i(TAG, "数据点位: 电影名称： " + t.getMs().get(position).getTCn());
-                                Log.i(TAG, "数据点位: movieId： " + t.getMs().get(position).getMovieId());
-                                Toast.makeText(mContext, "movieId: " + t.getMs().get(position).getMovieId(), Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(mContext, MTimeMovieDetailsActivity.class);
-                                intent.putExtra(Util.ARG_MovieId, t.getMs().get(position).getMovieId());
-                                intent.putExtra(Util.ARG_MoviePoster, t.getMs().get(position).getImg());
-                                startActivity(intent);
-                            })*/;
-
-                        }
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.e(TAG, "onError:" + e.getMessage());
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                };
-                SingletonRetrofit.getInstance().fetchMTimeMovieComingSoon(mTimeComingMovieObserver,Util.LocationId);
-                break;
-        }
-
-    }
-
-
-
-
 
 
 

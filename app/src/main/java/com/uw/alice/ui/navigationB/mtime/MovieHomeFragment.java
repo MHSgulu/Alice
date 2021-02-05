@@ -21,14 +21,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.uw.alice.R;
 import com.uw.alice.assist.MoviePosterAdapter;
 import com.uw.alice.common.Function;
+import com.uw.alice.data.entity.MovieEntity;
 import com.uw.alice.data.model.MTimeComingMovie;
-import com.uw.alice.data.model.MTimeInTheatersMovie;
 import com.uw.alice.data.util.Util;
 import com.uw.alice.network.retrofit.SingletonRetrofit;
-import com.uw.alice.ui.navigationB.douban.hot.HotMovieListActivity;
-import com.uw.alice.ui.navigationB.douban.movie.MovieDetailsActivity;
 import com.uw.alice.ui.navigationB.mtime.adapter.MTimeMovieComingAdapter;
-import com.uw.alice.ui.navigationB.mtime.adapter.MTimeMovieShowingAdapter;
+import com.uw.alice.ui.navigationB.mtime.adapter.MovieShowingAdapter;
 import com.uw.alice.ui.navigationB.mtime.hot.HotMTimeMovieListActivity;
 import com.youth.banner.Banner;
 import com.youth.banner.indicator.CircleIndicator;
@@ -39,20 +37,20 @@ import java.util.List;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
-public class MTimeMovieHomeFragment extends Fragment implements View.OnClickListener{
+public class MovieHomeFragment extends Fragment implements View.OnClickListener {
 
     private static final String TAG = "MTimeMovieHomeFragment";
     private Context mContext;
 
-    private LinearLayout llSearchBox,llBoxOffice;
-    private RelativeLayout rlHot,rlSoon;
+    private LinearLayout llSearchBox, llBoxOffice;
+    private RelativeLayout rlHot, rlSoon;
 
     private Banner banner;
     private List<String> moviePosterList = new ArrayList<>();
 
-    private TextView tvMovieShowingNumber,tvMovieShownSoonNumber;
-    private RecyclerView mRecyclerView1,mRecyclerView2;
-    private MTimeMovieShowingAdapter mAdapter1;
+    private TextView tvMovieShowingNumber, tvMovieShownSoonNumber;
+    private RecyclerView mRecyclerView1, mRecyclerView2;
+    private MovieShowingAdapter mAdapter1;
     private MTimeMovieComingAdapter mAdapter2;
 
 
@@ -88,121 +86,65 @@ public class MTimeMovieHomeFragment extends Fragment implements View.OnClickList
                 .setIndicator(new CircleIndicator(mContext))//设置指示器
                 .start();
 
-        //海报数据
-        TestMovieBanner();
-
-        //查询正在上映的电影
-        queryMovieOnShowing();
-
-        //查询即将上映的电影
-        queryUpcomingFilms();
+        getMoviePoster();
+        getMovieOnShowing();
+        //getUpcomingFilms();
 
         return root;
     }
 
-    private void TestMovieBanner() {
-        moviePosterList.add("https://img9.doubanio.com/view/photo/l/public/p2576400566.webp");
-        moviePosterList.add("https://img9.doubanio.com/view/photo/l/public/p2554842075.webp");
-        moviePosterList.add("https://img1.doubanio.com/view/photo/l/public/p2524501979.webp");
+    /**
+     * 轮播图数据
+     */
+    private void getMoviePoster() {
+        moviePosterList.add("https://img1.doubanio.com/view/photo/l/public/p2201327958.webp");
+        moviePosterList.add("https://img9.doubanio.com/view/photo/m/public/p2559579036.webp");
+        moviePosterList.add("https://img9.doubanio.com/view/photo/l/public/p2540924496.webp");
     }
-
 
     /**
      * 正在上映
      */
-    private void queryMovieOnShowing() {
-        Observer<MTimeInTheatersMovie> mTimeInTheatersMovieObserver = new Observer<MTimeInTheatersMovie>() {
-            /**
-             * 为观察者提供了两种同步异步方式取消(处置)与观察者的连接(通道)的方法。
-             * @param d 可以随时调用Disposable实例来取消连接 {@link Disposable#dispose()}
-             */
-            @Override
-            public void onSubscribe(Disposable d) {
+    private void getMovieOnShowing() {
+        List<MovieEntity> hotMovieDataList = new ArrayList<>();
+        hotMovieDataList.add(new MovieEntity("送你一朵小红花", 7.5, "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2618247457.webp"));
+        hotMovieDataList.add(new MovieEntity("心灵奇旅", 8.9, "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2626308994.webp"));
+        hotMovieDataList.add(new MovieEntity("温暖的抱抱", 5.6, "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2618446242.webp"));
+        hotMovieDataList.add(new MovieEntity("拆弹专家2", 7.9, "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2621379901.webp"));
+        hotMovieDataList.add(new MovieEntity("紧急救援", 6.3, "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2627025706.webp"));
+        hotMovieDataList.add(new MovieEntity("缉魂", 7.1, "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2629413230.webp"));
 
-            }
+        tvMovieShowingNumber.setText(String.valueOf(hotMovieDataList.size()));
+        /*
+         * 如果RecyclerView可以事先知道RecyclerView的大小不受适配器内容的影响，则可以执行一些优化。
+         * RecyclerView仍可以根据其他因素（例如其父级的大小）更改其大小，但是此大小计算不能取决于其子级的大小或适配器的内容（适配器中的项目数除外）。
+         * 如果您对RecyclerView的使用属于此类，请将其设置为{@code true}。 当适配器内容更改时，它将允许RecyclerView避免使整个布局无效。
+         * @param hasFixedSize 如果适配器更改不能影响RecyclerView的大小，则为true。
+         */
+        mRecyclerView1.setHasFixedSize(true);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(mContext, 3);
+        gridLayoutManager.setSpanCount(3);
+        mRecyclerView1.setLayoutManager(gridLayoutManager);
+        mAdapter1 = new MovieShowingAdapter(hotMovieDataList);
+        mRecyclerView1.setAdapter(mAdapter1);
 
-            /**
-             * 为观察者提供一个新的观察对象
-             * Observable可以调用此方法0次或更多次。
-             * Observable在调用{@link #onComplete}或{@link #onError}之后将不会再次调用此方法。
-             * @param t Observable发出的项目
-             */
-            @Override
-            public void onNext(MTimeInTheatersMovie t) {
-                if (!t.getMs().isEmpty()){
-                    tvMovieShowingNumber.setText(String.valueOf(t.getMs().size()));
-                    mRecyclerView1.setHasFixedSize(true);
-                    GridLayoutManager gridLayoutManager = new GridLayoutManager(mContext,3);
-                    mRecyclerView1.setLayoutManager(gridLayoutManager);
+        /*mAdapter1.setOnItemClickListener((view, position) -> {
+            Intent intent = new Intent(mContext, MTimeMovieDetailsActivity.class);
+            // Log.d(TAG, "测试参数 传id:" + movie.getSubjects().get(position).getId());
+            intent.putExtra(Util.ARG_MovieId, t.getMs().get(position).getMovieId());
+            intent.putExtra(Util.ARG_MoviePoster, t.getMs().get(position).getImg());
+            startActivity(intent);
+        });*/
 
-                    mAdapter1 = new MTimeMovieShowingAdapter(t.getMs());
-                    mRecyclerView1.setAdapter(mAdapter1);
+        //获取最佳间距
+        //final int space = Function.getGridListSpace(mContext, gridLayoutManager.getWidth());
 
-                    mAdapter1.setOnItemClickListener((view, position) -> {
-                        Intent intent = new Intent(mContext, MTimeMovieDetailsActivity.class);
-                        // Log.d(TAG, "测试参数 传id:" + movie.getSubjects().get(position).getId());
-                        intent.putExtra(Util.ARG_MovieId, t.getMs().get(position).getMovieId());
-                        intent.putExtra(Util.ARG_MoviePoster, t.getMs().get(position).getImg());
-                        startActivity(intent);
-                    });
-
-
-                    //获取最佳间距
-                    final int space = Function.getGridListSpace(mContext,gridLayoutManager.getWidth());
-
-                    mRecyclerView1.addItemDecoration(new RecyclerView.ItemDecoration() {
-                        @Override
-                        public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
-                            super.getItemOffsets(outRect, view, parent, state);
-                            int index = parent.getChildAdapterPosition(view);
-                            //在360dp宽度的红米7手机调试出的最佳间距dp距离 无法达到适应所有机型的完美效果
-                            if(index % 3 == 0){
-                                outRect.left = space*2; //30
-                                outRect.right = 0;
-                            }else if((index - 1) % 3 == 0){
-                                outRect.left = (int) (space * 1.33);  //20
-                                outRect.right = (int) (space * 1.33); //20
-                            }else if((index - 2) % 3 == 0){
-                                outRect.left = (int) (space / 1.5);  //10
-                                outRect.right = (int) (space * 1.33); //20
-                            }
-
-                        }
-                    });
-
-                }else {
-                    Toast.makeText(mContext, "暂无正在热映的电影数据", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            /**
-             * 通知观察者 Observable 遇到错误情况。
-             * 如果Observable调用此方法，则此后将不再调用{@link #onNext}或{@link #onComplete}。
-             * @param e Observable遇到的异常
-             */
-            @Override
-            public void onError(Throwable e) {
-                Toast.makeText(mContext, "onError:" + e.getMessage(), Toast.LENGTH_SHORT).show();
-                Log.e(TAG, "onError:" + e.getMessage());
-            }
-
-            /**
-             * 通知观察者Observable已完成基于推送的通知的发送。
-             * 如果 Observable 调用{@link #onError}，则不会调用此方法。
-             */
-            @Override
-            public void onComplete() {
-
-            }
-        };
-        SingletonRetrofit.getInstance().fetchMTimeMovieInTheaters(mTimeInTheatersMovieObserver,Util.LocationId);
     }
-
 
     /**
      * 即将上映
      */
-    private void queryUpcomingFilms() {
+    private void getUpcomingFilms() {
         Observer<MTimeComingMovie> mTimeComingMovieObserver = new Observer<MTimeComingMovie>() {
             @Override
             public void onSubscribe(Disposable d) {
@@ -212,10 +154,10 @@ public class MTimeMovieHomeFragment extends Fragment implements View.OnClickList
             @Override
             public void onNext(MTimeComingMovie t) {
 
-                if (!t.getMoviecomings().isEmpty()){
+                if (!t.getMoviecomings().isEmpty()) {
                     tvMovieShownSoonNumber.setText(String.valueOf(t.getMoviecomings().size()));
                     mRecyclerView2.setHasFixedSize(true);
-                    GridLayoutManager gridLayoutManager = new GridLayoutManager(mContext,3);
+                    GridLayoutManager gridLayoutManager = new GridLayoutManager(mContext, 3);
                     mRecyclerView2.setLayoutManager(gridLayoutManager);
 
                     mAdapter2 = new MTimeMovieComingAdapter(t.getMoviecomings());
@@ -223,7 +165,7 @@ public class MTimeMovieHomeFragment extends Fragment implements View.OnClickList
 
                     mAdapter2.setOnItemClickListener((view, position) -> {
                         //Toast.makeText(mContext, movie.getSubjects().get(position).getTitle(), Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(mContext,MTimeMovieDetailsActivity.class);
+                        Intent intent = new Intent(mContext, MTimeMovieDetailsActivity.class);
                         //Log.d(TAG, "测试参数 传id:" + movie.getSubjects().get(position).getId());
                         intent.putExtra(Util.ARG_MovieId, t.getMoviecomings().get(position).getId());
                         intent.putExtra(Util.ARG_MoviePoster, t.getMoviecomings().get(position).getImage());
@@ -231,7 +173,7 @@ public class MTimeMovieHomeFragment extends Fragment implements View.OnClickList
                     });
 
                     //获取最佳间距
-                    final int space = Function.getGridListSpace(mContext,gridLayoutManager.getWidth());
+                    final int space = Function.getGridListSpace(mContext, gridLayoutManager.getWidth());
 
                     mRecyclerView2.addItemDecoration(new RecyclerView.ItemDecoration() {
                         @Override
@@ -239,13 +181,13 @@ public class MTimeMovieHomeFragment extends Fragment implements View.OnClickList
                             super.getItemOffsets(outRect, view, parent, state);
                             int index = parent.getChildAdapterPosition(view);
                             //在360dp宽度的红米7手机调试出的最佳间距dp距离 无法达到适应所有机型的完美效果
-                            if(index % 3 == 0){
-                                outRect.left = space*2; //30
+                            if (index % 3 == 0) {
+                                outRect.left = space * 2; //30
                                 outRect.right = 0;
-                            }else if((index - 1) % 3 == 0){
+                            } else if ((index - 1) % 3 == 0) {
                                 outRect.left = (int) (space * 1.33);  //20
                                 outRect.right = (int) (space * 1.33); //20
-                            }else if((index - 2) % 3 == 0){
+                            } else if ((index - 2) % 3 == 0) {
                                 outRect.left = (int) (space / 1.5);  //10
                                 outRect.right = (int) (space * 1.33); //20
                             }
@@ -270,14 +212,14 @@ public class MTimeMovieHomeFragment extends Fragment implements View.OnClickList
 
             }
         };
-        SingletonRetrofit.getInstance().fetchMTimeMovieComingSoon(mTimeComingMovieObserver,Util.LocationId);
+        SingletonRetrofit.getInstance().fetchMTimeMovieComingSoon(mTimeComingMovieObserver, Util.LocationId);
     }
 
 
     @Override
     public void onClick(View v) {
         int id = v.getId();
-        switch (id){
+        switch (id) {
 
             case R.id.ll_search_box:
                 Toast.makeText(mContext, "电影搜索", Toast.LENGTH_SHORT).show();
@@ -288,14 +230,14 @@ public class MTimeMovieHomeFragment extends Fragment implements View.OnClickList
                 break;
 
             case R.id.rl_hot:
-                Intent intent1 = new Intent(mContext,HotMTimeMovieListActivity.class);
-                intent1.putExtra(Util.ARG_MovieType,1);
+                Intent intent1 = new Intent(mContext, HotMTimeMovieListActivity.class);
+                intent1.putExtra(Util.ARG_MovieType, 1);
                 startActivity(intent1);
                 break;
 
             case R.id.rl_soon:
-                Intent intent2 = new Intent(mContext,HotMTimeMovieListActivity.class);
-                intent2.putExtra(Util.ARG_MovieType,2);
+                Intent intent2 = new Intent(mContext, HotMTimeMovieListActivity.class);
+                intent2.putExtra(Util.ARG_MovieType, 2);
                 startActivity(intent2);
                 break;
 

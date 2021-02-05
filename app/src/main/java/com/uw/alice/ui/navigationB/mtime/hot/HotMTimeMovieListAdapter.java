@@ -1,7 +1,6 @@
 package com.uw.alice.ui.navigationB.mtime.hot;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,43 +9,31 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.uw.alice.R;
-import com.uw.alice.assist.MoviePosterAdapter;
+import com.uw.alice.data.entity.MovieEntity;
 import com.uw.alice.data.model.MTimeComingMovie;
-import com.uw.alice.data.model.MTimeInTheatersMovie;
-import com.uw.alice.data.model.MTimeMovieDetail;
-import com.uw.alice.data.util.Util;
 import com.uw.alice.interfaces.OnItemClickListener;
-import com.uw.alice.network.retrofit.SingletonRetrofit;
 import com.willy.ratingbar.BaseRatingBar;
 import com.youth.banner.Banner;
-import com.youth.banner.config.IndicatorConfig;
-import com.youth.banner.indicator.CircleIndicator;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
-import java.util.stream.Collectors;
-
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
 
 
 public class HotMTimeMovieListAdapter extends RecyclerView.Adapter<HotMTimeMovieListAdapter.ViewHolder> {
 
     private static final String TAG = "HotMTimeMovieListAdapter";
     private Context mContext;
-    private List<MTimeInTheatersMovie.MsBean> mList;
+    private List<MovieEntity> mList;
     private List<MTimeComingMovie.MoviecomingsBean> mList2;
     private OnItemClickListener onItemClickListener;
     private int mType = 0;
     private double mSign = 0;
 
-    HotMTimeMovieListAdapter(List<MTimeInTheatersMovie.MsBean> list,int type) {
+    HotMTimeMovieListAdapter(List<MovieEntity> list,int type) {
         mList = list;
         mType = type;
     }
@@ -80,8 +67,8 @@ public class HotMTimeMovieListAdapter extends RecyclerView.Adapter<HotMTimeMovie
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams((int)bannerWidthPx, (int)bannerHeightPx);
         holder.cardView.setLayoutParams(params);
 
-        if (mType == 1){
-            MTimeInTheatersMovie.MsBean result = mList.get(position);
+        /*if (mType == 1){
+            MovieEntity result = mList.get(position);
             Glide.with(mContext).load(result.getImg()).placeholder(R.mipmap.icon_no_img).into(holder.ivCover);
             holder.tvMovieName.setText(result.getTCn());
             holder.tvYear.setText(String.format("(%s)",result.getYear()));
@@ -189,7 +176,7 @@ public class HotMTimeMovieListAdapter extends RecyclerView.Adapter<HotMTimeMovie
                 }
             };
             SingletonRetrofit.getInstance().fetchMTimeMovieDetail(mTimeMovieDetailObserver, Util.LocationId,result.getId());
-        }
+        }*/
 
 
 

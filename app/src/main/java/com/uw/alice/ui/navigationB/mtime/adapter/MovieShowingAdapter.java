@@ -12,21 +12,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.uw.alice.R;
-import com.uw.alice.data.model.MTimeInTheatersMovie;
-import com.uw.alice.data.model.Movie;
+import com.uw.alice.data.entity.MovieEntity;
 import com.uw.alice.interfaces.OnItemClickListener;
 import com.willy.ratingbar.BaseRatingBar;
 
 import java.util.List;
 
-public class MTimeMovieShowingAdapter extends RecyclerView.Adapter<MTimeMovieShowingAdapter.ViewHolder> {
+public class MovieShowingAdapter extends RecyclerView.Adapter<MovieShowingAdapter.ViewHolder> {
 
     private Context mContext;
-    private List<MTimeInTheatersMovie.MsBean> mList;
+    private final List<MovieEntity> mList;
     private OnItemClickListener onItemClickListener;
 
 
-    public MTimeMovieShowingAdapter(List<MTimeInTheatersMovie.MsBean> listBeans) {
+    public MovieShowingAdapter(List<MovieEntity> listBeans) {
         mList = listBeans;
     }
 
@@ -37,24 +36,18 @@ public class MTimeMovieShowingAdapter extends RecyclerView.Adapter<MTimeMovieSho
 
     @NonNull
     @Override
-    public MTimeMovieShowingAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MovieShowingAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         mContext = parent.getContext();
         return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_time_movie_showing_list, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final MTimeMovieShowingAdapter.ViewHolder holder, int position) {
-        MTimeInTheatersMovie.MsBean result = mList.get(position);
-        Glide.with(mContext).load(result.getImg()).placeholder(R.mipmap.icon_placeholder).into(holder.ivMoviePoster);
-        holder.tvMovieName.setText(result.getTCn());
-        if (result.getR() > 0){
-            holder.tvMovieScore.setText(String.valueOf(result.getR()));
-            holder.ratingBar.setRating((float) result.getR() / 2);
-        }else {
-            holder.tvMovieScore.setText(String.valueOf(0));
-            holder.ratingBar.setRating((float) 0);
-        }
-
+    public void onBindViewHolder(@NonNull final MovieShowingAdapter.ViewHolder holder, int position) {
+        MovieEntity result = mList.get(position);
+        Glide.with(mContext).load(result.getMoviePosterUrl()).placeholder(R.mipmap.icon_placeholder).into(holder.ivMoviePoster);
+        holder.tvMovieName.setText(result.getMovieName());
+        holder.tvMovieScore.setText(String.valueOf(result.getMovieRating()));
+        holder.ratingBar.setRating((float) result.getMovieRating() / 2);
 
         if (onItemClickListener != null) {
             holder.ivMoviePoster.setOnClickListener(v -> onItemClickListener.onItemClick(holder.itemView, holder.getLayoutPosition()));

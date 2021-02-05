@@ -11,7 +11,6 @@ import com.uw.alice.data.model.Idiom;
 import com.uw.alice.data.model.IdiomKeyword;
 import com.uw.alice.data.model.MTimeActorDetail;
 import com.uw.alice.data.model.MTimeComingMovie;
-import com.uw.alice.data.model.MTimeInTheatersMovie;
 import com.uw.alice.data.model.MTimeMovieDetail;
 import com.uw.alice.data.model.MobilePhone;
 import com.uw.alice.data.model.Movie;
@@ -517,19 +516,6 @@ public class SingletonRetrofit  {
     }
 
 
-
-    /**
-     * 时光网API 正在热映
-     * @param observer  由调用者传过来的观察者对象
-     * @param locationId 城市ID
-     */
-    public void fetchMTimeMovieInTheaters(Observer<MTimeInTheatersMovie> observer, String locationId){
-        apiService6.getMTimeMovieInTheaters(locationId)
-                .subscribeOn(Schedulers.io())
-                .unsubscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(observer);
-    }
 
 
     /**
