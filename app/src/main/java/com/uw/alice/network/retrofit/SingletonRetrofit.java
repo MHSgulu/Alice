@@ -9,9 +9,6 @@ import com.uw.alice.data.model.FilmmakerPhoto;
 import com.uw.alice.data.model.HotSpot;
 import com.uw.alice.data.model.Idiom;
 import com.uw.alice.data.model.IdiomKeyword;
-import com.uw.alice.data.model.MTimeActorDetail;
-import com.uw.alice.data.model.MTimeComingMovie;
-import com.uw.alice.data.model.MTimeMovieDetail;
 import com.uw.alice.data.model.MobilePhone;
 import com.uw.alice.data.model.Movie;
 import com.uw.alice.data.model.MovieDetails;
@@ -26,8 +23,6 @@ import com.uw.alice.data.model.TextJoke;
 import com.uw.alice.data.model.Wallpaper;
 import com.uw.alice.data.util.Util;
 
-import org.reactivestreams.Subscriber;
-
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observer;
@@ -39,9 +34,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class SingletonRetrofit  {
 
-    private Retrofit retrofit,retrofit1,retrofit2,retrofit3,retrofit4,retrofit5,retrofit6,retrofit7;
+    private Retrofit retrofit,retrofit1,retrofit2,retrofit3,retrofit4,retrofit5;
     private final OkHttpClient okHttpClient;
-    private APIService apiService,apiService1,apiService2,apiService3,apiService4,apiService5,apiService6,apiService7;
+    private APIService apiService,apiService1,apiService2,apiService3,apiService4,apiService5;
 
 
     private SingletonRetrofit() {
@@ -107,22 +102,6 @@ public class SingletonRetrofit  {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        //时光网 API  1
-        retrofit6 = new Retrofit.Builder()
-                .baseUrl(Util.M_TIME_API_URL)
-                /*.client(okHttpClient)*/
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        //时光网 API  2
-        retrofit7 = new Retrofit.Builder()
-                .baseUrl(Util.MT_TIME_API_URL)
-                /*.client(okHttpClient)*/
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
 
         //豆瓣Service
         apiService1 = retrofit1.create(APIService.class);
@@ -134,10 +113,6 @@ public class SingletonRetrofit  {
         apiService4 = retrofit4.create(APIService.class);
         //必应每日壁纸Service
         apiService5 = retrofit5.create(APIService.class);
-        //时光网Service 1
-        apiService6 = retrofit6.create(APIService.class);
-        //时光网Service 2
-        apiService7 = retrofit7.create(APIService.class);
 
     }
 
@@ -514,53 +489,6 @@ public class SingletonRetrofit  {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(observer);
     }
-
-
-
-
-    /**
-     * 时光网API 即将上映
-     * @param observer  由调用者传过来的观察者对象
-     * @param locationId 城市ID
-     */
-    public void fetchMTimeMovieComingSoon(Observer<MTimeComingMovie> observer, String locationId){
-        apiService6.getMTimeMovieComingSoon(locationId)
-                .subscribeOn(Schedulers.io())
-                .unsubscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(observer);
-    }
-
-
-    /**
-     * 时光网API 影片详情
-     * @param observer  由调用者传过来的观察者对象
-     * @param locationId 城市ID
-     * @param movieId    电影ID
-     */
-    public void fetchMTimeMovieDetail(Observer<MTimeMovieDetail> observer, String locationId,int movieId){
-        apiService7.getMTimeMovieDetail(locationId,movieId)
-                .subscribeOn(Schedulers.io())
-                .unsubscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(observer);
-    }
-
-
-    /**
-     * 时光网API 影人详情
-     * @param observer  由调用者传过来的观察者对象
-     * @param cityId 城市ID
-     * @param personId 影人ID
-     */
-    public void fetchMTimeActorDetail(Observer<MTimeActorDetail> observer, String personId, String cityId){
-        apiService7.getMTimeActorDetail(personId,cityId)
-                .subscribeOn(Schedulers.io())
-                .unsubscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(observer);
-    }
-
 
 
 }

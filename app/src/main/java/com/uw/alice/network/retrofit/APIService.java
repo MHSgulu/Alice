@@ -9,9 +9,6 @@ import com.uw.alice.data.model.FilmmakerPhoto;
 import com.uw.alice.data.model.HotSpot;
 import com.uw.alice.data.model.Idiom;
 import com.uw.alice.data.model.IdiomKeyword;
-import com.uw.alice.data.model.MTimeActorDetail;
-import com.uw.alice.data.model.MTimeComingMovie;
-import com.uw.alice.data.model.MTimeMovieDetail;
 import com.uw.alice.data.model.MobilePhone;
 import com.uw.alice.data.model.Movie;
 import com.uw.alice.data.model.MovieDetails;
@@ -321,72 +318,6 @@ public interface APIService {
      */
     @POST("HPImageArchive.aspx")
     Observable<BingWallpaper> queryOfficialBingWallpaper(@Query("format") String format, @Query("n") String n);
-
-
-    /**
-     * 时光网API 即将上映
-     * url：`https://api-m.mtime.cn/Movie/MovieComingNew.api?locationId=?`
-     * <p>
-     * 示例 url：https://api-m.mtime.cn/Movie/MovieComingNew.api?locationId=290
-     * <p>
-     * 参数名称	值含义
-     * 首先大体分为两个部分 ——
-     * <p>
-     * attention：最受关注
-     * moviecomings：即将上映
-     * 接下来就是里面具体的字段：
-     * <p>
-     * videos：预告片，不过我们无权访问
-     */
-    @GET("Movie/MovieComingNew.api")
-    Observable<MTimeComingMovie> getMTimeMovieComingSoon(@Query("locationId") String locationId);
-
-
-    /**
-     * 时光网API 影片详情
-     * url：https://ticket-api-m.mtime.cn/movie/detail.api?locationId=?&movieId=?
-     * <p>
-     * 示例 url：https://ticket-api-m.mtime.cn/movie/detail.api?locationId=290&movieId=125805
-     * <p>
-     * 参数名称	值含义
-     * basic：具体内容
-     * actors：演员信息
-     * actorId：演员 id
-     * img：演员照片
-     * name：演员名
-     * nameEn：演员英文名
-     * roleImg：影片中饰演角色图片
-     * roleName：影片中饰演角色名字
-     * award：获得的奖项？
-     * commentSpecial：一句话总结该电影
-     * community：???
-     * director：导演信息
-     * hotRanking：热映排行榜
-     * img：剧照
-     * releaseArea：上映地区
-     * stageImg：影片剧照
-     * story：剧情简介
-     * video：预告片
-     * boxOffice：专业解读内容
-     * ranking：票房排名
-     * todayBox：今日实时票房量
-     * todayBoxDes 和 todayBoxDesUnit：今日实时票房量
-     * totalBox 和 totalBoxUnit：累计票房量
-     */
-    @GET("movie/detail.api")
-    Observable<MTimeMovieDetail> getMTimeMovieDetail(@Query("locationId") String locationId, @Query("movieId") int movieId);
-
-
-    /**
-     * 时光网API 影人详情
-     * url：https://ticket-api-m.mtime.cn/person/detail.api?personId=?&cityId=？
-     * <p>
-     * 示例 url：https://ticket-api-m.mtime.cn/person/detail.api?personId=892908&cityId=290
-     * 示例 url：https://api-m.mtime.cn/person/detail.api?personId=915334&cityId=292
-     * 以上示例返回的数据字段略有不同导致实体类不对应，导致取出的数据为null,造成空指针报错，排查了很久。
-     */
-    @GET("person/detail.api")
-    Observable<MTimeActorDetail> getMTimeActorDetail(@Query("personId") String personId, @Query("cityId") String cityId);
 
 
 }
