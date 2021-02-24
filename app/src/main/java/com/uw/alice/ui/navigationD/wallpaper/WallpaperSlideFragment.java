@@ -16,7 +16,7 @@ import com.bumptech.glide.Glide;
 import com.uw.alice.R;
 import com.uw.alice.common.Function;
 import com.uw.alice.data.model.BingWallpaper;
-import com.uw.alice.data.util.Util;
+import com.uw.alice.common.Constant;
 import com.uw.alice.network.retrofit.SingletonRetrofit;
 
 import cc.shinichi.library.ImagePreview;
@@ -36,7 +36,7 @@ public class WallpaperSlideFragment extends Fragment {
     public static WallpaperSlideFragment newInstance(int index) {
         Bundle args = new Bundle();
         WallpaperSlideFragment fragment = new WallpaperSlideFragment();
-        args.putInt(Util.ARG_Position,index);
+        args.putInt(Constant.ARG_Position,index);
         fragment.setArguments(args);
         return fragment;
     }
@@ -48,7 +48,7 @@ public class WallpaperSlideFragment extends Fragment {
         tvCopyright = rootView.findViewById(R.id.tv_copyright);
         ivWallpaper = rootView.findViewById(R.id.iv_wallpaper);
         if (getArguments() != null){
-            position = getArguments().getInt(Util.ARG_Position,0);
+            position = getArguments().getInt(Constant.ARG_Position,0);
         }
 
         //请求必应壁纸数据
@@ -70,12 +70,12 @@ public class WallpaperSlideFragment extends Fragment {
             public void onNext(final BingWallpaper bingWallpaper) {
                 if (bingWallpaper.getImages()!= null){
                     tvCopyright.setText(bingWallpaper.getImages().get(position).getCopyright());
-                    Glide.with(mContext).load(Util.BING_API_URL + bingWallpaper.getImages().get(position).getUrl()).into(ivWallpaper);
+                    Glide.with(mContext).load(Constant.BING_API_URL + bingWallpaper.getImages().get(position).getUrl()).into(ivWallpaper);
 
                     ivWallpaper.setOnClickListener(v -> ImagePreview.getInstance()
                             .setContext(mContext)
                             .setIndex(0)
-                            .setImage(Util.BING_API_URL + bingWallpaper.getImages().get(position).getUrl()).start());
+                            .setImage(Constant.BING_API_URL + bingWallpaper.getImages().get(position).getUrl()).start());
 
                     tvCopyright.setOnClickListener(v -> Function.openWebPage(mContext,bingWallpaper.getImages().get(position).getCopyrightlink()));
 

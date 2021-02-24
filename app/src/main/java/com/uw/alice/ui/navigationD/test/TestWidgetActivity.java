@@ -2,20 +2,14 @@ package com.uw.alice.ui.navigationD.test;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.uw.alice.R;
-import com.uw.alice.data.util.Util;
-import com.uw.alice.ui.navigationD.test.fragment.TestFragment1;
+import com.uw.alice.common.Constant;
 
 
 public class TestWidgetActivity extends AppCompatActivity {
@@ -56,7 +50,7 @@ public class TestWidgetActivity extends AppCompatActivity {
      */
     private void jumpToFragmentContainerActivity(int tag) {
         Intent intent = new Intent(mContext,FragmentContainerActivity.class);
-        intent.putExtra(Util.ARG_Flag,tag);
+        intent.putExtra(Constant.ARG_Flag,tag);
         startActivity(intent);
     }
 

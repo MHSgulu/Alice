@@ -19,7 +19,7 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.uw.alice.R;
 import com.uw.alice.data.model.PictureJoke;
-import com.uw.alice.data.util.Util;
+import com.uw.alice.common.Constant;
 import com.uw.alice.databinding.FragmentPictureJokeBinding;
 import com.uw.alice.interfaces.OnItemClickListener;
 import com.uw.alice.network.retrofit.SingletonRetrofit;
@@ -123,7 +123,7 @@ public class PictureJokeFragment extends Fragment {
 
             @Override
             public void onNext(PictureJoke pictureJoke) {
-                if (pictureJoke.getCode().equals(Util.QUERY_SUCCESS_CODE)){
+                if (pictureJoke.getCode().equals(Constant.QUERY_SUCCESS_CODE)){
                     if (pictureJoke.getResult().getShowapi_res_code()==0){
                         if (page==1){
                             //清空上拉加载存放的数据
@@ -140,7 +140,7 @@ public class PictureJokeFragment extends Fragment {
                     }else{
                         Toast.makeText(mContext, "showapi_res_code："+pictureJoke.getResult().getShowapi_res_code(), Toast.LENGTH_SHORT).show();
                     }
-                }else if (pictureJoke.getCode().equals(Util.ERROR_CODE_LIMIT)){
+                }else if (pictureJoke.getCode().equals(Constant.ERROR_CODE_LIMIT)){
                     Toast.makeText(mContext, "笑话大全数据的调用次数超过每天限量3000次/天，请明天继续", Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(mContext, "code："+pictureJoke.getCode()+"请前往数据提供平台参照公共参数错误码", Toast.LENGTH_SHORT).show();
@@ -169,7 +169,7 @@ public class PictureJokeFragment extends Fragment {
 
             }
         };
-        SingletonRetrofit.getInstance().getPictureJoke(pictureJokeObserver,Util.Time,page,Util.MaxResult,Util.JDAPI_KEY);
+        SingletonRetrofit.getInstance().getPictureJoke(pictureJokeObserver, Constant.Time,page, Constant.MaxResult, Constant.JDAPI_KEY);
 
     }
 

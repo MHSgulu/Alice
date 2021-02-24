@@ -1,29 +1,18 @@
 package com.uw.alice.ui.navigationD;
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.uw.alice.R;
-import com.uw.alice.data.model.BingWallpaper;
 import com.uw.alice.data.model.SingleChat;
-import com.uw.alice.data.util.Util;
-import com.uw.alice.databinding.ItemBingLatelyWallpaperBinding;
-import com.uw.alice.databinding.ItemMyChatWithRobotListBinding;
-import com.uw.alice.databinding.ItemRobotChatWithMyListBinding;
 
 import java.util.List;
-
-import cc.shinichi.library.ImagePreview;
 
 public class MyChatWithRobotListAdapter extends RecyclerView.Adapter <RecyclerView.ViewHolder> {
 

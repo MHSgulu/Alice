@@ -1,7 +1,7 @@
-package com.uw.alice.data.util;
+package com.uw.alice.common;
 
 
-public class Util {
+public class Constant {
 
     public static final String DOUBAN_URL = "http://api.douban.com/v2/";  //豆瓣Url http 版
     public static final String DOUBAN_URL_HTTPS = "https://api.douban.com/v2/";  //豆瓣Url https 版

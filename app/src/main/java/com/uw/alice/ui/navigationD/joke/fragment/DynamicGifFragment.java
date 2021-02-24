@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.uw.alice.R;
 import com.uw.alice.data.model.DynamicGif;
-import com.uw.alice.data.util.Util;
+import com.uw.alice.common.Constant;
 import com.uw.alice.databinding.FragmentDynamicGifBinding;
 import com.uw.alice.network.retrofit.SingletonRetrofit;
 import com.uw.alice.ui.navigationD.joke.adapter.DynamicGifAdapter;
@@ -116,7 +116,7 @@ public class DynamicGifFragment extends Fragment {
 
             @Override
             public void onNext(DynamicGif dynamicGif) {
-                if (dynamicGif.getCode().equals(Util.QUERY_SUCCESS_CODE)){
+                if (dynamicGif.getCode().equals(Constant.QUERY_SUCCESS_CODE)){
                     if (dynamicGif.getResult().getShowapi_res_code()==0){
                         if (dynamicGif.getResult().getShowapi_res_body().getRet_code()==0){
                             if (page==1){
@@ -137,7 +137,7 @@ public class DynamicGifFragment extends Fragment {
                     }else{
                         Toast.makeText(mContext, "showapi_res_code："+dynamicGif.getResult().getShowapi_res_code(), Toast.LENGTH_SHORT).show();
                     }
-                }else if (dynamicGif.getCode().equals(Util.ERROR_CODE_LIMIT)){
+                }else if (dynamicGif.getCode().equals(Constant.ERROR_CODE_LIMIT)){
                     Toast.makeText(mContext, "笑话大全数据的调用次数超过每天限量3000次/天，请明天继续", Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(mContext, "code："+dynamicGif.getCode()+"请前往数据提供平台参照公共参数错误码", Toast.LENGTH_SHORT).show();
@@ -162,7 +162,7 @@ public class DynamicGifFragment extends Fragment {
 
             }
         };
-        SingletonRetrofit.getInstance().getDynamicGif(dynamicGifObserver,page,Util.MaxResult, Util.JDAPI_KEY);
+        SingletonRetrofit.getInstance().getDynamicGif(dynamicGifObserver,page, Constant.MaxResult, Constant.JDAPI_KEY);
 
     }
 

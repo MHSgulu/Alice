@@ -28,7 +28,7 @@ import com.bumptech.glide.request.transition.Transition;
 import com.uw.alice.R;
 import com.uw.alice.common.Function;
 import com.uw.alice.data.model.MovieDetails;
-import com.uw.alice.data.util.Util;
+import com.uw.alice.common.Constant;
 import com.uw.alice.network.retrofit.SingletonRetrofit;
 import com.willy.ratingbar.BaseRatingBar;
 
@@ -109,9 +109,9 @@ public class MovieDetailsActivity extends AppCompatActivity implements View.OnCl
            /* String id = getIntent().getStringExtra("MovieId");
             Log.d(TAG, "测试参数 收id: "+ id);*/
 
-            movieId = getIntent().getStringExtra(Util.ARG_MovieId);
+            movieId = getIntent().getStringExtra(Constant.ARG_MovieId);
 
-            Glide.with(mContext).load(getIntent().getStringExtra(Util.ARG_MoviePoster)).into(new CustomTarget<Drawable>() {
+            Glide.with(mContext).load(getIntent().getStringExtra(Constant.ARG_MoviePoster)).into(new CustomTarget<Drawable>() {
                 @Override
                 public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
                     //设置图片电影海报
@@ -250,7 +250,7 @@ public class MovieDetailsActivity extends AppCompatActivity implements View.OnCl
 
             }
         };
-        SingletonRetrofit.getInstance().requestFetchMovieDetails(movieDetailsObserver,movieId,Util.DOUBAN_APIKEY);
+        SingletonRetrofit.getInstance().requestFetchMovieDetails(movieDetailsObserver,movieId, Constant.DOUBAN_APIKEY);
     }
 
 

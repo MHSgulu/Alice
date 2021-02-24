@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.uw.alice.R;
 import com.uw.alice.data.model.BingWallpaper;
-import com.uw.alice.data.util.Util;
+import com.uw.alice.common.Constant;
 import com.uw.alice.databinding.ItemBingLatelyWallpaperBinding;
 
 import java.util.List;
@@ -44,7 +44,7 @@ public class BingWallpaperListAdapter extends RecyclerView.Adapter <BingWallpape
         stringBuilder.insert(4,"-");
         stringBuilder.insert(7,"-");
         holder.mBinding.tvDate.setText(stringBuilder);
-        Glide.with(mContext).load(Util.BING_API_URL + listBean.getUrl()).into(holder.mBinding.ivWallpaper);
+        Glide.with(mContext).load(Constant.BING_API_URL + listBean.getUrl()).into(holder.mBinding.ivWallpaper);
 
         //点击 版权文字
         holder.mBinding.tvCopyright.setOnClickListener(v -> {
@@ -60,7 +60,7 @@ public class BingWallpaperListAdapter extends RecyclerView.Adapter <BingWallpape
                 ImagePreview.getInstance()
                 .setContext(mContext)
                 .setIndex(0)
-                .setImage(Util.BING_API_URL + listBean.getUrl()).start());
+                .setImage(Constant.BING_API_URL + listBean.getUrl()).start());
 
     }
 

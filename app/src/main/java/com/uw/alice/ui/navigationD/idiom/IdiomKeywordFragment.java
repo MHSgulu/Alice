@@ -22,7 +22,7 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.uw.alice.R;
 import com.uw.alice.common.Function;
 import com.uw.alice.data.model.IdiomKeyword;
-import com.uw.alice.data.util.Util;
+import com.uw.alice.common.Constant;
 import com.uw.alice.databinding.FragmentIdiomKeywordBinding;
 import com.uw.alice.network.retrofit.SingletonRetrofit;
 
@@ -195,7 +195,7 @@ public class IdiomKeywordFragment extends Fragment implements View.OnClickListen
 
             }
         };
-        SingletonRetrofit.getInstance().queryIdiomList(idiomKeywordObserver, Util.ShowApi_AppId,Util.ShowApi_Secret,
+        SingletonRetrofit.getInstance().queryIdiomList(idiomKeywordObserver, Constant.ShowApi_AppId, Constant.ShowApi_Secret,
                 mBinding.etInput.getText().toString().trim(),String.valueOf(page));
 
     }

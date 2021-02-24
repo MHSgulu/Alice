@@ -18,7 +18,7 @@ import androidx.fragment.app.Fragment;
 
 import com.uw.alice.R;
 import com.uw.alice.data.model.Idiom;
-import com.uw.alice.data.util.Util;
+import com.uw.alice.common.Constant;
 import com.uw.alice.databinding.FragmentIdiomAnnotationBinding;
 import com.uw.alice.network.retrofit.SingletonRetrofit;
 
@@ -147,7 +147,7 @@ public class IdiomAnnotationFragment extends Fragment implements View.OnClickLis
 
             }
         };
-        SingletonRetrofit.getInstance().queryIdiomAnnotation(idiomObserver, Util.ShowApi_AppId,Util.ShowApi_Secret,mBinding.
+        SingletonRetrofit.getInstance().queryIdiomAnnotation(idiomObserver, Constant.ShowApi_AppId, Constant.ShowApi_Secret,mBinding.
                 etInput.getText().toString().trim());
 
     }

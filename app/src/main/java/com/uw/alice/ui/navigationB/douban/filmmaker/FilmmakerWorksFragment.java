@@ -23,7 +23,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.uw.alice.R;
 import com.uw.alice.common.Function;
 import com.uw.alice.data.model.FilmmakerPhoto;
-import com.uw.alice.data.util.Util;
+import com.uw.alice.common.Constant;
 import com.uw.alice.network.retrofit.SingletonRetrofit;
 
 import java.util.ArrayList;
@@ -54,7 +54,7 @@ public class FilmmakerWorksFragment extends BottomSheetDialogFragment {
 
     public static FilmmakerWorksFragment newInstance(String param) {
         Bundle args = new Bundle();
-        args.putString(Util.ARG_FilmmakerId,param);
+        args.putString(Constant.ARG_FilmmakerId,param);
         FilmmakerWorksFragment fragment = new FilmmakerWorksFragment();
         fragment.setArguments(args);
         return fragment;
@@ -71,7 +71,7 @@ public class FilmmakerWorksFragment extends BottomSheetDialogFragment {
         llBack.setOnClickListener(v -> dismiss());
 
         if (getArguments() != null){
-            filmmakerId = getArguments().getString(Util.ARG_FilmmakerId);
+            filmmakerId = getArguments().getString(Constant.ARG_FilmmakerId);
             fetchPhotos(0);
         }
 
@@ -229,7 +229,7 @@ public class FilmmakerWorksFragment extends BottomSheetDialogFragment {
 
             }
         };
-        SingletonRetrofit.getInstance().requestFetchFilmmakerPhoto(filmmakerPhotoObserver,filmmakerId, Util.DOUBAN_APIKEY,index);
+        SingletonRetrofit.getInstance().requestFetchFilmmakerPhoto(filmmakerPhotoObserver,filmmakerId, Constant.DOUBAN_APIKEY,index);
 
     }
 

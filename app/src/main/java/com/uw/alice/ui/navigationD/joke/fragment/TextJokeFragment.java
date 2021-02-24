@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.uw.alice.R;
 import com.uw.alice.data.model.TextJoke;
-import com.uw.alice.data.util.Util;
+import com.uw.alice.common.Constant;
 import com.uw.alice.databinding.FragmentTextJokeBinding;
 import com.uw.alice.network.retrofit.SingletonRetrofit;
 import com.uw.alice.ui.navigationD.joke.ItemTextJokeContentActivity;
@@ -117,7 +117,7 @@ public class TextJokeFragment extends Fragment {
 
             @Override
             public void onNext(TextJoke textJoke) {
-                if (textJoke.getCode().equals(Util.QUERY_SUCCESS_CODE)){
+                if (textJoke.getCode().equals(Constant.QUERY_SUCCESS_CODE)){
                     if (textJoke.getResult().getShowapi_res_code()==0){
                         if (page==1){
                             //清空上拉加载存放的数据
@@ -134,7 +134,7 @@ public class TextJokeFragment extends Fragment {
                     }else{
                         Toast.makeText(mContext, "showapi_res_code："+textJoke.getResult().getShowapi_res_code(), Toast.LENGTH_SHORT).show();
                     }
-                }else if (textJoke.getCode().equals(Util.ERROR_CODE_LIMIT)){
+                }else if (textJoke.getCode().equals(Constant.ERROR_CODE_LIMIT)){
                     Toast.makeText(mContext, "笑话大全数据的调用次数超过每天限量3000次/天，请明天继续", Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(mContext, "code："+textJoke.getCode()+"请前往数据提供平台参照公共参数错误码", Toast.LENGTH_SHORT).show();
@@ -142,8 +142,8 @@ public class TextJokeFragment extends Fragment {
 
                 mAdapter.setOnItemClickListener((view, position) -> {
                     Intent intent = new Intent(mContext, ItemTextJokeContentActivity.class);
-                    intent.putExtra(Util.TextJokeTitle,mDataList.get(position).getTitle());
-                    intent.putExtra(Util.TextJokeContent,mDataList.get(position).getText());
+                    intent.putExtra(Constant.TextJokeTitle,mDataList.get(position).getTitle());
+                    intent.putExtra(Constant.TextJokeContent,mDataList.get(position).getText());
                     startActivity(intent);
                 });
 
@@ -161,7 +161,7 @@ public class TextJokeFragment extends Fragment {
 
             }
         };
-        SingletonRetrofit.getInstance().getTextJoke(textJokeObserver,Util.Time,page,Util.MaxResult_String,Util.Showapi_Sign,Util.JDAPI_KEY);
+        SingletonRetrofit.getInstance().getTextJoke(textJokeObserver, Constant.Time,page, Constant.MaxResult_String, Constant.Showapi_Sign, Constant.JDAPI_KEY);
 
     }
 

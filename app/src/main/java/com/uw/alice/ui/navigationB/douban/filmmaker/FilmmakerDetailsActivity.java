@@ -18,7 +18,7 @@ import com.google.android.material.appbar.MaterialToolbar;
 import com.uw.alice.R;
 import com.uw.alice.data.model.FilmMaker;
 import com.uw.alice.data.model.FilmmakerPhoto;
-import com.uw.alice.data.util.Util;
+import com.uw.alice.common.Constant;
 import com.uw.alice.network.retrofit.SingletonRetrofit;
 
 import java.util.List;
@@ -189,7 +189,7 @@ public class FilmmakerDetailsActivity extends AppCompatActivity implements View.
 
             }
         };
-        SingletonRetrofit.getInstance().requestFetchActorDetails(filmMakerObserver,id, Util.DOUBAN_APIKEY);
+        SingletonRetrofit.getInstance().requestFetchActorDetails(filmMakerObserver,id, Constant.DOUBAN_APIKEY);
 
     }
 
@@ -223,7 +223,7 @@ public class FilmmakerDetailsActivity extends AppCompatActivity implements View.
 
             }
         };
-        SingletonRetrofit.getInstance().requestFetchFilmmakerPhoto(filmmakerPhotoObserver,actorId,Util.DOUBAN_APIKEY,0);
+        SingletonRetrofit.getInstance().requestFetchFilmmakerPhoto(filmmakerPhotoObserver,actorId, Constant.DOUBAN_APIKEY,0);
 
     }
 

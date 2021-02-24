@@ -23,7 +23,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.uw.alice.R;
 import com.uw.alice.common.Function;
 import com.uw.alice.data.model.FilmmakerPhoto;
-import com.uw.alice.data.util.Util;
+import com.uw.alice.common.Constant;
 import com.uw.alice.network.retrofit.SingletonRetrofit;
 
 import java.util.ArrayList;
@@ -54,8 +54,8 @@ public class FilmmakerPhotosFragment extends BottomSheetDialogFragment {
 
     public static FilmmakerPhotosFragment newInstance(String param,String name) {
         Bundle args = new Bundle();
-        args.putString(Util.ARG_FilmmakerId,param);
-        args.putString(Util.ARG_FilmmakerName,name);
+        args.putString(Constant.ARG_FilmmakerId,param);
+        args.putString(Constant.ARG_FilmmakerName,name);
         FilmmakerPhotosFragment fragment = new FilmmakerPhotosFragment();
         fragment.setArguments(args);
         return fragment;
@@ -71,8 +71,8 @@ public class FilmmakerPhotosFragment extends BottomSheetDialogFragment {
         llBack.setOnClickListener(v -> dismiss());
 
         if (getArguments() != null){
-            tvTitle.setText(String.format("%s的照片",getArguments().getString(Util.ARG_FilmmakerName)));
-            filmmakerId = getArguments().getString(Util.ARG_FilmmakerId);
+            tvTitle.setText(String.format("%s的照片",getArguments().getString(Constant.ARG_FilmmakerName)));
+            filmmakerId = getArguments().getString(Constant.ARG_FilmmakerId);
             fetchPhotos(0);
         }
 
@@ -230,7 +230,7 @@ public class FilmmakerPhotosFragment extends BottomSheetDialogFragment {
 
             }
         };
-        SingletonRetrofit.getInstance().requestFetchFilmmakerPhoto(filmmakerPhotoObserver,filmmakerId, Util.DOUBAN_APIKEY,index);
+        SingletonRetrofit.getInstance().requestFetchFilmmakerPhoto(filmmakerPhotoObserver,filmmakerId, Constant.DOUBAN_APIKEY,index);
 
     }
 

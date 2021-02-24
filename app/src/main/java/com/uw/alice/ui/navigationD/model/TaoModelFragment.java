@@ -21,7 +21,7 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import com.uw.alice.R;
 import com.uw.alice.data.model.TaoGirls;
-import com.uw.alice.data.util.Util;
+import com.uw.alice.common.Constant;
 
 import com.uw.alice.databinding.FragmentTaoModelBinding;
 import com.uw.alice.network.retrofit.SingletonRetrofit;
@@ -222,7 +222,7 @@ public class TaoModelFragment extends Fragment implements View.OnClickListener{
 
             }
         };
-        SingletonRetrofit.getInstance().queryTaoModelDataList(taoGirlsObserver,Util.ShowApi_TestAppId,Util.ShowApi_TestSecret,style,String.valueOf(page));
+        SingletonRetrofit.getInstance().queryTaoModelDataList(taoGirlsObserver, Constant.ShowApi_TestAppId, Constant.ShowApi_TestSecret,style,String.valueOf(page));
 
     }
 

@@ -2,9 +2,7 @@ package com.uw.alice.ui.navigationB.mtime.hot;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +12,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.uw.alice.R;
-import com.uw.alice.data.util.Util;
+import com.uw.alice.common.Constant;
 
 
 public class HotMTimeMovieListActivity extends AppCompatActivity {
@@ -47,7 +45,7 @@ public class HotMTimeMovieListActivity extends AppCompatActivity {
      */
     private void initView() {
         if (getIntent() != null){
-            type = getIntent().getIntExtra(Util.ARG_MovieType,0);
+            type = getIntent().getIntExtra(Constant.ARG_MovieType,0);
         }
     }
 

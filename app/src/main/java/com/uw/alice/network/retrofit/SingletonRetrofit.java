@@ -21,7 +21,7 @@ import com.uw.alice.data.model.TaoGirls;
 import com.uw.alice.data.model.TaoModelStyle;
 import com.uw.alice.data.model.TextJoke;
 import com.uw.alice.data.model.Wallpaper;
-import com.uw.alice.data.util.Util;
+import com.uw.alice.common.Constant;
 
 import java.util.concurrent.TimeUnit;
 
@@ -64,7 +64,7 @@ public class SingletonRetrofit  {
 
         //豆瓣API
         retrofit1 = new Retrofit.Builder()
-                .baseUrl(Util.DOUBAN_URL_HTTPS)
+                .baseUrl(Constant.DOUBAN_URL_HTTPS)
                 /*.client(okHttpClient)*/
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
@@ -72,7 +72,7 @@ public class SingletonRetrofit  {
 
         //京东万象API
         retrofit2 = new Retrofit.Builder()
-                .baseUrl(Util.JDAPI_URL)
+                .baseUrl(Constant.JDAPI_URL)
                 /*.client(okHttpClient)*/
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
@@ -80,7 +80,7 @@ public class SingletonRetrofit  {
 
         //万维易源API
         retrofit3 = new Retrofit.Builder()
-                .baseUrl(Util.SHOW_API_URL_HTTPS)
+                .baseUrl(Constant.SHOW_API_URL_HTTPS)
                 /*.client(okHttpClient)*/
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
@@ -88,7 +88,7 @@ public class SingletonRetrofit  {
 
         //青云客智能机器人API
         retrofit4 = new Retrofit.Builder()
-                .baseUrl(Util.QING_YUN_KE_API_URL)
+                .baseUrl(Constant.QING_YUN_KE_API_URL)
                 /*.client(okHttpClient)*/
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
@@ -96,7 +96,7 @@ public class SingletonRetrofit  {
 
         //必应每日壁纸API
         retrofit5 = new Retrofit.Builder()
-                .baseUrl(Util.BING_API_URL)
+                .baseUrl(Constant.BING_API_URL)
                 /*.client(okHttpClient)*/
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())

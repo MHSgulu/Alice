@@ -25,7 +25,7 @@ import com.bumptech.glide.request.transition.Transition;
 import com.google.android.material.appbar.AppBarLayout;
 import com.uw.alice.R;
 import com.uw.alice.common.Function;
-import com.uw.alice.data.util.Util;
+import com.uw.alice.common.Constant;
 import com.uw.alice.ui.fragment.ShareDialogFragment;
 import com.willy.ratingbar.BaseRatingBar;
 
@@ -61,8 +61,8 @@ public class MTimeMovieDetailsActivity extends AppCompatActivity implements View
         if (getIntent() != null) {
            /* String id = getIntent().getStringExtra("MovieId");
             Log.d(TAG, "测试参数 收id: "+ id);*/
-            movieId = getIntent().getIntExtra(Util.ARG_MovieId, 10734);
-            Glide.with(mContext).load(getIntent().getStringExtra(Util.ARG_MoviePoster)).into(new CustomTarget<Drawable>() {
+            movieId = getIntent().getIntExtra(Constant.ARG_MovieId, 10734);
+            Glide.with(mContext).load(getIntent().getStringExtra(Constant.ARG_MoviePoster)).into(new CustomTarget<Drawable>() {
                 @Override
                 public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
                     //设置图片电影海报

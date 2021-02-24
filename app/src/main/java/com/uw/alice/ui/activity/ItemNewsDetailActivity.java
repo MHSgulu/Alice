@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import com.uw.alice.R;
-import com.uw.alice.data.util.Util;
+import com.uw.alice.common.Constant;
 import com.uw.alice.databinding.ActivityItemNewsDetailBinding;
 
 import org.sufficientlysecure.htmltextview.HtmlHttpImageGetter;
@@ -30,10 +30,10 @@ public class ItemNewsDetailActivity extends AppCompatActivity implements View.On
         mBinding.setOnClickListener(this);
 
         if (getIntent() != null) {
-            mBinding.tvTitle.setText(getIntent().getStringExtra(Util.NewsTitle));
-            mBinding.tvFrom.setText(getIntent().getStringExtra(Util.NewsSrc));
-            mBinding.tvTime.setText(getIntent().getStringExtra(Util.NewsTime));
-            mBinding.tvContent.setHtml(Objects.requireNonNull(getIntent().getStringExtra(Util.NewsContent)), new HtmlHttpImageGetter(mBinding.tvContent));
+            mBinding.tvTitle.setText(getIntent().getStringExtra(Constant.NewsTitle));
+            mBinding.tvFrom.setText(getIntent().getStringExtra(Constant.NewsSrc));
+            mBinding.tvTime.setText(getIntent().getStringExtra(Constant.NewsTime));
+            mBinding.tvContent.setHtml(Objects.requireNonNull(getIntent().getStringExtra(Constant.NewsContent)), new HtmlHttpImageGetter(mBinding.tvContent));
         }
 
 

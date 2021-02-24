@@ -12,7 +12,7 @@ import android.widget.LinearLayout;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.uw.alice.R;
-import com.uw.alice.data.util.Util;
+import com.uw.alice.common.Constant;
 
 
 public class HotMovieListActivity extends AppCompatActivity {
@@ -44,7 +44,7 @@ public class HotMovieListActivity extends AppCompatActivity {
      */
     private void initView() {
         if (getIntent() != null){
-            type = getIntent().getIntExtra(Util.ARG_MovieType,0);
+            type = getIntent().getIntExtra(Constant.ARG_MovieType,0);
             //Log.i(TAG, "数据点位： type: " + type);
         }
     }

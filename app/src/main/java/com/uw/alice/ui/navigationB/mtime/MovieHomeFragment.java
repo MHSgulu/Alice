@@ -20,7 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.uw.alice.R;
 import com.uw.alice.assist.MoviePosterAdapter;
 import com.uw.alice.data.entity.MovieEntity;
-import com.uw.alice.data.util.Util;
+import com.uw.alice.common.Constant;
 import com.uw.alice.ui.navigationB.mtime.adapter.MovieShowingAdapter;
 import com.uw.alice.ui.navigationB.mtime.hot.HotMTimeMovieListActivity;
 import com.youth.banner.Banner;
@@ -143,7 +143,7 @@ public class MovieHomeFragment extends Fragment implements View.OnClickListener 
 
             case R.id.rl_hot:
                 Intent intent1 = new Intent(mContext, HotMTimeMovieListActivity.class);
-                intent1.putExtra(Util.ARG_MovieType, 1);
+                intent1.putExtra(Constant.ARG_MovieType, 1);
                 startActivity(intent1);
                 break;
         }

@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.uw.alice.R;
 import com.uw.alice.data.model.News;
-import com.uw.alice.data.util.Util;
+import com.uw.alice.common.Constant;
 import com.uw.alice.databinding.FragmentPlaceholderBinding;
 import com.uw.alice.network.retrofit.SingletonRetrofit;
 import com.uw.alice.ui.activity.ItemNewsDetailActivity;
@@ -171,7 +171,7 @@ public class PlaceholderFragment extends Fragment {
 
             @Override
             public void onNext(final News news) {
-                if (news.getCode().equals(Util.QUERY_SUCCESS_CODE)) {
+                if (news.getCode().equals(Constant.QUERY_SUCCESS_CODE)) {
                     if (start==0){
                         mDataList = news.getResult().getResult().getList();
                         mAdapter = new NewsListAdapter(mDataList);
@@ -186,17 +186,17 @@ public class PlaceholderFragment extends Fragment {
                         @Override
                         public void onItemClick(View view, int position) {
                             Intent intent = new Intent(mContext, ItemNewsDetailActivity.class);
-                            intent.putExtra(Util.NewsTitle,mDataList.get(position).getTitle());
-                            intent.putExtra(Util.NewsSrc,mDataList.get(position).getSrc());
-                            intent.putExtra(Util.NewsTime,mDataList.get(position).getTime());
-                            intent.putExtra(Util.NewsContent,mDataList.get(position).getContent());
+                            intent.putExtra(Constant.NewsTitle,mDataList.get(position).getTitle());
+                            intent.putExtra(Constant.NewsSrc,mDataList.get(position).getSrc());
+                            intent.putExtra(Constant.NewsTime,mDataList.get(position).getTime());
+                            intent.putExtra(Constant.NewsContent,mDataList.get(position).getContent());
                             startActivity(intent);
                         }
                     });
 
 
                 }
-                else if (news.getCode().equals(Util.ERROR_CODE_LIMIT)){
+                else if (news.getCode().equals(Constant.ERROR_CODE_LIMIT)){
                     Toast.makeText(mContext, "新闻数据的调用次数超过每天限量1000次/天，请明天继续", Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(mContext, "code："+news.getCode()+"请前往数据提供平台参照公共参数错误码", Toast.LENGTH_SHORT).show();
@@ -214,7 +214,7 @@ public class PlaceholderFragment extends Fragment {
 
             }
         };
-        SingletonRetrofit.getInstance().getNews(newsObserver,channel,String.valueOf(num),String.valueOf(start),Util.JDAPI_KEY);
+        SingletonRetrofit.getInstance().getNews(newsObserver,channel,String.valueOf(num),String.valueOf(start), Constant.JDAPI_KEY);
     }
 
 

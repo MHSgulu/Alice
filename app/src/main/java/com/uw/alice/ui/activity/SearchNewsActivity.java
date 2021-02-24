@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.uw.alice.R;
 import com.uw.alice.data.model.NewsSearch;
-import com.uw.alice.data.util.Util;
+import com.uw.alice.common.Constant;
 import com.uw.alice.databinding.ActivitySearchNewsBinding;
 import com.uw.alice.network.retrofit.SingletonRetrofit;
 import com.uw.alice.ui.adapter.NewsSearchListAdapter;
@@ -44,7 +44,7 @@ public class SearchNewsActivity extends AppCompatActivity implements View.OnClic
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_search_news);
         mBinding.setOnClickListener(this);
 
-        String string = getIntent().getStringExtra(Util.HotWordName);
+        String string = getIntent().getStringExtra(Constant.HotWordName);
         if (string != null) {
             mBinding.etInput.setText(string);
             mBinding.llSearch.setEnabled(false);
@@ -136,7 +136,7 @@ public class SearchNewsActivity extends AppCompatActivity implements View.OnClic
 
             @Override
             public void onNext(NewsSearch newsSearch) {
-                if (newsSearch.getCode().equals(Util.QUERY_SUCCESS_CODE)||newsSearch.getMsg().equals("查询成功")){
+                if (newsSearch.getCode().equals(Constant.QUERY_SUCCESS_CODE)||newsSearch.getMsg().equals("查询成功")){
                    //进度条与数据列表的显示与隐藏，搜索是否 可以点击 进行UI上的细节优化，增强体验，
                     mBinding.llSearch.setEnabled(true);
                     mBinding.progressBar.setVisibility(View.GONE);
@@ -147,7 +147,7 @@ public class SearchNewsActivity extends AppCompatActivity implements View.OnClic
                     mAdapter = new NewsSearchListAdapter(mDataList);
                     mBinding.searchList.setLayoutManager(new LinearLayoutManager(mContext));
                     mBinding.searchList.setAdapter(mAdapter);
-                }else if (newsSearch.getCode().equals(Util.ERROR_CODE_LIMIT)){
+                }else if (newsSearch.getCode().equals(Constant.ERROR_CODE_LIMIT)){
                     Toast.makeText(mContext, "新闻数据的调用次数超过每天限量1000次/天，请明天继续", Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(mContext, "code："+newsSearch.getCode()+"请前往数据提供平台参照公共参数错误码", Toast.LENGTH_SHORT).show();
@@ -159,10 +159,10 @@ public class SearchNewsActivity extends AppCompatActivity implements View.OnClic
                     public void onItemClick(View view, int position) {
                        // Toast.makeText(mContext, "当前position："+position, Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(mContext, ItemNewsDetailActivity.class);
-                        intent.putExtra(Util.NewsTitle,mDataList.get(position).getTitle());
-                        intent.putExtra(Util.NewsSrc,mDataList.get(position).getSrc());
-                        intent.putExtra(Util.NewsTime,mDataList.get(position).getTime());
-                        intent.putExtra(Util.NewsContent,mDataList.get(position).getContent());
+                        intent.putExtra(Constant.NewsTitle,mDataList.get(position).getTitle());
+                        intent.putExtra(Constant.NewsSrc,mDataList.get(position).getSrc());
+                        intent.putExtra(Constant.NewsTime,mDataList.get(position).getTime());
+                        intent.putExtra(Constant.NewsContent,mDataList.get(position).getContent());
                         startActivity(intent);
                     }
                 });
@@ -183,7 +183,7 @@ public class SearchNewsActivity extends AppCompatActivity implements View.OnClic
 
             }
         };
-        SingletonRetrofit.getInstance().getSearchNews(newsSearchObserver,mBinding.etInput.getText().toString(),Util.JDAPI_KEY);
+        SingletonRetrofit.getInstance().getSearchNews(newsSearchObserver,mBinding.etInput.getText().toString(), Constant.JDAPI_KEY);
 
     }
 

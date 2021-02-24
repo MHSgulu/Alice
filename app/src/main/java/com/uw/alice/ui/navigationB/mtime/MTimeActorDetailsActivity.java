@@ -2,7 +2,6 @@ package com.uw.alice.ui.navigationB.mtime;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -11,24 +10,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.uw.alice.R;
-import com.uw.alice.data.model.FilmMaker;
 import com.uw.alice.data.model.FilmmakerPhoto;
-import com.uw.alice.data.util.Util;
+import com.uw.alice.common.Constant;
 import com.uw.alice.network.retrofit.SingletonRetrofit;
 import com.uw.alice.ui.navigationB.douban.filmmaker.FilmMakerAlbumShowAdapter;
-import com.uw.alice.ui.navigationB.douban.filmmaker.FilmMakerWorkShowAdapter;
 import com.uw.alice.ui.navigationB.douban.filmmaker.FilmmakerPhotosFragment;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
-import cc.shinichi.library.ImagePreview;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -57,9 +49,9 @@ public class MTimeActorDetailsActivity extends AppCompatActivity implements View
         initBindViewId();
 
         if (getIntent() != null){
-            actorId = getIntent().getStringExtra(Util.ARG_ActorId);
+            actorId = getIntent().getStringExtra(Constant.ARG_ActorId);
             Log.i(TAG,"数据点位 时光网演员Id: "+ actorId);
-            Glide.with(mContext).load(getIntent().getStringExtra(Util.ARG_ActorCover)).into(ivCover);
+            Glide.with(mContext).load(getIntent().getStringExtra(Constant.ARG_ActorCover)).into(ivCover);
 
         }
         //设置系统状态半透明
@@ -153,7 +145,7 @@ public class MTimeActorDetailsActivity extends AppCompatActivity implements View
 
             }
         };
-        SingletonRetrofit.getInstance().requestFetchFilmmakerPhoto(filmmakerPhotoObserver,actorId,Util.DOUBAN_APIKEY,0);
+        SingletonRetrofit.getInstance().requestFetchFilmmakerPhoto(filmmakerPhotoObserver,actorId, Constant.DOUBAN_APIKEY,0);
 
     }
 

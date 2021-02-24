@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 
 import com.uw.alice.R;
 import com.uw.alice.data.model.TaoModelStyle;
-import com.uw.alice.data.util.Util;
+import com.uw.alice.common.Constant;
 import com.uw.alice.databinding.ActivityTaoModelsBinding;
 import com.uw.alice.network.retrofit.SingletonRetrofit;
 import com.uw.alice.ui.navigationD.SectionsModelPagerAdapter;
@@ -88,7 +88,7 @@ public class TaoModelsActivity extends AppCompatActivity {
 
             }
         };
-        SingletonRetrofit.getInstance().queryTaoModelStyle(taoModelStyleObserver, Util.ShowApi_TestAppId,Util.ShowApi_TestSecret);
+        SingletonRetrofit.getInstance().queryTaoModelStyle(taoModelStyleObserver, Constant.ShowApi_TestAppId, Constant.ShowApi_TestSecret);
 
     }
 

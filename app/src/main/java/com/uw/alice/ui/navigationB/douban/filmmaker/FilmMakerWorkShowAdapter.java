@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.uw.alice.R;
 import com.uw.alice.data.model.FilmMaker;
-import com.uw.alice.data.util.Util;
+import com.uw.alice.common.Constant;
 import com.uw.alice.ui.navigationB.douban.movie.MovieDetailsActivity;
 import com.willy.ratingbar.BaseRatingBar;
 
@@ -48,8 +48,8 @@ public class FilmMakerWorkShowAdapter extends RecyclerView.Adapter <FilmMakerWor
 
         holder.ivMovieCover.setOnClickListener(v -> {
             Intent intent = new Intent(mContext, MovieDetailsActivity.class);
-            intent.putExtra(Util.ARG_MovieId,worksBean.getSubject().getId());
-            intent.putExtra(Util.ARG_MoviePoster,worksBean.getSubject().getImages().getLarge());
+            intent.putExtra(Constant.ARG_MovieId,worksBean.getSubject().getId());
+            intent.putExtra(Constant.ARG_MoviePoster,worksBean.getSubject().getImages().getLarge());
             mContext.startActivity(intent);
         });
 

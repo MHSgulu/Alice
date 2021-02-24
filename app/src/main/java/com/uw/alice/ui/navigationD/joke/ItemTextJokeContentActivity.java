@@ -7,7 +7,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.uw.alice.R;
-import com.uw.alice.data.util.Util;
+import com.uw.alice.common.Constant;
 
 public class ItemTextJokeContentActivity extends AppCompatActivity  {
 
@@ -24,8 +24,8 @@ public class ItemTextJokeContentActivity extends AppCompatActivity  {
         final TextView tvContent = findViewById(R.id.tv_content);
 
         if (getIntent() != null){
-            tvTitle.setText(getIntent().getStringExtra(Util.TextJokeTitle));
-            tvContent.setText(getIntent().getStringExtra(Util.TextJokeContent));
+            tvTitle.setText(getIntent().getStringExtra(Constant.TextJokeTitle));
+            tvContent.setText(getIntent().getStringExtra(Constant.TextJokeContent));
         }
 
 

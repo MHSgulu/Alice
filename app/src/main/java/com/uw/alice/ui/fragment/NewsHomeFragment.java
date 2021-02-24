@@ -22,7 +22,7 @@ import com.google.android.material.tabs.TabLayout;
 
 import com.uw.alice.R;
 import com.uw.alice.data.model.NewsChannel;
-import com.uw.alice.data.util.Util;
+import com.uw.alice.common.Constant;
 import com.uw.alice.network.retrofit.SingletonRetrofit;
 import com.uw.alice.ui.activity.RealTimeHotSpotRankingActivity;
 import com.uw.alice.ui.activity.SearchNewsActivity;
@@ -77,12 +77,12 @@ public class NewsHomeFragment extends Fragment {
 
             @Override
             public void onNext(NewsChannel newsChannel) {
-                if (newsChannel.getCode().equals(Util.QUERY_SUCCESS_CODE)){
+                if (newsChannel.getCode().equals(Constant.QUERY_SUCCESS_CODE)){
                     if (!newsChannel.getResult().getResult().isEmpty()){
                         viewPager.setAdapter(new SectionsNewsPagerAdapter(getChildFragmentManager(),BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT,newsChannel.getResult().getResult()));
                         tabLayout.setupWithViewPager(viewPager);
                     }
-                }else if (newsChannel.getCode().equals(Util.ERROR_CODE_LIMIT)){
+                }else if (newsChannel.getCode().equals(Constant.ERROR_CODE_LIMIT)){
                     Toast.makeText(mContext, "新闻频道分类数据的调用次数超过每天限量1000次/天，请明天继续", Toast.LENGTH_SHORT).show();
                 }
 
@@ -99,7 +99,7 @@ public class NewsHomeFragment extends Fragment {
 
             }
         };
-        SingletonRetrofit.getInstance().getNewsChannel(observer,Util.JDAPI_KEY);
+        SingletonRetrofit.getInstance().getNewsChannel(observer, Constant.JDAPI_KEY);
 
     }
 

@@ -16,7 +16,7 @@ import androidx.databinding.DataBindingUtil;
 
 import com.uw.alice.R;
 import com.uw.alice.data.model.MobilePhone;
-import com.uw.alice.data.util.Util;
+import com.uw.alice.common.Constant;
 import com.uw.alice.databinding.ActivityQueryPhoneNumberBinding;
 import com.uw.alice.network.retrofit.SingletonRetrofit;
 
@@ -124,7 +124,7 @@ public class QueryPhoneNumberActivity extends AppCompatActivity implements View.
 
             @Override
             public void onNext(MobilePhone mobilePhone) {
-                if (mobilePhone.getCode().equals(Util.QUERY_SUCCESS_CODE)){
+                if (mobilePhone.getCode().equals(Constant.QUERY_SUCCESS_CODE)){
                     mBinding.ivCall.setVisibility(View.VISIBLE);
                     phoneNumber = mobilePhone.getResult().getResult().getShouji();
                     mBinding.tvPhoneNUmber.setText(mobilePhone.getResult().getResult().getShouji());
@@ -133,7 +133,7 @@ public class QueryPhoneNumberActivity extends AppCompatActivity implements View.
                     mBinding.tvOperator.setText(mobilePhone.getResult().getResult().getCompany());
                     mBinding.tvCardType.setText(mobilePhone.getResult().getResult().getCardtype());
                     mBinding.tvAreaCode.setText(mobilePhone.getResult().getResult().getAreacode());
-                }else if (mobilePhone.getCode().equals(Util.ERROR_CODE_LIMIT)){
+                }else if (mobilePhone.getCode().equals(Constant.ERROR_CODE_LIMIT)){
                     Toast.makeText(mContext, "查询手机号码归属地数据的调用次数超过每天限量1000次/天，请明天继续", Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(mContext, "code："+mobilePhone.getCode()+"请前往数据提供平台参照公共参数错误码", Toast.LENGTH_SHORT).show();
@@ -151,7 +151,7 @@ public class QueryPhoneNumberActivity extends AppCompatActivity implements View.
 
             }
         };
-        SingletonRetrofit.getInstance().queryMobilePhoneNumberHome(mobilePhoneObserver,mBinding.etInput.getText().toString(), Util.JDAPI_KEY);
+        SingletonRetrofit.getInstance().queryMobilePhoneNumberHome(mobilePhoneObserver,mBinding.etInput.getText().toString(), Constant.JDAPI_KEY);
 
     }
 

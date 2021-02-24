@@ -4,8 +4,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
-import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -18,7 +16,7 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.uw.alice.R;
 import com.uw.alice.common.Widget;
 import com.uw.alice.data.model.Quotations;
-import com.uw.alice.data.util.Util;
+import com.uw.alice.common.Constant;
 import com.uw.alice.databinding.ActivityInspirationalQuotationsBinding;
 import com.uw.alice.network.retrofit.SingletonRetrofit;
 
@@ -102,7 +100,7 @@ public class InspirationalQuotationsActivity extends AppCompatActivity {
 
             }
         };
-        SingletonRetrofit.getInstance().queryEnglishQuotations(quotationsObserver, Util.ShowApi_AppId,Util.ShowApi_Secret,Util.Max_Count);
+        SingletonRetrofit.getInstance().queryEnglishQuotations(quotationsObserver, Constant.ShowApi_AppId, Constant.ShowApi_Secret, Constant.Max_Count);
 
     }
 

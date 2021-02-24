@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 
 import com.uw.alice.R;
-import com.uw.alice.data.util.Util;
+import com.uw.alice.common.Constant;
 import com.uw.alice.ui.navigationD.test.fragment.TestFragment1;
 
 /**
@@ -43,7 +43,7 @@ public class FragmentContainerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_fragment_container);
 
         if (getIntent() != null){
-            tag = getIntent().getIntExtra(Util.ARG_Flag,0);
+            tag = getIntent().getIntExtra(Constant.ARG_Flag,0);
 
             //返回用于与与此活动关联的片段进行交互的FragmentManager。
             getSupportFragmentManager()

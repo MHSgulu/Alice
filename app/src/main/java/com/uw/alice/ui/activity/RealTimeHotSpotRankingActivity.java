@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import com.uw.alice.R;
 import com.uw.alice.data.model.HotSpot;
-import com.uw.alice.data.util.Util;
+import com.uw.alice.common.Constant;
 import com.uw.alice.databinding.ActivityRealTimeHotSpotRankingBinding;
 import com.uw.alice.network.retrofit.SingletonRetrofit;
 import com.uw.alice.ui.adapter.RealTimeHotSpotRankingAdapter;
@@ -66,12 +66,12 @@ public class RealTimeHotSpotRankingActivity extends AppCompatActivity {
 
             @Override
             public void onNext(final HotSpot hotSpot) {
-                if (hotSpot.getCode().equals(Util.QUERY_SUCCESS_CODE)||hotSpot.getMsg().equals("查询成功")){
+                if (hotSpot.getCode().equals(Constant.QUERY_SUCCESS_CODE)||hotSpot.getMsg().equals("查询成功")){
                     mDataList = hotSpot.getResult().getShowapi_res_body().getList();
                     mAdapter = new RealTimeHotSpotRankingAdapter(mDataList);
                     mBinding.hotSpotList.setLayoutManager(new LinearLayoutManager(mContext));
                     mBinding.hotSpotList.setAdapter(mAdapter);
-                }else if (hotSpot.getCode().equals(Util.ERROR_CODE_LIMIT)){
+                }else if (hotSpot.getCode().equals(Constant.ERROR_CODE_LIMIT)){
                     Toast.makeText(mContext, "实时热点数据的调用次数超过每天限量3000次/天，请明天继续", Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(mContext, "code："+hotSpot.getCode()+"请前往数据提供平台参照公共参数错误码", Toast.LENGTH_SHORT).show();
@@ -79,7 +79,7 @@ public class RealTimeHotSpotRankingActivity extends AppCompatActivity {
 
                 mAdapter.setOnItemClickListener((view, position) -> {
                     Intent intent = new Intent(mContext, SearchNewsActivity.class);
-                    intent.putExtra(Util.HotWordName,mDataList.get(position).getName());
+                    intent.putExtra(Constant.HotWordName,mDataList.get(position).getName());
                     startActivity(intent);
                 });
 
@@ -97,7 +97,7 @@ public class RealTimeHotSpotRankingActivity extends AppCompatActivity {
 
             }
         };
-        SingletonRetrofit.getInstance().getHotSpotRanking(hotSpotObserver,"1", Util.JDAPI_KEY);
+        SingletonRetrofit.getInstance().getHotSpotRanking(hotSpotObserver,"1", Constant.JDAPI_KEY);
 
 
 

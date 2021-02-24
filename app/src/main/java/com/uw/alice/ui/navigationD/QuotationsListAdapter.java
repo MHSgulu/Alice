@@ -15,7 +15,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.uw.alice.R;
 import com.uw.alice.common.Function;
 import com.uw.alice.data.model.Quotations;
-import com.uw.alice.data.util.Util;
+import com.uw.alice.common.Constant;
 import com.uw.alice.databinding.ItemQuotationsListBinding;
 
 import java.util.List;
@@ -63,11 +63,11 @@ public class QuotationsListAdapter extends RecyclerView.Adapter <QuotationsListA
                 if (which == 0){
                     Toast.makeText(mContext, "已将英语短句复制到剪贴板中", Toast.LENGTH_SHORT).show();
                     Function.setTextToClipboard(mContext,listBean.getEnglish());
-                    Function.openWebPage(mContext, Util.GOOGLE_T_URL);
+                    Function.openWebPage(mContext, Constant.GOOGLE_T_URL);
                 }else{
                     Toast.makeText(mContext, "已将中文翻译复制到剪贴板中", Toast.LENGTH_SHORT).show();
                     Function.setTextToClipboard(mContext,listBean.getChinese());
-                    Function.openWebPage(mContext, Util.GOOGLE_T_URL);
+                    Function.openWebPage(mContext, Constant.GOOGLE_T_URL);
                 }
             });
             builder.create().show();

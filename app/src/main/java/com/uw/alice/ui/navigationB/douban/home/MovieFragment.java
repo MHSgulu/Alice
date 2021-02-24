@@ -19,7 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.uw.alice.R;
 import com.uw.alice.data.model.Movie;
 import com.uw.alice.data.model.MovieRankingList;
-import com.uw.alice.data.util.Util;
+import com.uw.alice.common.Constant;
 import com.uw.alice.interfaces.OnItemClickListener;
 import com.uw.alice.ui.navigationB.douban.adapter.MovieRankingListAdapter;
 import com.uw.alice.ui.navigationB.douban.adapter.MovieShowingUpAdapter;
@@ -139,8 +139,8 @@ public class MovieFragment extends Fragment {
                     //Toast.makeText(mContext,movie.getSubjects().get(position).getTitle(), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(mContext, MovieDetailsActivity.class);
                     Log.d(TAG, "测试参数 传id:" + movie.getSubjects().get(position).getId());
-                    intent.putExtra(Util.ARG_MovieId,movie.getSubjects().get(position).getId());
-                    intent.putExtra(Util.ARG_MoviePoster,movie.getSubjects().get(position).getImages().getMedium());
+                    intent.putExtra(Constant.ARG_MovieId,movie.getSubjects().get(position).getId());
+                    intent.putExtra(Constant.ARG_MoviePoster,movie.getSubjects().get(position).getImages().getMedium());
                     startActivity(intent);
                 });
 

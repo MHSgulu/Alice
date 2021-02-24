@@ -25,7 +25,7 @@ import com.uw.alice.assist.MoviePosterAdapter;
 import com.uw.alice.common.Function;
 import com.uw.alice.data.model.Movie;
 import com.uw.alice.data.model.MovieRankingList;
-import com.uw.alice.data.util.Util;
+import com.uw.alice.common.Constant;
 import com.uw.alice.network.retrofit.SingletonRetrofit;
 import com.uw.alice.ui.navigationB.douban.adapter.MovieComingSoonAdapter;
 import com.uw.alice.ui.navigationB.douban.adapter.MovieRankingListAdapter;
@@ -231,7 +231,7 @@ public class MovieHomeFragment extends Fragment implements View.OnClickListener{
 
             }
         };
-        SingletonRetrofit.getInstance().queryMovieOnShow(movieObserver, Util.DOUBAN_APIKEY,0,20);
+        SingletonRetrofit.getInstance().queryMovieOnShow(movieObserver, Constant.DOUBAN_APIKEY,0,20);
 
     }
 
@@ -308,7 +308,7 @@ public class MovieHomeFragment extends Fragment implements View.OnClickListener{
 
             }
         };
-        SingletonRetrofit.getInstance().queryMovieUpcoming(movieObserver,Util.DOUBAN_APIKEY,0,20);
+        SingletonRetrofit.getInstance().queryMovieUpcoming(movieObserver, Constant.DOUBAN_APIKEY,0,20);
 
     }
 
@@ -329,13 +329,13 @@ public class MovieHomeFragment extends Fragment implements View.OnClickListener{
 
             case R.id.rl_hot:
                 Intent intent1 = new Intent(mContext,HotMovieListActivity.class);
-                intent1.putExtra(Util.ARG_MovieType,1);
+                intent1.putExtra(Constant.ARG_MovieType,1);
                 startActivity(intent1);
                 break;
 
             case R.id.rl_soon:
                 Intent intent2 = new Intent(mContext,HotMovieListActivity.class);
-                intent2.putExtra(Util.ARG_MovieType,2);
+                intent2.putExtra(Constant.ARG_MovieType,2);
                 startActivity(intent2);
                 break;
 
@@ -390,7 +390,7 @@ public class MovieHomeFragment extends Fragment implements View.OnClickListener{
 
             }
         };
-        SingletonRetrofit.getInstance().queryTop250Movie(movieObserver, Util.DOUBAN_APIKEY,0,1);
+        SingletonRetrofit.getInstance().queryTop250Movie(movieObserver, Constant.DOUBAN_APIKEY,0,1);
 
 
     }
