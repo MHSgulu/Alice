@@ -25,7 +25,6 @@ public class HotMTimeMovieFragment extends Fragment {
 
     private Context mContext;
     private RecyclerView mRecyclerView;
-    private HotMTimeMovieListAdapter mAdapter;
     private List<Movie.SubjectsBean> mDataList = new ArrayList<>();
     private int type;
     private int start = 0; //当前索引

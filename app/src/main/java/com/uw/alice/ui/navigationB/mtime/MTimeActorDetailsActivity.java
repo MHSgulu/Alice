@@ -19,7 +19,6 @@ import com.google.android.material.appbar.MaterialToolbar;
 import com.uw.alice.R;
 import com.uw.alice.data.model.FilmMaker;
 import com.uw.alice.data.model.FilmmakerPhoto;
-import com.uw.alice.data.model.MTimeActorDetail;
 import com.uw.alice.data.util.Util;
 import com.uw.alice.network.retrofit.SingletonRetrofit;
 import com.uw.alice.ui.navigationB.douban.filmmaker.FilmMakerAlbumShowAdapter;
@@ -61,8 +60,6 @@ public class MTimeActorDetailsActivity extends AppCompatActivity implements View
             actorId = getIntent().getStringExtra(Util.ARG_ActorId);
             Log.i(TAG,"数据点位 时光网演员Id: "+ actorId);
             Glide.with(mContext).load(getIntent().getStringExtra(Util.ARG_ActorCover)).into(ivCover);
-            fetchActorDetails(actorId);
-            //fetchPhotos(actorId);
 
         }
         //设置系统状态半透明
@@ -125,89 +122,6 @@ public class MTimeActorDetailsActivity extends AppCompatActivity implements View
 
     }
 
-
-    /**
-     * 获取影人条目信息
-     */
-    private void fetchActorDetails(String id) {
-        Observer<MTimeActorDetail> mTimeActorDetailObserver = new Observer<MTimeActorDetail>() {
-            @Override
-            public void onSubscribe(Disposable d) {
-
-            }
-
-            @Override
-            public void onNext(MTimeActorDetail t) {
-                String code = t.getCode();
-                String msg = t.getMsg();
-                Log.i(TAG,"数据点位 code: "+ code);
-                Log.i(TAG,"数据点位 msg: "+ msg);
-                //Toast.makeText(mContext, t.getCode(), Toast.LENGTH_SHORT).show();
-               // if (TextUtils.equals(t.getCode(),"1")){
-                    /*Toast.makeText(mContext, "S!", Toast.LENGTH_SHORT).show();
-                    actorName = t.getData().getBackground().getNameCn();
-                    toolbar.setTitle(t.getData().getBackground().getNameCn());
-                    tvBirthday.setText(String.format("%s-%s-%s",
-                                    t.getData().getBackground().getBirthYear(),
-                                    t.getData().getBackground().getBirthMonth(),
-                                    t.getData().getBackground().getBirthDay()));
-
-                    //tvConstellation.setText(t.getConstellation());
-                    tvBirthplace.setText(t.getData().getBackground().getAddress());
-                    //tvChineseName.setText(t.getAka().toString());
-                    tvForeignName.setText(t.getData().getBackground().getNameEn());
-                    tvBriefIntroduction.setText(t.getData().getBackground().getContent());
-                    tvBriefIntroduction.post(() -> {
-                        if (tvBriefIntroduction.getLayout().getEllipsisCount(tvBriefIntroduction.getLineCount()-1) > 0){
-                            runOnUiThread(() -> llOpen.setVisibility(View.VISIBLE));
-                        }
-                    });*/
-
-                    /*if (!t.getWorks().isEmpty()){
-                        mRecyclerViewFilmWork.setLayoutManager(new LinearLayoutManager(mContext,LinearLayoutManager.HORIZONTAL,false));
-                        mRecyclerViewFilmWork.setAdapter(new tWorkShowAdapter(t.getWorks()));
-                    }*/
-
-                    /*if (!t.getPhotos().isEmpty()){
-                        mRecyclerViewActorAlbum.setLayoutManager(new LinearLayoutManager(mContext,LinearLayoutManager.HORIZONTAL,false));
-                        mAdapter = new tAlbumShowAdapter(t.getPhotos());
-                        mRecyclerViewActorAlbum.setAdapter(mAdapter);
-
-                        List<String> imgUrlList = t.getPhotos().stream().map(t.PhotosBean::getImage).collect(Collectors.toList());
-
-                        mAdapter.setOnItemClickListener((view, position) -> ImagePreview.getInstance()
-                                .setContext(mContext)
-                                //.setIndex(0) //单张
-                                //.setImage(t.getPhotos().get(position).getImage())  //单张
-                                .setIndex(position)
-                                .setImageList(imgUrlList)
-                                .setShowCloseButton(true) //显示关闭按钮
-                                .setEnableDragClose(true) //启用下拉关闭
-                                .setEnableUpDragClose(true) //启用上拉关闭
-                                .start());
-                    }*/
-
-                }
-                /*else {
-                    Toast.makeText(mContext, mTimeActorDetail.getMsg(), Toast.LENGTH_SHORT).show();
-                }*/
-
-
-            @Override
-            public void onError(Throwable e) {
-                Toast.makeText(mContext, "onError: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                Log.e(TAG, "监控点位 onError: " + e.getMessage());
-            }
-
-            @Override
-            public void onComplete() {
-
-            }
-        };
-        SingletonRetrofit.getInstance().fetchMTimeActorDetail(mTimeActorDetailObserver,id,Util.LocationId);
-
-
-    }
 
 
     /**

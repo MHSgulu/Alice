@@ -1,4 +1,4 @@
-package com.uw.alice.ui.splash;
+package com.uw.alice.ui.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,13 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 
 import com.uw.alice.MainActivity;
-import com.uw.alice.R;
 import com.uw.alice.common.Function;
 
 

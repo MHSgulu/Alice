@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.splash.SplashActivity"
+            android:name=".ui.activity.SplashActivity"
             android:theme="@style/splashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,15 +27,15 @@
             android:name=".MainActivity"
             android:description="@string/activity_description_main" />
         <activity
-            android:name=".ui.navigationA.ItemNewsDetailActivity"
+            android:name=".ui.activity.ItemNewsDetailActivity"
             android:description="@string/activity_description_ItemNewsDetail"
             android:theme="@style/CommonTheme" />
         <activity
-            android:name=".ui.navigationA.SearchNewsActivity"
+            android:name=".ui.activity.SearchNewsActivity"
             android:description="@string/activity_description_SearchNews"
             android:theme="@style/CommonTheme" />
         <activity
-            android:name=".ui.navigationA.RealTimeHotSpotRankingActivity"
+            android:name=".ui.activity.RealTimeHotSpotRankingActivity"
             android:description="@string/activity_description_RealTimeHotSpotRanking"
             android:theme="@style/CommonTheme" />
         <activity

@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_margin="5dp"
-        tools:context=".ui.navigationA.NewsSearchListAdapter">
+        tools:context=".ui.adapter.NewsSearchListAdapter">
 
 
         <androidx.cardview.widget.CardView

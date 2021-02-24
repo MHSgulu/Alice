@@ -1,4 +1,4 @@
-package com.uw.alice.ui.navigationC;
+package com.uw.alice.ui.fragment;
 
 import android.content.Context;
 import android.os.Bundle;

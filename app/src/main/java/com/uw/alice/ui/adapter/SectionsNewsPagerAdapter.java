@@ -1,9 +1,11 @@
-package com.uw.alice.ui.navigationA;
+package com.uw.alice.ui.adapter;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
+
+import com.uw.alice.ui.fragment.PlaceholderFragment;
 
 import java.util.List;
 
@@ -11,7 +13,7 @@ public class SectionsNewsPagerAdapter extends FragmentStatePagerAdapter {
 
     private List<String> tabTitleList;
 
-    SectionsNewsPagerAdapter(@NonNull FragmentManager fm, int behavior,List<String> tabList) {
+    public SectionsNewsPagerAdapter(@NonNull FragmentManager fm, int behavior, List<String> tabList) {
         super(fm,behavior);
         this.tabTitleList = tabList;
     }

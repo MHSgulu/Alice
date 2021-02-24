@@ -1,4 +1,4 @@
-package com.uw.alice.ui.navigationA;
+package com.uw.alice.ui.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -19,6 +19,7 @@ import com.uw.alice.data.model.NewsSearch;
 import com.uw.alice.data.util.Util;
 import com.uw.alice.databinding.ActivitySearchNewsBinding;
 import com.uw.alice.network.retrofit.SingletonRetrofit;
+import com.uw.alice.ui.adapter.NewsSearchListAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -157,7 +158,7 @@ public class SearchNewsActivity extends AppCompatActivity implements View.OnClic
                     @Override
                     public void onItemClick(View view, int position) {
                        // Toast.makeText(mContext, "当前position："+position, Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(mContext,ItemNewsDetailActivity.class);
+                        Intent intent = new Intent(mContext, ItemNewsDetailActivity.class);
                         intent.putExtra(Util.NewsTitle,mDataList.get(position).getTitle());
                         intent.putExtra(Util.NewsSrc,mDataList.get(position).getSrc());
                         intent.putExtra(Util.NewsTime,mDataList.get(position).getTime());

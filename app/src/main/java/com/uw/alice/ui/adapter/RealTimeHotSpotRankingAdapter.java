@@ -1,4 +1,4 @@
-package com.uw.alice.ui.navigationA;
+package com.uw.alice.ui.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -68,11 +68,11 @@ public class RealTimeHotSpotRankingAdapter extends RecyclerView.Adapter <RealTim
         }
     }
 
-    RealTimeHotSpotRankingAdapter(List<HotSpot.ResultBean.ShowapiResBodyBean.ListBean> listBeans){
+    public RealTimeHotSpotRankingAdapter(List<HotSpot.ResultBean.ShowapiResBodyBean.ListBean> listBeans){
         mlistBeans = listBeans;
     }
 
-    void setOnItemClickListener(OnItemClickListener onItemClickListener)
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener)
     {
         this.onItemClickListener = onItemClickListener;
     }

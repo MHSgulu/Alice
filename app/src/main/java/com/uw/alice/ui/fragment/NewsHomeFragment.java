@@ -1,4 +1,4 @@
-package com.uw.alice.ui.navigationA;
+package com.uw.alice.ui.fragment;
 
 import android.content.Context;
 import android.content.Intent;
@@ -24,6 +24,9 @@ import com.uw.alice.R;
 import com.uw.alice.data.model.NewsChannel;
 import com.uw.alice.data.util.Util;
 import com.uw.alice.network.retrofit.SingletonRetrofit;
+import com.uw.alice.ui.activity.RealTimeHotSpotRankingActivity;
+import com.uw.alice.ui.activity.SearchNewsActivity;
+import com.uw.alice.ui.adapter.SectionsNewsPagerAdapter;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -54,9 +57,9 @@ public class NewsHomeFragment extends Fragment {
         tabLayout.setElevation(10); //设置浮动高度
 
         LinearLayout llSearchBox = root.findViewById(R.id.ll_search_box);
-        llSearchBox.setOnClickListener(v -> startActivity(new Intent(mContext,SearchNewsActivity.class)));
+        llSearchBox.setOnClickListener(v -> startActivity(new Intent(mContext, SearchNewsActivity.class)));
         LinearLayout llHotDotRank = root.findViewById(R.id.ll_hotdotRank);
-        llHotDotRank.setOnClickListener(v -> startActivity(new Intent(mContext,RealTimeHotSpotRankingActivity.class)));
+        llHotDotRank.setOnClickListener(v -> startActivity(new Intent(mContext, RealTimeHotSpotRankingActivity.class)));
 
         initTab();
         requireActivity().getWindow().setStatusBarColor(requireActivity().getColor(R.color.colorNavigationA)); //设置系统状态栏颜色

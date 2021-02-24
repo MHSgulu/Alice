@@ -1,4 +1,4 @@
-package com.uw.alice.ui.navigationA;
+package com.uw.alice.ui.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,31 +13,30 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.uw.alice.R;
 import com.uw.alice.data.model.News;
-import com.uw.alice.data.model.NewsSearch;
 import com.uw.alice.databinding.ItemNewsListBinding;
-import com.uw.alice.databinding.ItemNewsSearchListBinding;
+
 
 import java.util.List;
 
-public class NewsSearchListAdapter extends RecyclerView.Adapter <NewsSearchListAdapter.ViewHolder> {
+public class NewsListAdapter extends RecyclerView.Adapter <NewsListAdapter.ViewHolder>{
 
     private Context mContext;
-    private List<NewsSearch.ResultBeanX.ResultBean.ListBean> mlistBeans;
+    private List<News.ResultBeanX.ResultBean.ListBean> mlistBeans;
     private OnItemClickListener onItemClickListener;
 
 
     @NonNull
     @Override
-    public NewsSearchListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
+    public NewsListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
         mContext = parent.getContext();
-        return new NewsSearchListAdapter.ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_news_search_list,parent,false));
+        return new NewsListAdapter.ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_news_list,parent,false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final NewsSearchListAdapter.ViewHolder holder, int position)
+    public void onBindViewHolder(@NonNull final NewsListAdapter.ViewHolder holder, int position)
     {
-        NewsSearch.ResultBeanX.ResultBean.ListBean listBean = mlistBeans.get(position);
+        News.ResultBeanX.ResultBean.ListBean listBean = mlistBeans.get(position);
         holder.mBinding.setList(listBean);
 
         Glide.with(mContext).load(listBean.getPic()).into(holder.iv_cover);
@@ -68,7 +67,7 @@ public class NewsSearchListAdapter extends RecyclerView.Adapter <NewsSearchListA
 
     class ViewHolder extends RecyclerView.ViewHolder
     {
-        ItemNewsSearchListBinding mBinding;
+        ItemNewsListBinding mBinding;
         ImageView iv_cover;
         //TextView tv_userNickName;
 
@@ -81,16 +80,18 @@ public class NewsSearchListAdapter extends RecyclerView.Adapter <NewsSearchListA
         }
     }
 
-    NewsSearchListAdapter(List<NewsSearch.ResultBeanX.ResultBean.ListBean> listBeans){
+    public NewsListAdapter(List<News.ResultBeanX.ResultBean.ListBean> listBeans){
         mlistBeans = listBeans;
     }
 
-    void setOnItemClickListener(OnItemClickListener onItemClickListener)
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener)
     {
         this.onItemClickListener = onItemClickListener;
     }
     public interface OnItemClickListener {
         void onItemClick(View view, int position);
     }
+
+
 
 }

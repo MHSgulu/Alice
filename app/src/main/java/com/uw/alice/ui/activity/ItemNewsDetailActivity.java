@@ -1,8 +1,8 @@
-package com.uw.alice.ui.navigationA;
+package com.uw.alice.ui.activity;
 
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.text.Html;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,32 +26,28 @@ public class ItemNewsDetailActivity extends AppCompatActivity implements View.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_item_news_detail);
-        mBinding = DataBindingUtil.setContentView(this,R.layout.activity_item_news_detail);
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_item_news_detail);
         mBinding.setOnClickListener(this);
 
-        if (getIntent() != null){
+        if (getIntent() != null) {
             mBinding.tvTitle.setText(getIntent().getStringExtra(Util.NewsTitle));
             mBinding.tvFrom.setText(getIntent().getStringExtra(Util.NewsSrc));
             mBinding.tvTime.setText(getIntent().getStringExtra(Util.NewsTime));
-            mBinding.tvContent.setHtml(Objects.requireNonNull(getIntent().getStringExtra(Util.NewsContent)),new HtmlHttpImageGetter(mBinding.tvContent));
+            mBinding.tvContent.setHtml(Objects.requireNonNull(getIntent().getStringExtra(Util.NewsContent)), new HtmlHttpImageGetter(mBinding.tvContent));
         }
+
 
     }
 
-
-
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View v) {
-        int id = v.getId();
-        switch (id){
-
-            case R.id.ll_back: //返回
+        switch (v.getId()) {
+            case R.id.ll_back:
                 finish();
                 break;
-
         }
     }
-
 
     @Override
     protected void onResume() {
@@ -71,7 +67,6 @@ public class ItemNewsDetailActivity extends AppCompatActivity implements View.On
         super.onDestroy();
 
     }
-
 
 
 }

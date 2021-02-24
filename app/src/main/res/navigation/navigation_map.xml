@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/navigation_1"
-        android:name="com.uw.alice.ui.navigationA.NewsHomeFragment"
+        android:name="com.uw.alice.ui.fragment.NewsHomeFragment"
         android:label="@string/title_1"
         tools:layout="@layout/fragment_home" />
 
@@ -20,7 +20,7 @@
 
     <fragment
         android:id="@+id/navigation_3"
-        android:name="com.uw.alice.ui.navigationC.NotificationsFragment"
+        android:name="com.uw.alice.ui.fragment.NotificationsFragment"
         android:label="@string/title_3"
         tools:layout="@layout/fragment_notifications" />
 

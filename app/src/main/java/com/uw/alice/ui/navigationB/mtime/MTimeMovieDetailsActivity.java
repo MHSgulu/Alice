@@ -5,10 +5,7 @@ import android.content.Context;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -18,10 +15,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.widget.NestedScrollView;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -30,17 +25,9 @@ import com.bumptech.glide.request.transition.Transition;
 import com.google.android.material.appbar.AppBarLayout;
 import com.uw.alice.R;
 import com.uw.alice.common.Function;
-import com.uw.alice.data.model.MTimeMovieDetail;
 import com.uw.alice.data.util.Util;
-import com.uw.alice.network.retrofit.SingletonRetrofit;
-import com.uw.alice.ui.navigationB.mtime.adapter.MTimeMovieCastAdapter;
-import com.uw.alice.ui.navigationB.mtime.adapter.MTimeMovieLabelAdapter;
-import com.uw.alice.ui.navigationB.mtime.adapter.MTimeMovieStillAdapter;
-import com.uw.alice.ui.share.ShareDialogFragment;
+import com.uw.alice.ui.fragment.ShareDialogFragment;
 import com.willy.ratingbar.BaseRatingBar;
-
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
 
 
 public class MTimeMovieDetailsActivity extends AppCompatActivity implements View.OnClickListener {
@@ -57,7 +44,6 @@ public class MTimeMovieDetailsActivity extends AppCompatActivity implements View
     private LinearLayout llOpen;
     private RelativeLayout rlMovieStill;
     private RecyclerView labelRecyclerView, castRecyclerView, stillRecyclerView, commentRecyclerView;
-    private MTimeMovieCastAdapter mTimeMovieCastAdapter;
 
     private int ThemeColor;
     private String genres, mainlandPubDate, durations;
@@ -97,8 +83,6 @@ public class MTimeMovieDetailsActivity extends AppCompatActivity implements View
 
                 }
             });
-            //获取电影条目信息
-            fetchMovieData();
         }
     }
 
@@ -138,129 +122,6 @@ public class MTimeMovieDetailsActivity extends AppCompatActivity implements View
         
     }
 
-
-    /**
-     * 请求数据
-     */
-    private void fetchMovieData() {
-        Observer<MTimeMovieDetail> mTimeMovieDetailObserver = new Observer<MTimeMovieDetail>() {
-            @Override
-            public void onSubscribe(Disposable d) {
-
-            }
-
-            @Override
-            public void onNext(MTimeMovieDetail t) {
-                if (t.getCode().equals("1") || t.getMsg().equals("成功")) {
-                    movieTitle = t.getData().getBasic().getName();
-                    tvMovieTitle.setText(movieTitle);
-
-                    if (TextUtils.equals(t.getData().getBasic().getName(), t.getData().getBasic().getNameEn())) {
-                        tvMovieOriginalTitle.setText(String.format("(%s)", t.getData().getBasic().getYear()));
-                    } else {
-                        tvMovieOriginalTitle.setText(t.getData().getBasic().getNameEn());
-                    }
-
-
-                    genres = String.join(" / ", t.getData().getBasic().getType());
-                    mainlandPubDate = t.getData().getBasic().getReleaseDate();
-                    StringBuilder sb = new StringBuilder(mainlandPubDate);
-                    sb.insert(4,"-");
-                    sb.insert(7,"-");
-
-                    durations = "";
-                    if (!t.getData().getBasic().getMins().isEmpty()) {
-                        durations = t.getData().getBasic().getMins();
-                    } else {
-                        durations = "未知";
-                    }
-
-                    tvMovieInformation.setText(String.format("%s / 上映时间: %s(中国大陆) / 片长: %s", genres, sb, durations));
-
-                    tvMovieScore.setText(String.valueOf(t.getData().getBasic().getOverallRating()));
-                    baseRatingBar.setRating((float) t.getData().getBasic().getOverallRating() / 2);
-                    tvMovieScoreCount.setText(String.format("%s人评分", t.getData().getBasic().getRatingCountShow()));
-                    tvMovieWatchCount.setText(String.format("%s人看过", t.getData().getBasic().getHasSeenCountShow()));
-                    tvMovieWishCount.setText(String.format("%s人想看", t.getData().getBasic().getWantToSeeCountShow()));
-                    //tvMovieShortCommentCount.setText(String.valueOf(movieDetails.getComments_count()));
-                }
-
-
-                if (!t.getData().getBasic().getType().isEmpty()) {
-                    labelRecyclerView.setLayoutManager(new LinearLayoutManager(mContext, RecyclerView.HORIZONTAL, false));
-                    labelRecyclerView.setAdapter(new MTimeMovieLabelAdapter(t.getData().getBasic().getType()));
-                }
-
-                tvMovieIntroduction.setText(t.getData().getBasic().getStory());
-                //一般情况下等不到TextView绘制成功，所以有空指针错误,判断方法放在子线程执行
-                tvMovieIntroduction.post(() -> {
-                    //若果超出给定的行数限制，返回要省去的字符数。大于0代表超出文本内容限制
-                    int num = tvMovieIntroduction.getLayout().getEllipsisCount(tvMovieIntroduction.getLineCount() - 1);
-                    //Log.d(TAG,"num:  "+num);
-                    if (num > 0) {
-                        runOnUiThread(() -> llOpen.setVisibility(View.VISIBLE));
-                    }
-                });
-
-
-                //获取演职员数据
-                if (t.getData().getBasic().getDirector() != null && ! t.getData().getBasic().getActors().isEmpty()){
-                    castRecyclerView.setLayoutManager(new LinearLayoutManager(mContext,RecyclerView.HORIZONTAL,false));
-                    castRecyclerView.setAdapter(new MTimeMovieCastAdapter(t.getData().getBasic().getDirector(), t.getData().getBasic().getActors()));
-                }
-
-
-                //获取预告片剧照栏数据
-                if (!t.getData().getBasic().getStageImg().getList().isEmpty()){
-                    stillRecyclerView.setLayoutManager(new LinearLayoutManager(mContext,RecyclerView.HORIZONTAL,false));
-                    stillRecyclerView.setAdapter(new MTimeMovieStillAdapter(t.getData().getBasic().getVideo(), t.getData().getBasic().getStageImg().getList()));
-                }
-
-                //获取随机4条热门短评
-                /*if (!movieDetails.getPopular_comments().isEmpty()){
-                    commentRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
-                    commentRecyclerView.setAdapter(new MovieShortCommentAdapter(movieDetails.getPopular_comments()));
-                }*/
-
-
-                /**
-                 * 注册此视图的滚动X或Y位置更改时要调用的回调。
-                 * 侦听器在滚动X或Y位置更改时通知
-                 */
-                /*nestedScrollView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
-                    @Override
-                    public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-                        //X 水平方向  Y垂直方向
-                        Log.i(TAG, "点位： scrollY: " + scrollY);
-                        Log.i(TAG, "点位： oldScrollY: " + oldScrollY);
-
-                        if (scrollY == 0){
-                            tvTitle.setVisibility(View.VISIBLE);
-                            //tvTitle.setText("电影");
-                        }else if (scrollY == 250){
-                            tvTitle.setVisibility(View.GONE);
-                            //tvTitle.setText(movieTitle);
-                        }
-
-                    }
-                });*/
-
-
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                Toast.makeText(mContext, "onError:" + e.getMessage(), Toast.LENGTH_SHORT).show();
-                Log.e(TAG, "onError:" + e.getMessage());
-            }
-
-            @Override
-            public void onComplete() {
-
-            }
-        };
-        SingletonRetrofit.getInstance().fetchMTimeMovieDetail(mTimeMovieDetailObserver, Util.LocationId, movieId);
-    }
 
 
     @Override

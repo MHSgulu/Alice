@@ -33,7 +33,6 @@ public class HotMovieFragment extends Fragment {
     private static final String ARG_TYPE = "type";
 
     private RecyclerView mRecyclerView;
-    private HotMovieListAdapter mAdapter;
     private List<Movie.SubjectsBean> mDataList = new ArrayList<>();
     private int type;
     private int start = 0; //当前索引
@@ -69,7 +68,7 @@ public class HotMovieFragment extends Fragment {
         mContext = getContext();
         mRecyclerView = view.findViewById(R.id.list);
         initScrollListener();
-        requestData(0);
+        //requestData(0);
 
         return view;
     }
@@ -89,7 +88,7 @@ public class HotMovieFragment extends Fragment {
                         if (start < total){
                             if (!isLoading){
                                 isLoading = true;
-                                requestData(start + 20);
+                                //requestData(start + 20);
                             }
                         }
                     }
@@ -97,64 +96,6 @@ public class HotMovieFragment extends Fragment {
                 isLoading = false;
             }
         });
-
-    }
-
-    /**
-     * 发起网络请求
-     */
-    private void requestData(int index) {
-
-        Observer<Movie> movieObserver = new Observer<Movie>() {
-            @Override
-            public void onSubscribe(Disposable d) {
-
-            }
-
-            @Override
-            public void onNext(final Movie movie) {
-                start = movie.getStart();
-                total = movie.getTotal();
-                Log.i(TAG, "数据点位:  start: " + start);
-                Log.i(TAG, "数据点位:  total: " + total);
-                if (!movie.getSubjects().isEmpty()){
-                    if (index == 0){
-                        mDataList = movie.getSubjects();
-                        mAdapter = new HotMovieListAdapter(mDataList);
-                        mRecyclerView.setAdapter(mAdapter);
-                    }else {
-                        mDataList.addAll(movie.getSubjects());
-                        mAdapter.notifyDataSetChanged();
-                    }
-                }
-
-                mAdapter.setOnItemClickListener((view, position) -> {
-                    //Toast.makeText(mContext, movie.getSubjects().get(position).getId(), Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(mContext,MovieDetailsActivity.class);
-                    Log.i(TAG, "数据点位： id:" + mDataList.get(position).getId());
-                    intent.putExtra("MovieId",mDataList.get(position).getId());
-                    intent.putExtra("MoviePoster",mDataList.get(position).getImages().getMedium());
-                    startActivity(intent);
-                });
-
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                Log.e(TAG, "onError:" + e.getMessage());
-            }
-
-            @Override
-            public void onComplete() {
-
-            }
-        };
-        if (type == 1){
-            SingletonRetrofit.getInstance().queryMovieOnShow(movieObserver, Util.DOUBAN_APIKEY, index,20);
-        }else {
-            SingletonRetrofit.getInstance().queryMovieUpcoming(movieObserver, Util.DOUBAN_APIKEY, index,20);
-        }
-
 
     }
 

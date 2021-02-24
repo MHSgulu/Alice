@@ -13,7 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.navigationA.SearchNewsActivity">
+        tools:context=".ui.activity.SearchNewsActivity">
 
 
         <LinearLayout
@@ -34,10 +34,10 @@
                 android:onClick="@{onClickListener}">
 
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:background="@mipmap/back"
-                    tools:ignore="ContentDescription" />
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@mipmap/icon_back_black"
+                    android:contentDescription="TODO" />
 
 
             </LinearLayout>

@@ -1,4 +1,4 @@
-package com.uw.alice.ui.navigationA;
+package com.uw.alice.ui.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -9,16 +9,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.uw.alice.R;
 import com.uw.alice.data.model.HotSpot;
-import com.uw.alice.data.model.NewsSearch;
 import com.uw.alice.data.util.Util;
 import com.uw.alice.databinding.ActivityRealTimeHotSpotRankingBinding;
-import com.uw.alice.databinding.ActivitySearchNewsBinding;
 import com.uw.alice.network.retrofit.SingletonRetrofit;
+import com.uw.alice.ui.adapter.RealTimeHotSpotRankingAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -80,7 +78,7 @@ public class RealTimeHotSpotRankingActivity extends AppCompatActivity {
                 }
 
                 mAdapter.setOnItemClickListener((view, position) -> {
-                    Intent intent = new Intent(mContext,SearchNewsActivity.class);
+                    Intent intent = new Intent(mContext, SearchNewsActivity.class);
                     intent.putExtra(Util.HotWordName,mDataList.get(position).getName());
                     startActivity(intent);
                 });

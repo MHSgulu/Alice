@@ -44,7 +44,7 @@ public class MovieShowingAdapter extends RecyclerView.Adapter<MovieShowingAdapte
     @Override
     public void onBindViewHolder(@NonNull final MovieShowingAdapter.ViewHolder holder, int position) {
         MovieEntity result = mList.get(position);
-        Glide.with(mContext).load(result.getMoviePosterUrl()).placeholder(R.mipmap.icon_placeholder).into(holder.ivMoviePoster);
+        Glide.with(mContext).load(result.getMoviePosterUrl()).into(holder.ivMoviePoster);
         holder.tvMovieName.setText(result.getMovieName());
         holder.tvMovieScore.setText(String.valueOf(result.getMovieRating()));
         holder.ratingBar.setRating((float) result.getMovieRating() / 2);

@@ -1,4 +1,4 @@
-package com.uw.alice.ui.share;
+package com.uw.alice.ui.fragment;
 
 import android.os.Bundle;
 
