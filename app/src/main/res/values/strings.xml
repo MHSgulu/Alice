@@ -4,13 +4,9 @@
 
     <!--Activity组件描述-->
     <string name="activity_description_main">首页</string>
-    <string name="activity_description_FilmmakerDetails">影人详情页</string>
-    <string name="activity_description_MTimeFilmmakerDetails">时光网影人详情页</string>
     <string name="activity_description_ItemNewsDetail">新闻详情页</string>
     <string name="activity_description_SearchNews">搜索新闻页</string>
     <string name="activity_description_RealTimeHotSpotRanking">实时热点页</string>
-    <string name="activity_description_HotMovieList">热门电影列表页</string>
-    <string name="activity_description_HotMTimeMovieList">时光网热门电影列表页</string>
     <string name="activity_description_MovieDetails">豆瓣电影详情页</string>
     <string name="activity_description_MTimeMovieDetails">时光网电影详情页</string>
     <string name="activity_description_ItemTextJokeContent">文本笑话内容页</string>
@@ -154,6 +150,6 @@
     <!-- contentDescription 内容描述 -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="description_arrow_back">这是返回箭头</string>
-
+    <string name="description_image">这是张图片</string>
 
 </resources>

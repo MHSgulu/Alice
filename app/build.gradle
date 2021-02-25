@@ -6,13 +6,10 @@ plugins {
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
-    /*dataBinding {
-        enabled = true
-    }*/
     buildFeatures {
-        dataBinding = true
-        // for view binding :
-        // viewBinding = true
+        //注意：在许多情况下，视图绑定可简化实现，提高性能，提供与数据绑定相同的好处。如果您使用数据绑定的主要目的是取代 findViewById() 调用，请考虑改用视图绑定。
+        dataBinding = true //启用数据绑定 （注意：即使模块不直接使用数据绑定，也必须为依赖于使用数据绑定的库的所有模块启用数据绑定。）
+        viewBinding = true //启用视图绑定  //如果您希望在生成绑定类时忽略某个布局文件，请将 tools:viewBindingIgnore="true" 属性添加到相应布局文件的根视图中
     }
     defaultConfig {
         applicationId "com.uw.alice"

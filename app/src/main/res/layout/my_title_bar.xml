@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="50dp"
     android:background="@color/white"
-    tools:showIn="@layout/activity_item_news_detail">
+    tools:showIn="@layout/activity_item_news_detail"
+    tools:viewBindingIgnore="true">
 
     <LinearLayout
         android:id="@+id/ll_back"

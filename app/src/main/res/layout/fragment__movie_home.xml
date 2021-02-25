@@ -16,7 +16,7 @@
             tools:ignore="DisableBaselineAlignment">
 
             <LinearLayout
-                android:id="@+id/ll_search_box"
+                android:id="@+id/search_movie_box"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="5"
@@ -152,7 +152,7 @@
                 </RelativeLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/list_is_showing_up"
+                    android:id="@+id/movie_recyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:overScrollMode="never" />

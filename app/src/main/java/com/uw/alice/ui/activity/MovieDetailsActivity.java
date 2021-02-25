@@ -1,12 +1,10 @@
-package com.uw.alice.ui.navigationB.douban.movie;
+package com.uw.alice.ui.activity;
 
 
 import android.content.Context;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -19,7 +17,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -27,13 +24,11 @@ import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.uw.alice.R;
 import com.uw.alice.common.Function;
-import com.uw.alice.data.model.MovieDetails;
 import com.uw.alice.common.Constant;
-import com.uw.alice.network.retrofit.SingletonRetrofit;
+import com.uw.alice.databinding.ActivityMovieDetailsBinding;
+import com.uw.alice.ui.navigationB.douban.movie.MovieCastAdapter;
 import com.willy.ratingbar.BaseRatingBar;
 
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
 import okhttp3.OkHttpClient;
 
 
@@ -43,31 +38,37 @@ public class MovieDetailsActivity extends AppCompatActivity implements View.OnCl
     private Context mContext;
     private ConstraintLayout rootView;
     private ImageView ivMoviePoster;
-    private TextView tvMovieTitle,tvMovieOriginalTitle,tvMovieInformation,tvMovieScore,
-            tvMovieScoreCount,tvMovieWatchCount,tvMovieWishCount,tvMovieIntroduction,tvMovieShortCommentCount;
-    private ProgressBar progressBar1,progressBar2,progressBar3,progressBar4,progressBar5;
+    private TextView tvMovieTitle, tvMovieOriginalTitle, tvMovieInformation, tvMovieScore,
+            tvMovieScoreCount, tvMovieWatchCount, tvMovieWishCount, tvMovieIntroduction, tvMovieShortCommentCount;
+    private ProgressBar progressBar1, progressBar2, progressBar3, progressBar4, progressBar5;
     private BaseRatingBar baseRatingBar;
 
     private LinearLayout llOpen;
     private RelativeLayout rlMovieStill;
 
-    private RecyclerView labelRecyclerView,castRecyclerView,stillRecyclerView,commentRecyclerView;
+    private RecyclerView labelRecyclerView, castRecyclerView, stillRecyclerView, commentRecyclerView;
     private MovieCastAdapter movieCastAdapter;
 
     private int ThemeColor;
     private final OkHttpClient client = new OkHttpClient();
-    private String countries,genres,mainlandPubDate,durations;
+    private String countries, genres, mainlandPubDate, durations;
 
     private String movieId; //电影ID
+
+
+    private ActivityMovieDetailsBinding viewBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_movie_details);
+        viewBinding = ActivityMovieDetailsBinding.inflate(getLayoutInflater());
+        //每个绑定类还包含一个 getRoot() 方法，用于为相应布局文件的根视图提供直接引用
+        View view = viewBinding.getRoot(); //getRoot() 方法会返回 LinearLayout 根视图。
+        setContentView(view);
+
         mContext = MovieDetailsActivity.this;
 
-        LinearLayout llBack = findViewById(R.id.ll_back);
-        llBack.setOnClickListener(this);
+        viewBinding.llBack.setOnClickListener(this);
 
         llOpen = findViewById(R.id.ll_open);
         llOpen.setOnClickListener(this);
@@ -104,8 +105,7 @@ public class MovieDetailsActivity extends AppCompatActivity implements View.OnCl
         progressBar5 = findViewById(R.id.progress_bar_5);
 
 
-
-        if (getIntent()!=null){
+        if (getIntent() != null) {
            /* String id = getIntent().getStringExtra("MovieId");
             Log.d(TAG, "测试参数 收id: "+ id);*/
 
@@ -118,10 +118,10 @@ public class MovieDetailsActivity extends AppCompatActivity implements View.OnCl
                     ivMoviePoster.setImageDrawable(resource);
                     BitmapDrawable bitmapDrawable = (BitmapDrawable) resource;
                     //获取图片主色调
-                    ThemeColor =  Function.fetchPaletteColor(bitmapDrawable.getBitmap());
+                    ThemeColor = Function.fetchPaletteColor(bitmapDrawable.getBitmap());
                     //设置状态栏颜色
                     getWindow().setStatusBarColor(ThemeColor);
-                    //设置页面背景色
+                    //设置页面背景
                     rootView.setBackgroundColor(ThemeColor);
                 }
 
@@ -132,7 +132,7 @@ public class MovieDetailsActivity extends AppCompatActivity implements View.OnCl
             });
 
             //获取电影条目信息
-            fetchMovieData();
+            //fetchMovieData();
 
         }
 
@@ -141,7 +141,7 @@ public class MovieDetailsActivity extends AppCompatActivity implements View.OnCl
 
 
 
-    private void fetchMovieData() {
+    /*private void fetchMovieData() {
         Observer<MovieDetails> movieDetailsObserver = new Observer<MovieDetails>() {
             @Override
             public void onSubscribe(Disposable d) {
@@ -251,14 +251,13 @@ public class MovieDetailsActivity extends AppCompatActivity implements View.OnCl
             }
         };
         SingletonRetrofit.getInstance().requestFetchMovieDetails(movieDetailsObserver,movieId, Constant.DOUBAN_APIKEY);
-    }
-
+    }*/
 
 
     @Override
     public void onClick(View v) {
         int id = v.getId();
-        switch (id){
+        switch (id) {
 
             case R.id.ll_back: //返回
                 finish();
@@ -270,30 +269,10 @@ public class MovieDetailsActivity extends AppCompatActivity implements View.OnCl
                 break;
 
             case R.id.rl_movie_still: //返回
-                Toast.makeText(mContext, "全部剧照", Toast.LENGTH_SHORT).show();;
+                Toast.makeText(mContext, "全部剧照", Toast.LENGTH_SHORT).show();
                 break;
-                
+
         }
-    }
-
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-
-    }
-
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
     }
 
 

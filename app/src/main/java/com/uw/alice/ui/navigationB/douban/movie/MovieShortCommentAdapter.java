@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.uw.alice.R;
-import com.uw.alice.data.model.MovieDetails;
 import com.willy.ratingbar.BaseRatingBar;
 
 import java.util.List;
@@ -20,7 +19,7 @@ import java.util.List;
 public class MovieShortCommentAdapter extends RecyclerView.Adapter <MovieShortCommentAdapter.ViewHolder> {
 
     private Context mContext;
-    private List<MovieDetails.PopularCommentsBean> popularCommentsBeanList;
+    //private List<MovieDetails.PopularCommentsBean> popularCommentsBeanList;
     private OnItemClickListener onItemClickListener;
 
     @NonNull
@@ -34,14 +33,14 @@ public class MovieShortCommentAdapter extends RecyclerView.Adapter <MovieShortCo
     @Override
     public void onBindViewHolder(@NonNull final MovieShortCommentAdapter.ViewHolder holder, int position)
     {
-        MovieDetails.PopularCommentsBean popularCommentsBean = popularCommentsBeanList.get(position);
+        /*MovieDetails.PopularCommentsBean popularCommentsBean = popularCommentsBeanList.get(position);
         Glide.with(mContext).load(popularCommentsBean.getAuthor().getAvatar()).into(holder.ivAvatar);
         holder.tvNickname.setText(popularCommentsBean.getAuthor().getName());
         holder.tvCommentTime.setText(popularCommentsBean.getCreated_at().substring(0,10));
         holder.tvCommentContent.setText(popularCommentsBean.getContent());
         holder.tvCommentCount.setText(String.valueOf(popularCommentsBean.getUseful_count()));
 
-        holder.baseRatingBar.setRating((float)popularCommentsBean.getRating().getValue());
+        holder.baseRatingBar.setRating((float)popularCommentsBean.getRating().getValue());*/
 
         /*if (position == popularCommentsBeanList.size()-1){
             holder.divider.setVisibility(View.GONE);
@@ -66,7 +65,7 @@ public class MovieShortCommentAdapter extends RecyclerView.Adapter <MovieShortCo
     @Override
     public int getItemCount()
     {
-        return popularCommentsBeanList.size();
+        return /*popularCommentsBeanList.size()*/4;
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
@@ -91,9 +90,9 @@ public class MovieShortCommentAdapter extends RecyclerView.Adapter <MovieShortCo
         }
     }
 
-    MovieShortCommentAdapter(List<MovieDetails.PopularCommentsBean> list){
+    /*MovieShortCommentAdapter(List<MovieDetails.PopularCommentsBean> list){
         popularCommentsBeanList = list;
-    }
+    }*/
 
     public void setOnItemClickListener(OnItemClickListener onItemClickListener)
     {

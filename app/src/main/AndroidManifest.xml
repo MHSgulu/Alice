@@ -39,29 +39,13 @@
             android:description="@string/activity_description_RealTimeHotSpotRanking"
             android:theme="@style/CommonTheme" />
         <activity
-            android:name=".ui.navigationB.douban.hot.HotMovieListActivity"
-            android:description="@string/activity_description_HotMovieList"
-            android:theme="@style/CommonTheme" />
-        <activity
-            android:name=".ui.navigationB.mtime.hot.HotMTimeMovieListActivity"
-            android:description="@string/activity_description_HotMTimeMovieList"
-            android:theme="@style/CommonTheme" />
-        <activity
-            android:name=".ui.navigationB.douban.movie.MovieDetailsActivity"
+            android:name=".ui.activity.MovieDetailsActivity"
             android:description="@string/activity_description_MovieDetails"
             android:theme="@style/MovieDetailsActivityTheme" />
         <activity
             android:name=".ui.navigationB.mtime.MTimeMovieDetailsActivity"
             android:description="@string/activity_description_MTimeMovieDetails"
             android:theme="@style/MovieDetailsActivityTheme" />
-        <activity
-            android:name=".ui.navigationB.douban.filmmaker.FilmmakerDetailsActivity"
-            android:description="@string/activity_description_FilmmakerDetails"
-            android:theme="@style/FilmmakerDetailsActivityTheme" />
-        <activity
-            android:name=".ui.navigationB.mtime.MTimeActorDetailsActivity"
-            android:description="@string/activity_description_MTimeFilmmakerDetails"
-            android:theme="@style/FilmmakerDetailsActivityTheme" />
         <activity
             android:name=".ui.navigationD.joke.ItemTextJokeContentActivity"
             android:description="@string/activity_description_ItemTextJokeContent"

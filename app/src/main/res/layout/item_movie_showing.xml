@@ -5,9 +5,11 @@
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginTop="10dp"
-    tools:context=".ui.navigationB.douban.adapter.MovieShowingUpAdapter">
-
+    android:layout_gravity="center_horizontal"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginBottom="10dp"
+    tools:context=".ui.adapter.MovieShowingAdapter">
 
     <!--豆瓣电影海报封面长宽比例1.5：1-->
     <androidx.cardview.widget.CardView
@@ -21,12 +23,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            tools:background="@color/colorNavigationC"/>
-
+            tools:background="@color/colorNavigationC"
+            android:contentDescription="@string/description_image" />
 
     </androidx.cardview.widget.CardView>
-
-
 
     <!--超出字数限制尾部显示省略号-->
     <TextView
@@ -40,7 +40,7 @@
         android:maxEms="8"
         android:ellipsize="end"
         android:textColor="@color/black"
-        android:textSize="14sp"/>
+        android:textSize="14sp" />
 
 
     <LinearLayout
@@ -55,6 +55,7 @@
             android:layout_height="wrap_content"
             app:srb_drawableEmpty="@mipmap/icon_start_empty"
             app:srb_drawableFilled="@mipmap/icon_star_filled"
+            app:srb_isIndicator="true"
             app:srb_minimumStars="0"
             app:srb_numStars="5"
             app:srb_starWidth="15dp"
@@ -73,11 +74,6 @@
             tools:ignore="SmallSp" />
 
     </LinearLayout>
-
-
-
-
-
 
 
 </LinearLayout>

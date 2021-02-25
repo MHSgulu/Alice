@@ -13,15 +13,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.uw.alice.R;
-import com.uw.alice.data.model.MovieDetails;
 
 import java.util.List;
 
 public class MovieStillAdapter extends RecyclerView.Adapter<MovieStillAdapter.ViewHolder> {
 
     private Context mContext;
-    private List<MovieDetails.TrailersBean> trailersBeanList;
-    private List<MovieDetails.PhotosBean> photosBeanList;
+    //private List<MovieDetails.TrailersBean> trailersBeanList;
 
 
     @NonNull
@@ -33,7 +31,7 @@ public class MovieStillAdapter extends RecyclerView.Adapter<MovieStillAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull final MovieStillAdapter.ViewHolder holder, int position) {
-        if (!trailersBeanList.isEmpty()) {
+        /*if (!trailersBeanList.isEmpty()) {
             if (position == 0) {
                 MovieDetails.TrailersBean trailersBean = trailersBeanList.get(position);
                 Glide.with(mContext).load(trailersBean.getMedium()).into(holder.ivMovieStill);
@@ -50,18 +48,14 @@ public class MovieStillAdapter extends RecyclerView.Adapter<MovieStillAdapter.Vi
             Glide.with(mContext).load(photosBean.getImage()).into(holder.ivMovieStill);
             holder.tvFlag.setVisibility(View.GONE);
             holder.rlPlay.setVisibility(View.GONE);
-        }
+        }*/
 
 
     }
 
     @Override
     public int getItemCount() {
-        if (!trailersBeanList.isEmpty()) {
-            return photosBeanList.size() + 1;
-        } else {
-            return photosBeanList.size();
-        }
+        return /*photosBeanList.size()*/6;
 
     }
 
@@ -79,10 +73,10 @@ public class MovieStillAdapter extends RecyclerView.Adapter<MovieStillAdapter.Vi
         }
     }
 
-    MovieStillAdapter(List<MovieDetails.TrailersBean> list1, List<MovieDetails.PhotosBean> list2) {
+    /*MovieStillAdapter(List<MovieDetails.TrailersBean> list1, List<MovieDetails.PhotosBean> list2) {
         trailersBeanList = list1;
         photosBeanList = list2;
-    }
+    }*/
 
 
 }

@@ -7,7 +7,6 @@ import android.os.Bundle;
 
 import com.uw.alice.R;
 import com.uw.alice.common.Constant;
-import com.uw.alice.ui.navigationD.test.fragment.TestFragment1;
 
 /**
  * 向 FragmentTransaction 添加更改的顺序无关紧要，不过：
@@ -49,7 +48,7 @@ public class FragmentContainerActivity extends AppCompatActivity {
             getSupportFragmentManager()
                     //对与此FragmentManager关联的片段启动一系列编辑操作。
                     .beginTransaction()
-                    .add(R.id.fragment_container, getFragment())  //添加一个片段，指定要添加的片段以及将其插入哪个视图
+                   // .add(R.id.fragment_container, getFragment())  //添加一个片段，指定要添加的片段以及将其插入哪个视图
                     //将事务添加到片段事务返回栈。该返回栈由 Activity 管理，允许用户通过按返回按钮返回上一片段状态。
                     //.addToBackStack(null)
                     .commit(); //事务应用到 Activity，必须调用 commit()
@@ -63,13 +62,13 @@ public class FragmentContainerActivity extends AppCompatActivity {
 
     }
 
-    private Fragment getFragment() {
+   /* private Fragment getFragment() {
         switch (tag) {
             case 1:
                 return TestFragment1.newInstance();
         }
         return TestFragment1.newInstance();
-    }
+    }*/
 
 
 }

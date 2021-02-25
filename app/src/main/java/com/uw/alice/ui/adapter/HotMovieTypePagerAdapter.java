@@ -1,4 +1,4 @@
-package com.uw.alice.ui.navigationB.douban.hot;
+package com.uw.alice.ui.adapter;
 
 
 import androidx.annotation.NonNull;
@@ -16,10 +16,11 @@ public class HotMovieTypePagerAdapter extends FragmentStateAdapter {
     @Override
     public Fragment createFragment(int position) {
         if (position == 0){
-            return HotMovieFragment.newInstance(1);
+            //return HotMovieFragment.newInstance(1);
         }else {
-            return HotMovieFragment.newInstance(2);
+            //return HotMovieFragment.newInstance(2);
         }
+        return  null;
     }
 
     @Override

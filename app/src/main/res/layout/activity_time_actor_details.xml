@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:context=".ui.navigationB.douban.filmmaker.FilmmakerDetailsActivity">
+    android:fitsSystemWindows="true">
 
     <!--fitsSystemWindows
     布尔内部属性，用于根据系统窗口（如状态）调整视图布局酒吧。

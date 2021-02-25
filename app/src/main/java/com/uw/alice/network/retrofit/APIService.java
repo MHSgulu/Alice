@@ -4,14 +4,10 @@ package com.uw.alice.network.retrofit;
 import com.uw.alice.data.model.BingWallpaper;
 import com.uw.alice.data.model.Chat;
 import com.uw.alice.data.model.DynamicGif;
-import com.uw.alice.data.model.FilmMaker;
-import com.uw.alice.data.model.FilmmakerPhoto;
 import com.uw.alice.data.model.HotSpot;
 import com.uw.alice.data.model.Idiom;
 import com.uw.alice.data.model.IdiomKeyword;
 import com.uw.alice.data.model.MobilePhone;
-import com.uw.alice.data.model.Movie;
-import com.uw.alice.data.model.MovieDetails;
 import com.uw.alice.data.model.News;
 import com.uw.alice.data.model.NewsChannel;
 import com.uw.alice.data.model.NewsSearch;
@@ -32,89 +28,11 @@ public interface APIService {
 
 
     /**
-     * 查询 豆瓣电影Top250
-     * http://api.douban.com/v2/movie/top250?apikey=0b2bdeda43b5688921839c8ecb20399b&start=0&count=1
-     * https://api.douban.com/v2/movie/top250?apikey=0b2bdeda43b5688921839c8ecb20399b&start=0&count=1
-     * 突发奇想 https也可以 安卓9.0以上禁止http请求访问网站，禁止明文通信。
-     */
-    @GET("movie/top250")
-    Observable<Movie> getTop250Movie(@Query("apikey") String apikey, @Query("start") int start, @Query("count") int count);
-
-
-    /**
-     * 正在热映
-     * <p>
-     * city：所在城市，例如北京、上海等
-     * start：分页使用，表示第几页
-     * count：分页使用，表示数量
-     * client：客户端信息。可为空
-     * udid：用户 id。可为空
-     * <p>
-     * 简：https://api.douban.com/v2/movie/in_theaters?apikey=0b2bdeda43b5688921839c8ecb20399b&start=0&count=200
-     * 全：https://api.douban.com/v2/movie/in_theaters?apikey=0b2bdeda43b5688921839c8ecb20399b&city=%E5%8C%97%E4%BA%AC&start=0&count=100&client=&udid=
-     */
-    @GET("movie/in_theaters")
-    Observable<Movie> getFilmsOnShow(@Query("apikey") String apiKey, @Query("start") int start, @Query("count") int count);
-
-
-    /**
-     * 即将上映
-     * <p>
-     * city：所在城市，例如北京、上海等
-     * start：分页使用，表示第几页
-     * count：分页使用，表示数量
-     * client：客户端信息。可为空
-     * udid：用户 id。可为空
-     * <p>
-     * 简：https://api.douban.com/v2/movie/coming_soon?apikey=0b2bdeda43b5688921839c8ecb20399b
-     * 全：https://api.douban.com/v2/movie/coming_soon?apikey=0b2bdeda43b5688921839c8ecb20399b&city=%E5%8C%97%E4%BA%AC&start=0&count=100&client=&udid=
-     */
-    @GET("movie/coming_soon")
-    Observable<Movie> getMovieComingSoon(@Query("apikey") String apiKey, @Query("start") int start, @Query("count") int count);
-
-
-    /**
-     * 电影条目信息
-     * <p>
-     * 注解类型 网络请求方法是GET不是POST！！！！！ 导致http 403
-     */
-
-    @GET("movie/subject/{movieId}")
-    Observable<MovieDetails> fetchMovieDetails(@Path("movieId") String movieId, @Query("apikey") String apiKey);
-
-
-    /**
-     * 影人条目信息
-     * <p>
-     * http://api.douban.com/v2/movie/celebrity/1274254?apikey=0b2bdeda43b5688921839c8ecb20399b张子枫
-     */
-
-    @GET("movie/celebrity/{actorId}")
-    Observable<FilmMaker> fetchActorDetails(@Path("actorId") String actorId, @Query("apikey") String apiKey);
-
-
-    /**
-     * 影人 全部图片
-     * 1274254 张子枫
-     * https://api.douban.com/v2/movie/celebrity/1274254/photos?apikey=0b2bdeda43b5688921839c8ecb20399b&start=0
-     * https://api.douban.com/v2/movie/celebrity/1274254/photos?apikey=0b2bdeda43b5688921839c8ecb20399b&start=0&count=20
-     */
-    //                            此处少了一个 / 报错404
-    @GET("movie/celebrity/{celebrityId}/photos")
-    Observable<FilmmakerPhoto> getFetchFilmmakerPhoto(@Path("celebrityId") String celebrityId,
-                                                      @Query("apikey") String apiKey, @Query("start") int start, @Query("count") int count
-    );
-
-
-    /**
      *   搜索 音乐
      *   https://api.douban.com/v2/music/search?q=%E7%99%BD%E6%97%A5%E6%A2%A6%E8%93%9D&start=0&count=1
      */
    /* @GET("music/search")
     Observable<Music> searchMusic(@Query("q") String q, @Query("start") int start, @Query("count") int count);*/
-
-
-
 
 
     /*
