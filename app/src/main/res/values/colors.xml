@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+
     <!--应用程序的主品牌颜色。默认情况下，这是应用于操作栏背景的颜色。-->
-    <color name="colorPrimary">#FD9E80</color> <!--bottomNavigationBar选中所使用的颜色--><!--ActionBar应用栏的颜色--><!--Tab选中的颜色-->
+    <color name="colorPrimary">#FD9E80
+    </color> <!--bottomNavigationBar选中所使用的颜色--><!--ActionBar应用栏的颜色--><!--Tab选中的颜色-->
     <!--主要品牌颜色的深色变体。默认情况下，这是应用于状态栏（通过statusBarColor）和导航栏（通过navigationBarColor）的颜色。-->
     <color name="colorPrimaryDark">#FFFFFF</color>
     <!--与主品牌颜色相得益彰。默认情况下，这是应用于框架控件的颜色（通过colorControlActivated）。-->
@@ -27,7 +34,6 @@
 
     <color name="fragment_share_bottom_sheet_dialog_background">#F7F7F7</color> <!--分享弹窗背景色-->
     <color name="fragment_share_bottom_sheet_dialog_divider">#DFDFDF</color> <!--分享弹窗分割线颜色-->
-
 
 
     <color name="white70">#C2C2C2</color>

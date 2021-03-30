@@ -37,7 +37,7 @@ import static androidx.fragment.app.FragmentStatePagerAdapter.BEHAVIOR_RESUME_ON
 public class NewsHomeFragment extends Fragment {
 
     private static final String TAG = "HomeFragment";
-    private  Context mContext;
+    private Context mContext;
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
@@ -77,12 +77,12 @@ public class NewsHomeFragment extends Fragment {
 
             @Override
             public void onNext(NewsChannel newsChannel) {
-                if (newsChannel.getCode().equals(Constant.QUERY_SUCCESS_CODE)){
-                    if (!newsChannel.getResult().getResult().isEmpty()){
-                        viewPager.setAdapter(new SectionsNewsPagerAdapter(getChildFragmentManager(),BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT,newsChannel.getResult().getResult()));
+                if (newsChannel.getCode().equals(Constant.QUERY_SUCCESS_CODE)) {
+                    if (!newsChannel.getResult().getResult().isEmpty()) {
+                        viewPager.setAdapter(new SectionsNewsPagerAdapter(getChildFragmentManager(), BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, newsChannel.getResult().getResult()));
                         tabLayout.setupWithViewPager(viewPager);
                     }
-                }else if (newsChannel.getCode().equals(Constant.ERROR_CODE_LIMIT)){
+                } else if (newsChannel.getCode().equals(Constant.ERROR_CODE_LIMIT)) {
                     Toast.makeText(mContext, "新闻频道分类数据的调用次数超过每天限量1000次/天，请明天继续", Toast.LENGTH_SHORT).show();
                 }
 
@@ -91,7 +91,7 @@ public class NewsHomeFragment extends Fragment {
             @Override
             public void onError(Throwable e) {
                 Toast.makeText(mContext, e.getMessage(), Toast.LENGTH_SHORT).show();
-                Log.e(TAG, "onError:"+e.getMessage());
+                Log.e(TAG, "onError:" + e.getMessage());
             }
 
             @Override
@@ -102,8 +102,6 @@ public class NewsHomeFragment extends Fragment {
         SingletonRetrofit.getInstance().getNewsChannel(observer, Constant.JDAPI_KEY);
 
     }
-
-
 
 
 }

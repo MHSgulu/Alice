@@ -16,7 +16,7 @@
         android:id="@+id/navigation_2"
         android:name="com.uw.alice.ui.fragment.MovieHomeFragment"
         android:label="@string/title_2"
-        tools:layout="@layout/fragment_home_time_movie" />
+        tools:layout="@layout/fragment__movie_home" />
 
     <fragment
         android:id="@+id/navigation_3"

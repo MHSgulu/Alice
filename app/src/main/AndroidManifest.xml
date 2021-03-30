@@ -1,12 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="com.uw.alice">
     <!-- APP请求数据必须网络权限 -->
     <uses-permission android:name="android.permission.INTERNET" /> <!-- Glide 您打算从url或通过网络连接加载图像，则应在INTERNET和中添加和ACCESS_NETWORK_STATE权限AndroidManifest.xml： -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- Glide 要从本地文件夹（如DCIM或图片）加载图像，您需要添加READ_EXTERNAL_STORAGE权限： -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- Glide 要用于ExternalPreferredCacheDiskCacheFactory将Glide的缓存存储在公共sdcard上，您需要使用 WRITE_EXTERNAL_STORAGE权限： -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <!--全部权限-->
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" /><!--指纹-->
+
+    <!--如果您的应用需要访问互联网，则必须提供互联网权限.-->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- “联系人”组的权限选项 -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+
+    <!-- storage`组的权限选项 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <!-- “相机”组的权限选项 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!-- `sms`组的权限选项 -->
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_WAP_PUSH" />
+    <uses-permission android:name="android.permission.RECEIVE_MMS" />
+
+    <!-- “电话”组的权限选项 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ADD_VOICEMAIL" />
+    <uses-permission android:name="android.permission.USE_SIP" />
+    <uses-permission android:name="android.permission.READ_CALL_LOG" />
+    <uses-permission android:name="android.permission.WRITE_CALL_LOG" />
+    <uses-permission android:name="android.permission.BIND_CALL_REDIRECTION_SERVICE" />
+
+    <!-- “日历”组的权限选项 -->
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+
+    <!-- `location`组的权限选项 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+
+    <!-- “麦克风”或“语音”组的权限选项 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <!-- “传感器”组的权限选项 -->
+    <uses-permission android:name="android.permission.BODY_SENSORS" />
+
+    <!-- `accessMediaLocation`组的权限选项 -->
+    <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
+
+    <!-- `activityRecognition`组的权限选项 -->
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
+
+    <!-- `ignoreBatteryOptimizations`组的权限选项 -->
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+
 
     <application
         android:icon="@mipmap/ic_launcher"

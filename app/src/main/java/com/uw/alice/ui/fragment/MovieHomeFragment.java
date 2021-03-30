@@ -24,7 +24,6 @@ import com.youth.banner.indicator.CircleIndicator;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class MovieHomeFragment extends Fragment implements View.OnClickListener {
 
     private static final String TAG = "MTimeMovieHomeFragment";
