@@ -7,8 +7,7 @@
     <string name="activity_description_ItemNewsDetail">新闻详情页</string>
     <string name="activity_description_SearchNews">搜索新闻页</string>
     <string name="activity_description_RealTimeHotSpotRanking">实时热点页</string>
-    <string name="activity_description_MovieDetails">豆瓣电影详情页</string>
-    <string name="activity_description_MTimeMovieDetails">自定义电影详情页</string>
+    <string name="activity_description_MovieDetails">电影详情页</string>
     <string name="activity_description_ItemTextJokeContent">文本笑话内容页</string>
     <string name="activity_description_QueryPhoneNumber">查询手机号码归属地页</string>
     <string name="activity_description_WallpaperHorizontalPageActivity">必应壁纸横向滑动页</string>
@@ -21,6 +20,7 @@
     <string name="activity_description_TaoModels">淘宝模特页</string>
     <string name="activity_description_TestWidget">测试控件专区页</string>
     <string name="activity_description_Container">Fragment容器页</string>
+    <string name="activity_description_weather">中国天气预报</string>
 
 
     <!--菜单名称-->
@@ -127,6 +127,7 @@
     <string name="search_for_Tao_girls">淘女郎模特查询</string>
     <string name="fragment_my_joke_text">生活趣图</string>
     <string name="intelligent_chat_robot">智能聊天机器人菲菲</string>
+    <string name="demo_weather">中国天气预报</string>
     <string name="icr_fei">菲菲</string>
     <string name="mobilePhoneNumber">手机号:</string>
     <string name="place_of_ownership">归属地:</string>
@@ -151,5 +152,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="description_arrow_back">这是返回箭头</string>
     <string name="description_image">这是张图片</string>
+    <string name="description_weather_bg">这是天气背景颜色</string>
+    <string name="description_add_button">这是进入选择添加城市天气页面的按钮</string>
+    <string name="description_share_button">这是分享天气的按钮</string>
 
 </resources>

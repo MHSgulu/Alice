@@ -6,6 +6,27 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
 
+    <color name="white">#FFFFFF</color>
+    <color name="white90">#E6FFFFFF</color>
+    <color name="white80">#CCFFFFFF</color>
+    <color name="white70">#C2C2C2</color>
+    <color name="white60">#ADADAD</color>
+    <color name="white54">#A1A1A1</color>
+    <color name="white38">#818181</color>
+    <color name="white24">#636363</color>
+    <color name="white10">#474747</color>
+
+    <color name="black">#000000</color>
+    <color name="black12">#2C2C2C</color>
+    <!--带透明度-->
+    <color name="black12_t80">#332C2C2C</color>
+    <color name="black12_t30">#B32C2C2C</color>
+    <color name="black12_t10">#E62C2C2C</color>
+    <color name="black12_t5">#F22C2C2C</color>
+    <color name="black12_t1">#FC2C2C2C</color>
+
+    <color name="red">#FF0000</color>
+
     <!--应用程序的主品牌颜色。默认情况下，这是应用于操作栏背景的颜色。-->
     <color name="colorPrimary">#FD9E80
     </color> <!--bottomNavigationBar选中所使用的颜色--><!--ActionBar应用栏的颜色--><!--Tab选中的颜色-->
@@ -25,32 +46,11 @@
     <color name="colorNavigationC">#FD9E80</color>
     <color name="colorNavigationD">#4CCFE1</color>
 
-    <color name="white">#FFFFFF</color>
-    <color name="black">#000000</color>
-    <color name="red">#FF0000</color>
-
     <color name="darkGrey">#121212</color> <!--黑夜主题颜色-->
 
 
     <color name="fragment_share_bottom_sheet_dialog_background">#F7F7F7</color> <!--分享弹窗背景色-->
     <color name="fragment_share_bottom_sheet_dialog_divider">#DFDFDF</color> <!--分享弹窗分割线颜色-->
-
-
-    <color name="white70">#C2C2C2</color>
-    <color name="white60">#ADADAD</color>
-    <color name="white54">#A1A1A1</color>
-    <color name="white38">#818181</color>
-    <color name="white24">#636363</color>
-    <color name="white10">#474747</color>
-
-    <color name="black12">#2C2C2C</color>
-    <!--带透明度-->
-    <color name="black12_t80">#332C2C2C</color>
-    <color name="black12_t30">#B32C2C2C</color>
-    <color name="black12_t10">#E62C2C2C</color>
-    <color name="black12_t5">#F22C2C2C</color>
-    <color name="black12_t1">#FC2C2C2C</color>
-
 
     <color name="hotMovieList_activity_tabIndicatorColor">#212121</color>
     <color name="hotMovieList_activity_tabSelectedTextColor">#2D2C2C</color>
@@ -82,5 +82,11 @@
 
     <!--透明-->
     <color name="transparent">#00000000</color>
+
+
+    <!-- 天气背景颜色 -->
+    <color name="weather_fuchen">#9E8A71</color> <!-- 浮尘 -->
+    <color name="weather_yin">#8DA1BA</color> <!-- 阴 -->
+
 
 </resources>

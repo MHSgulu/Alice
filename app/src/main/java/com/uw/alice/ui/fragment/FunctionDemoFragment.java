@@ -25,6 +25,7 @@ import com.uw.alice.ui.modular.QueryPhoneNumberActivity;
 import com.uw.alice.ui.modular.bing.activity.WallpaperHorizontalPageActivity;
 import com.uw.alice.ui.modular.bing.activity.BingWallpaperListActivity;
 import com.uw.alice.ui.modular.bing.activity.WallpaperVerticalPageActivity;
+import com.uw.alice.ui.modular.weather.CityWeatherDetailsActivity;
 import com.uw.alice.ui.show.TestWidgetActivity;
 
 public class FunctionDemoFragment extends Fragment implements View.OnClickListener {
@@ -111,6 +112,10 @@ public class FunctionDemoFragment extends Fragment implements View.OnClickListen
                 startActivity(new Intent(mContext, TestWidgetActivity.class));
                 break;
 
+            case R.id.cv_weather:
+                startActivity(new Intent(mContext, CityWeatherDetailsActivity.class));
+                break;
+
             case R.id.card_exit:
                 /**
                  * 当您的活动完成并应该结束时调用此函数。ActivityResult将通过onActivityResult（）传播回启动您的人。
@@ -136,7 +141,6 @@ public class FunctionDemoFragment extends Fragment implements View.OnClickListen
 
         }
     }
-
 
 
 }
