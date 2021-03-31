@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.uw.alice.R;
-import com.uw.alice.data.entity.MovieEntity;
+import com.uw.alice.data.model.MovieEntity;
 import com.uw.alice.databinding.ItemMovieShowingBinding;
 import com.uw.alice.interfaces.OnItemClickListener;
 

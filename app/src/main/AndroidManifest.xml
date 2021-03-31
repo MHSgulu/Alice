@@ -7,64 +7,6 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- Glide 要用于ExternalPreferredCacheDiskCacheFactory将Glide的缓存存储在公共sdcard上，您需要使用 WRITE_EXTERNAL_STORAGE权限： -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-    <!--全部权限-->
-    <uses-permission android:name="android.permission.USE_FINGERPRINT" /><!--指纹-->
-
-    <!--如果您的应用需要访问互联网，则必须提供互联网权限.-->
-    <uses-permission android:name="android.permission.INTERNET" />
-
-    <!-- “联系人”组的权限选项 -->
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-
-    <!-- storage`组的权限选项 -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
-    <!-- “相机”组的权限选项 -->
-    <uses-permission android:name="android.permission.CAMERA" />
-
-    <!-- `sms`组的权限选项 -->
-    <uses-permission android:name="android.permission.SEND_SMS" />
-    <uses-permission android:name="android.permission.RECEIVE_SMS" />
-    <uses-permission android:name="android.permission.READ_SMS" />
-    <uses-permission android:name="android.permission.RECEIVE_WAP_PUSH" />
-    <uses-permission android:name="android.permission.RECEIVE_MMS" />
-
-    <!-- “电话”组的权限选项 -->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-permission android:name="android.permission.ADD_VOICEMAIL" />
-    <uses-permission android:name="android.permission.USE_SIP" />
-    <uses-permission android:name="android.permission.READ_CALL_LOG" />
-    <uses-permission android:name="android.permission.WRITE_CALL_LOG" />
-    <uses-permission android:name="android.permission.BIND_CALL_REDIRECTION_SERVICE" />
-
-    <!-- “日历”组的权限选项 -->
-    <uses-permission android:name="android.permission.READ_CALENDAR" />
-    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
-
-    <!-- `location`组的权限选项 -->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
-
-    <!-- “麦克风”或“语音”组的权限选项 -->
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-
-    <!-- “传感器”组的权限选项 -->
-    <uses-permission android:name="android.permission.BODY_SENSORS" />
-
-    <!-- `accessMediaLocation`组的权限选项 -->
-    <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
-
-    <!-- `activityRecognition`组的权限选项 -->
-    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
-
-    <!-- `ignoreBatteryOptimizations`组的权限选项 -->
-    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
-
 
     <application
         android:icon="@mipmap/ic_launcher"
@@ -101,53 +43,50 @@
             android:description="@string/activity_description_MovieDetails"
             android:theme="@style/MovieDetailsActivityTheme" />
         <activity
-            android:name=".ui.navigationB.mtime.MTimeMovieDetailsActivity"
-            android:description="@string/activity_description_MTimeMovieDetails"
-            android:theme="@style/MovieDetailsActivityTheme" />
-        <activity
-            android:name=".ui.navigationD.joke.ItemTextJokeContentActivity"
+            android:name=".ui.others.joke.ItemTextJokeContentActivity"
             android:description="@string/activity_description_ItemTextJokeContent"
             android:theme="@style/CommonTheme" />
         <activity
-            android:name=".ui.navigationD.QueryPhoneNumberActivity"
+            android:name=".ui.others.QueryPhoneNumberActivity"
             android:description="@string/activity_description_QueryPhoneNumber"
             android:theme="@style/CommonTheme" />
         <activity
-            android:name=".ui.navigationD.wallpaper.WallpaperHorizontalPageActivity"
+            android:name=".ui.others.wallpaper.WallpaperHorizontalPageActivity"
             android:description="@string/activity_description_WallpaperHorizontalPageActivity"
             android:theme="@style/CommonTheme" />
         <activity
-            android:name=".ui.navigationD.wallpaper.WallpaperVerticalPageActivity"
+            android:name=".ui.others.wallpaper.WallpaperVerticalPageActivity"
             android:description="@string/activity_description_WallpaperVerticalPageActivity"
             android:theme="@style/CommonTheme" />
         <activity
-            android:name=".ui.navigationD.wallpaper.BingWallpaperListActivity"
+            android:name=".ui.others.wallpaper.BingWallpaperListActivity"
             android:description="@string/activity_description_BingWallpaperListActivity"
             android:theme="@style/CommonTheme" />
         <activity
-            android:name=".ui.navigationD.IntelligentChatRobotActivity"
+            android:name=".ui.others.IntelligentChatRobotActivity"
             android:description="@string/activity_description_IntelligentChatRobot"
             android:theme="@style/CommonTheme" />
         <activity
-            android:name=".ui.navigationD.joke.GraphicJokesActivity"
+            android:name=".ui.others.joke.GraphicJokesActivity"
             android:description="@string/activity_description_IntelligentChatRobot" />
         <activity
-            android:name=".ui.navigationD.InspirationalQuotationsActivity"
+            android:name=".ui.others.InspirationalQuotationsActivity"
             android:description="@string/activity_description_InspirationalQuotations"
             android:theme="@style/CommonTheme" />
         <activity
-            android:name=".ui.navigationD.idiom.CorpusOfIdiomsActivity"
+            android:name=".ui.others.idiom.CorpusOfIdiomsActivity"
             android:description="@string/activity_description_CorpusOfIdioms"
             android:theme="@style/CommonTheme" />
         <activity
-            android:name=".ui.navigationD.model.TaoModelsActivity"
+            android:name=".ui.others.model.TaoModelsActivity"
             android:description="@string/activity_description_TaoModels"
             android:theme="@style/CommonTheme" />
         <activity
-            android:name=".ui.navigationD.test.TestWidgetActivity"
+            android:name=".ui.others.test.TestWidgetActivity"
             android:description="@string/activity_description_TestWidget"
             android:theme="@style/CommonTheme" />
-        <activity android:name=".ui.navigationD.test.FragmentContainerActivity"
+        <activity
+            android:name=".ui.others.test.FragmentContainerActivity"
             android:description="@string/activity_description_Container"
             android:theme="@style/CommonTheme" />
     </application>

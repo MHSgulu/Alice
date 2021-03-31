@@ -26,7 +26,7 @@
 
     <fragment
         android:id="@+id/navigation_4"
-        android:name="com.uw.alice.ui.navigationD.MyFragment"
+        android:name="com.uw.alice.ui.others.MyFragment"
         android:label="@string/title_4"
         tools:layout="@layout/fragment_my" />
 

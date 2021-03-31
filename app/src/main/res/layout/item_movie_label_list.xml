@@ -5,7 +5,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginStart="10dp"
-    tools:context=".ui.navigationB.douban.movie.MovieLabelAdapter">
+    tools:context=".ui.adapter.MovieLabelAdapter">
 
     <TextView
         android:id="@+id/tv_movie_label"

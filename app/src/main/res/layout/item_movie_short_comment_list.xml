@@ -8,7 +8,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="20dp"
     tools:background="@color/black12"
-    tools:context=".ui.navigationB.douban.movie.MovieShortCommentAdapter">
+    tools:context=".ui.adapter.MovieShortCommentAdapter">
 
 
     <androidx.cardview.widget.CardView

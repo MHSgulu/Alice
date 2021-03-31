@@ -1,7 +1,7 @@
 package com.uw.alice.ui.fragment;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,19 +16,21 @@ import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.uw.alice.R;
 import com.uw.alice.assist.MoviePosterAdapter;
-import com.uw.alice.data.entity.MovieEntity;
+import com.uw.alice.common.Constant;
+import com.uw.alice.data.model.MovieEntity;
 import com.uw.alice.databinding.FragmentMovieHomeBinding;
+import com.uw.alice.ui.activity.MovieDetailsActivity;
 import com.uw.alice.ui.adapter.MovieShowingAdapter;
 import com.youth.banner.indicator.CircleIndicator;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MovieHomeFragment extends Fragment implements View.OnClickListener {
+public class MovieHomeFragment extends Fragment {
 
     private static final String TAG = "MTimeMovieHomeFragment";
     private Context mContext;
-    private List<String> moviePosterList = new ArrayList<>();
+    private final List<String> moviePosterList = new ArrayList<>();
     private MovieShowingAdapter mAdapter1;
     private FragmentMovieHomeBinding viewBinding; //范围为片段视图的生命周期（在onCreateView和onDestroyView之间）
 
@@ -46,8 +48,7 @@ public class MovieHomeFragment extends Fragment implements View.OnClickListener 
         //注意：inflate() 方法会要求您传入布局膨胀器。如果布局已膨胀，您可以调用绑定类的静态 bind() 方法。
         // 见下方 onViewCreated() 方法中
         viewBinding = FragmentMovieHomeBinding.inflate(inflater, container, false);
-        View view = viewBinding.getRoot();
-        return view;
+        return viewBinding.getRoot();
     }
 
     @Override
@@ -68,8 +69,8 @@ public class MovieHomeFragment extends Fragment implements View.OnClickListener 
     private void initLoad() {
         mContext = getContext();
 
-        viewBinding.searchMovieBox.setOnClickListener(this);
-        viewBinding.llBoxOffice.setOnClickListener(this);
+        viewBinding.searchMovieBox.setOnClickListener(v -> Toast.makeText(mContext, "电影搜索待上线", Toast.LENGTH_SHORT).show());
+        viewBinding.llBoxOffice.setOnClickListener(v -> Toast.makeText(mContext, "实时票房待上线", Toast.LENGTH_SHORT).show());
 
         viewBinding.banner.addBannerLifecycleObserver(this)  //自动控制生命周期
                 .setAdapter(new MoviePosterAdapter(moviePosterList))//设置适配器
@@ -110,32 +111,12 @@ public class MovieHomeFragment extends Fragment implements View.OnClickListener 
         mAdapter1 = new MovieShowingAdapter(hotMovieDataList);
         viewBinding.movieRecyclerView.setAdapter(mAdapter1);
 
-        /*mAdapter1.setOnItemClickListener((view, position) -> {
-            Intent intent = new Intent(mContext, MTimeMovieDetailsActivity.class);
-            // Log.d(TAG, "测试参数 传id:" + movie.getSubjects().get(position).getId());
-            intent.putExtra(Util.ARG_MovieId, t.getMs().get(position).getMovieId());
-            intent.putExtra(Util.ARG_MoviePoster, t.getMs().get(position).getImg());
+        mAdapter1.setOnItemClickListener((view, position) -> {
+            Intent intent = new Intent(mContext, MovieDetailsActivity.class);
+            intent.putExtra(Constant.ARG_MoviePoster, hotMovieDataList.get(position).getMoviePosterUrl());
             startActivity(intent);
-        });*/
+        });
 
 
     }
-
-    @SuppressLint("NonConstantResourceId")
-    @Override
-    public void onClick(View v) {
-        int id = v.getId();
-        switch (id) {
-
-            case R.id.search_movie_box:
-                Toast.makeText(mContext, "电影搜索", Toast.LENGTH_SHORT).show();
-                break;
-
-            case R.id.ll_box_office:
-                Toast.makeText(mContext, "实时票房", Toast.LENGTH_SHORT).show();
-                break;
-        }
-    }
-
-
 }

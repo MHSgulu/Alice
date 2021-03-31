@@ -18,7 +18,7 @@ import com.uw.alice.R;
 import com.uw.alice.data.model.News;
 import com.uw.alice.common.Constant;
 import com.uw.alice.databinding.FragmentPlaceholderBinding;
-import com.uw.alice.network.retrofit.SingletonRetrofit;
+import com.uw.alice.common.network.retrofit.SingletonRetrofit;
 import com.uw.alice.ui.activity.ItemNewsDetailActivity;
 import com.uw.alice.ui.adapter.NewsListAdapter;
 

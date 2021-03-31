@@ -1,12 +1,9 @@
 package com.uw.alice.data;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import com.uw.alice.data.model.News;
-import com.uw.alice.network.retrofit.SingletonRetrofit;
-
-import java.util.List;
+import com.uw.alice.common.network.retrofit.SingletonRetrofit;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;

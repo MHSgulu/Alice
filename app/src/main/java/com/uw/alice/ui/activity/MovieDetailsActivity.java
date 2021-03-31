@@ -26,7 +26,7 @@ import com.uw.alice.R;
 import com.uw.alice.common.Function;
 import com.uw.alice.common.Constant;
 import com.uw.alice.databinding.ActivityMovieDetailsBinding;
-import com.uw.alice.ui.navigationB.douban.movie.MovieCastAdapter;
+import com.uw.alice.ui.adapter.MovieCastAdapter;
 import com.willy.ratingbar.BaseRatingBar;
 
 import okhttp3.OkHttpClient;
@@ -106,11 +106,6 @@ public class MovieDetailsActivity extends AppCompatActivity implements View.OnCl
 
 
         if (getIntent() != null) {
-           /* String id = getIntent().getStringExtra("MovieId");
-            Log.d(TAG, "测试参数 收id: "+ id);*/
-
-            movieId = getIntent().getStringExtra(Constant.ARG_MovieId);
-
             Glide.with(mContext).load(getIntent().getStringExtra(Constant.ARG_MoviePoster)).into(new CustomTarget<Drawable>() {
                 @Override
                 public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {

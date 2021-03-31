@@ -23,7 +23,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.uw.alice.R;
 import com.uw.alice.data.model.NewsChannel;
 import com.uw.alice.common.Constant;
-import com.uw.alice.network.retrofit.SingletonRetrofit;
+import com.uw.alice.common.network.retrofit.SingletonRetrofit;
 import com.uw.alice.ui.activity.RealTimeHotSpotRankingActivity;
 import com.uw.alice.ui.activity.SearchNewsActivity;
 import com.uw.alice.ui.adapter.SectionsNewsPagerAdapter;

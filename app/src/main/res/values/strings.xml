@@ -8,7 +8,7 @@
     <string name="activity_description_SearchNews">搜索新闻页</string>
     <string name="activity_description_RealTimeHotSpotRanking">实时热点页</string>
     <string name="activity_description_MovieDetails">豆瓣电影详情页</string>
-    <string name="activity_description_MTimeMovieDetails">时光网电影详情页</string>
+    <string name="activity_description_MTimeMovieDetails">自定义电影详情页</string>
     <string name="activity_description_ItemTextJokeContent">文本笑话内容页</string>
     <string name="activity_description_QueryPhoneNumber">查询手机号码归属地页</string>
     <string name="activity_description_WallpaperHorizontalPageActivity">必应壁纸横向滑动页</string>

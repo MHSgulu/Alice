@@ -18,7 +18,7 @@ import com.uw.alice.R;
 import com.uw.alice.data.model.NewsSearch;
 import com.uw.alice.common.Constant;
 import com.uw.alice.databinding.ActivitySearchNewsBinding;
-import com.uw.alice.network.retrofit.SingletonRetrofit;
+import com.uw.alice.common.network.retrofit.SingletonRetrofit;
 import com.uw.alice.ui.adapter.NewsSearchListAdapter;
 
 import java.util.ArrayList;
