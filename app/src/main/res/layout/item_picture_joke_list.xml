@@ -8,7 +8,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="10dp"
-        tools:context=".ui.others.joke.adapter.PictureJokeAdapter">
+        tools:context=".ui.modular.joke.adapter.PictureJokeAdapter">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card_img"

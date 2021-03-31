@@ -43,50 +43,50 @@
             android:description="@string/activity_description_MovieDetails"
             android:theme="@style/MovieDetailsActivityTheme" />
         <activity
-            android:name=".ui.others.joke.ItemTextJokeContentActivity"
+            android:name=".ui.modular.joke.activity.ItemTextJokeContentActivity"
             android:description="@string/activity_description_ItemTextJokeContent"
             android:theme="@style/CommonTheme" />
         <activity
-            android:name=".ui.others.QueryPhoneNumberActivity"
+            android:name=".ui.modular.QueryPhoneNumberActivity"
             android:description="@string/activity_description_QueryPhoneNumber"
             android:theme="@style/CommonTheme" />
         <activity
-            android:name=".ui.others.wallpaper.WallpaperHorizontalPageActivity"
+            android:name=".ui.modular.bing.activity.WallpaperHorizontalPageActivity"
             android:description="@string/activity_description_WallpaperHorizontalPageActivity"
             android:theme="@style/CommonTheme" />
         <activity
-            android:name=".ui.others.wallpaper.WallpaperVerticalPageActivity"
+            android:name=".ui.modular.bing.activity.WallpaperVerticalPageActivity"
             android:description="@string/activity_description_WallpaperVerticalPageActivity"
             android:theme="@style/CommonTheme" />
         <activity
-            android:name=".ui.others.wallpaper.BingWallpaperListActivity"
+            android:name=".ui.modular.bing.activity.BingWallpaperListActivity"
             android:description="@string/activity_description_BingWallpaperListActivity"
             android:theme="@style/CommonTheme" />
         <activity
-            android:name=".ui.others.IntelligentChatRobotActivity"
+            android:name=".ui.modular.chat.ChatRobotActivity"
             android:description="@string/activity_description_IntelligentChatRobot"
             android:theme="@style/CommonTheme" />
         <activity
-            android:name=".ui.others.joke.GraphicJokesActivity"
+            android:name=".ui.modular.joke.activity.GraphicJokesActivity"
             android:description="@string/activity_description_IntelligentChatRobot" />
         <activity
-            android:name=".ui.others.InspirationalQuotationsActivity"
+            android:name=".ui.modular.quotation.EnglishQuotationsActivity"
             android:description="@string/activity_description_InspirationalQuotations"
             android:theme="@style/CommonTheme" />
         <activity
-            android:name=".ui.others.idiom.CorpusOfIdiomsActivity"
+            android:name=".ui.modular.idiom.activity.CorpusOfIdiomsActivity"
             android:description="@string/activity_description_CorpusOfIdioms"
             android:theme="@style/CommonTheme" />
         <activity
-            android:name=".ui.others.model.TaoModelsActivity"
+            android:name=".ui.modular.model.activity.TaoModelsActivity"
             android:description="@string/activity_description_TaoModels"
             android:theme="@style/CommonTheme" />
         <activity
-            android:name=".ui.others.test.TestWidgetActivity"
+            android:name=".ui.show.TestWidgetActivity"
             android:description="@string/activity_description_TestWidget"
             android:theme="@style/CommonTheme" />
         <activity
-            android:name=".ui.others.test.FragmentContainerActivity"
+            android:name=".ui.show.FragmentContainerActivity"
             android:description="@string/activity_description_Container"
             android:theme="@style/CommonTheme" />
     </application>

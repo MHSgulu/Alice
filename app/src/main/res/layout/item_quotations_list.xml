@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        tools:context=".ui.others.QuotationsListAdapter">
+        tools:context=".ui.modular.quotation.QuotationsListAdapter">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"

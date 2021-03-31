@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.others.wallpaper.WallpaperHorizontalPageActivity"
+    tools:context=".ui.modular.bing.activity.WallpaperHorizontalPageActivity"
     android:fitsSystemWindows="true">
 
     <androidx.viewpager.widget.ViewPager
