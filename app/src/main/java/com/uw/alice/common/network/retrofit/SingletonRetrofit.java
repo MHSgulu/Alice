@@ -1,6 +1,7 @@
 package com.uw.alice.common.network.retrofit;
 
-import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import android.util.Log;
+
 import com.uw.alice.data.model.BingWallpaper;
 import com.uw.alice.data.model.Chat;
 import com.uw.alice.data.model.DynamicGif;
@@ -18,18 +19,24 @@ import com.uw.alice.data.model.TaoModelStyle;
 import com.uw.alice.data.model.TextJoke;
 import com.uw.alice.data.model.Wallpaper;
 import com.uw.alice.common.Constant;
+import com.uw.alice.data.model.Weather;
 
 import java.util.concurrent.TimeUnit;
 
+import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class SingletonRetrofit  {
 
+    private static final String TAG = "SingletonRetrofit";
     private Retrofit retrofit,retrofit1,retrofit2,retrofit3,retrofit4,retrofit5;
     private final OkHttpClient okHttpClient;
     private APIService apiService,apiService1,apiService2,apiService3,apiService4,apiService5;
@@ -272,6 +279,20 @@ public class SingletonRetrofit  {
 
 
     /**
+     * 查询  全国天气预报
+     * @param observer  由调用者传过来的观察者对象
+     * @param city 城市名称
+     */
+    public void requestWeatherForecast(Observer<Weather> observer, String city){
+        apiService2.fetchWeatherForecast(city,Constant.JDAPI_KEY)
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer);
+    }
+
+
+    /**
      *查询  英文励志语录
      * @param observer  由调用者传过来的观察者对象
      * @param showapi_appid 易源应用id
@@ -395,6 +416,63 @@ public class SingletonRetrofit  {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(observer);
     }
+
+
+
+    //观察者模板
+    Observer<Weather> observer = new Observer<Weather>() {
+        /**
+         * 为观察者提供取消（处置）与观察者的连接（通道）的方法
+         * 同步 (from within {@link # onNext(Object)}) 和异步方式。
+         * @param d 可以随时调用以取消连接的Disposable实例 {@link Disposable#dispose()}
+         * @since 2.0
+         */
+        @Override
+        public void onSubscribe(@NonNull Disposable d) {
+            Log.d(TAG, "observer onSubscribe: 执行了");
+            //如果已处理此资源，则返回true。
+            boolean isDisposed = d.isDisposed();
+            Log.d(TAG, "observer onSubscribe isDisposed: " + isDisposed);
+        }
+
+        /**
+         * 为观察者提供一个新的观察对象。
+         * <p>
+         * @link Observable} Observable可以调用此方法0次或更多次。
+         * <p>
+         * Observable调用{@link #onComplete}或{@link #onError}后将不会再次调用此方法.
+         *
+         * @param t Observable发出的项目
+         */
+        @Override
+        public void onNext(@NonNull Weather t) {
+            Log.d(TAG, "observer onNext: 执行了");
+        }
+
+        /**
+         * 通知观察者{@link Observable}遇到错误情况。
+         * <p>
+         * 如果 {@link Observable}调用此方法,  此后它不会调用 {@link #onNext} 或 {@link #onComplete}.
+         *
+         * @param e Observable遇到的异常
+         */
+        @Override
+        public void onError(@NonNull Throwable e) {
+            Log.e(TAG, "onError: " + e);
+
+        }
+
+        /**
+         * 通知观察者 {@link Observable} 已完成基于推送的通知的发送。
+         * <p>
+         * 如果 {@link Observable} 如果调用此方法,将不会调用 {@link #onError}方法.
+         */
+        @Override
+        public void onComplete() {
+            Log.d(TAG, "observer onComplete: 执行了");
+        }
+    };
+
 
 
 }

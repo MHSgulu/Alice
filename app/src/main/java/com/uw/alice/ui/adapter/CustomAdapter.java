@@ -16,7 +16,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
 
-    private String[] localDataSet;
+    private final String[] localDataSet;
     private static final String TAG = "CustomAdapter";
 
     /**
@@ -34,7 +34,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
                     Log.d(TAG, "Element " + getAdapterPosition() + " clicked.");
                 }
             });
-            textView = (TextView) view.findViewById(R.id.textView);
+            textView = view.findViewById(R.id.textView);
         }
 
         public TextView getTextView() {

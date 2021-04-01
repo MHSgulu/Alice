@@ -17,8 +17,10 @@ import com.uw.alice.data.model.TaoGirls;
 import com.uw.alice.data.model.TaoModelStyle;
 import com.uw.alice.data.model.TextJoke;
 import com.uw.alice.data.model.Wallpaper;
+import com.uw.alice.data.model.Weather;
 
 import io.reactivex.Observable;
+import io.reactivex.SingleObserver;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
@@ -109,6 +111,15 @@ public interface APIService {
     @POST("jisuapi/query4")
     Observable<MobilePhone> queryMobilePhoneNumberHome(@Query("shouji") String shouji, @Query("appkey") String appkey);
 
+
+    /**
+     * 京东万象  全国天气预报    限2000次/天
+     * https://way.jd.com/jisuapi/weather1?appkey=您申请的APPKEY
+     * https://way.jd.com/jisuapi/weather?city=安顺&cityid=111&citycode=101260301&appkey=bd1ee420d53dcd93f21d338cd6bebba3
+     * 城市（city、cityid、citycode三者任选其一）
+     */
+    @POST("jisuapi/weather1")
+    Observable<Weather> fetchWeatherForecast(@Query("city") String city, @Query("appkey") String appkey);
 
     /**
      * 万维易源API  英文励志语录   2020-1-11至2-11  当前为30天适用套餐

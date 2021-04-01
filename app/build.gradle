@@ -68,8 +68,11 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.6.2'
     // https://mvnrepository.com/artifact/com.squareup.retrofit2/converter-gson
     //结合RxJava
-    implementation 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
-    // https://mvnrepository.com/artifact/com.jakewharton.retrofit/retrofit2-rxjava2-adapter
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.6.2'
+
+    //现在已弃用！ Retrofit 2.2及更高版本具有用于RxJava 2的第一方呼叫适配器
+    //implementation 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
+
 
     //RxJava2
     implementation 'io.reactivex.rxjava2:rxjava:2.2.8'
