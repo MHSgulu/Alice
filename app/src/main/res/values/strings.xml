@@ -139,7 +139,6 @@
     <string name="idiom_content">解释:</string>
     <string name="idiom_derivation">出自典故:</string>
     <string name="idiom_samples">例子:</string>
-
     <string name="refreshStoreHouseHeaderTitle">English Quotations</string>
 
 
@@ -155,5 +154,9 @@
     <string name="description_weather_bg">这是天气背景颜色</string>
     <string name="description_add_button">这是进入选择添加城市天气页面的按钮</string>
     <string name="description_share_button">这是分享天气的按钮</string>
+
+
+    <!-- 天气-->
+    <string name="mark_temperature">℃</string>
 
 </resources>

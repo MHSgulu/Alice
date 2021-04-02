@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.uw.alice.data.model.BingWallpaper;
 import com.uw.alice.data.model.Chat;
+import com.uw.alice.data.model.CityWeather;
 import com.uw.alice.data.model.DynamicGif;
 import com.uw.alice.data.model.HotSpot;
 import com.uw.alice.data.model.Idiom;
@@ -19,7 +20,6 @@ import com.uw.alice.data.model.TaoModelStyle;
 import com.uw.alice.data.model.TextJoke;
 import com.uw.alice.data.model.Wallpaper;
 import com.uw.alice.common.Constant;
-import com.uw.alice.data.model.Weather;
 
 import java.util.concurrent.TimeUnit;
 
@@ -283,7 +283,7 @@ public class SingletonRetrofit  {
      * @param observer  由调用者传过来的观察者对象
      * @param city 城市名称
      */
-    public void requestWeatherForecast(Observer<Weather> observer, String city){
+    public void requestWeatherForecast(Observer<CityWeather> observer, String city){
         apiService2.fetchWeatherForecast(city,Constant.JDAPI_KEY)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
@@ -420,7 +420,7 @@ public class SingletonRetrofit  {
 
 
     //观察者模板
-    Observer<Weather> observer = new Observer<Weather>() {
+    Observer<String> observer = new Observer<String>() {
         /**
          * 为观察者提供取消（处置）与观察者的连接（通道）的方法
          * 同步 (from within {@link # onNext(Object)}) 和异步方式。
@@ -445,7 +445,7 @@ public class SingletonRetrofit  {
          * @param t Observable发出的项目
          */
         @Override
-        public void onNext(@NonNull Weather t) {
+        public void onNext(@NonNull String t) {
             Log.d(TAG, "observer onNext: 执行了");
         }
 

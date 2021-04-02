@@ -3,6 +3,7 @@ package com.uw.alice.common.network.retrofit;
 
 import com.uw.alice.data.model.BingWallpaper;
 import com.uw.alice.data.model.Chat;
+import com.uw.alice.data.model.CityWeather;
 import com.uw.alice.data.model.DynamicGif;
 import com.uw.alice.data.model.HotSpot;
 import com.uw.alice.data.model.Idiom;
@@ -17,7 +18,6 @@ import com.uw.alice.data.model.TaoGirls;
 import com.uw.alice.data.model.TaoModelStyle;
 import com.uw.alice.data.model.TextJoke;
 import com.uw.alice.data.model.Wallpaper;
-import com.uw.alice.data.model.Weather;
 
 import io.reactivex.Observable;
 import io.reactivex.SingleObserver;
@@ -119,7 +119,7 @@ public interface APIService {
      * 城市（city、cityid、citycode三者任选其一）
      */
     @POST("jisuapi/weather1")
-    Observable<Weather> fetchWeatherForecast(@Query("city") String city, @Query("appkey") String appkey);
+    Observable<CityWeather> fetchWeatherForecast(@Query("city") String city, @Query("appkey") String appkey);
 
     /**
      * 万维易源API  英文励志语录   2020-1-11至2-11  当前为30天适用套餐
