@@ -2,13 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
     android:layout_marginStart="10dp"
     android:layout_marginEnd="10dp"
     android:layout_marginBottom="10dp"
+    android:orientation="vertical"
     tools:context=".ui.adapter.MovieShowingAdapter">
 
     <!--豆瓣电影海报封面长宽比例1.5：1-->
@@ -22,9 +22,9 @@
             android:id="@+id/iv_movie_poster"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:contentDescription="@string/description_image"
             android:scaleType="centerCrop"
-            tools:background="@color/colorNavigationC"
-            android:contentDescription="@string/description_image" />
+            tools:background="@color/colorNavigationC" />
 
     </androidx.cardview.widget.CardView>
 
@@ -33,14 +33,14 @@
         android:id="@+id/tv_movie_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:layout_gravity="center"
-        tools:text="电影名"
-        android:singleLine="true"
-        android:maxEms="8"
+        android:layout_marginTop="8dp"
         android:ellipsize="end"
+        android:maxEms="8"
+        android:singleLine="true"
         android:textColor="@color/black"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        tools:text="电影名" />
 
 
     <LinearLayout
@@ -58,9 +58,9 @@
             app:srb_isIndicator="true"
             app:srb_minimumStars="0"
             app:srb_numStars="5"
-            app:srb_starWidth="15dp"
             app:srb_starHeight="15dp"
             app:srb_starPadding="0dp"
+            app:srb_starWidth="15dp"
             app:srb_stepSize="0.5" />
 
         <TextView
@@ -68,10 +68,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            tools:text="9.8"
             android:textColor="@color/showingUpScoreTextColor"
             android:textSize="12sp"
-            tools:ignore="SmallSp" />
+            tools:ignore="SmallSp"
+            tools:text="9.8" />
 
     </LinearLayout>
 

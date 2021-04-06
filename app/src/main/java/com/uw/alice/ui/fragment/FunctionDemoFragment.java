@@ -25,7 +25,7 @@ import com.uw.alice.ui.modular.QueryPhoneNumberActivity;
 import com.uw.alice.ui.modular.bing.activity.WallpaperHorizontalPageActivity;
 import com.uw.alice.ui.modular.bing.activity.BingWallpaperListActivity;
 import com.uw.alice.ui.modular.bing.activity.WallpaperVerticalPageActivity;
-import com.uw.alice.ui.modular.weather.CityWeatherDetailsActivity;
+import com.uw.alice.ui.modular.weather.activity.CityWeatherDetailsActivity;
 import com.uw.alice.ui.show.TestWidgetActivity;
 
 public class FunctionDemoFragment extends Fragment implements View.OnClickListener {

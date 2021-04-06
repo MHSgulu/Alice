@@ -9,16 +9,22 @@
     <color name="white">#FFFFFF</color>
     <color name="white90">#E6FFFFFF</color>
     <color name="white80">#CCFFFFFF</color>
-    <color name="white70">#C2C2C2</color>
-    <color name="white60">#ADADAD</color>
-    <color name="white54">#A1A1A1</color>
-    <color name="white38">#818181</color>
-    <color name="white24">#636363</color>
-    <color name="white10">#474747</color>
+    <color name="white70">#B3FFFFFF</color>
+    <color name="white60">#99FFFFFF</color>
+    <color name="white54">#8AFFFFFF</color>
+    <color name="white38">#62FFFFFF</color>
+    <color name="white30">#4DFFFFFF</color>
+    <color name="white24">#3DFFFFFF</color>
+    <color name="white20">#33FFFFFF</color>
+    <color name="white15">#26FFFFFF</color>
+    <color name="white12">#1FFFFFFF</color>
+    <color name="white10">#1AFFFFFF</color>
 
     <color name="black">#000000</color>
     <color name="black12">#2C2C2C</color>
     <!--带透明度-->
+    <color name="black12_t95">#0D2C2C2C</color>
+    <color name="black12_t90">#1A2C2C2C</color>
     <color name="black12_t80">#332C2C2C</color>
     <color name="black12_t30">#B32C2C2C</color>
     <color name="black12_t10">#E62C2C2C</color>
@@ -85,8 +91,11 @@
 
 
     <!-- 天气背景颜色 -->
-    <color name="weather_fuchen">#9E8A71</color> <!-- 浮尘 -->
+    <color name="weather_qing">#4A8BDB</color> <!-- 晴 -->
+    <color name="weather_duoyun">#6A89C0</color> <!-- 多云 -->
     <color name="weather_yin">#8DA1BA</color> <!-- 阴 -->
+    <color name="weather_fuchen">#9E8A71</color> <!-- 浮尘 -->
+
 
 
 </resources>

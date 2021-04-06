@@ -13,6 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.modular.weather.activity.CityManagementActivity"></activity>
         <activity
             android:name=".ui.activity.SplashActivity"
             android:theme="@style/splashTheme">
@@ -89,7 +90,7 @@
             android:description="@string/activity_description_Container"
             android:theme="@style/CommonTheme" />
         <activity
-            android:name=".ui.modular.weather.CityWeatherDetailsActivity"
+            android:name=".ui.modular.weather.activity.CityWeatherDetailsActivity"
             android:description="@string/activity_description_weather" />
     </application>
 

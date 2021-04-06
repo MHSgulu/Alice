@@ -1,6 +1,5 @@
 package com.uw.alice.ui.modular.weather.adapter;
 
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,13 +10,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.uw.alice.R;
 import com.uw.alice.data.model.CityWeather;
 import com.uw.alice.databinding.ItemRealTimeWeatherBinding;
-import com.uw.alice.databinding.ItemWeatherDetailsBinding;
 
 import java.util.List;
 
 public class RealTimeWeatherAdapter extends RecyclerView.Adapter<RealTimeWeatherAdapter.ViewHolder> {
 
-    private static final String TAG = "WeatherDetailsListAdapt";
+    private static final String TAG = "RealTimeWeatherAdapter";
     private final List<CityWeather.ResultBeanX.ResultBean.HourlyBean> localDataList;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -44,6 +42,9 @@ public class RealTimeWeatherAdapter extends RecyclerView.Adapter<RealTimeWeather
     public void onBindViewHolder(@NonNull final RealTimeWeatherAdapter.ViewHolder holder, int position) {
         CityWeather.ResultBeanX.ResultBean.HourlyBean data = localDataList.get(position);
 
+        holder.binding.tvTime.setText(String.format("%s", data.getTime()));
+        holder.binding.tvTemperature.setText(String.format("%s°", data.getTemp()));
+
         if (data.getWeather().contains("晴")){
             holder.binding.ivIconWeather.setBackgroundResource(R.drawable.icon_weather_sunny);
         }else if(data.getWeather().contains("多云")){
@@ -69,9 +70,6 @@ public class RealTimeWeatherAdapter extends RecyclerView.Adapter<RealTimeWeather
             holder.binding.ivIconWeather.setBackgroundResource(R.drawable.icon_weather_overcast);
         }
 
-
-
-        //holder.binding.tvTemperature.setText(String.format("%s° / %s°", data.getDay().getTemphigh(), data.getNight().getTemplow()));
 
     }
 

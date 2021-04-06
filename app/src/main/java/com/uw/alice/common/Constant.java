@@ -1,6 +1,9 @@
 package com.uw.alice.common;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Constant {
 
     public static final String DOUBAN_URL = "http://api.douban.com/v2/";  //豆瓣Url http 版
@@ -50,7 +53,6 @@ public class Constant {
     public static final String Showapi_Sign = "bd0592992b4d4050bfc927fe7a4db9f3"; //文本笑话 showapi_sign
     public static final String Max_Count = "10"; //英文励志语录1页数据量的最大数量
     public static final String LocationId = "292"; //时光网 城市ID    292 上海
-
 
 
 }

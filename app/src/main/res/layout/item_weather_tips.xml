@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp"
+    tools:background="@color/black12_t30"
+    tools:context=".ui.modular.weather.adapter.WeatherTipsAdapter"
+    android:orientation="vertical"
+    tools:ignore="UseCompoundDrawables">
+
+    <ImageView
+        android:id="@+id/iv_tips"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        tools:background="@drawable/icon_tips1"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tv_tips_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_gravity="center"
+        tools:text="天气指数"
+        android:textColor="@color/white54"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/tv_tips_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        tools:text="诸事事宜"
+        android:textColor="@color/white"
+        android:textSize="14sp"/>
+
+</LinearLayout>
