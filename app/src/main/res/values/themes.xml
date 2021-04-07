@@ -34,7 +34,7 @@
 
     <!--SplashActivity -->
     <style name="splashTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="android:windowBackground">@mipmap/alice_start</item>
+        <item name="android:windowBackground">@drawable/launch_background</item>
         <item name="android:windowFullscreen">true</item><!--指示此窗口是否应填充整个屏幕的标志-->
         <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item><!--延伸显示区域到刘海屏区域 最低API28-->
     </style>
