@@ -171,17 +171,17 @@ public class CityWeatherDetailsActivity extends AppCompatActivity {
                     viewBinding.tvAirPressure.setText(String.format("%s", data.getResult().getResult().getPressure()));
 
                     //固定长度为7的一周天气列表
-                    viewBinding.recycleWeather.setLayoutManager(new LinearLayoutManager(context));
+                    //viewBinding.recycleWeather.setLayoutManager(new LinearLayoutManager(context));
                     viewBinding.recycleWeather.setAdapter(new WeatherDetailsAdapter(data.getResult().getResult().getDaily()));
 
                     //固定长度为24的实时天气列表
-                    viewBinding.recycleTimeWeather.setLayoutManager(new LinearLayoutManager(context, RecyclerView.HORIZONTAL, false));
+                    //viewBinding.recycleTimeWeather.setLayoutManager(new LinearLayoutManager(context, RecyclerView.HORIZONTAL, false));
                     viewBinding.recycleTimeWeather.setAdapter(new RealTimeWeatherAdapter(data.getResult().getResult().getHourly()));
 
                     //固定长度为6的天气指数列表
-                    viewBinding.recycleTips.setLayoutManager(new GridLayoutManager(context, 3));
-                    adapter3 = new WeatherTipsAdapter(data.getResult().getResult().getIndex());
-                    viewBinding.recycleTips.setAdapter(adapter3);
+                    //viewBinding.recycleTips.setLayoutManager(new GridLayoutManager(context, 3));
+                    //adapter3 = new WeatherTipsAdapter(data.getResult().getResult().getIndex());
+                    viewBinding.recycleTips.setAdapter(new WeatherTipsAdapter(data.getResult().getResult().getIndex()));
 
 
                 } else {

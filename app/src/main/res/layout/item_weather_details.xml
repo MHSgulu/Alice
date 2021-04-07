@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:background="@color/black12_t30"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    tools:background="@color/weather_qing"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.modular.weather.adapter.WeatherDetailsAdapter">
 

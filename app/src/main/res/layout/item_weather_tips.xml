@@ -9,7 +9,7 @@
     android:layout_marginBottom="10dp"
     android:layout_marginStart="20dp"
     android:layout_marginEnd="20dp"
-    tools:background="@color/black12_t30"
+    tools:background="@color/weather_qing"
     tools:context=".ui.modular.weather.adapter.WeatherTipsAdapter"
     android:orientation="vertical"
     tools:ignore="UseCompoundDrawables">
