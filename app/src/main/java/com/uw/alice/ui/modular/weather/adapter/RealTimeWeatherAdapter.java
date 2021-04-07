@@ -33,13 +33,13 @@ public class RealTimeWeatherAdapter extends RecyclerView.Adapter<RealTimeWeather
 
     @NonNull
     @Override
-    public RealTimeWeatherAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_real_time_weather, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final RealTimeWeatherAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         CityWeather.ResultBeanX.ResultBean.HourlyBean data = localDataList.get(position);
 
         holder.binding.tvTime.setText(String.format("%s", data.getTime()));

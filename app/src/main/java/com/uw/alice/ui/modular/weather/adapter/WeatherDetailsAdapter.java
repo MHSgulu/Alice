@@ -34,13 +34,13 @@ public class WeatherDetailsAdapter extends RecyclerView.Adapter<WeatherDetailsAd
 
     @NonNull
     @Override
-    public WeatherDetailsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_weather_details, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final WeatherDetailsAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         CityWeather.ResultBeanX.ResultBean.DailyBean data = localDataList.get(position);
 
         if (data.getDay().getWeather().contains("晴")){

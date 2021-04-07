@@ -33,13 +33,13 @@ public class WeatherTipsAdapter extends RecyclerView.Adapter<WeatherTipsAdapter.
 
     @NonNull
     @Override
-    public WeatherTipsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_weather_tips, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final WeatherTipsAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         CityWeather.ResultBeanX.ResultBean.IndexBean data;
         if (position == 5){
             data = localDataList.get(position + 1);
