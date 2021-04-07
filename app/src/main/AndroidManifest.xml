@@ -12,8 +12,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".ui.modular.weather.activity.CityManagementActivity"></activity>
+        android:theme="@style/Theme.Alice">
         <activity
             android:name=".ui.activity.SplashActivity"
             android:theme="@style/splashTheme">
@@ -40,8 +39,7 @@
             android:theme="@style/CommonTheme" />
         <activity
             android:name=".ui.activity.MovieDetailsActivity"
-            android:description="@string/activity_description_MovieDetails"
-            android:theme="@style/MovieDetailsActivityTheme" />
+            android:description="@string/activity_description_MovieDetails" />
         <activity
             android:name=".ui.modular.joke.activity.ItemTextJokeContentActivity"
             android:description="@string/activity_description_ItemTextJokeContent"
@@ -92,6 +90,9 @@
         <activity
             android:name=".ui.modular.weather.activity.CityWeatherDetailsActivity"
             android:description="@string/activity_description_weather" />
+        <activity
+            android:name=".ui.modular.weather.activity.CityManagementActivity"
+            android:description="@string/activity_description_city_management" />
     </application>
 
 </manifest>

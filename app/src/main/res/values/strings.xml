@@ -21,6 +21,7 @@
     <string name="activity_description_TestWidget">测试控件专区页</string>
     <string name="activity_description_Container">Fragment容器页</string>
     <string name="activity_description_weather">中国天气预报</string>
+    <string name="activity_description_city_management">天气预报城市管理</string>
 
 
     <!--菜单名称-->

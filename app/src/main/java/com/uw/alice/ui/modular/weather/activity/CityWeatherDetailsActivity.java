@@ -41,7 +41,6 @@ public class CityWeatherDetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initUIView();
         //setContentView(R.layout.activity_city_weather_details);
         viewBinding = ActivityCityWeatherDetailsBinding.inflate(getLayoutInflater());
         View view = viewBinding.getRoot();
@@ -49,6 +48,7 @@ public class CityWeatherDetailsActivity extends AppCompatActivity {
 
         context = CityWeatherDetailsActivity.this;
 
+        initUIView();
         initOnClickListener();
 
         requestWeatherData();
@@ -56,6 +56,7 @@ public class CityWeatherDetailsActivity extends AppCompatActivity {
     }
 
     private void initUIView() {
+        //viewBinding.rootView.setBackgroundColor(getColor(R.color.weather_qing));
         /*
          * 将状态栏的颜色设置为{@code color}.
          *
@@ -68,7 +69,7 @@ public class CityWeatherDetailsActivity extends AppCompatActivity {
          * 视图背景的transitionName将为“ android：status：background”。
          * </p>
          */
-        getWindow().setStatusBarColor(getColor(R.color.weather_qing)); //设置系统状态栏背景颜色
+        getWindow().setStatusBarColor(getColor(R.color.white)); //设置系统状态栏背景颜色
 
         /*
          * 将导航栏的颜色设置为{@param color}.
@@ -83,7 +84,7 @@ public class CityWeatherDetailsActivity extends AppCompatActivity {
          * </p>
          * @attr ref android.R.styleable#Window_navigationBarColor
          */
-        getWindow().setNavigationBarColor(getColor(R.color.weather_qing)); //设置底部系统导航栏状态栏背景颜色
+        //getWindow().setNavigationBarColor(getColor(R.color.weather_qing)); //设置底部系统导航栏状态栏背景颜色
     }
 
     private void initOnClickListener() {
@@ -134,18 +135,23 @@ public class CityWeatherDetailsActivity extends AppCompatActivity {
                 if (data.getResult().getStatus() == 0) {
                     String weather = data.getResult().getResult().getWeather();
                     if (weather.contains("晴")){
+                        viewBinding.rootView.setBackgroundColor(getColor(R.color.weather_qing));
                         getWindow().setStatusBarColor(getColor(R.color.weather_qing));
                         getWindow().setNavigationBarColor(getColor(R.color.weather_qing));
                     }else if (weather.contains("多云")){
+                        viewBinding.rootView.setBackgroundColor(getColor(R.color.weather_duoyun));
                         getWindow().setStatusBarColor(getColor(R.color.weather_duoyun));
                         getWindow().setNavigationBarColor(getColor(R.color.weather_duoyun));
                     }else if (weather.contains("阴")){
+                        viewBinding.rootView.setBackgroundColor(getColor(R.color.weather_yin));
                         getWindow().setStatusBarColor(getColor(R.color.weather_yin));
                         getWindow().setNavigationBarColor(getColor(R.color.weather_yin));
                     }else if (weather.contains("浮尘")){
+                        viewBinding.rootView.setBackgroundColor(getColor(R.color.weather_fuchen));
                         getWindow().setStatusBarColor(getColor(R.color.weather_fuchen));
                         getWindow().setNavigationBarColor(getColor(R.color.weather_fuchen));
                     }else {
+                        viewBinding.rootView.setBackgroundColor(getColor(R.color.weather_yin));
                         getWindow().setStatusBarColor(getColor(R.color.weather_yin));
                         getWindow().setNavigationBarColor(getColor(R.color.weather_yin));
                     }
