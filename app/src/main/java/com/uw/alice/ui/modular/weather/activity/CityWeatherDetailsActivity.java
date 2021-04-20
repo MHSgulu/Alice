@@ -36,7 +36,7 @@ public class CityWeatherDetailsActivity extends AppCompatActivity {
     private ActivityCityWeatherDetailsBinding viewBinding;
     private Context context;
 
-    private WeatherTipsAdapter adapter3;
+    private CityWeather data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,8 +94,6 @@ public class CityWeatherDetailsActivity extends AppCompatActivity {
         });
     }
 
-
-
     private void requestWeatherData() {
         Callback callback = new Callback() {
             @Override
@@ -112,16 +110,16 @@ public class CityWeatherDetailsActivity extends AppCompatActivity {
                 }
                 //OkHttpAssist.PrintRequestHeader(response.headers());
                 //System.out.println(response.body().string()); //response.body().string() 只能调用一次
-                CityWeather data = new Gson().fromJson(response.body().string(), CityWeather.class);
+                data = new Gson().fromJson(response.body().string(), CityWeather.class);
                 //System.out.println("111: " + data.getResult().getResult().getCity());
                 //当前回调已不在UI线程也就是Android主线程，需要手动切换
-                runOnUiThread(data);
+                runOnUiThread();
             }
         };
         OkHttpUtils.getInstance().requestCityWeather("临沂", callback);
     }
 
-    private void runOnUiThread(CityWeather data) {
+    private void runOnUiThread() {
 
         /*
          * 在UI线程上运行指定的操作。 如果当前线程是UI线程，则立即执行该操作。
@@ -134,23 +132,27 @@ public class CityWeatherDetailsActivity extends AppCompatActivity {
             public void run() {
                 if (data.getResult().getStatus() == 0) {
                     String weather = data.getResult().getResult().getWeather();
-                    if (weather.contains("晴")){
+                    if (weather.contains("晴")) {
                         viewBinding.rootView.setBackgroundColor(getColor(R.color.weather_qing));
                         getWindow().setStatusBarColor(getColor(R.color.weather_qing));
                         getWindow().setNavigationBarColor(getColor(R.color.weather_qing));
-                    }else if (weather.contains("多云")){
+                    } else if (weather.contains("多云")) {
                         viewBinding.rootView.setBackgroundColor(getColor(R.color.weather_duoyun));
                         getWindow().setStatusBarColor(getColor(R.color.weather_duoyun));
                         getWindow().setNavigationBarColor(getColor(R.color.weather_duoyun));
-                    }else if (weather.contains("阴")){
+                    } else if (weather.contains("阴")) {
                         viewBinding.rootView.setBackgroundColor(getColor(R.color.weather_yin));
                         getWindow().setStatusBarColor(getColor(R.color.weather_yin));
                         getWindow().setNavigationBarColor(getColor(R.color.weather_yin));
-                    }else if (weather.contains("浮尘")){
+                    } else if (weather.contains("雨")) {
+                        viewBinding.rootView.setBackgroundColor(getColor(R.color.weather_rain));
+                        getWindow().setStatusBarColor(getColor(R.color.weather_rain));
+                        getWindow().setNavigationBarColor(getColor(R.color.weather_rain));
+                    } else if (weather.contains("浮尘")) {
                         viewBinding.rootView.setBackgroundColor(getColor(R.color.weather_fuchen));
                         getWindow().setStatusBarColor(getColor(R.color.weather_fuchen));
                         getWindow().setNavigationBarColor(getColor(R.color.weather_fuchen));
-                    }else {
+                    } else {
                         viewBinding.rootView.setBackgroundColor(getColor(R.color.weather_yin));
                         getWindow().setStatusBarColor(getColor(R.color.weather_yin));
                         getWindow().setNavigationBarColor(getColor(R.color.weather_yin));

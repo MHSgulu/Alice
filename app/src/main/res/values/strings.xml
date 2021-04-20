@@ -166,5 +166,7 @@
     <string name="air_pressure">气压</string>
     <string name="somatosensory">体感</string>
     <string name="humidity">湿度</string>
+    <string name="page_title_city_management">城市管理</string>
+    <string name="search_city">搜索全国天气</string>
 
 </resources>

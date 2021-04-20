@@ -28,71 +28,72 @@
         <activity
             android:name=".ui.activity.ItemNewsDetailActivity"
             android:description="@string/activity_description_ItemNewsDetail"
-            android:theme="@style/CommonTheme" />
+            android:theme="@style/Theme.Common" />
         <activity
             android:name=".ui.activity.SearchNewsActivity"
             android:description="@string/activity_description_SearchNews"
-            android:theme="@style/CommonTheme" />
+            android:theme="@style/Theme.Common" />
         <activity
             android:name=".ui.activity.RealTimeHotSpotRankingActivity"
             android:description="@string/activity_description_RealTimeHotSpotRanking"
-            android:theme="@style/CommonTheme" />
+            android:theme="@style/Theme.Common" />
         <activity
             android:name=".ui.activity.MovieDetailsActivity"
             android:description="@string/activity_description_MovieDetails" />
         <activity
             android:name=".ui.modular.joke.activity.ItemTextJokeContentActivity"
             android:description="@string/activity_description_ItemTextJokeContent"
-            android:theme="@style/CommonTheme" />
+            android:theme="@style/Theme.Common" />
         <activity
             android:name=".ui.modular.QueryPhoneNumberActivity"
             android:description="@string/activity_description_QueryPhoneNumber"
-            android:theme="@style/CommonTheme" />
+            android:theme="@style/Theme.Common" />
         <activity
             android:name=".ui.modular.bing.activity.WallpaperHorizontalPageActivity"
             android:description="@string/activity_description_WallpaperHorizontalPageActivity"
-            android:theme="@style/CommonTheme" />
+            android:theme="@style/Theme.Common" />
         <activity
             android:name=".ui.modular.bing.activity.WallpaperVerticalPageActivity"
             android:description="@string/activity_description_WallpaperVerticalPageActivity"
-            android:theme="@style/CommonTheme" />
+            android:theme="@style/Theme.Common" />
         <activity
             android:name=".ui.modular.bing.activity.BingWallpaperListActivity"
             android:description="@string/activity_description_BingWallpaperListActivity"
-            android:theme="@style/CommonTheme" />
+            android:theme="@style/Theme.Common" />
         <activity
             android:name=".ui.modular.chat.ChatRobotActivity"
             android:description="@string/activity_description_IntelligentChatRobot"
-            android:theme="@style/CommonTheme" />
+            android:theme="@style/Theme.Common" />
         <activity
             android:name=".ui.modular.joke.activity.GraphicJokesActivity"
             android:description="@string/activity_description_IntelligentChatRobot" />
         <activity
             android:name=".ui.modular.quotation.EnglishQuotationsActivity"
             android:description="@string/activity_description_InspirationalQuotations"
-            android:theme="@style/CommonTheme" />
+            android:theme="@style/Theme.Common" />
         <activity
             android:name=".ui.modular.idiom.activity.CorpusOfIdiomsActivity"
             android:description="@string/activity_description_CorpusOfIdioms"
-            android:theme="@style/CommonTheme" />
+            android:theme="@style/Theme.Common" />
         <activity
             android:name=".ui.modular.model.activity.TaoModelsActivity"
             android:description="@string/activity_description_TaoModels"
-            android:theme="@style/CommonTheme" />
+            android:theme="@style/Theme.Common" />
         <activity
             android:name=".ui.show.TestWidgetActivity"
             android:description="@string/activity_description_TestWidget"
-            android:theme="@style/CommonTheme" />
+            android:theme="@style/Theme.Common" />
         <activity
             android:name=".ui.show.FragmentContainerActivity"
             android:description="@string/activity_description_Container"
-            android:theme="@style/CommonTheme" />
+            android:theme="@style/Theme.Common" />
         <activity
             android:name=".ui.modular.weather.activity.CityWeatherDetailsActivity"
             android:description="@string/activity_description_weather" />
         <activity
             android:name=".ui.modular.weather.activity.CityManagementActivity"
-            android:description="@string/activity_description_city_management" />
+            android:description="@string/activity_description_city_management"
+            android:theme="@style/Theme.Common"/>
     </application>
 
 </manifest>

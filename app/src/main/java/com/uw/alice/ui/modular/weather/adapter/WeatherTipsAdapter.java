@@ -15,7 +15,6 @@ import java.util.List;
 
 public class WeatherTipsAdapter extends RecyclerView.Adapter<WeatherTipsAdapter.ViewHolder> {
 
-    private static final String TAG = "RealTimeWeatherAdapter";
     private final List<CityWeather.ResultBeanX.ResultBean.IndexBean> localDataList;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

@@ -21,7 +21,12 @@
     <color name="white10">#1AFFFFFF</color>
 
     <color name="black">#000000</color>
-    <color name="black12">#2C2C2C</color>
+    <color name="black87">#DD000000</color>
+    <color name="black54">#8A000000</color>
+    <color name="black45">#73000000</color>
+    <color name="black38">#61000000</color>
+    <color name="black26">#42000000</color>
+    <color name="black12">#1F000000</color>
     <!--带透明度-->
     <color name="black12_t95">#0D2C2C2C</color>
     <color name="black12_t90">#1A2C2C2C</color>
@@ -94,6 +99,7 @@
     <color name="weather_qing">#4A8BDB</color> <!-- 晴 -->
     <color name="weather_duoyun">#6A89C0</color> <!-- 多云 -->
     <color name="weather_yin">#8DA1BA</color> <!-- 阴 -->
+    <color name="weather_rain">#67788C</color> <!-- 雨-->
     <color name="weather_fuchen">#9E8A71</color> <!-- 浮尘 -->
 
 
