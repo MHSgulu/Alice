@@ -58,7 +58,7 @@
                 app:cardCornerRadius="20dp"
                 app:cardElevation="0dp"
                 android:layout_centerInParent="true"
-                app:cardBackgroundColor="@color/black12_t30">
+                app:cardBackgroundColor="@color/black12">
 
                 <RelativeLayout
                     android:layout_width="match_parent"

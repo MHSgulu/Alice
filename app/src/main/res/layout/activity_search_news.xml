@@ -71,7 +71,7 @@
                     android:maxLength="8"
                     android:singleLine="true"
                     android:background="@null"
-                    tools:ignore="NestedWeights" />
+                    tools:ignore="Autofill,NestedWeights,TextFields" />
 
                 <LinearLayout
                     android:id="@+id/ll_reset"

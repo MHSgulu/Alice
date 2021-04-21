@@ -22,6 +22,7 @@
     <string name="activity_description_Container">Fragment容器页</string>
     <string name="activity_description_weather">中国天气预报</string>
     <string name="activity_description_city_management">天气预报城市管理</string>
+    <string name="activity_description_city_search">天气预报搜索城市</string>
 
 
     <!--菜单名称-->
@@ -168,5 +169,7 @@
     <string name="humidity">湿度</string>
     <string name="page_title_city_management">城市管理</string>
     <string name="search_city">搜索全国天气</string>
+    <string name="cancel">取消</string>
+    <string name="hot_city">热门城市</string>
 
 </resources>
