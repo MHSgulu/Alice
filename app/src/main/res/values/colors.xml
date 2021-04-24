@@ -416,15 +416,11 @@
     <color name="uncheckedState">#737373</color>
 
 
-
-
     <!-- 天气背景颜色 -->
     <color name="weather_qing">#4A8BDB</color> <!-- 晴 -->
     <color name="weather_duoyun">#6A89C0</color> <!-- 多云 -->
     <color name="weather_yin">#8DA1BA</color> <!-- 阴 -->
     <color name="weather_rain">#67788C</color> <!-- 雨-->
     <color name="weather_fuchen">#9E8A71</color> <!-- 浮尘 -->
-
-
 
 </resources>

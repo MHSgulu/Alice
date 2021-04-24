@@ -95,14 +95,20 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
+        android:layout_marginStart="25dp"
         app:layout_constraintTop_toBottomOf="@+id/yv_hot_city"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:singleSelection="true"
+        app:chipSpacingHorizontal="16dp">
 
-        <com.google.android.material.chip.Chip
+        <!--<com.google.android.material.chip.Chip
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="上海" />
+            android:theme="@style/Widget.MaterialComponents.Chip.Choice"
+            android:checkable="true"
+            tools:text="上海市"
+            app:chipBackgroundColor="@color/black45"/>-->
 
     </com.google.android.material.chip.ChipGroup>
 

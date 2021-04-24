@@ -9,6 +9,10 @@ public class CityM {
     private String lowTemp;
     private String weather;
 
+    public CityM(String cityName) {
+        this.cityName = cityName;
+    }
+
     public CityM(String cityName, String airQuality, String nowTemp, String highTemp, String lowTemp, String weather) {
         this.cityName = cityName;
         this.airQuality = airQuality;

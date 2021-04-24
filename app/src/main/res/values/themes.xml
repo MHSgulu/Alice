@@ -101,4 +101,24 @@
         <item name="textAllCaps">true</item>
     </style>
 
+
+
+    <style name="MyChip.Choice" parent="Base.Widget.MaterialComponents.Chip">
+        <item name="android:checkable">true</item>
+
+        <item name="chipIconVisible">false</item>
+        <item name="checkedIconVisible">false</item>
+        <item name="closeIconVisible">false</item>
+
+        <item name="checkedIcon">@drawable/ic_mtrl_chip_checked_black</item>
+
+        <!--文字的颜色（通常与colorForeground相同）。-->
+        <item name="android:textColor">@color/mtrl_choice_chip_text_color</item>
+
+        <item name="chipBackgroundColor">@color/mtrl_choice_chip_background_color</item>
+        <item name="rippleColor">@color/mtrl_choice_chip_ripple_color</item>
+
+    </style>
+
+
 </resources>
