@@ -94,8 +94,12 @@
             android:name=".ui.modular.weather.activity.CityManagementActivity"
             android:description="@string/activity_description_city_management"
             android:theme="@style/Theme.Common" />
-        <activity android:name=".ui.modular.weather.activity.SearchCityActivity"
+        <activity
+            android:name=".ui.modular.weather.activity.SearchCityActivity"
             android:description="@string/activity_description_city_search"
+            android:theme="@style/Theme.Common" />
+        <activity android:name=".ui.modular.weather.activity.SevenDayWeatherActivity"
+            android:description="@string/activity_description_seven_day_weather"
             android:theme="@style/Theme.Common"/>
     </application>
 

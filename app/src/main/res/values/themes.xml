@@ -114,7 +114,7 @@
 
         <!--文字的颜色（通常与colorForeground相同）。-->
         <item name="android:textColor">@color/mtrl_choice_chip_text_color</item>
-
+        <!-- 应用于芯片的背景色. -->
         <item name="chipBackgroundColor">@color/mtrl_choice_chip_background_color</item>
         <item name="rippleColor">@color/mtrl_choice_chip_ripple_color</item>
 

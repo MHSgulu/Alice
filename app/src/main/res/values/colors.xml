@@ -22,6 +22,7 @@
     <!--黑色-->
     <color name="black">#000000</color>
     <color name="black87">#DD000000</color>
+    <color name="black70">#B3000000</color>
     <color name="black54">#8A000000</color>
     <color name="black45">#73000000</color>
     <color name="black38">#61000000</color>

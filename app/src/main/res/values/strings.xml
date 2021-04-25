@@ -23,6 +23,7 @@
     <string name="activity_description_weather">中国天气预报</string>
     <string name="activity_description_city_management">天气预报城市管理</string>
     <string name="activity_description_city_search">天气预报搜索城市</string>
+    <string name="activity_description_seven_day_weather">天气预报七日天气</string>
 
 
     <!--菜单名称-->
@@ -171,10 +172,6 @@
     <string name="search_city">搜索全国天气</string>
     <string name="cancel">取消</string>
     <string name="hot_city">热门城市</string>
-
-
-
-
 
 
 </resources>

@@ -4,12 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.uw.alice.R;
+import com.uw.alice.common.Constant;
 import com.uw.alice.databinding.ActivitySearchCityBinding;
 
 import java.util.ArrayList;
@@ -69,10 +71,10 @@ public class SearchCityActivity extends AppCompatActivity {
             public void onCheckedChanged(ChipGroup group, int checkedId) {
                 if (checkedId != -1){
                     Toast.makeText(context, "查看" + cityNameList.get(checkedId) + "天气", Toast.LENGTH_SHORT).show();
-                }/*else{
-                    Toast.makeText(context, "取消了当前选择", Toast.LENGTH_SHORT).show();
-                }*/
-
+                    Intent intent = new Intent(context,SevenDayWeatherActivity.class);
+                    intent.putExtra(Constant.ARG_CityName,cityNameList.get(checkedId));
+                    startActivity(intent);
+                }
             }
         });
 
@@ -99,6 +101,8 @@ public class SearchCityActivity extends AppCompatActivity {
         //chip.setCloseIconVisible(false); //设置此芯片关闭图标是否可见。
         //chip.setTextStartPadding(30); //设置此芯片文本的开始填充。
         //chip.setTextEndPadding(30); //设置此芯片文本的结尾填充。
+
+        chip.setCheckedIconResource(R.drawable.my_ic_mtrl_chip_checked_black); //手动设置 没有默认的圆圈效果
 
         return chip;
     }

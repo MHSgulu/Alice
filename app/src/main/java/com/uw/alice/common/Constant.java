@@ -44,8 +44,8 @@ public class Constant {
     public static final String ARG_MovieType = "MovieType";
     public static final String ARG_ActorId = "actorId";
     public static final String ARG_ActorCover = "actorCover";
-
     public static final String ARG_Flag = "tag";
+    public static final String ARG_CityName = "cityName";
 
     public static final int MaxResult = 20; //笑话大全1页数据量的最大结果集
     public static final String MaxResult_String = "20";

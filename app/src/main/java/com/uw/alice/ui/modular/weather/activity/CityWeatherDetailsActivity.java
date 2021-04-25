@@ -25,6 +25,7 @@ import com.uw.alice.ui.modular.weather.adapter.WeatherTipsAdapter;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
+import java.util.Objects;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -110,7 +111,7 @@ public class CityWeatherDetailsActivity extends AppCompatActivity {
                 }
                 //OkHttpAssist.PrintRequestHeader(response.headers());
                 //System.out.println(response.body().string()); //response.body().string() 只能调用一次
-                data = new Gson().fromJson(response.body().string(), CityWeather.class);
+                data = new Gson().fromJson(Objects.requireNonNull(response.body()).string(), CityWeather.class);
                 //System.out.println("111: " + data.getResult().getResult().getCity());
                 //当前回调已不在UI线程也就是Android主线程，需要手动切换
                 runOnUiThread();
