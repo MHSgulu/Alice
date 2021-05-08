@@ -48,16 +48,33 @@
         tools:itemCount="1"/>
 
     <ImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/app_logo"
-        android:layout_gravity="center_horizontal"/>
+        android:id="@+id/iv_add_city"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/icon_add_to_home"
+        android:layout_gravity="center_horizontal"
+        android:contentDescription="@string/description_add_to_city_management"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/iv_go_home"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/icon_go_to_the_home"
+        android:layout_gravity="center_horizontal"
+        android:contentDescription="@string/description_add_to_city_management"
+        android:visibility="gone"/>
 
     <TextView
+        android:id="@+id/tv_tips"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="添加到主页"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/add_city"
+        android:textSize="12sp"
+        android:visibility="gone"/>
 
 </LinearLayout>

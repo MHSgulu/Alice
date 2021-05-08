@@ -8,6 +8,6 @@
     android:width="24dp"
     tools:ignore="NewApi">
   <path
-      android:fillColor="@color/lightBlue_300"
+      android:fillColor="@color/black"
       android:pathData="M9,16.2L4.8,12l-1.4,1.4L9,19 21,7l-1.4,-1.4L9,16.2z"/>
 </vector>

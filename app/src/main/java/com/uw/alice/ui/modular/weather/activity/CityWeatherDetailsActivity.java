@@ -1,9 +1,6 @@
 package com.uw.alice.ui.modular.weather.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,7 +10,6 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.uw.alice.MainActivity;
 import com.uw.alice.R;
 import com.uw.alice.common.network.okhttp.OkHttpUtils;
 import com.uw.alice.data.model.CityWeather;

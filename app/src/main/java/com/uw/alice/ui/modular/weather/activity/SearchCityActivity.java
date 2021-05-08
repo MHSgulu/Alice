@@ -6,10 +6,13 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.chip.Chip;
-import com.google.android.material.chip.ChipGroup;
 import com.uw.alice.R;
 import com.uw.alice.common.Constant;
 import com.uw.alice.databinding.ActivitySearchCityBinding;
@@ -17,9 +20,9 @@ import com.uw.alice.databinding.ActivitySearchCityBinding;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class SearchCityActivity extends AppCompatActivity {
 
+    private static final String TAG = "SearchCityActivity";
     private ActivitySearchCityBinding viewBinding;
     private Context context;
 
@@ -33,10 +36,18 @@ public class SearchCityActivity extends AppCompatActivity {
         viewBinding = ActivitySearchCityBinding.inflate(getLayoutInflater());
         setContentView(viewBinding.getRoot());
         context = SearchCityActivity.this;
-        viewBinding.llCancel.setOnClickListener(v -> finish());
 
+        initOnClickListener();
         initCityList();
+        initEditTextChangedListener();
+    }
 
+    private void initOnClickListener() {
+        viewBinding.llCancel.setOnClickListener(v -> finish());
+        viewBinding.llClearInputBox.setOnClickListener(v -> {
+            viewBinding.cityInputBox.setText("");
+            //
+        });
     }
 
     private void initCityList() {
@@ -66,21 +77,55 @@ public class SearchCityActivity extends AppCompatActivity {
             viewBinding.chipGroup.addView(createChip(cityName,i));
             i++;
         }
-        viewBinding.chipGroup.setOnCheckedChangeListener(new ChipGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(ChipGroup group, int checkedId) {
-                if (checkedId != -1){
-                    Toast.makeText(context, "查看" + cityNameList.get(checkedId) + "天气", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(context,SevenDayWeatherActivity.class);
-                    intent.putExtra(Constant.ARG_CityName,cityNameList.get(checkedId));
-                    startActivity(intent);
-                }
+        viewBinding.chipGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId != -1){
+                //Toast.makeText(context, "查看" + cityNameList.get(checkedId) + "天气", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context,SevenDayWeatherActivity.class);
+                intent.putExtra(Constant.ARG_CityName,cityNameList.get(checkedId));
+                startActivity(intent);
             }
         });
 
 
     }
 
+    private void initEditTextChangedListener() {
+        viewBinding.cityInputBox.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                if (s.toString().isEmpty()){
+                    viewBinding.ivClear.setVisibility(View.GONE);
+                }else{
+                    viewBinding.ivClear.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.toString().isEmpty()){
+                    viewBinding.ivClear.setVisibility(View.GONE);
+                }else{
+                    viewBinding.ivClear.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (s.toString().length() > 1){
+                    Toast.makeText(context, "正在匹配城市，请稍候", Toast.LENGTH_SHORT).show();
+                    Log.d(TAG, "点位：已输入的文本：" + s.toString());
+                    findCitiesFromLocalData(s.toString());
+                }
+                if (s.toString().isEmpty()){
+                    viewBinding.ivClear.setVisibility(View.GONE);
+                }else{
+                    viewBinding.ivClear.setVisibility(View.VISIBLE);
+                }
+            }
+
+
+        });
+    }
 
     @SuppressLint("ResourceType")
     private Chip createChip(String label, int i) {
@@ -102,9 +147,14 @@ public class SearchCityActivity extends AppCompatActivity {
         //chip.setTextStartPadding(30); //设置此芯片文本的开始填充。
         //chip.setTextEndPadding(30); //设置此芯片文本的结尾填充。
 
-        chip.setCheckedIconResource(R.drawable.my_ic_mtrl_chip_checked_black); //手动设置 没有默认的圆圈效果
+        chip.setCheckedIconResource(R.drawable.icon_arrow_right_black); //手动设置 没有默认的圆圈阴影效果
 
         return chip;
+    }
+
+
+    private void findCitiesFromLocalData(String cityName) {
+
     }
 
 

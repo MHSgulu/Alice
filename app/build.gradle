@@ -99,4 +99,25 @@ dependencies {
     //PhotoView 旨在帮助生成易于使用的缩放Android ImageView实现
     implementation 'com.github.chrisbanes:PhotoView:2.3.0'
 
+
+    //Room持久性库
+    // Room 持久性库在 SQLite 的基础上提供了一个抽象层，让用户能够在充分利用 SQLite 的强大功能的同时，获享更强健的数据库访问机制。
+    def room_version = "2.3.0"
+
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+
+    // 可选-RxJava2对Room的支持
+    implementation "androidx.room:room-rxjava2:$room_version"
+
+    // 可选-RxJava3对Room的支持
+    //implementation "androidx.room:room-rxjava3:$room_version"
+
+    // 可选-Guava对Room的支持，包括Optional和ListenableFuture
+    //implementation "androidx.room:room-guava:$room_version"
+
+    // 可选-测试助手
+    //testImplementation "androidx.room:room-testing:$room_version"
+
+
 }

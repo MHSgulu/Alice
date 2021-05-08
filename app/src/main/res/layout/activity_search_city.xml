@@ -28,28 +28,28 @@
             tools:ignore="ContentDescription" />
 
         <EditText
-            android:id="@+id/et_input"
+            android:id="@+id/city_input_box"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
             android:layout_marginStart="10dp"
-            tools:hint="请在此处输入城市名称"
-            android:textSize="14sp"
+            android:layout_weight="1"
+            android:background="@null"
             android:maxLength="8"
             android:singleLine="true"
-            android:background="@null"
-            tools:ignore="Autofill,NestedWeights,TextFields" />
+            android:textSize="14sp"
+            tools:hint="请在此处输入城市名称"
+            tools:ignore="Autofill,LabelFor,NestedWeights,TextFields" />
 
         <LinearLayout
-            android:id="@+id/ll_reset"
+            android:id="@+id/ll_clear_input_box"
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:gravity="center">
 
             <ImageView
-                android:id="@+id/iv_reset"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
+                android:id="@+id/iv_clear"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:background="@mipmap/reset"
                 android:visibility="gone"
                 tools:ignore="ContentDescription"/>
