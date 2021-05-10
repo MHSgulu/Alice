@@ -1,20 +1,28 @@
 package com.uw.alice.ui.modular.weather.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.room.util.StringUtil;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetManager;
+import android.hardware.input.InputManager;
 import android.os.Bundle;
+import android.os.IBinder;
+import android.os.ResultReceiver;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import com.google.android.material.chip.Chip;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 import com.uw.alice.R;
 import com.uw.alice.common.Constant;
@@ -33,12 +41,16 @@ public class SearchCityActivity extends AppCompatActivity {
     private static final String TAG = "SearchCityActivity";
     private ActivitySearchCityBinding viewBinding;
     private Context context;
+    private AssetManager assetManager;
+    private InputMethodManager inputMethodManager;
 
     private final List<String> cityNameList = new ArrayList<>();
-    private AssetManager assetManager;
     private String cityData;
     private CityEntity cityEntity;
     private List<String> cityNameDataList = new ArrayList<>();
+
+    private List<String> cityNameDataStringList = new ArrayList<>();
+    private String cityStringData;
 
 
     @Override
@@ -52,12 +64,20 @@ public class SearchCityActivity extends AppCompatActivity {
         getAssetData();
         initOnClickListener();
         initCityList();
+
         initEditTextChangedListener();
     }
 
 
     private void initOnClickListener() {
-        viewBinding.llCancel.setOnClickListener(v -> finish());
+        viewBinding.llCancel.setOnClickListener(v -> {
+            finish();
+            /*
+              强制完成您先前从 {@link #startActivityForResult} 开始的另一项活动.
+              @param requestCode 您已赋予startActivityForResult（）的活动的请求代码。 如果有多个活动以该请求代码开始，则所有活动都将完成.
+             */
+            //finishActivity(510);
+        });
         viewBinding.llClearInputBox.setOnClickListener(v -> {
             //清空输入框
             viewBinding.cityInputBox.setText("");
@@ -106,6 +126,8 @@ public class SearchCityActivity extends AppCompatActivity {
 
 
     private void initEditTextChangedListener() {
+        inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+
         viewBinding.cityInputBox.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -128,16 +150,34 @@ public class SearchCityActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 if (s.toString().length() > 1) {
-                    Log.d(TAG, "点位：已输入的文本：" + s.toString());
+                    Log.d(TAG, "点位：s.toString()：" + s.toString());
                     //输入之后，将得到的城市名与本地数据匹配
-                    for (String s1:cityNameDataList){
-                        if (TextUtils.equals(s.toString(),s1)){
-                            Log.d(TAG, "点位：已找到匹配的城市：");
-                            Log.d(TAG, "点位：s.toString()：" + s.toString());
-                            Log.d(TAG, "点位：s1：" + s1);
-                        }else{
-                            Log.d(TAG, "点位：没找到该城市");
-                        }
+                    if (cityStringData.contains(s.toString())) {
+                        /*
+                          没有结果的 {@link #hideSoftInputFromWindow(IBinder, int, ResultReceiver)} 的同义词：
+                          请求从当前正在接受输入的窗口的上下文中隐藏软输入窗口
+                          @param windowToken 发出请求的窗口的令牌,由 {@link View#getWindowToken() View.getWindowToken()} 返回.
+                          @param flags 提供其他操作标志. 当前可能为0或已设置该位{@link #HIDE_IMPLICIT_ONLY}.
+                         */
+                        inputMethodManager.hideSoftInputFromWindow(viewBinding.getRoot().getWindowToken(), 0);
+                        /*
+                          制作小吃店以显示消息
+                          <p>Snackbar会尝试通过提供给{@code view}的值来找到一个父视图来保存Snackbar的视图。
+                          Snackbar将沿着视图树走，试图找到合适的父级，将其定义为{@link CoordinatorLayout}或窗口装饰的内容视图（以先到者为准）.
+                          <p>在视图层次结构中使用{@link CoordinatorLayout}可以使Snackbar启用某些功能，例如滑动到关闭和自动移动小部件.
+                          @param view从中查找父级的视图。 调用{@link Snackbar＃setAnchorView（int）}时，此视图还用于查找锚视图.
+                          @param 文本要显示的文本。 可以格式化文本.
+                          @param 持续时间显示消息的时间。 可以是{@link #LENGTH_SHORT}，{@ link #LENGTH_LONG}，{@ link #LENGTH_INDEFINITE}或自定义的持续时间（以毫秒为单位）.
+                         */
+                        Snackbar.make(viewBinding.getRoot(), "已匹配到" + s.toString(), Snackbar.LENGTH_LONG)
+                                .setAction("查看天气", v -> {
+                                    Intent intent = new Intent(context, SevenDayWeatherActivity.class);
+                                    intent.putExtra(Constant.ARG_CityName, s.toString());
+                                    startActivity(intent);
+                                }).show();
+
+                    } else {
+                        Toast.makeText(context, "未查到此区域", Toast.LENGTH_SHORT).show();
                     }
                 }
                 if (s.toString().isEmpty()) {
@@ -179,8 +219,8 @@ public class SearchCityActivity extends AppCompatActivity {
 
 
     /*
-    * 将本地assets目录下的城市json文件数据转化String
-    */
+     * 将本地assets目录下的城市json文件数据转化String
+     */
     private void getAssetData() {
         StringBuilder stringBuilder = new StringBuilder();
         assetManager = getAssets();
@@ -220,16 +260,24 @@ public class SearchCityActivity extends AppCompatActivity {
 
             cityData = stringBuilder.toString();
             //Log.d(TAG, "点位: 已转化的城市数据：  " + cityData);
-            cityEntity = new Gson().fromJson(cityData,CityEntity.class);
+            cityEntity = new Gson().fromJson(cityData, CityEntity.class);
             //Log.d(TAG, "点位: 测试cityEntity：  " + cityEntity.getResult().get(0).getCity());
             List<CityEntity.ResultBean> dataList = cityEntity.getResult();
             int i = 0;
-            for (CityEntity.ResultBean result:dataList){
+            for (CityEntity.ResultBean result : dataList) {
                 cityNameDataList.add(dataList.get(i).getCity());
                 i++;
             }
             //Log.d(TAG, "点位: cityNameDataList：  " + cityNameDataList);
 
+
+            //将城市名列表转化为String
+            StringBuilder sb = new StringBuilder();
+            for (String s : cityNameDataList) {
+                sb.append(s);
+            }
+            cityStringData = sb.toString();
+            //Log.d(TAG, "点位: cityStringData：  " + cityStringData);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -237,11 +285,11 @@ public class SearchCityActivity extends AppCompatActivity {
     }
 
 
-    @Override
+    /*@Override
     public void finish() {
         super.finish();
         if (assetManager != null) {
             assetManager.close();
         }
-    }
+    }*/
 }

@@ -11,9 +11,14 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.uw.alice.R;
+import com.uw.alice.common.Constant;
+import com.uw.alice.common.db.AppDatabase;
+import com.uw.alice.common.db.SingletonRoomDatabase;
+import com.uw.alice.common.db.entity.City;
 import com.uw.alice.common.network.okhttp.OkHttpUtils;
 import com.uw.alice.data.model.CityWeather;
 import com.uw.alice.databinding.ActivityCityWeatherDetailsBinding;
+import com.uw.alice.entity.IPLocationEntity;
 import com.uw.alice.ui.modular.weather.adapter.RealTimeWeatherAdapter;
 import com.uw.alice.ui.modular.weather.adapter.WeatherDetailsAdapter;
 import com.uw.alice.ui.modular.weather.adapter.WeatherTipsAdapter;
@@ -34,6 +39,9 @@ public class CityWeatherDetailsActivity extends AppCompatActivity {
     private Context context;
 
     private CityWeather data;
+    private IPLocationEntity ipLocationEntity;
+
+    private AppDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,12 +51,47 @@ public class CityWeatherDetailsActivity extends AppCompatActivity {
         View view = viewBinding.getRoot();
         setContentView(view);
 
-        context = CityWeatherDetailsActivity.this;
-
+        context = viewBinding.getRoot().getContext();
+        db = SingletonRoomDatabase.getInstance(getApplicationContext()).getDb();
         initUIView();
         initOnClickListener();
 
-        requestWeatherData();
+        String cityName = getIntent().getStringExtra(Constant.ARG_CityName);
+        //Log.d(TAG, "点位：cityName: " + cityName);
+        if (cityName == null){
+            getLocation();
+        }else{
+            requestWeatherData(getIntent().getStringExtra(Constant.ARG_CityName));
+        }
+    }
+
+    private void getLocation() {
+        Callback callback = new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                e.printStackTrace();
+                Log.e(TAG, "onFailure: " + e);
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                if (!response.isSuccessful()) {
+                    Toast.makeText(context, "响应错误: " + response, Toast.LENGTH_SHORT).show();
+                    throw new IOException("异常: " + response);
+                }
+                ipLocationEntity = new Gson().fromJson(response.body().string(),IPLocationEntity.class);
+                Log.d(TAG, "点位： 当前IP地址所在城市: " + ipLocationEntity.getLocation().getCity());
+                requestWeatherData(ipLocationEntity.getLocation().getCity());
+                //如果数据库没有数据，添加当前地址进去，不可删除
+                if (db.cityDao().getAll().size() > 0){
+                    Log.d(TAG, "点位： 当前数据库中存在城市数据");
+                }else{
+                    Log.d(TAG, "点位： 当前数据库中不存在城市数据，添加一条所在IP定位城市数据");
+                    db.cityDao().insert(new City(ipLocationEntity.getLocation().getCity()));
+                }
+            }
+        };
+        OkHttpUtils.getInstance().requestIpLocation(callback);
 
     }
 
@@ -91,7 +134,7 @@ public class CityWeatherDetailsActivity extends AppCompatActivity {
         });
     }
 
-    private void requestWeatherData() {
+    private void requestWeatherData(String cityName) {
         Callback callback = new Callback() {
             @Override
             public void onFailure(@NotNull Call call, @NotNull IOException e) {
@@ -113,7 +156,7 @@ public class CityWeatherDetailsActivity extends AppCompatActivity {
                 runOnUiThread();
             }
         };
-        OkHttpUtils.getInstance().requestCityWeather("临沂", callback);
+        OkHttpUtils.getInstance().requestCityWeather(cityName, callback);
     }
 
     private void runOnUiThread() {
@@ -191,4 +234,11 @@ public class CityWeatherDetailsActivity extends AppCompatActivity {
     }
 
 
+    /*@Override
+    public void finish() {
+        super.finish();
+        if (db != null){
+            db.close();
+        }
+    }*/
 }

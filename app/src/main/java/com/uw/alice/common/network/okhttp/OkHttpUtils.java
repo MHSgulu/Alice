@@ -24,9 +24,19 @@ public class OkHttpUtils {
     }
 
 
+    //请求城市天气
     public void requestCityWeather(String cityName, Callback callback) {
         request = new Request.Builder()
                 .url(Constant.JDAPI_URL + "jisuapi/weather?city=" + cityName +  "&appkey=" + Constant.JDAPI_KEY)
+                .build();
+
+        client.newCall(request).enqueue(callback);
+    }
+
+    //请求IP地址所在的省市
+    public void requestIpLocation(Callback callback) {
+        request = new Request.Builder()
+                .url("https://api.myip.la/cn?json")
                 .build();
 
         client.newCall(request).enqueue(callback);
