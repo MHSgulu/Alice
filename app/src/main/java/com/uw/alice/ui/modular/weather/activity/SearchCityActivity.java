@@ -284,12 +284,4 @@ public class SearchCityActivity extends AppCompatActivity {
         }
     }
 
-
-    /*@Override
-    public void finish() {
-        super.finish();
-        if (assetManager != null) {
-            assetManager.close();
-        }
-    }*/
 }

@@ -2,7 +2,6 @@ package com.uw.alice.ui.modular.weather.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.room.Room;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,7 +13,6 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.uw.alice.R;
 import com.uw.alice.common.Constant;
-import com.uw.alice.common.db.AppDatabase;
 import com.uw.alice.common.db.SingletonRoomDatabase;
 import com.uw.alice.common.db.entity.City;
 import com.uw.alice.common.network.okhttp.OkHttpUtils;
@@ -41,7 +39,6 @@ public class SevenDayWeatherActivity extends AppCompatActivity {
 
     private CityWeather data;
     private String cityName;
-    private AppDatabase db;
     private List<City> dataList = new ArrayList<>();
 
     @Override
@@ -59,17 +56,17 @@ public class SevenDayWeatherActivity extends AppCompatActivity {
             cityName = getIntent().getStringExtra(Constant.ARG_CityName);
             viewBinding.tvCityName.setText(cityName);
             requestData(cityName);
-            db = SingletonRoomDatabase.getInstance(getApplicationContext()).getDb();
         }
 
         viewBinding.llBack.setOnClickListener(v -> finish());
         viewBinding.ivAddCity.setOnClickListener(v -> {
             //将当前城市添加到本地数据库中
-            db.cityDao().insert(new City(cityName));
+            SingletonRoomDatabase.getInstance(getApplicationContext()).insertCity(cityName);
+            //db.cityDao().insert(new City(cityName));
             Toast.makeText(context, "添加成功", Toast.LENGTH_SHORT).show();
             checkIsInDB();
 
-            dataList = db.cityDao().getAll();
+            dataList = /*db.cityDao().getAll()*/SingletonRoomDatabase.getInstance(getApplicationContext()).getAllCity();
             Log.d(TAG, "点位————数据库中的城市列表—————");
             int i = 0;
             for (City city: dataList){
@@ -87,7 +84,7 @@ public class SevenDayWeatherActivity extends AppCompatActivity {
     }
 
     private void checkIsInDB() {
-        City city = db.cityDao().queryCity(cityName);
+        City city = /*db.cityDao().queryCity(cityName)*/SingletonRoomDatabase.getInstance(getApplicationContext()).queryCity(cityName);
         if (city != null){
             Log.d(TAG, "点位：数据库中已存在该城市：" + city.cityName);
             viewBinding.ivAddCity.setVisibility(View.GONE);
@@ -137,11 +134,4 @@ public class SevenDayWeatherActivity extends AppCompatActivity {
         });
     }
 
-    /*@Override
-    public void finish() {
-        super.finish();
-        if (db != null){
-            db.close();
-        }
-    }*/
 }

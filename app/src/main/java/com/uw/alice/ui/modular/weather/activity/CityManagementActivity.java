@@ -7,18 +7,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.Snackbar;
 import com.uw.alice.common.Constant;
-import com.uw.alice.common.db.AppDatabase;
 import com.uw.alice.common.db.SingletonRoomDatabase;
 import com.uw.alice.common.db.entity.City;
 import com.uw.alice.databinding.ActivityCityManagementBinding;
-import com.uw.alice.interfaces.OnItemClickListener;
-import com.uw.alice.interfaces.OnItemLongClickListener;
 import com.uw.alice.ui.modular.weather.adapter.CityManagementAdapter;
 
 import java.util.ArrayList;
@@ -32,8 +28,6 @@ public class CityManagementActivity extends AppCompatActivity {
 
     private CityManagementAdapter adapter;
     private List<City> dataList = new ArrayList<>();
-
-    private AppDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,12 +44,11 @@ public class CityManagementActivity extends AppCompatActivity {
             startActivityForResult(intent, 520);
         });
 
-        db = SingletonRoomDatabase.getInstance(getApplicationContext()).getDb();
         initData();
     }
 
     private void initData() {
-        dataList = db.cityDao().getAll();
+        dataList = SingletonRoomDatabase.getInstance(getApplicationContext()).getAllCity();
         Log.d(TAG, "点位： ————查看刚从数据库取出的的dataList————");
         for (City city: dataList){
             Log.d(TAG, "点位1：city：" + city.cityName);
@@ -86,7 +79,7 @@ public class CityManagementActivity extends AppCompatActivity {
                         City cityData = new City(dataList.get(position).cityName);
                         Log.d(TAG, "点位： 要删除的城市： " + cityData.cityName);
                         //从数据库中删除
-                        db.cityDao().deleteQuery(cityData.cityName);
+                        SingletonRoomDatabase.getInstance(getApplicationContext()).deleteCity(cityData.cityName);
                         //再从数据列表中删除，UI可见
                         dataList.remove(position);
                         adapter.notifyDataSetChanged();
@@ -94,7 +87,7 @@ public class CityManagementActivity extends AppCompatActivity {
                         for (City city: dataList){
                             Log.d(TAG, "点位2：city：" + city.cityName);
                         }
-                        dataList = db.cityDao().getAll();
+                        dataList = SingletonRoomDatabase.getInstance(getApplicationContext()).getAllCity();
                         Log.d(TAG, "点位： ————再次从数据库取出数据：dataList————");
                         for (City city: dataList){
                             Log.d(TAG, "点位3：city：" + city.cityName);
@@ -117,15 +110,5 @@ public class CityManagementActivity extends AppCompatActivity {
             initData();
         }
     }
-
-
-    /*@Override
-    public void finish() {
-        super.finish();
-        if (db != null){
-            db.close();
-        }
-    }*/
-
 
 }

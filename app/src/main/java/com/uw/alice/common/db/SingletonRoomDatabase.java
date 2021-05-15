@@ -5,6 +5,10 @@ import android.content.Context;
 
 import androidx.room.Room;
 
+import com.uw.alice.common.db.entity.City;
+
+import java.util.List;
+
 public class SingletonRoomDatabase {
     @SuppressLint("StaticFieldLeak")
     private static Context mContext;
@@ -33,10 +37,39 @@ public class SingletonRoomDatabase {
         return db;
     }
 
+
     public void close(){
         //如果数据库已经打开，则关闭它
         db.close();
     }
+
+    //获取全部城市列表
+    public List<City> getAllCity(){
+        return  db.cityDao().getAll();
+    }
+
+    //添加城市
+    public void insertCity(String cityName) {
+        City city = new City(cityName);
+        db.cityDao().insert(city);
+    }
+
+    //删除城市
+    public void deleteCity(String cityName) {
+        db.cityDao().delete(cityName);
+    }
+
+    //查勋城市
+    public City queryCity(String cityName) {
+        return  db.cityDao().query(cityName);
+    }
+
+
+
+
+
+
+
 
 
 }

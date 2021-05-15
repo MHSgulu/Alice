@@ -20,7 +20,7 @@ public interface CityDao {
     List<City> getAll();
 
     @Query("SELECT * FROM City WHERE city_name LIKE :cityName")
-    City queryCity(String cityName);
+    City query(String cityName);
 
     @Insert
     void insert(City... city);
@@ -29,7 +29,7 @@ public interface CityDao {
     void delete(City city); //目前不起作用
 
     @Query("DELETE FROM City WHERE city_name LIKE :cityName")
-    void deleteQuery(String cityName);  //绕过去，相当于查询删除
+    void delete(String cityName);  //绕过去，相当于查询删除
 
     @Update
     void update(City city); //目前不起作用

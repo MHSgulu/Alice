@@ -12,9 +12,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.uw.alice.R;
 import com.uw.alice.common.Constant;
-import com.uw.alice.common.db.AppDatabase;
 import com.uw.alice.common.db.SingletonRoomDatabase;
-import com.uw.alice.common.db.entity.City;
 import com.uw.alice.common.network.okhttp.OkHttpUtils;
 import com.uw.alice.data.model.CityWeather;
 import com.uw.alice.databinding.ActivityCityWeatherDetailsBinding;
@@ -41,8 +39,6 @@ public class CityWeatherDetailsActivity extends AppCompatActivity {
     private CityWeather data;
     private IPLocationEntity ipLocationEntity;
 
-    private AppDatabase db;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +48,6 @@ public class CityWeatherDetailsActivity extends AppCompatActivity {
         setContentView(view);
 
         context = viewBinding.getRoot().getContext();
-        db = SingletonRoomDatabase.getInstance(getApplicationContext()).getDb();
         initUIView();
         initOnClickListener();
 
@@ -79,15 +74,15 @@ public class CityWeatherDetailsActivity extends AppCompatActivity {
                     Toast.makeText(context, "响应错误: " + response, Toast.LENGTH_SHORT).show();
                     throw new IOException("异常: " + response);
                 }
-                ipLocationEntity = new Gson().fromJson(response.body().string(),IPLocationEntity.class);
+                ipLocationEntity = new Gson().fromJson(Objects.requireNonNull(response.body()).string(),IPLocationEntity.class);
                 Log.d(TAG, "点位： 当前IP地址所在城市: " + ipLocationEntity.getLocation().getCity());
                 requestWeatherData(ipLocationEntity.getLocation().getCity());
                 //如果数据库没有数据，添加当前地址进去，不可删除
-                if (db.cityDao().getAll().size() > 0){
+                if (SingletonRoomDatabase.getInstance(getApplicationContext()).getAllCity().size() > 0){
                     Log.d(TAG, "点位： 当前数据库中存在城市数据");
                 }else{
                     Log.d(TAG, "点位： 当前数据库中不存在城市数据，添加一条所在IP定位城市数据");
-                    db.cityDao().insert(new City(ipLocationEntity.getLocation().getCity()));
+                    SingletonRoomDatabase.getInstance(getApplicationContext()).insertCity(ipLocationEntity.getLocation().getCity());
                 }
             }
         };
@@ -233,12 +228,4 @@ public class CityWeatherDetailsActivity extends AppCompatActivity {
         });
     }
 
-
-    /*@Override
-    public void finish() {
-        super.finish();
-        if (db != null){
-            db.close();
-        }
-    }*/
 }
