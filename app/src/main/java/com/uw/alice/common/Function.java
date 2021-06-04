@@ -2,6 +2,7 @@ package com.uw.alice.common;
 
 import android.app.Activity;
 import android.content.ClipData;
+import android.content.ClipDescription;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
@@ -256,13 +257,17 @@ public class Function {
      * 存放文本至剪贴板 长按输入框点击粘贴或者输入法智能提示粘贴到输入框中
      */
     public static void setTextToClipboard(Context context,String text) {
-        //获取剪贴板服务的句柄。
-        ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
-        //创建新的文本剪辑以放在剪贴板上
-        ClipData clip = ClipData.newPlainText("label:"+text, text);
+        ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE); //获取剪贴板服务的句柄。
+        /*
+         * 创建一个新的保存数据类型的ClipData{@link ClipDescription#MIMETYPE_TEXT_PLAIN}.
+         *
+         * @param label 剪辑数据的用户可见标签.
+         * @param text 剪辑中的实际文本.
+         * @return 返回一个包含指定数据的新ClipData.
+         */
+        ClipData clip = ClipData.newPlainText("label:"+text, text); //创建新的文本剪辑以放在剪贴板上
         if (clipboard != null) {
-            //设置剪贴板的主剪辑
-            clipboard.setPrimaryClip(clip);
+            clipboard.setPrimaryClip(clip); //设置剪贴板的主剪辑
         }
     }
 

@@ -62,11 +62,10 @@ public class SevenDayWeatherActivity extends AppCompatActivity {
         viewBinding.ivAddCity.setOnClickListener(v -> {
             //将当前城市添加到本地数据库中
             SingletonRoomDatabase.getInstance(getApplicationContext()).insertCity(cityName);
-            //db.cityDao().insert(new City(cityName));
             Toast.makeText(context, "添加成功", Toast.LENGTH_SHORT).show();
             checkIsInDB();
 
-            dataList = /*db.cityDao().getAll()*/SingletonRoomDatabase.getInstance(getApplicationContext()).getAllCity();
+            dataList = SingletonRoomDatabase.getInstance(getApplicationContext()).getAllCity();
             Log.d(TAG, "点位————数据库中的城市列表—————");
             int i = 0;
             for (City city: dataList){
@@ -84,7 +83,7 @@ public class SevenDayWeatherActivity extends AppCompatActivity {
     }
 
     private void checkIsInDB() {
-        City city = /*db.cityDao().queryCity(cityName)*/SingletonRoomDatabase.getInstance(getApplicationContext()).queryCity(cityName);
+        City city = SingletonRoomDatabase.getInstance(getApplicationContext()).queryCity(cityName);
         if (city != null){
             Log.d(TAG, "点位：数据库中已存在该城市：" + city.cityName);
             viewBinding.ivAddCity.setVisibility(View.GONE);
